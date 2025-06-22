@@ -53,15 +53,17 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sea: {
-					light: '#E0F2F7',
-					DEFAULT: '#1E88E5',
-					dark: '#0D47A1'
-				},
-				sand: {
-					light: '#F5F5DC',
-					DEFAULT: '#E6D2B5',
-					dark: '#D2B48C'
+				orange: {
+					50: '#fff7ed',
+					100: '#ffedd5',
+					200: '#fed7aa',
+					300: '#fdba74',
+					400: '#fb923c',
+					500: '#f97316',
+					600: '#ea580c',
+					700: '#c2410c',
+					800: '#9a3412',
+					900: '#7c2d12',
 				}
 			},
 			borderRadius: {
@@ -111,10 +113,23 @@ export default {
 					'50%': { transform: 'translateX(-25%) translateZ(0) scaleY(0.8)' },
 					'100%': { transform: 'translateX(-50%) translateZ(0) scaleY(1)' }
 				},
-				'button-glow': {
-					'0%': { boxShadow: '0 0 5px rgba(30, 136, 229, 0.5)' },
-					'50%': { boxShadow: '0 0 20px rgba(30, 136, 229, 0.8)' },
-					'100%': { boxShadow: '0 0 5px rgba(30, 136, 229, 0.5)' }
+				'bounce-in': {
+					'0%': { opacity: '0', transform: 'scale(0.3)' },
+					'50%': { opacity: '1', transform: 'scale(1.05)' },
+					'70%': { transform: 'scale(0.9)' },
+					'100%': { opacity: '1', transform: 'scale(1)' }
+				},
+				'slide-in-left': {
+					'0%': { opacity: '0', transform: 'translateX(-100px)' },
+					'100%': { opacity: '1', transform: 'translateX(0)' }
+				},
+				'slide-in-right': {
+					'0%': { opacity: '0', transform: 'translateX(100px)' },
+					'100%': { opacity: '1', transform: 'translateX(0)' }
+				},
+				'glow': {
+					'0%': { boxShadow: '0 0 5px rgba(255, 123, 0, 0.5)' },
+					'100%': { boxShadow: '0 0 20px rgba(255, 123, 0, 0.8), 0 0 30px rgba(255, 123, 0, 0.6)' }
 				}
 			},
 			animation: {
@@ -128,7 +143,10 @@ export default {
 				'float': 'float 6s ease-in-out infinite',
 				'pulse-slow': 'pulse-slow 4s ease-in-out infinite',
 				'wave': 'wave 12s -2s linear infinite',
-				'button-glow': 'button-glow 3s ease-in-out infinite'
+				'bounce-in': 'bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+				'slide-in-left': 'slide-in-left 0.5s ease-out',
+				'slide-in-right': 'slide-in-right 0.5s ease-out',
+				'glow': 'glow 2s ease-in-out infinite alternate'
 			}
 		}
 	},
