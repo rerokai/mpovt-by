@@ -75,7 +75,9 @@ export default function Navigation() {
       <header className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out",
         "bg-white/15 dark:bg-black/15 backdrop-blur-xl py-4",
-        scrolled && "border-b border-white/20 dark:border-white/10 shadow-2xl"
+        scrolled 
+          ? "border-b border-white/20 dark:border-white/10 shadow-2xl" 
+          : "border-b border-transparent"
       )}>
         <nav className="container mx-auto px-4 flex justify-between items-center">
           {/* Logo */}
@@ -116,26 +118,19 @@ export default function Navigation() {
                   ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" 
                   : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
               )}>
-                <div className="bg-white/15 dark:bg-black/15 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-xl p-2 shadow-2xl">
+                <div className="bg-white/90 dark:bg-black/90 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-xl p-2 shadow-2xl">
                   <Link
                     to="/company"
-                    className="block px-4 py-3 text-sm rounded-lg transition-all duration-300 hover:bg-white/20 hover:text-primary hover:translate-x-2 border-b border-white/10 mb-2 font-medium"
+                    className="block px-4 py-3 text-sm rounded-lg transition-all duration-300 hover:bg-white/10 hover:text-primary border-b border-white/10 mb-2 font-medium"
                     onClick={() => setActiveDropdown(null)}
                   >
                     О компании - Главная
                   </Link>
-                  {companyMenuItems.map((item, index) => (
+                  {companyMenuItems.map((item) => (
                     <Link
                       key={item.path}
                       to={item.path}
-                      className={cn(
-                        "block px-4 py-3 text-sm rounded-lg transition-all duration-300 hover:bg-white/20 hover:text-primary hover:translate-x-2 opacity-0 translate-x-4",
-                        activeDropdown === 'company' && "animate-fade-in-left"
-                      )}
-                      style={{ 
-                        animationDelay: activeDropdown === 'company' ? `${(index + 1) * 50}ms` : '0ms',
-                        animationFillMode: 'forwards'
-                      }}
+                      className="block px-4 py-3 text-sm rounded-lg transition-all duration-300 hover:bg-white/5 hover:text-primary"
                       onClick={() => setActiveDropdown(null)}
                     >
                       {item.name}
@@ -164,26 +159,19 @@ export default function Navigation() {
                   ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" 
                   : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
               )}>
-                <div className="bg-white/15 dark:bg-black/15 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-xl p-2 shadow-2xl">
+                <div className="bg-white/90 dark:bg-black/90 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-xl p-2 shadow-2xl">
                   <Link
                     to="/products"
-                    className="block px-4 py-3 text-sm rounded-lg transition-all duration-300 hover:bg-white/20 hover:text-primary hover:translate-x-2 border-b border-white/10 mb-2 font-medium"
+                    className="block px-4 py-3 text-sm rounded-lg transition-all duration-300 hover:bg-white/10 hover:text-primary border-b border-white/10 mb-2 font-medium"
                     onClick={() => setActiveDropdown(null)}
                   >
                     Продукция - Главная
                   </Link>
-                  {productMenuItems.map((item, index) => (
+                  {productMenuItems.map((item) => (
                     <Link
                       key={item.path}
                       to={item.path}
-                      className={cn(
-                        "block px-4 py-3 text-sm rounded-lg transition-all duration-300 hover:bg-white/20 hover:text-primary hover:translate-x-2 opacity-0 translate-x-4",
-                        activeDropdown === 'products' && "animate-fade-in-left"
-                      )}
-                      style={{ 
-                        animationDelay: activeDropdown === 'products' ? `${(index + 1) * 50}ms` : '0ms',
-                        animationFillMode: 'forwards'
-                      }}
+                      className="block px-4 py-3 text-sm rounded-lg transition-all duration-300 hover:bg-white/5 hover:text-primary"
                       onClick={() => setActiveDropdown(null)}
                     >
                       {item.name}
@@ -248,7 +236,7 @@ export default function Navigation() {
           {/* Background overlay */}
           <div 
             className={cn(
-              "absolute inset-0 transition-all duration-300",
+              "absolute inset-0 transition-all duration-500 ease-out",
               "backdrop-blur-sm bg-black/30"
             )}
             onClick={closeMobileMenu}

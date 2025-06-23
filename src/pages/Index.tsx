@@ -74,14 +74,14 @@ const Index = () => {
       title: "Компьютерная техника",
       description: "Ноутбуки и компьютерное оборудование",
       icon: Laptop,
-      image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=400&h=300&fit=crop",
+      image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=300&fit=crop",
       link: "/products/laptops"
     },
     {
       title: "Информационные системы",
       description: "Комплексные IT-решения для бизнеса",
       icon: FileText,
-      image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=400&h=300&fit=crop",
+      image: "https://images.unsplash.com/photo-1551808525-51a94da548ce?w=400&h=300&fit=crop",
       link: "/products/information-systems"
     }
   ];
@@ -119,20 +119,20 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-950 dark:to-orange-900">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-orange-50 to-orange-100 dark:from-orange-950 dark:via-orange-950 dark:to-orange-900">
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-28 pb-16 px-4 text-center relative overflow-hidden">
+      <section className="pt-32 pb-20 px-4 text-center relative overflow-hidden">
         <div className="container mx-auto relative z-10">
           <div className="max-w-4xl mx-auto animate-fade-in">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-orange-500 to-primary bg-clip-text text-transparent">
               ОАО «МПОВТ»
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
+            <p className="text-xl md:text-2xl text-muted-foreground mb-8" style={{ animationDelay: '200ms' }}>
               Ведущий производитель электронных компонентов и автокомпонентов с 1956 года
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: '400ms' }}>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center" style={{ animationDelay: '400ms' }}>
               <Button asChild size="lg" className="btn-primary-smooth">
                 <Link to="/products">
                   Наша продукция
@@ -155,10 +155,10 @@ const Index = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 px-4 bg-gradient-to-b from-transparent via-white/30 to-transparent dark:via-black/30">
+      <section className="py-20 px-4 bg-gradient-to-b from-orange-50/50 via-white/30 to-orange-50/50 dark:from-orange-950/50 dark:via-black/30 dark:to-orange-950/50">
         <div className="container mx-auto">
-          <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-4xl font-bold mb-4">Инновационные решения для промышленности</h2>
+          <div className="text-center mb-16">
+            <h2 className="page-title">Инновационные решения для промышленности</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Современные технологии и многолетний опыт позволяют нам создавать продукцию высочайшего качества
             </p>
@@ -173,12 +173,11 @@ const Index = () => {
                   <Card
                     key={index}
                     className={cn(
-                      "p-6 cursor-pointer transition-all duration-500 hover:shadow-xl glass-card animate-fade-in-left",
+                      "p-6 cursor-pointer transition-all duration-500 hover:shadow-xl glass-card",
                       activeFeature === index 
                         ? 'border-primary/50 bg-primary/20 shadow-lg scale-105' 
                         : 'hover:scale-102'
                     )}
-                    style={{ animationDelay: `${index * 100}ms` }}
                     onClick={() => setActiveFeature(index)}
                   >
                     <div className="flex items-center space-x-4">
@@ -206,15 +205,15 @@ const Index = () => {
             </div>
 
             {/* Feature Content */}
-            <div className="relative h-96 rounded-2xl overflow-hidden glass-card animate-fade-in-right">
+            <div className="relative h-96 rounded-2xl overflow-hidden glass-card">
               <div 
                 key={activeFeature}
-                className="absolute inset-0 transition-all duration-700 ease-in-out"
+                className="absolute inset-0 transition-all duration-1000 ease-in-out"
                 style={{
-                  backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url(${features[activeFeature].backgroundImage})`,
+                  backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url(${features[activeFeature].backgroundImage})`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
-                  filter: 'blur(1px)'
+                  animation: 'image-fade 0.8s ease-in-out'
                 }}
               />
               <div 
@@ -235,10 +234,10 @@ const Index = () => {
       </section>
 
       {/* Products Section */}
-      <section className="py-16 px-4 bg-white/50 dark:bg-black/50">
+      <section className="py-20 px-4 bg-white/50 dark:bg-black/50">
         <div className="container mx-auto">
-          <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-4xl font-bold mb-4">Наша продукция</h2>
+          <div className="text-center mb-16">
+            <h2 className="page-title">Наша продукция</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Широкий спектр высококачественных электронных компонентов и систем
             </p>
@@ -250,8 +249,7 @@ const Index = () => {
               return (
                 <Card 
                   key={index} 
-                  className="group overflow-hidden hover:shadow-2xl transition-all duration-500 glass-card animate-bounce-in-soft hover:scale-105"
-                  style={{ animationDelay: `${index * 150}ms` }}
+                  className="group overflow-hidden hover:shadow-2xl transition-all duration-500 glass-card hover:scale-105"
                 >
                   <div className="aspect-video bg-gradient-to-br from-primary/10 to-orange-400/10 relative overflow-hidden">
                     <img 
@@ -284,10 +282,10 @@ const Index = () => {
       </section>
 
       {/* Achievements Section */}
-      <section className="py-16 px-4">
+      <section className="py-20 px-4">
         <div className="container mx-auto">
-          <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-4xl font-bold mb-4">Наши достижения</h2>
+          <div className="text-center mb-16">
+            <h2 className="page-title">Наши достижения</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Цифры, которые говорят о нашем успехе и надежности
             </p>
@@ -297,8 +295,7 @@ const Index = () => {
             {achievements.map((achievement, index) => (
               <Card 
                 key={index} 
-                className="text-center p-8 glass-card hover:shadow-xl transition-all duration-500 animate-fade-in-up hover:scale-105"
-                style={{ animationDelay: `${index * 200}ms` }}
+                className="text-center p-8 glass-card hover:shadow-xl transition-all duration-500 hover:scale-105"
               >
                 <div className="text-4xl font-bold text-primary mb-2">{achievement.number}</div>
                 <div className="text-lg font-semibold mb-2">{achievement.label}</div>
@@ -310,10 +307,10 @@ const Index = () => {
       </section>
 
       {/* Partners Section */}
-      <section className="py-16 px-4 bg-white/50 dark:bg-black/50">
+      <section className="py-20 px-4 bg-white/50 dark:bg-black/50">
         <div className="container mx-auto">
-          <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-4xl font-bold mb-4">Наши партнеры</h2>
+          <div className="text-center mb-16">
+            <h2 className="page-title">Наши партнеры</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Мы сотрудничаем с ведущими компаниями по всему миру
             </p>
@@ -323,8 +320,7 @@ const Index = () => {
             {partners.map((partner, index) => (
               <div 
                 key={index} 
-                className="bg-white/20 dark:bg-black/20 backdrop-blur-sm border border-white/30 dark:border-white/10 rounded-xl p-6 flex items-center justify-center hover:bg-white/30 dark:hover:bg-black/30 transition-all duration-300 animate-fade-in-up hover:scale-105"
-                style={{ animationDelay: `${index * 100}ms` }}
+                className="bg-white/20 dark:bg-black/20 backdrop-blur-sm border border-white/30 dark:border-white/10 rounded-xl p-6 flex items-center justify-center hover:bg-white/30 dark:hover:bg-black/30 transition-all duration-300 hover:scale-105"
               >
                 <img src={partner.logo} alt={partner.name} className="max-w-full max-h-12 opacity-70 hover:opacity-100 transition-opacity" />
               </div>
@@ -334,9 +330,9 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 px-4">
+      <section className="py-20 px-4">
         <div className="container mx-auto text-center">
-          <Card className="max-w-4xl mx-auto p-12 glass-card animate-fade-in-up">
+          <Card className="max-w-4xl mx-auto p-12 glass-card">
             <h2 className="text-4xl font-bold mb-6">Готовы к сотрудничеству?</h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
               Свяжитесь с нами для обсуждения ваших потребностей в электронных компонентах и автокомпонентах
