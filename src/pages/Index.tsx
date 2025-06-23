@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react";
-import Navbar from "@/components/Navbar";
+import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -32,7 +32,7 @@ const products = [
   {
     title: "Автокомпоненты",
     description: "Блоки управления для автомобилей, тракторов и спецтехники",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop",
     link: "/products/car-blocks"
   },
   {
@@ -55,41 +55,66 @@ const aboutCards = [
     title: "Современное производство",
     description: "Высокотехнологичное оборудование и строгий контроль качества на всех этапах производства",
     image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop",
-    icon: <Factory className="h-6 w-6 text-primary" />
+    icon: <Factory className="h-6 w-6 text-white" />
   },
   {
     id: 2,
     title: "Инновационные технологии",
     description: "Применение передовых технологий и разработка собственных инновационных решений",
     image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop",
-    icon: <Zap className="h-6 w-6 text-primary" />
+    icon: <Zap className="h-6 w-6 text-white" />
   },
   {
     id: 3,
     title: "Система качества",
     description: "Сертифицированная система менеджмента качества и международные стандарты",
     image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=800&h=600&fit=crop",
-    icon: <Shield className="h-6 w-6 text-primary" />
+    icon: <Shield className="h-6 w-6 text-white" />
   },
   {
     id: 4,
     title: "Профессиональная команда",
     description: "Высококвалифицированные специалисты и постоянное повышение квалификации",
     image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=600&fit=crop",
-    icon: <Users className="h-6 w-6 text-primary" />
+    icon: <Users className="h-6 w-6 text-white" />
+  },
+  {
+    id: 5,
+    title: "Автоматизация процессов",
+    description: "Внедрение современных систем автоматизации для повышения эффективности производства",
+    image: "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=800&h=600&fit=crop",
+    icon: <Settings className="h-6 w-6 text-white" />
+  },
+  {
+    id: 6,
+    title: "Экологическая ответственность",
+    description: "Соблюдение экологических стандартов и внедрение зеленых технологий",
+    image: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=800&h=600&fit=crop",
+    icon: <Cpu className="h-6 w-6 text-white" />
   }
 ];
 
 export default function Index() {
   const [activeCard, setActiveCard] = useState(1);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const handleCardChange = (cardId: number) => {
+    if (cardId === activeCard) return;
+    
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setActiveCard(cardId);
+      setIsTransitioning(false);
+    }, 300);
+  };
   
   return (
-    <div className="min-h-screen flex flex-col page-transition-enter page-transition-enter-active">
-      <Navbar />
+    <div className="min-h-screen flex flex-col">
+      <Navigation />
       
       <main className="flex-1">
         {/* Hero Section */}
@@ -97,7 +122,7 @@ export default function Index() {
           <div className="container relative z-10 pt-20">
             <div className="text-center max-w-4xl mx-auto">
               <div className="glass-card p-8 md:p-12 animate-fade-in">
-                <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-text-glow">
                   ОАО «МПОВТ»
                 </h1>
                 <p className="text-xl md:text-2xl text-muted-foreground mb-8">
@@ -106,10 +131,10 @@ export default function Index() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button asChild size="lg" className="btn-primary">
-                    <Link to="/products/car-blocks">Наша продукция</Link>
+                    <Link to="/products">Наша продукция</Link>
                   </Button>
                   <Button asChild variant="outline" size="lg" className="glass-card border-white/30">
-                    <Link to="/company/cooperation">О компании</Link>
+                    <Link to="/company">О компании</Link>
                   </Button>
                 </div>
               </div>
@@ -127,7 +152,7 @@ export default function Index() {
         <section className="section">
           <div className="container">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="animate-fade-in [animation-delay:100ms]">
+              <div className="animate-fade-in-left">
                 <span className="text-sm text-primary font-medium uppercase tracking-wider">
                   О предприятии
                 </span>
@@ -143,30 +168,32 @@ export default function Index() {
                   кооперационное взаимодействие с российскими партнерами.
                 </p>
                 <Button asChild className="btn-primary">
-                  <Link to="/company/cooperation">
+                  <Link to="/company">
                     Подробнее <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
               </div>
               
-              <div className="relative animate-fade-in [animation-delay:300ms]">
+              <div className="relative animate-fade-in-right">
                 <div className="glass-card p-6 rounded-2xl">
-                  <div className="flex space-x-2 mb-4">
+                  <div className="flex flex-wrap gap-2 mb-4">
                     {aboutCards.map((card) => (
                       <button
                         key={card.id}
-                        onClick={() => setActiveCard(card.id)}
-                        className={`p-2 rounded-lg transition-all duration-300 ${
+                        onClick={() => handleCardChange(card.id)}
+                        className={`p-3 rounded-lg transition-all duration-500 ${
                           activeCard === card.id 
-                            ? 'bg-primary text-white' 
-                            : 'bg-primary/10 text-primary hover:bg-primary/20'
+                            ? 'bg-primary text-white shadow-lg scale-110' 
+                            : 'bg-primary/20 text-primary hover:bg-primary/30 hover:scale-105'
                         }`}
                       >
                         {card.icon}
                       </button>
                     ))}
                   </div>
-                  <div className="animate-fade-in" key={activeCard}>
+                  <div className={`transition-all duration-300 ${
+                    isTransitioning ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'
+                  }`}>
                     <img 
                       src={aboutCards.find(card => card.id === activeCard)?.image}
                       alt={aboutCards.find(card => card.id === activeCard)?.title}
@@ -204,10 +231,10 @@ export default function Index() {
               {achievements.map((achievement, index) => (
                 <div 
                   key={index} 
-                  className="glass-card p-6 rounded-xl text-center transition-all duration-300 hover:scale-105 hover:shadow-lg animate-scale-in"
-                  style={{ animationDelay: `${(index + 1) * 150}ms` }}
+                  className="glass-card p-6 rounded-xl text-center transition-all duration-500 hover:scale-105 hover:shadow-xl animate-bounce-in-soft"
+                  style={{ animationDelay: `${index * 200}ms` }}
                 >
-                  <div className="mb-4 flex justify-center animate-bounce-in" style={{ animationDelay: `${(index + 1) * 200}ms` }}>
+                  <div className="mb-4 flex justify-center animate-bounce-in" style={{ animationDelay: `${index * 250}ms` }}>
                     <div className="p-3 rounded-full bg-primary/10">
                       {achievement.icon}
                     </div>
@@ -241,14 +268,14 @@ export default function Index() {
                   key={index}
                   to={product.link}
                   className="group animate-fade-in-up"
-                  style={{ animationDelay: `${(index + 1) * 100}ms` }}
+                  style={{ animationDelay: `${index * 150}ms` }}
                 >
-                  <div className="glass-card p-6 rounded-xl transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl">
+                  <div className="glass-card p-6 rounded-xl transition-all duration-500 group-hover:scale-105 group-hover:shadow-xl">
                     <div className="aspect-video rounded-lg overflow-hidden mb-4">
                       <img 
                         src={product.image}
                         alt={product.title}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                     </div>
                     <h3 className="text-xl font-semibold mb-2">{product.title}</h3>
@@ -282,10 +309,10 @@ export default function Index() {
               {partners.map((partner, index) => (
                 <div 
                   key={index}
-                  className="glass-card px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg animate-float"
+                  className="glass-card px-8 py-4 rounded-lg transition-all duration-500 hover:scale-105 hover:shadow-xl animate-slide-in-left"
                   style={{ 
-                    animationDelay: `${(index + 1) * 200}ms`,
-                    animationDuration: `${3 + index * 0.5}s`
+                    animationDelay: `${index * 150}ms`,
+                    animationDuration: `600ms`
                   }}
                 >
                   <span className="text-lg font-semibold">{partner}</span>
