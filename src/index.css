@@ -91,12 +91,12 @@
   }
   
   .btn-primary {
-    @apply bg-primary text-primary-foreground rounded-lg px-6 py-2.5 font-medium transition-all duration-500 hover:shadow-lg active:scale-[0.98] hover:bg-primary/90;
+    @apply bg-primary text-primary-foreground rounded-lg px-6 py-2.5 font-medium transition-all duration-300 hover:shadow-lg active:scale-[0.98] hover:bg-primary/90;
   }
   
   .btn-primary:hover {
-    box-shadow: 0 0 20px rgba(249, 115, 22, 0.6), 0 0 40px rgba(249, 115, 22, 0.3);
-    animation: glow-pulse 0.5s ease-in-out;
+    box-shadow: 0 0 15px rgba(249, 115, 22, 0.4), 0 0 25px rgba(249, 115, 22, 0.2);
+    animation: glow-pulse 0.3s ease-in-out forwards;
   }
   
   .section {
@@ -127,12 +127,16 @@
     animation: bounceInSoft 0.8s ease-out forwards;
   }
 
-  .animate-text-glow {
-    animation: textGlow 2s ease-in-out infinite alternate;
-  }
-
   .animate-pulse-slow {
     animation: pulse 4s ease-in-out infinite;
+  }
+
+  .navbar-border-fade {
+    transition: border-color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  }
+
+  .mobile-menu-overlay {
+    transition: all 0.3s ease-in-out;
   }
 }
 
@@ -195,21 +199,12 @@
   }
 }
 
-@keyframes textGlow {
-  0% {
-    text-shadow: 0 0 10px rgba(249, 115, 22, 0.5);
-  }
-  100% {
-    text-shadow: 0 0 20px rgba(249, 115, 22, 0.8), 0 0 30px rgba(249, 115, 22, 0.6);
-  }
-}
-
 @keyframes glow-pulse {
   0% {
-    box-shadow: 0 0 5px rgba(249, 115, 22, 0.3);
+    box-shadow: 0 0 5px rgba(249, 115, 22, 0.2);
   }
   100% {
-    box-shadow: 0 0 25px rgba(249, 115, 22, 0.8), 0 0 50px rgba(249, 115, 22, 0.4);
+    box-shadow: 0 0 15px rgba(249, 115, 22, 0.4), 0 0 25px rgba(249, 115, 22, 0.2);
   }
 }
 
