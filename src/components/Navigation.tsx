@@ -82,18 +82,18 @@ export default function Navigation() {
         <nav className="container mx-auto px-4 flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary/80 rounded-xl flex items-center justify-center shadow-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-2xl group-hover:shadow-primary/50">
-              <span className="text-white font-bold text-lg">М</span>
+            <div className="w-8 h-8 xl:w-10 xl:h-10 bg-gradient-to-br from-primary to-primary/80 rounded-xl flex items-center justify-center shadow-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-2xl group-hover:shadow-primary/50">
+              <span className="text-white font-bold text-sm xl:text-lg">М</span>
             </div>
-            <span className="font-bold text-xl transition-all duration-300 group-hover:text-primary">МПОВТ</span>
+            <span className="font-bold text-lg xl:text-xl transition-all duration-300 group-hover:text-primary">МПОВТ</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <ul className="hidden lg:flex items-center space-x-2">
+          <ul className="hidden xl:flex items-center space-x-2">
             <li>
               <Link 
                 to="/" 
-                className="px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:bg-white/10 hover:text-primary hover:scale-105 hover:shadow-lg"
+                className="px-3 xl:px-4 py-2 rounded-lg font-medium text-sm xl:text-base transition-all duration-300 hover:bg-white/10 hover:text-primary hover:scale-105 hover:shadow-lg"
               >
                 Главная
               </Link>
@@ -103,7 +103,7 @@ export default function Navigation() {
             <li className="relative">
               <button
                 onClick={(e) => handleDropdownClick(e, 'company')}
-                className="flex items-center px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:bg-white/10 hover:text-primary hover:scale-105 hover:shadow-lg"
+                className="flex items-center px-3 xl:px-4 py-2 rounded-lg font-medium text-sm xl:text-base transition-all duration-300 hover:bg-white/10 hover:text-primary hover:scale-105 hover:shadow-lg"
               >
                 О компании 
                 <ChevronDown className={cn(
@@ -118,10 +118,10 @@ export default function Navigation() {
                   ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" 
                   : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
               )}>
-                <div className="bg-white/90 dark:bg-black/90 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-xl p-2 shadow-2xl">
+                <div className="bg-white/95 dark:bg-black/95 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-xl p-2 shadow-2xl">
                   <Link
                     to="/company"
-                    className="block px-4 py-3 text-sm rounded-lg transition-all duration-300 hover:bg-white/10 hover:text-primary border-b border-white/10 mb-2 font-medium"
+                    className="block px-4 py-3 text-sm rounded-lg transition-all duration-300 hover:bg-white/20 hover:text-primary border-b border-white/10 mb-2 font-medium"
                     onClick={() => setActiveDropdown(null)}
                   >
                     О компании - Главная
@@ -130,7 +130,7 @@ export default function Navigation() {
                     <Link
                       key={item.path}
                       to={item.path}
-                      className="block px-4 py-3 text-sm rounded-lg transition-all duration-300 hover:bg-white/5 hover:text-primary"
+                      className="block px-4 py-3 text-sm rounded-lg transition-all duration-300 hover:bg-white/10 hover:text-primary"
                       onClick={() => setActiveDropdown(null)}
                     >
                       {item.name}
@@ -144,7 +144,7 @@ export default function Navigation() {
             <li className="relative">
               <button
                 onClick={(e) => handleDropdownClick(e, 'products')}
-                className="flex items-center px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:bg-white/10 hover:text-primary hover:scale-105 hover:shadow-lg"
+                className="flex items-center px-3 xl:px-4 py-2 rounded-lg font-medium text-sm xl:text-base transition-all duration-300 hover:bg-white/10 hover:text-primary hover:scale-105 hover:shadow-lg"
               >
                 Продукция 
                 <ChevronDown className={cn(
@@ -159,10 +159,10 @@ export default function Navigation() {
                   ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" 
                   : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
               )}>
-                <div className="bg-white/90 dark:bg-black/90 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-xl p-2 shadow-2xl">
+                <div className="bg-white/95 dark:bg-black/95 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-xl p-2 shadow-2xl">
                   <Link
                     to="/products"
-                    className="block px-4 py-3 text-sm rounded-lg transition-all duration-300 hover:bg-white/10 hover:text-primary border-b border-white/10 mb-2 font-medium"
+                    className="block px-4 py-3 text-sm rounded-lg transition-all duration-300 hover:bg-white/20 hover:text-primary border-b border-white/10 mb-2 font-medium"
                     onClick={() => setActiveDropdown(null)}
                   >
                     Продукция - Главная
@@ -171,7 +171,7 @@ export default function Navigation() {
                     <Link
                       key={item.path}
                       to={item.path}
-                      className="block px-4 py-3 text-sm rounded-lg transition-all duration-300 hover:bg-white/5 hover:text-primary"
+                      className="block px-4 py-3 text-sm rounded-lg transition-all duration-300 hover:bg-white/10 hover:text-primary"
                       onClick={() => setActiveDropdown(null)}
                     >
                       {item.name}
@@ -184,7 +184,7 @@ export default function Navigation() {
             <li>
               <Link 
                 to="/services" 
-                className="px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:bg-white/10 hover:text-primary hover:scale-105 hover:shadow-lg"
+                className="px-3 xl:px-4 py-2 rounded-lg font-medium text-sm xl:text-base transition-all duration-300 hover:bg-white/10 hover:text-primary hover:scale-105 hover:shadow-lg"
               >
                 Услуги
               </Link>
@@ -192,7 +192,7 @@ export default function Navigation() {
             <li>
               <Link 
                 to="/contact" 
-                className="px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:bg-white/10 hover:text-primary hover:scale-105 hover:shadow-lg"
+                className="px-3 xl:px-4 py-2 rounded-lg font-medium text-sm xl:text-base transition-all duration-300 hover:bg-white/10 hover:text-primary hover:scale-105 hover:shadow-lg"
               >
                 Контакты
               </Link>
@@ -200,7 +200,7 @@ export default function Navigation() {
             <li>
               <Link 
                 to="/support" 
-                className="px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:bg-white/10 hover:text-primary hover:scale-105 hover:shadow-lg"
+                className="px-3 xl:px-4 py-2 rounded-lg font-medium text-sm xl:text-base transition-all duration-300 hover:bg-white/10 hover:text-primary hover:scale-105 hover:shadow-lg"
               >
                 Поддержка и сервис
               </Link>
@@ -208,15 +208,15 @@ export default function Navigation() {
           </ul>
 
           {/* Desktop Actions */}
-          <div className="hidden lg:flex items-center space-x-3">
+          <div className="hidden xl:flex items-center space-x-3">
             <ThemeToggle />
-            <Button asChild className="btn-primary-smooth">
+            <Button asChild className="btn-primary-smooth text-sm xl:text-base px-4 xl:px-6">
               <Link to="/contact">Связаться с нами</Link>
             </Button>
           </div>
 
           {/* Mobile Menu Toggle */}
-          <div className="lg:hidden flex items-center space-x-2">
+          <div className="xl:hidden flex items-center space-x-2">
             <ThemeToggle />
             <Button 
               variant="ghost" 
@@ -224,7 +224,7 @@ export default function Navigation() {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="rounded-full transition-all duration-300 hover:scale-110 hover:bg-white/10"
             >
-              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {mobileMenuOpen ? <X className="h-5 w-5 xl:h-6 xl:w-6" /> : <Menu className="h-5 w-5 xl:h-6 xl:w-6" />}
             </Button>
           </div>
         </nav>
@@ -232,7 +232,7 @@ export default function Navigation() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-40 lg:hidden">
+        <div className="fixed inset-0 z-40 xl:hidden">
           {/* Background overlay */}
           <div 
             className={cn(
@@ -244,24 +244,24 @@ export default function Navigation() {
           
           {/* Mobile menu content */}
           <div className={cn(
-            "absolute top-20 left-4 right-4 bg-white/20 dark:bg-black/20 backdrop-blur-xl border border-white/30 dark:border-white/10 rounded-xl shadow-2xl p-6 transition-all duration-300 ease-out",
+            "absolute top-20 left-4 right-4 bg-white/20 dark:bg-black/20 backdrop-blur-xl border border-white/30 dark:border-white/10 rounded-xl shadow-2xl p-4 xl:p-6 transition-all duration-300 ease-out",
             "animate-slide-down"
           )}>
-            <div className="space-y-4 max-h-[70vh] overflow-y-auto">
+            <div className="space-y-3 xl:space-y-4 max-h-[70vh] overflow-y-auto">
               <Link 
                 to="/" 
-                className="block text-lg font-medium py-2 transition-all duration-300 hover:text-primary" 
+                className="block text-base xl:text-lg font-medium py-2 transition-all duration-300 hover:text-primary" 
                 onClick={closeMobileMenu}
               >
                 Главная
               </Link>
               
               <div>
-                <div className="text-lg font-medium py-2 text-muted-foreground">О компании</div>
+                <div className="text-base xl:text-lg font-medium py-2 text-muted-foreground">О компании</div>
                 <div className="ml-4 space-y-2">
                   <Link 
                     to="/company"
-                    className="block py-1 text-sm transition-all duration-300 hover:text-primary font-medium" 
+                    className="block py-1 text-sm xl:text-base transition-all duration-300 hover:text-primary font-medium" 
                     onClick={closeMobileMenu}
                   >
                     О компании - Главная
@@ -270,7 +270,7 @@ export default function Navigation() {
                     <Link 
                       key={item.path}
                       to={item.path} 
-                      className="block py-1 text-sm transition-all duration-300 hover:text-primary" 
+                      className="block py-1 text-sm xl:text-base transition-all duration-300 hover:text-primary" 
                       onClick={closeMobileMenu}
                     >
                       {item.name}
@@ -280,11 +280,11 @@ export default function Navigation() {
               </div>
               
               <div>
-                <div className="text-lg font-medium py-2 text-muted-foreground">Продукция</div>
+                <div className="text-base xl:text-lg font-medium py-2 text-muted-foreground">Продукция</div>
                 <div className="ml-4 space-y-2">
                   <Link 
                     to="/products"
-                    className="block py-1 text-sm transition-all duration-300 hover:text-primary font-medium" 
+                    className="block py-1 text-sm xl:text-base transition-all duration-300 hover:text-primary font-medium" 
                     onClick={closeMobileMenu}
                   >
                     Продукция - Главная
@@ -293,7 +293,7 @@ export default function Navigation() {
                     <Link 
                       key={item.path}
                       to={item.path} 
-                      className="block py-1 text-sm transition-all duration-300 hover:text-primary" 
+                      className="block py-1 text-sm xl:text-base transition-all duration-300 hover:text-primary" 
                       onClick={closeMobileMenu}
                     >
                       {item.name}
@@ -304,21 +304,21 @@ export default function Navigation() {
               
               <Link 
                 to="/services" 
-                className="block text-lg font-medium py-2 transition-all duration-300 hover:text-primary" 
+                className="block text-base xl:text-lg font-medium py-2 transition-all duration-300 hover:text-primary" 
                 onClick={closeMobileMenu}
               >
                 Услуги
               </Link>
               <Link 
                 to="/contact" 
-                className="block text-lg font-medium py-2 transition-all duration-300 hover:text-primary" 
+                className="block text-base xl:text-lg font-medium py-2 transition-all duration-300 hover:text-primary" 
                 onClick={closeMobileMenu}
               >
                 Контакты
               </Link>
               <Link 
                 to="/support" 
-                className="block text-lg font-medium py-2 transition-all duration-300 hover:text-primary" 
+                className="block text-base xl:text-lg font-medium py-2 transition-all duration-300 hover:text-primary" 
                 onClick={closeMobileMenu}
               >
                 Поддержка и сервис

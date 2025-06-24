@@ -74,14 +74,14 @@ const Index = () => {
       title: "Компьютерная техника",
       description: "Ноутбуки и компьютерное оборудование",
       icon: Laptop,
-      image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=300&fit=crop",
+      image: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400&h=300&fit=crop",
       link: "/products/laptops"
     },
     {
       title: "Информационные системы",
       description: "Комплексные IT-решения для бизнеса",
       icon: FileText,
-      image: "https://images.unsplash.com/photo-1551808525-51a94da548ce?w=400&h=300&fit=crop",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop",
       link: "/products/information-systems"
     }
   ];
@@ -123,76 +123,84 @@ const Index = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 text-center relative overflow-hidden">
+      <section className="pt-28 md:pt-32 lg:pt-40 pb-16 md:pb-20 px-4 text-center relative overflow-hidden">
         <div className="container mx-auto relative z-10">
           <div className="max-w-4xl mx-auto animate-fade-in">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-orange-500 to-primary bg-clip-text text-transparent">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-primary via-orange-500 to-primary bg-clip-text text-transparent">
               ОАО «МПОВТ»
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8" style={{ animationDelay: '200ms' }}>
+            <p className="text-lg md:text-xl xl:text-2xl text-muted-foreground mb-6 md:mb-8" style={{ animationDelay: '200ms' }}>
               Ведущий производитель электронных компонентов и автокомпонентов с 1956 года
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center" style={{ animationDelay: '400ms' }}>
-              <Button asChild size="lg" className="btn-primary-smooth">
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center" style={{ animationDelay: '400ms' }}>
+              <Button asChild size="lg" className="btn-primary-smooth text-sm md:text-base">
                 <Link to="/products">
                   Наша продукция
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-white">
+              <Button asChild variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-white text-sm md:text-base">
                 <Link to="/company">О компании</Link>
               </Button>
             </div>
           </div>
         </div>
         
-        {/* Background decoration */}
+        {/* Background decoration with continuous gradient */}
         <div className="absolute inset-0 opacity-10 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary rounded-full blur-3xl animate-pulse-slow"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-orange-400 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-1/4 left-1/4 w-32 h-32 md:w-64 md:h-64 bg-primary rounded-full blur-3xl animate-pulse-slow"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-48 h-48 md:w-96 md:h-96 bg-orange-400 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[150%] h-32 bg-gradient-to-r from-primary/5 via-orange-400/10 to-primary/5 blur-3xl"></div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4 bg-gradient-to-b from-orange-50/50 via-white/30 to-orange-50/50 dark:from-orange-950/50 dark:via-black/30 dark:to-orange-950/50">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="page-title">Инновационные решения для промышленности</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+      <section className="py-16 md:py-20 px-4 bg-gradient-to-b from-orange-50/70 via-white/50 to-orange-50/70 dark:from-orange-950/70 dark:via-black/50 dark:to-orange-950/70 relative">
+        {/* Continuous background gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-orange-50/30 to-white/30 dark:from-orange-950/30 dark:to-black/30"></div>
+        
+        <div className="container mx-auto relative z-10">
+          <div className="text-center mb-12 md:mb-16">
+            <div className="relative inline-block">
+              <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-primary via-orange-500 to-primary bg-clip-text text-transparent">
+                Инновационные решения для промышленности
+              </h2>
+              <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 md:w-32 h-1 bg-gradient-to-r from-transparent via-primary to-transparent rounded-full"></div>
+            </div>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mt-6">
               Современные технологии и многолетний опыт позволяют нам создавать продукцию высочайшего качества
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Feature Icons */}
-            <div className="space-y-4">
+            <div className="space-y-3 md:space-y-4">
               {features.map((feature, index) => {
                 const Icon = feature.icon;
                 return (
                   <Card
                     key={index}
                     className={cn(
-                      "p-6 cursor-pointer transition-all duration-500 hover:shadow-xl glass-card",
+                      "p-4 md:p-6 cursor-pointer transition-all duration-500 hover:shadow-xl glass-card",
                       activeFeature === index 
                         ? 'border-primary/50 bg-primary/20 shadow-lg scale-105' 
                         : 'hover:scale-102'
                     )}
                     onClick={() => setActiveFeature(index)}
                   >
-                    <div className="flex items-center space-x-4">
+                    <div className="flex items-center space-x-3 md:space-x-4">
                       <div className={cn(
-                        "p-3 rounded-xl transition-all duration-300",
+                        "p-2 md:p-3 rounded-xl transition-all duration-300",
                         activeFeature === index 
                           ? 'bg-primary/60 text-white shadow-lg' 
                           : 'bg-primary/20 text-primary'
                       )}>
-                        <Icon className="h-6 w-6" />
+                        <Icon className="h-5 w-5 md:h-6 md:w-6" />
                       </div>
                       <div>
                         <h3 className={cn(
-                          "text-lg font-semibold transition-all duration-300",
-                          activeFeature === index ? 'text-primary font-bold text-xl' : ''
+                          "text-base md:text-lg font-semibold transition-all duration-300",
+                          activeFeature === index ? 'text-primary font-bold md:text-xl' : ''
                         )}>
                           {feature.title}
                         </h3>
@@ -204,52 +212,59 @@ const Index = () => {
               })}
             </div>
 
-            {/* Feature Content */}
-            <div className="relative h-96 rounded-2xl overflow-hidden glass-card">
-              <div 
-                key={activeFeature}
-                className="absolute inset-0 transition-all duration-1000 ease-in-out"
-                style={{
-                  backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url(${features[activeFeature].backgroundImage})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  animation: 'image-fade 0.8s ease-in-out'
-                }}
-              />
-              <div 
-                key={`content-${activeFeature}`}
-                className="absolute inset-0 flex items-center justify-center transition-all duration-700 ease-in-out animate-fade-in-content"
-              >
-                <div className="text-center p-8 text-white">
-                  <div className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6 backdrop-blur-sm">
-                    {React.createElement(features[activeFeature].icon, { className: "h-12 w-12 text-white" })}
+            {/* Feature Content with crossfade transition */}
+            <div className="relative h-64 md:h-96 rounded-2xl overflow-hidden glass-card">
+              {features.map((feature, index) => (
+                <div 
+                  key={index}
+                  className={cn(
+                    "absolute inset-0 transition-all duration-1000 ease-in-out",
+                    activeFeature === index ? "opacity-100 z-10" : "opacity-0 z-0"
+                  )}
+                  style={{
+                    backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url(${feature.backgroundImage})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  }}
+                >
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center p-6 md:p-8 text-white">
+                      <div className="w-16 h-16 md:w-24 md:h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6 backdrop-blur-sm">
+                        {React.createElement(feature.icon, { className: "h-8 w-8 md:h-12 md:w-12 text-white" })}
+                      </div>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">{feature.title}</h3>
+                      <p className="text-white/90 leading-relaxed text-sm md:text-base">{feature.fullDescription}</p>
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-bold mb-4">{features[activeFeature].title}</h3>
-                  <p className="text-white/90 leading-relaxed">{features[activeFeature].fullDescription}</p>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* Products Section */}
-      <section className="py-20 px-4 bg-white/50 dark:bg-black/50">
+      <section className="py-16 md:py-20 px-4 bg-white/50 dark:bg-black/50">
         <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="page-title">Наша продукция</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <div className="text-center mb-12 md:mb-16">
+            <div className="relative inline-block">
+              <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-primary via-orange-500 to-primary bg-clip-text text-transparent">
+                Наша продукция
+              </h2>
+              <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 md:w-32 h-1 bg-gradient-to-r from-transparent via-primary to-transparent rounded-full"></div>
+            </div>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mt-6">
               Широкий спектр высококачественных электронных компонентов и систем
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {products.map((product, index) => {
               const Icon = product.icon;
               return (
                 <Card 
                   key={index} 
-                  className="group overflow-hidden hover:shadow-2xl transition-all duration-500 glass-card hover:scale-105"
+                  className="group overflow-hidden hover:shadow-2xl transition-all duration-500 glass-card hover:scale-105 flex flex-col"
                 >
                   <div className="aspect-video bg-gradient-to-br from-primary/10 to-orange-400/10 relative overflow-hidden">
                     <img 
@@ -258,19 +273,19 @@ const Index = () => {
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                    <div className="absolute bottom-4 left-4">
-                      <Icon className="h-8 w-8 text-white" />
+                    <div className="absolute bottom-3 md:bottom-4 left-3 md:left-4">
+                      <Icon className="h-6 w-6 md:h-8 md:w-8 text-white" />
                     </div>
                   </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                  <div className="p-4 md:p-6 flex flex-col flex-grow">
+                    <h3 className="text-lg md:text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
                       {product.title}
                     </h3>
-                    <p className="text-muted-foreground mb-4">{product.description}</p>
-                    <Button asChild variant="outline" size="sm" className="w-full group-hover:bg-primary group-hover:text-white group-hover:border-primary">
+                    <p className="text-muted-foreground mb-4 text-sm md:text-base flex-grow">{product.description}</p>
+                    <Button asChild variant="outline" size="sm" className="w-full group-hover:bg-primary group-hover:text-white group-hover:border-primary mt-auto">
                       <Link to={product.link}>
                         Подробнее
-                        <ArrowRight className="ml-2 h-4 w-4" />
+                        <ArrowRight className="ml-2 h-3 w-3 md:h-4 md:w-4" />
                       </Link>
                     </Button>
                   </div>
@@ -282,23 +297,28 @@ const Index = () => {
       </section>
 
       {/* Achievements Section */}
-      <section className="py-20 px-4">
+      <section className="py-16 md:py-20 px-4">
         <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="page-title">Наши достижения</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <div className="text-center mb-12 md:mb-16">
+            <div className="relative inline-block">
+              <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-primary via-orange-500 to-primary bg-clip-text text-transparent">
+                Наши достижения
+              </h2>
+              <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 md:w-32 h-1 bg-gradient-to-r from-transparent via-primary to-transparent rounded-full"></div>
+            </div>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mt-6">
               Цифры, которые говорят о нашем успехе и надежности
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {achievements.map((achievement, index) => (
               <Card 
                 key={index} 
-                className="text-center p-8 glass-card hover:shadow-xl transition-all duration-500 hover:scale-105"
+                className="text-center p-6 md:p-8 glass-card hover:shadow-xl transition-all duration-500 hover:scale-105"
               >
-                <div className="text-4xl font-bold text-primary mb-2">{achievement.number}</div>
-                <div className="text-lg font-semibold mb-2">{achievement.label}</div>
+                <div className="text-2xl md:text-4xl font-bold text-primary mb-2">{achievement.number}</div>
+                <div className="text-base md:text-lg font-semibold mb-2">{achievement.label}</div>
                 <div className="text-muted-foreground text-sm">{achievement.description}</div>
               </Card>
             ))}
@@ -307,22 +327,27 @@ const Index = () => {
       </section>
 
       {/* Partners Section */}
-      <section className="py-20 px-4 bg-white/50 dark:bg-black/50">
+      <section className="py-16 md:py-20 px-4 bg-white/50 dark:bg-black/50">
         <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="page-title">Наши партнеры</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <div className="text-center mb-12 md:mb-16">
+            <div className="relative inline-block">
+              <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-primary via-orange-500 to-primary bg-clip-text text-transparent">
+                Наши партнеры
+              </h2>
+              <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 md:w-32 h-1 bg-gradient-to-r from-transparent via-primary to-transparent rounded-full"></div>
+            </div>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mt-6">
               Мы сотрудничаем с ведущими компаниями по всему миру
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-8">
             {partners.map((partner, index) => (
               <div 
                 key={index} 
-                className="bg-white/20 dark:bg-black/20 backdrop-blur-sm border border-white/30 dark:border-white/10 rounded-xl p-6 flex items-center justify-center hover:bg-white/30 dark:hover:bg-black/30 transition-all duration-300 hover:scale-105"
+                className="bg-white/20 dark:bg-black/20 backdrop-blur-sm border border-white/30 dark:border-white/10 rounded-xl p-4 md:p-6 flex items-center justify-center hover:bg-white/30 dark:hover:bg-black/30 transition-all duration-300 hover:scale-105"
               >
-                <img src={partner.logo} alt={partner.name} className="max-w-full max-h-12 opacity-70 hover:opacity-100 transition-opacity" />
+                <img src={partner.logo} alt={partner.name} className="max-w-full max-h-8 md:max-h-12 opacity-70 hover:opacity-100 transition-opacity" />
               </div>
             ))}
           </div>
@@ -330,21 +355,21 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4">
+      <section className="py-16 md:py-20 px-4">
         <div className="container mx-auto text-center">
-          <Card className="max-w-4xl mx-auto p-12 glass-card">
-            <h2 className="text-4xl font-bold mb-6">Готовы к сотрудничеству?</h2>
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <Card className="max-w-4xl mx-auto p-8 md:p-12 glass-card">
+            <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6">Готовы к сотрудничеству?</h2>
+            <p className="text-lg md:text-xl text-muted-foreground mb-6 md:mb-8 max-w-2xl mx-auto">
               Свяжитесь с нами для обсуждения ваших потребностей в электронных компонентах и автокомпонентах
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="btn-primary-smooth">
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
+              <Button asChild size="lg" className="btn-primary-smooth text-sm md:text-base">
                 <Link to="/contact">
                   Связаться с нами
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-white">
+              <Button asChild variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-white text-sm md:text-base">
                 <Link to="/products">Каталог продукции</Link>
               </Button>
             </div>
