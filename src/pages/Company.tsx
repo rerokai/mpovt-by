@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
@@ -255,9 +254,15 @@ const Company = () => {
                 <div className="mt-12 min-h-[120px] relative overflow-hidden">
                   <div 
                     key={activeTimelineIndex}
-                    className="animate-fade-in opacity-0 translate-y-4"
+                    className="transition-all duration-400 ease-out"
                     style={{
-                      animation: 'fadeInUp 0.4s ease-out forwards'
+                      animation: 'fadeInUp 0.4s ease-out forwards',
+                      opacity: 0,
+                      transform: 'translateY(16px)'
+                    }}
+                    onAnimationEnd={(e) => {
+                      e.currentTarget.style.opacity = '1';
+                      e.currentTarget.style.transform = 'translateY(0)';
                     }}
                   >
                     <h3 className="text-xl md:text-2xl font-bold mb-3 text-primary">
