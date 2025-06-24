@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
@@ -211,8 +212,8 @@ const Company = () => {
             </div>
 
             <Card className="p-6 md:p-8 glass-card">
-              {/* Horizontal Timeline */}
-              <div className="relative">
+              {/* Desktop Horizontal Timeline */}
+              <div className="hidden md:block relative">
                 {/* Timeline line */}
                 <div className="absolute top-6 left-0 right-0 h-0.5 bg-gradient-to-r from-primary/30 via-orange-400/50 to-primary/30"></div>
                 
@@ -290,6 +291,50 @@ const Company = () => {
                     ))}
                   </div>
                 </div>
+              </div>
+
+              {/* Mobile Vertical Snake Timeline */}
+              <div className="md:hidden space-y-6">
+                {timelineEvents.map((event, index) => (
+                  <div 
+                    key={index} 
+                    className={`relative ${index % 2 === 0 ? 'ml-0 mr-8' : 'ml-8 mr-0'}`}
+                  >
+                    {/* Timeline line for mobile */}
+                    {index < timelineEvents.length - 1 && (
+                      <div className={`absolute top-12 w-0.5 h-16 bg-gradient-to-b from-primary/50 to-primary/30 ${
+                        index % 2 === 0 ? 'left-6' : 'right-6'
+                      }`}></div>
+                    )}
+                    
+                    {/* Event card */}
+                    <div className={`relative flex items-start ${
+                      index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
+                    }`}>
+                      {/* Timeline point */}
+                      <div className="flex-shrink-0 relative z-10">
+                        <div className="w-12 h-12 rounded-full border-4 border-primary bg-white dark:bg-gray-800 flex items-center justify-center shadow-lg">
+                          <div className="w-3 h-3 rounded-full bg-primary"></div>
+                        </div>
+                      </div>
+                      
+                      {/* Event content */}
+                      <div className={`flex-1 ${index % 2 === 0 ? 'ml-4' : 'mr-4'}`}>
+                        <div className="bg-white/20 dark:bg-black/20 backdrop-blur-sm rounded-lg p-4 shadow-md">
+                          <div className="text-sm font-bold text-primary mb-1">
+                            {event.year}
+                          </div>
+                          <h3 className="text-lg font-semibold mb-2 text-foreground">
+                            {event.title}
+                          </h3>
+                          <p className="text-sm text-muted-foreground leading-relaxed">
+                            {event.description}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </Card>
           </div>
