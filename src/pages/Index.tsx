@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -171,7 +172,7 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-start">
             {/* Feature Icons */}
             <div className="space-y-2 md:space-y-3 lg:space-y-4">
               {features.map((feature, index) => {
@@ -187,23 +188,23 @@ const Index = () => {
                     )}
                     onClick={() => setActiveFeature(index)}
                   >
-                    <div className="flex items-center space-x-2 sm:space-x-3 md:space-x-4">
+                    <div className="flex items-start space-x-2 sm:space-x-3 md:space-x-4">
                       <div className={cn(
-                        "p-1.5 sm:p-2 md:p-3 rounded-xl transition-all duration-300",
+                        "p-1.5 sm:p-2 md:p-3 rounded-xl transition-all duration-300 flex-shrink-0",
                         activeFeature === index 
                           ? 'bg-primary/60 text-white shadow-lg' 
                           : 'bg-primary/20 text-primary'
                       )}>
                         <Icon className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
                       </div>
-                      <div>
+                      <div className="min-w-0 flex-1">
                         <h3 className={cn(
-                          "text-sm sm:text-base md:text-lg font-semibold transition-all duration-300",
+                          "text-sm sm:text-base md:text-lg font-semibold transition-all duration-300 mb-1 sm:mb-2",
                           activeFeature === index ? 'text-primary font-bold sm:text-lg md:text-xl' : ''
                         )}>
                           {feature.title}
                         </h3>
-                        <p className="text-xs sm:text-sm text-muted-foreground">{feature.description}</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
                       </div>
                     </div>
                   </Card>
@@ -212,7 +213,7 @@ const Index = () => {
             </div>
 
             {/* Feature Content with crossfade transition */}
-            <div className="relative h-48 sm:h-64 md:h-80 lg:h-96 rounded-2xl overflow-hidden glass-card">
+            <div className="relative h-64 sm:h-80 md:h-96 lg:h-[500px] rounded-2xl overflow-hidden glass-card">
               {features.map((feature, index) => (
                 <div 
                   key={index}
@@ -227,10 +228,10 @@ const Index = () => {
                   }}
                 >
                   <div className={cn(
-                    "absolute inset-0 flex items-center justify-center transition-all duration-1000 ease-in-out",
+                    "absolute inset-0 flex items-center justify-center transition-all duration-1000 ease-in-out p-4 sm:p-6 md:p-8",
                     activeFeature === index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                   )}>
-                    <div className="text-center p-4 sm:p-6 md:p-8 text-white">
+                    <div className="text-center text-white max-w-full">
                       <div className={cn(
                         "w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 md:mb-6 backdrop-blur-sm transition-all duration-700",
                         activeFeature === index ? "scale-100 rotate-0" : "scale-75 rotate-12"
