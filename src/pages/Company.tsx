@@ -300,23 +300,23 @@ const Company = () => {
                     key={index} 
                     className={`relative ${index % 2 === 0 ? 'ml-0 mr-8' : 'ml-8 mr-0'}`}
                   >
-                    {/* Timeline line connecting to next event */}
+                    {/* Timeline connecting lines */}
                     {index < timelineEvents.length - 1 && (
                       <>
-                        {/* Vertical line from current point */}
-                        <div className={`absolute top-12 w-0.5 h-16 bg-gradient-to-b from-primary/50 to-primary/30 ${
+                        {/* Vertical line down from current point */}
+                        <div className={`absolute top-12 w-0.5 h-12 bg-gradient-to-b from-primary/50 to-primary/30 ${
                           index % 2 === 0 ? 'left-6' : 'right-6'
                         }`}></div>
                         
-                        {/* Connecting horizontal line at bottom */}
-                        <div className={`absolute top-28 h-0.5 bg-gradient-to-r from-primary/30 to-primary/30 ${
+                        {/* Horizontal line connecting to opposite side */}
+                        <div className={`absolute top-24 h-0.5 bg-gradient-to-r from-primary/30 to-primary/30 ${
                           index % 2 === 0 
-                            ? 'left-6 right-0 w-[calc(100%-1.5rem)]' 
-                            : 'right-6 left-0 w-[calc(100%-1.5rem)]'
+                            ? 'left-6 w-full' 
+                            : 'right-6 w-full'
                         }`}></div>
                         
-                        {/* Small connecting vertical line to next point */}
-                        <div className={`absolute top-28 w-0.5 h-4 bg-gradient-to-b from-primary/30 to-primary/50 ${
+                        {/* Vertical line up to next point */}
+                        <div className={`absolute top-24 w-0.5 h-12 bg-gradient-to-b from-primary/30 to-primary/50 ${
                           index % 2 === 0 ? 'right-6' : 'left-6'
                         }`}></div>
                       </>
