@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
@@ -300,29 +299,7 @@ const Company = () => {
                     key={index} 
                     className={`relative ${index % 2 === 0 ? 'ml-0 mr-8' : 'ml-8 mr-0'}`}
                   >
-                    {/* Timeline connecting lines */}
-                    {index < timelineEvents.length - 1 && (
-                      <>
-                        {/* Vertical line down from current point center */}
-                        <div className={`absolute top-6 w-0.5 h-8 bg-gradient-to-b from-primary/50 to-primary/30 ${
-                          index % 2 === 0 ? 'left-6' : 'right-6'
-                        }`}></div>
-                        
-                        {/* Horizontal line connecting to opposite side */}
-                        <div className={`absolute top-14 h-0.5 bg-gradient-to-r from-primary/30 to-primary/30 ${
-                          index % 2 === 0 
-                            ? 'left-6.5 right-8' 
-                            : 'right-6.5 left-8'
-                        }`}></div>
-                        
-                        {/* Vertical line up to next point center */}
-                        <div className={`absolute top-14 w-0.5 h-8 bg-gradient-to-b from-primary/30 to-primary/50 ${
-                          index % 2 === 0 ? 'right-8' : 'left-8'
-                        }`}></div>
-                      </>
-                    )}
-                    
-                    {/* Event card */}
+                    {/* Event card and point container */}
                     <div className={`relative flex items-start ${
                       index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
                     }`}>
@@ -333,8 +310,13 @@ const Company = () => {
                         </div>
                       </div>
                       
+                      {/* Connecting line from point to card */}
+                      <div className={`w-4 h-0.5 bg-primary/40 mt-6 ${
+                        index % 2 === 0 ? 'ml-0' : 'mr-0'
+                      }`}></div>
+                      
                       {/* Event content */}
-                      <div className={`flex-1 ${index % 2 === 0 ? 'ml-4' : 'mr-4'}`}>
+                      <div className={`flex-1 ${index % 2 === 0 ? 'ml-0' : 'mr-0'}`}>
                         <div className="bg-white/20 dark:bg-black/20 backdrop-blur-sm rounded-lg p-4 shadow-md">
                           <div className="text-sm font-bold text-primary mb-1">
                             {event.year}
