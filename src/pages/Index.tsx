@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -104,10 +105,10 @@ const Index = () => {
     }
   ];
 
-  // Enhanced Priority products with updated names (потребительские instead of промышленные)
+  // Enhanced Priority products with updated names
   const priorityProducts = [
     {
-      title: "Потребительские ПК (H-PC)",
+      title: "ПК",
       subtitle: "H-PC",
       description: "Высокопроизводительные потребительские компьютеры для критически важных задач в экстремальных условиях",
       fullDescription: "Наши потребительские ПК H-PC созданы для работы в самых суровых условиях. Защищенные корпуса IP65, расширенный температурный диапазон от -40°C до +85°C, антивибрационная защита и модульная архитектура обеспечивают надежность в любых применениях.",
@@ -127,7 +128,7 @@ const Index = () => {
       ]
     },
     {
-      title: "Потребительские ноутбуки (H-Book)",
+      title: "Ноутбуки",
       subtitle: "H-Book",
       description: "Мобильные защищенные решения для полевых условий и критических миссий",
       fullDescription: "H-Book - это революция в мобильных потребительских решениях. Ударопрочный магниевый корпус, водонепроницаемость, 20-часовая автономность и возможность горячей замены батарей делают их незаменимыми для полевых работ.",
@@ -147,7 +148,7 @@ const Index = () => {
       ]
     },
     {
-      title: "Потребительские мониторы (H)",
+      title: "Мониторы",
       subtitle: "H",
       description: "Профессиональные дисплеи повышенной надежности для потребительского мониторинга",
       fullDescription: "Наши потребительские мониторы H обеспечивают кристально четкое изображение в любых условиях освещения. Антибликовые покрытия, сенсорные технологии и широкие углы обзора гарантируют комфортную работу операторов.",
@@ -167,7 +168,7 @@ const Index = () => {
       ]
     },
     {
-      title: "Потребительские планшеты (H-Tab)",
+      title: "Планшеты",
       subtitle: "H-Tab",
       description: "Компактные мобильные решения для управления производством и мониторинга",
       fullDescription: "H-Tab планшеты сочетают мобильность и функциональность. Защита IP67, беспроводная связь, емкостные экраны и возможность работы в перчатках делают их идеальными для потребительского применения.",
@@ -187,7 +188,7 @@ const Index = () => {
       ]
     },
     {
-      title: "M2.SSD накопители (H-Storage)",
+      title: "Накопители",
       subtitle: "H-Storage",
       description: "Высокоскоростные твердотельные накопители для потребительских применений",
       fullDescription: "H-Storage M2.SSD накопители обеспечивают максимальную производительность и надежность. NVMe интерфейс, расширенный температурный диапазон и высокая износостойкость гарантируют долговечную работу в потребительских условиях.",
@@ -280,27 +281,32 @@ const Index = () => {
       <Navigation />
       
       {/* Hero Section - Black background with smooth animated abstract colors extending to next section */}
-      <section className="pt-32 md:pt-36 lg:pt-40 pb-12 md:pb-16 lg:pb-20 px-4 text-center relative overflow-hidden bg-black">
+      <section className="pt-40 md:pt-44 lg:pt-48 pb-12 md:pb-16 lg:pb-20 px-4 text-center relative overflow-hidden bg-black">
         <div className="container mx-auto relative z-10">
           <div className="max-w-4xl mx-auto animate-fade-in">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl xl:text-9xl font-extrabold mb-8 md:mb-12 text-white/95 leading-tight" style={{ fontWeight: '300', letterSpacing: '0.02em' }}>
+            <h1 className="text-5xl sm:text-6xl md:text-7xl xl:text-9xl font-black mb-8 md:mb-12 text-white/95 leading-tight" style={{ fontWeight: '900', letterSpacing: '0.02em' }}>
               ОАО «МПОВТ»
             </h1>
-            <p className="text-lg md:text-xl xl:text-2xl text-gray-300 mb-6 md:mb-8" style={{ animationDelay: '200ms' }}>
+            <p className="text-lg md:text-xl xl:text-2xl text-white/60 mb-6 md:mb-8" style={{ animationDelay: '200ms' }}>
               Ведущий производитель электронных компонентов и автокомпонентов с 1956 года
             </p>
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center" style={{ animationDelay: '400ms' }}>
-              <Button asChild size="lg" className="text-sm md:text-base bg-gradient-to-r from-cyan-500/80 via-blue-500/80 to-purple-500/80 hover:from-cyan-600/90 hover:via-blue-600/90 hover:to-purple-600/90 text-white border-0 shadow-2xl hover:shadow-cyan-500/25 transition-all duration-500">
+              <Button asChild size="lg" className="text-sm md:text-base bg-gradient-to-r from-cyan-500/80 via-blue-500/80 to-purple-500/80 hover:from-cyan-600/90 hover:via-blue-600/90 hover:to-purple-600/90 text-white border-0 shadow-2xl transition-all duration-300">
                 <Link to="/products">
                   Наша продукция
                   <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="text-sm md:text-base bg-white/10 backdrop-blur-sm border-2 border-transparent bg-gradient-to-r from-emerald-500/60 via-teal-500/60 to-cyan-500/60 bg-clip-border text-transparent bg-clip-text hover:bg-white/20 transition-all duration-300">
+              <Button asChild variant="outline" size="lg" className="text-sm md:text-base bg-white/5 backdrop-blur-sm border-2 border-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 hover:bg-white/10 transition-all duration-300 relative overflow-hidden">
                 <Link to="/company">
-                  <span className="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
-                    О компании
-                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/20 via-teal-400/20 to-cyan-400/20 rounded"></div>
+                  <div className="absolute inset-[1px] bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 p-[1px] rounded">
+                    <div className="w-full h-full bg-black/90 rounded flex items-center justify-center">
+                      <span className="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent relative z-10">
+                        О компании
+                      </span>
+                    </div>
+                  </div>
                 </Link>
               </Button>
             </div>
@@ -308,7 +314,7 @@ const Index = () => {
         </div>
         
         {/* Enhanced smooth animated background extending to next section */}
-        <div className="absolute inset-0 overflow-hidden" style={{ height: '150%' }}>
+        <div className="absolute inset-0 overflow-hidden" style={{ height: '200%' }}>
           <div className="absolute top-1/4 left-1/4 w-32 h-32 md:w-64 md:h-64 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 rounded-full blur-3xl opacity-0 animate-pulse" style={{ animationDuration: '8s', animationFillMode: 'forwards', animationDelay: '1s' }}></div>
           <div className="absolute bottom-1/6 right-1/4 w-48 h-48 md:w-96 md:h-96 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-full blur-3xl opacity-0 animate-pulse" style={{ animationDelay: '3s', animationDuration: '10s', animationFillMode: 'forwards' }}></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-128 md:h-128 bg-gradient-to-r from-emerald-500/30 to-teal-500/30 rounded-full blur-3xl opacity-0 animate-pulse" style={{ animationDelay: '2s', animationDuration: '12s', animationFillMode: 'forwards' }}></div>
@@ -331,7 +337,7 @@ const Index = () => {
           <div className="text-center mb-12 md:mb-16 px-4">
             <div className="mb-8">
               <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-cyan-400/90 via-purple-500/90 to-emerald-400/90 bg-clip-text text-transparent">
-                Наша флагманская продукция
+                Флагманская продукция
               </h2>
             </div>
             <p className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
@@ -339,7 +345,7 @@ const Index = () => {
             </p>
           </div>
 
-          {/* Full-width cards with new watermark design */}
+          {/* Full-width cards with glassmorphism and removed watermark */}
           <div className="space-y-8">
             {priorityProducts.map((product, index) => {
               const isHovered = hoveredCard === index;
@@ -350,9 +356,9 @@ const Index = () => {
                   className="w-full animate-fade-in-up"
                   style={{ animationDelay: `${index * 200}ms` }}
                 >
-                  <Card className="group overflow-hidden bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 hover:border-slate-600/70 transition-all duration-700 mx-4 hover:shadow-2xl hover:shadow-slate-900/50">
+                  <Card className="group overflow-hidden bg-slate-800/30 backdrop-blur-xl border border-slate-700/30 hover:border-slate-600/50 transition-all duration-700 mx-4 hover:shadow-2xl hover:shadow-slate-900/50">
                     <div className="grid lg:grid-cols-2 gap-0 min-h-[60vh] max-h-[600px]">
-                      {/* Video/Image Section with watermark */}
+                      {/* Video/Image Section */}
                       <div 
                         className="relative overflow-hidden bg-slate-900"
                         onMouseEnter={() => setHoveredCard(index)}
@@ -366,19 +372,12 @@ const Index = () => {
                           muted
                           playsInline
                         />
-                        
-                        {/* Large watermark subtitle */}
-                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                          <div className="text-6xl md:text-8xl lg:text-9xl font-black text-white/10 select-none transform rotate-12">
-                            {product.subtitle}
-                          </div>
-                        </div>
 
                         {/* Description overlay on hover */}
                         <div className={`absolute inset-0 bg-black/50 backdrop-blur-sm transition-all duration-700 flex items-center justify-center p-6 ${
                           isHovered ? 'opacity-100' : 'opacity-0'
                         }`}>
-                          <div className="text-center text-white max-w-md">
+                          <div className="text-center text-white max-w-md bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20">
                             <p className="text-lg leading-relaxed mb-4">
                               {product.description}
                             </p>
@@ -390,10 +389,10 @@ const Index = () => {
                         </div>
                       </div>
                       
-                      {/* Content Section with title moved here */}
-                      <div className="p-6 lg:p-8 flex flex-col justify-center bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-sm">
+                      {/* Content Section */}
+                      <div className="p-6 lg:p-8 flex flex-col justify-center bg-gradient-to-br from-slate-800/60 to-slate-900/60 backdrop-blur-sm">
                         
-                        {/* Product title moved from video */}
+                        {/* Product title */}
                         <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4 drop-shadow-lg">
                           {product.title}
                         </h3>
@@ -403,7 +402,7 @@ const Index = () => {
                           {product.fullDescription}
                         </p>
                         
-                        {/* Enhanced Features with unique styling for each card - removed hover background animation */}
+                        {/* Enhanced Features with unique styling for each card */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
                           {product.uniqueFeatures.map((feature, featureIndex) => {
                             const FeatureIcon = feature.icon;
@@ -460,12 +459,9 @@ const Index = () => {
         
         <div className="container mx-auto relative z-10">
           <div className="text-center mb-8 md:mb-12 lg:mb-16">
-            <div className="relative inline-block">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 lg:mb-6 bg-gradient-to-r from-primary via-orange-500 to-primary bg-clip-text text-transparent">
-                Инновационные решения для промышленности
-              </h2>
-              <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-16 sm:w-20 md:w-24 lg:w-32 h-0.5 md:h-1 bg-gradient-to-r from-transparent via-primary to-transparent rounded-full"></div>
-            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 lg:mb-6 bg-gradient-to-r from-slate-600 via-slate-700 to-slate-600 bg-clip-text text-transparent">
+              Инновационные решения для промышленности
+            </h2>
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mt-4 md:mt-6">
               Современные технологии и многолетний опыт позволяют нам создавать продукцию высочайшего качества
             </p>
@@ -504,7 +500,12 @@ const Index = () => {
                         )}>
                           {feature.title}
                         </h3>
-                        <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
+                        <p className={cn(
+                          "text-xs sm:text-sm leading-relaxed transition-colors duration-300",
+                          activeFeature === index ? "text-white" : "text-muted-foreground"
+                        )}>
+                          {feature.description}
+                        </p>
                       </div>
                     </div>
                   </Card>
@@ -568,12 +569,9 @@ const Index = () => {
       <section className="py-12 md:py-16 lg:py-20 px-4 bg-white/50 dark:bg-black/50">
         <div className="container mx-auto">
           <div className="text-center mb-8 md:mb-12 lg:mb-16">
-            <div className="relative inline-block">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 lg:mb-6 bg-gradient-to-r from-primary via-orange-500 to-primary bg-clip-text text-transparent">
-                Дополнительные направления
-              </h2>
-              <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-16 sm:w-20 md:w-24 lg:w-32 h-0.5 md:h-1 bg-gradient-to-r from-transparent via-primary to-transparent rounded-full"></div>
-            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 lg:mb-6 bg-gradient-to-r from-slate-600 via-slate-700 to-slate-600 bg-clip-text text-transparent">
+              Дополнительные направления
+            </h2>
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mt-4 md:mt-6">
               Проверенные решения для различных отраслей промышленности
             </p>
@@ -621,12 +619,9 @@ const Index = () => {
       <section className="py-16 md:py-20 px-4">
         <div className="container mx-auto">
           <div className="text-center mb-12 md:mb-16">
-            <div className="relative inline-block">
-              <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-primary via-orange-500 to-primary bg-clip-text text-transparent">
-                Наши достижения
-              </h2>
-              <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 md:w-32 h-1 bg-gradient-to-r from-transparent via-primary to-transparent rounded-full"></div>
-            </div>
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-slate-600 via-slate-700 to-slate-600 bg-clip-text text-transparent">
+              Наши достижения
+            </h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mt-6">
               Цифры, которые говорят о нашем успехе и надежности
             </p>
@@ -651,12 +646,9 @@ const Index = () => {
       <section className="py-16 md:py-20 px-4 bg-white/50 dark:bg-black/50">
         <div className="container mx-auto">
           <div className="text-center mb-12 md:mb-16">
-            <div className="relative inline-block">
-              <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-primary via-orange-500 to-primary bg-clip-text text-transparent">
-                Наши партнеры
-              </h2>
-              <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 md:w-32 h-1 bg-gradient-to-r from-transparent via-primary to-transparent rounded-full"></div>
-            </div>
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-slate-600 via-slate-700 to-slate-600 bg-clip-text text-transparent">
+              Наши партнеры
+            </h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mt-6">
               Мы сотрудничаем с ведущими компаниями по всему миру
             </p>
