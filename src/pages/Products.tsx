@@ -23,7 +23,8 @@ import {
   Play,
   Pause,
   Volume2,
-  VolumeX
+  VolumeX,
+  Sparkles
 } from "lucide-react";
 
 const Products = () => {
@@ -212,22 +213,32 @@ const Products = () => {
             </div>
           </div>
 
-          {/* Priority Products Section - REDESIGNED */}
+          {/* Priority Products Section - Enhanced with 3D effects and better spacing */}
           <div className="mb-24">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-3 mb-6">
-                <Crown className="h-8 w-8 text-orange-500" />
+              <div className="inline-flex items-center gap-4 mb-8">
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity animate-pulse"></div>
+                  <div className="relative p-4 bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl transform hover:scale-110 transition-all duration-500">
+                    <Sparkles className="h-8 w-8 text-white animate-pulse" />
+                  </div>
+                </div>
                 <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 bg-clip-text text-transparent">
                   Флагманская продукция
                 </h2>
-                <Crown className="h-8 w-8 text-orange-500" />
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity animate-pulse"></div>
+                  <div className="relative p-4 bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl transform hover:scale-110 transition-all duration-500">
+                    <Zap className="h-8 w-8 text-white animate-pulse" />
+                  </div>
+                </div>
               </div>
               <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                 Наши ведущие решения в области промышленной вычислительной техники и систем хранения данных
               </p>
             </div>
             
-            <div className="space-y-12">
+            <div className="space-y-8">
               {priorityProducts.map((product, index) => {
                 const Icon = product.icon;
                 const isPlaying = playingVideo === index;
@@ -237,106 +248,106 @@ const Products = () => {
                 return (
                   <Card 
                     key={index} 
-                    className="group overflow-hidden glass-card border-orange-200/50 hover:border-orange-400/60 hover:shadow-2xl transition-all duration-700 animate-fade-in-up"
+                    className="group overflow-hidden glass-card border-orange-200/50 hover:border-orange-400/60 hover:shadow-2xl transition-all duration-700 animate-fade-in-up bg-gradient-to-br from-white/90 to-orange-50/80 backdrop-blur-sm"
                     style={{ animationDelay: `${index * 150}ms` }}
                   >
-                    <div className={`grid lg:grid-cols-2 gap-0 ${!isEven ? 'lg:grid-flow-col-dense' : ''}`}>
+                    <div className={`grid lg:grid-cols-2 gap-0 h-[70vh] max-h-[600px] ${!isEven ? 'lg:grid-flow-col-dense' : ''}`}>
                       {/* Video/Image Section */}
-                      <div className={`aspect-video lg:aspect-auto relative overflow-hidden bg-slate-900 ${!isEven ? 'lg:col-start-2' : ''}`}>
-                        {isPlaying ? (
-                          <video
-                            src={product.videoUrl}
-                            className="w-full h-full object-cover"
-                            autoPlay
-                            loop
-                            muted={isMuted}
-                            playsInline
-                          />
-                        ) : (
-                          <img 
-                            src={product.image} 
-                            alt={product.title}
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                          />
-                        )}
+                      <div className={`relative overflow-hidden bg-slate-900 ${!isEven ? 'lg:col-start-2' : ''}`}>
+                        <video
+                          src={product.videoUrl}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                          autoPlay
+                          loop
+                          muted={isMuted}
+                          playsInline
+                        />
                         
-                        {/* Video Controls Overlay */}
+                        {/* Enhanced 3D Video Controls */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent">
                           <div className="absolute bottom-6 left-6 flex items-center gap-4">
                             <button
                               onClick={() => toggleVideo(index)}
-                              className="p-4 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all duration-300 hover:scale-110"
+                              className="group/btn relative p-4 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all duration-300 hover:scale-110 transform hover:rotate-12"
                             >
+                              <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-white/5 rounded-full group-hover/btn:from-white/20 group-hover/btn:to-white/10 transition-all duration-300"></div>
                               {isPlaying ? (
-                                <Pause className="h-8 w-8 text-white" />
+                                <Pause className="h-8 w-8 text-white relative z-10" />
                               ) : (
-                                <Play className="h-8 w-8 text-white ml-1" />
+                                <Play className="h-8 w-8 text-white ml-1 relative z-10" />
                               )}
                             </button>
                             
-                            {isPlaying && (
-                              <button
-                                onClick={() => toggleMute(index)}
-                                className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all duration-300"
-                              >
-                                {isMuted ? (
-                                  <VolumeX className="h-6 w-6 text-white" />
-                                ) : (
-                                  <Volume2 className="h-6 w-6 text-white" />
-                                )}
-                              </button>
-                            )}
+                            <button
+                              onClick={() => toggleMute(index)}
+                              className="group/btn relative p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all duration-300 transform hover:scale-110"
+                            >
+                              <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-white/5 rounded-full group-hover/btn:from-white/20 group-hover/btn:to-white/10 transition-all duration-300"></div>
+                              {isMuted ? (
+                                <VolumeX className="h-6 w-6 text-white relative z-10" />
+                              ) : (
+                                <Volume2 className="h-6 w-6 text-white relative z-10" />
+                              )}
+                            </button>
                           </div>
                           
-                          {/* Badge */}
+                          {/* Enhanced 3D Badge */}
                           <div className="absolute top-6 right-6">
-                            <div className={`bg-gradient-to-r ${product.gradient} text-white text-sm px-4 py-2 rounded-full font-semibold flex items-center gap-2 shadow-lg`}>
-                              <Star className="w-4 h-4" />
-                              {product.badge}
+                            <div className={`relative group/badge bg-gradient-to-r ${product.gradient} text-white text-sm px-6 py-3 rounded-full font-semibold flex items-center gap-2 shadow-2xl transform hover:scale-110 transition-all duration-500 hover:rotate-3`}>
+                              <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-white/10 rounded-full opacity-0 group-hover/badge:opacity-100 transition-opacity duration-300"></div>
+                              <Star className="w-4 h-4 animate-pulse relative z-10" />
+                              <span className="relative z-10">{product.badge}</span>
                             </div>
                           </div>
                         </div>
                       </div>
                       
-                      {/* Content Section */}
-                      <div className={`p-8 lg:p-12 flex flex-col justify-center ${!isEven ? 'lg:col-start-1' : ''}`}>
-                        {/* Icon and Title */}
-                        <div className="flex items-start gap-6 mb-6">
-                          <div className={`p-4 bg-gradient-to-r ${product.gradient} rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-500 flex-shrink-0`}>
-                            <Icon className="h-10 w-10 text-white" />
+                      {/* Content Section - Optimized for screen fit */}
+                      <div className={`p-6 lg:p-8 flex flex-col justify-center ${!isEven ? 'lg:col-start-1' : ''}`}>
+                        {/* Enhanced 3D Icon and Title */}
+                        <div className="flex items-start gap-6 mb-4">
+                          <div className={`relative group/icon p-4 bg-gradient-to-r ${product.gradient} rounded-2xl shadow-2xl transition-all duration-500 flex-shrink-0 hover:shadow-3xl transform hover:scale-110 hover:rotate-12`}>
+                            <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-white/10 rounded-2xl opacity-0 group-hover/icon:opacity-100 transition-opacity duration-300"></div>
+                            <Icon className="h-8 w-8 lg:h-10 lg:w-10 text-white relative z-10 drop-shadow-lg" />
                           </div>
-                          <div className="flex-1">
-                            <h3 className="text-3xl font-bold mb-3 group-hover:text-orange-600 transition-colors">
+                          <div className="flex-1 min-w-0">
+                            <h3 className="text-xl lg:text-2xl xl:text-3xl font-bold mb-2 group-hover:text-orange-600 transition-colors line-clamp-2">
                               {product.title}
                             </h3>
-                            <p className="text-muted-foreground text-lg font-medium">
+                            <p className="text-muted-foreground text-sm lg:text-base font-medium line-clamp-2">
                               {product.description}
                             </p>
                           </div>
                         </div>
                         
-                        {/* Full Description */}
-                        <p className="text-muted-foreground leading-relaxed mb-8">
+                        {/* Full Description - Truncated for screen fit */}
+                        <p className="text-muted-foreground leading-relaxed mb-4 text-xs lg:text-sm line-clamp-3">
                           {product.fullDescription}
                         </p>
                         
-                        {/* Features */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                          {product.features.map((feature, featureIndex) => (
-                            <div key={featureIndex} className="flex items-start space-x-3">
-                              <CheckCircle className="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0" />
-                              <span className="text-muted-foreground leading-relaxed">{feature}</span>
+                        {/* Enhanced 3D Features - Compact grid */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6">
+                          {product.features.slice(0, 4).map((feature, featureIndex) => (
+                            <div key={featureIndex} className="group/feature flex items-start space-x-2 p-1 rounded hover:bg-orange-50 transition-all duration-300">
+                              <div className="relative">
+                                <div className="absolute inset-0 bg-emerald-500 rounded-full blur-sm opacity-50 group-hover/feature:opacity-75 transition-opacity"></div>
+                                <CheckCircle className="w-3 h-3 lg:w-4 lg:h-4 text-emerald-500 mt-0.5 flex-shrink-0 relative z-10 drop-shadow-lg transform group-hover/feature:scale-110 transition-transform duration-300" />
+                              </div>
+                              <span className="text-muted-foreground leading-relaxed text-xs lg:text-sm group-hover/feature:text-slate-800 transition-colors duration-300">{feature}</span>
                             </div>
                           ))}
                         </div>
                         
-                        {/* Action Button */}
+                        {/* Enhanced 3D Action Button */}
                         <Button 
-                          className={`w-full bg-gradient-to-r ${product.gradient} hover:shadow-2xl text-white transition-all duration-500 text-lg py-6 group-hover:scale-105`}
+                          className={`group/btn relative w-full bg-gradient-to-r ${product.gradient} hover:shadow-2xl text-white transition-all duration-500 text-sm lg:text-base py-4 lg:py-6 overflow-hidden transform hover:scale-105`}
                           onClick={() => window.location.href = product.path}
                         >
-                          Подробнее о продукте
-                          <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                          <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-white/10 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                          <span className="relative z-10 flex items-center justify-center">
+                            Подробнее о продукте
+                            <ArrowRight className="ml-2 h-4 w-4 lg:h-5 lg:w-5 transition-transform group-hover/btn:translate-x-2 duration-300 drop-shadow-lg" />
+                          </span>
                         </Button>
                       </div>
                     </div>

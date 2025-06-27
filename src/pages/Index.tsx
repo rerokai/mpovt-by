@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -21,12 +22,13 @@ import {
   Monitor,
   Tablet,
   HardDrive,
-  Crown,
   Star,
   Play,
   Pause,
   Volume2,
-  VolumeX
+  VolumeX,
+  Sparkles,
+  Zap
 } from "lucide-react";
 
 const Index = () => {
@@ -235,61 +237,68 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-orange-50 to-orange-100 dark:from-orange-950 dark:via-orange-950 dark:to-orange-900">
+    <div className="min-h-screen">
       <Navigation />
       
-      {/* Hero Section */}
-      <section className="pt-24 md:pt-28 lg:pt-32 pb-12 md:pb-16 lg:pb-20 px-4 text-center relative overflow-hidden">
+      {/* Hero Section - Black background with animated abstract colors */}
+      <section className="pt-24 md:pt-28 lg:pt-32 pb-12 md:pb-16 lg:pb-20 px-4 text-center relative overflow-hidden bg-black">
         <div className="container mx-auto relative z-10">
           <div className="max-w-4xl mx-auto animate-fade-in">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-primary via-orange-500 to-primary bg-clip-text text-transparent">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-400 bg-clip-text text-transparent">
               ОАО «МПОВТ»
             </h1>
-            <p className="text-lg md:text-xl xl:text-2xl text-muted-foreground mb-6 md:mb-8" style={{ animationDelay: '200ms' }}>
+            <p className="text-lg md:text-xl xl:text-2xl text-gray-300 mb-6 md:mb-8" style={{ animationDelay: '200ms' }}>
               Ведущий производитель электронных компонентов и автокомпонентов с 1956 года
             </p>
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center" style={{ animationDelay: '400ms' }}>
-              <Button asChild size="lg" className="btn-primary-smooth text-sm md:text-base">
+              <Button asChild size="lg" className="btn-primary-smooth text-sm md:text-base bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700">
                 <Link to="/products">
                   Наша продукция
                   <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-white text-sm md:text-base">
+              <Button asChild variant="outline" size="lg" className="border-orange-500 text-orange-400 hover:bg-orange-500 hover:text-white text-sm md:text-base">
                 <Link to="/company">О компании</Link>
               </Button>
             </div>
           </div>
         </div>
         
-        {/* Background decoration with continuous gradient */}
-        <div className="absolute inset-0 opacity-10 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-32 h-32 md:w-64 md:h-64 bg-primary rounded-full blur-3xl animate-pulse-slow"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-48 h-48 md:w-96 md:h-96 bg-orange-400 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[150%] h-32 bg-gradient-to-r from-primary/5 via-orange-400/10 to-primary/5 blur-3xl"></div>
+        {/* Animated background with abstract colors */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-32 h-32 md:w-64 md:h-64 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-3xl animate-pulse opacity-20" style={{ animationDuration: '4s' }}></div>
+          <div className="absolute bottom-1/4 right-1/4 w-48 h-48 md:w-96 md:h-96 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-3xl animate-pulse opacity-20" style={{ animationDelay: '2s', animationDuration: '6s' }}></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-128 md:h-128 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full blur-3xl animate-pulse opacity-15" style={{ animationDelay: '1s', animationDuration: '8s' }}></div>
+          <div className="absolute top-3/4 left-1/3 w-40 h-40 md:w-80 md:h-80 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full blur-3xl animate-pulse opacity-20" style={{ animationDelay: '3s', animationDuration: '5s' }}></div>
+          <div className="absolute bottom-1/3 right-1/3 w-56 h-56 md:w-112 md:h-112 bg-gradient-to-r from-red-500 to-rose-500 rounded-full blur-3xl animate-pulse opacity-15" style={{ animationDelay: '4s', animationDuration: '7s' }}></div>
         </div>
       </section>
 
-      {/* Priority Products Section - REDESIGNED */}
-      <section className="py-20 md:py-28 px-4 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
+      {/* Priority Products Section - Full width cards with 3D effects */}
+      <section className="py-16 md:py-20 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
         {/* Background effects */}
         <div className="absolute inset-0">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
           <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-2 bg-gradient-to-r from-transparent via-orange-500/20 to-transparent"></div>
         </div>
 
-        <div className="container mx-auto relative z-10">
-          <div className="text-center mb-16 md:mb-20">
+        <div className="relative z-10">
+          <div className="text-center mb-12 md:mb-16 px-4">
             <div className="inline-flex items-center gap-4 mb-8">
-              <div className="p-3 bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl">
-                <Crown className="h-8 w-8 text-white" />
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity animate-pulse"></div>
+                <div className="relative p-4 bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl transform hover:scale-110 transition-all duration-500">
+                  <Sparkles className="h-8 w-8 text-white animate-pulse" />
+                </div>
               </div>
-              <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-white via-orange-300 to-white bg-clip-text text-transparent">
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-white via-orange-300 to-white bg-clip-text text-transparent">
                 Наша флагманская продукция
               </h2>
-              <div className="p-3 bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl">
-                <Crown className="h-8 w-8 text-white" />
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity animate-pulse"></div>
+                <div className="relative p-4 bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl transform hover:scale-110 transition-all duration-500">
+                  <Zap className="h-8 w-8 text-white animate-pulse" />
+                </div>
               </div>
             </div>
             <p className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
@@ -297,129 +306,148 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+          {/* Full-width cards */}
+          <div className="space-y-8">
             {priorityProducts.map((product, index) => {
               const Icon = product.icon;
               const isPlaying = playingVideo === index;
               const isMuted = mutedVideos[index] || false;
               
               return (
-                <Card 
+                <div 
                   key={index} 
-                  className="group overflow-hidden bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 hover:border-slate-600/70 transition-all duration-700 cursor-pointer animate-fade-in-up relative"
+                  className="w-full animate-fade-in-up"
                   style={{ animationDelay: `${index * 200}ms` }}
                 >
-                  {/* Video/Image Section */}
-                  <div className="aspect-video relative overflow-hidden bg-slate-900">
-                    {isPlaying ? (
-                      <video
-                        src={product.videoUrl}
-                        className="w-full h-full object-cover"
-                        autoPlay
-                        loop
-                        muted={isMuted}
-                        playsInline
-                      />
-                    ) : (
-                      <img 
-                        src={product.image} 
-                        alt={product.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                    )}
-                    
-                    {/* Video Controls Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent">
-                      <div className="absolute bottom-4 left-4 flex items-center gap-3">
-                        <button
-                          onClick={() => toggleVideo(index)}
-                          className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all duration-300 hover:scale-110"
-                        >
-                          {isPlaying ? (
-                            <Pause className="h-6 w-6 text-white" />
-                          ) : (
-                            <Play className="h-6 w-6 text-white ml-1" />
-                          )}
-                        </button>
-                        
-                        {isPlaying && (
-                          <button
-                            onClick={() => toggleMute(index)}
-                            className="p-2 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all duration-300"
-                          >
-                            {isMuted ? (
-                              <VolumeX className="h-4 w-4 text-white" />
-                            ) : (
-                              <Volume2 className="h-4 w-4 text-white" />
-                            )}
-                          </button>
+                  <Card className="group overflow-hidden bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 hover:border-slate-600/70 transition-all duration-700 mx-4 hover:shadow-2xl hover:shadow-slate-900/50">
+                    <div className="grid lg:grid-cols-2 gap-0 h-[70vh] max-h-[600px]">
+                      {/* Video/Image Section */}
+                      <div className="relative overflow-hidden bg-slate-900">
+                        {isPlaying ? (
+                          <video
+                            src={product.videoUrl}
+                            className="w-full h-full object-cover"
+                            autoPlay
+                            loop
+                            muted={isMuted}
+                            playsInline
+                          />
+                        ) : (
+                          <video
+                            src={product.videoUrl}
+                            className="w-full h-full object-cover"
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                          />
                         )}
+                        
+                        {/* Enhanced 3D Video Controls Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent">
+                          <div className="absolute bottom-6 left-6 flex items-center gap-4">
+                            <button
+                              onClick={() => toggleVideo(index)}
+                              className="group/btn relative p-4 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all duration-300 hover:scale-110 transform hover:rotate-12"
+                            >
+                              <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-white/5 rounded-full group-hover/btn:from-white/20 group-hover/btn:to-white/10 transition-all duration-300"></div>
+                              {isPlaying ? (
+                                <Pause className="h-8 w-8 text-white relative z-10" />
+                              ) : (
+                                <Play className="h-8 w-8 text-white ml-1 relative z-10" />
+                              )}
+                            </button>
+                            
+                            <button
+                              onClick={() => toggleMute(index)}
+                              className="group/btn relative p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all duration-300 transform hover:scale-110"
+                            >
+                              <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-white/5 rounded-full group-hover/btn:from-white/20 group-hover/btn:to-white/10 transition-all duration-300"></div>
+                              {isMuted ? (
+                                <VolumeX className="h-6 w-6 text-white relative z-10" />
+                              ) : (
+                                <Volume2 className="h-6 w-6 text-white relative z-10" />
+                              )}
+                            </button>
+                          </div>
+                          
+                          {/* Enhanced 3D Badge */}
+                          <div className="absolute top-6 right-6">
+                            <div className={`relative group/badge bg-gradient-to-r ${product.gradient} text-white text-sm px-6 py-3 rounded-full font-semibold flex items-center gap-2 shadow-2xl transform hover:scale-110 transition-all duration-500 hover:rotate-3`}>
+                              <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-white/10 rounded-full opacity-0 group-hover/badge:opacity-100 transition-opacity duration-300"></div>
+                              <Star className="w-4 h-4 animate-pulse relative z-10" />
+                              <span className="relative z-10">{product.badge}</span>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                       
-                      {/* Badge */}
-                      <div className="absolute top-4 right-4">
-                        <div className={`bg-gradient-to-r ${product.gradient} text-white text-sm px-4 py-2 rounded-full font-semibold flex items-center gap-2 shadow-lg`}>
-                          <Star className="w-4 h-4" />
-                          {product.badge}
+                      {/* Content Section */}
+                      <div className="p-6 lg:p-8 flex flex-col justify-center bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-sm">
+                        {/* Enhanced 3D Icon and Title */}
+                        <div className="flex items-start gap-6 mb-6">
+                          <div className={`relative group/icon p-4 bg-gradient-to-r ${product.gradient} rounded-2xl shadow-2xl transition-all duration-500 flex-shrink-0 hover:shadow-3xl transform hover:scale-110 hover:rotate-12`}>
+                            <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-white/10 rounded-2xl opacity-0 group-hover/icon:opacity-100 transition-opacity duration-300"></div>
+                            <Icon className="h-10 w-10 text-white relative z-10 drop-shadow-lg" />
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="text-2xl lg:text-3xl font-bold mb-3 text-white group-hover:text-orange-300 transition-colors">
+                              {product.title}
+                            </h3>
+                            <p className="text-slate-400 text-base lg:text-lg font-medium">
+                              {product.description}
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Content Section */}
-                  <div className="p-8">
-                    {/* Icon and Title */}
-                    <div className="flex items-start gap-4 mb-6">
-                      <div className={`p-4 bg-gradient-to-r ${product.gradient} rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-500`}>
-                        <Icon className="h-8 w-8 text-white" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-orange-300 transition-colors">
-                          {product.title}
-                        </h3>
-                        <p className="text-slate-400 text-sm font-medium">
-                          {product.description}
+                        
+                        {/* Full Description */}
+                        <p className="text-slate-300 leading-relaxed mb-6 text-sm lg:text-base">
+                          {product.fullDescription}
                         </p>
+                        
+                        {/* Enhanced 3D Features Grid */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+                          {product.features.map((feature, featureIndex) => (
+                            <div key={featureIndex} className="group/feature flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 transition-all duration-300">
+                              <div className="relative">
+                                <div className="absolute inset-0 bg-emerald-400 rounded-full blur-sm opacity-50 group-hover/feature:opacity-75 transition-opacity"></div>
+                                <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0 relative z-10 drop-shadow-lg transform group-hover/feature:scale-110 transition-transform duration-300" />
+                              </div>
+                              <span className="text-slate-300 text-xs lg:text-sm group-hover/feature:text-white transition-colors duration-300">{feature}</span>
+                            </div>
+                          ))}
+                        </div>
+                        
+                        {/* Enhanced 3D Action Button */}
+                        <Button 
+                          asChild
+                          className={`group/btn relative w-full bg-gradient-to-r ${product.gradient} hover:shadow-2xl text-white transition-all duration-500 text-base lg:text-lg py-6 overflow-hidden transform hover:scale-105`}
+                        >
+                          <Link to={product.link}>
+                            <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-white/10 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                            <span className="relative z-10 flex items-center justify-center">
+                              Подробнее о продукте
+                              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover/btn:translate-x-2 duration-300 drop-shadow-lg" />
+                            </span>
+                          </Link>
+                        </Button>
                       </div>
                     </div>
-                    
-                    {/* Full Description */}
-                    <p className="text-slate-300 leading-relaxed mb-6 text-sm">
-                      {product.fullDescription}
-                    </p>
-                    
-                    {/* Features Grid */}
-                    <div className="grid grid-cols-2 gap-3 mb-8">
-                      {product.features.map((feature, featureIndex) => (
-                        <div key={featureIndex} className="flex items-center gap-2">
-                          <CheckCircle className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                          <span className="text-slate-300 text-xs">{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-                    
-                    {/* Action Button */}
-                    <Button 
-                      asChild
-                      className={`w-full bg-gradient-to-r ${product.gradient} hover:shadow-2xl text-white transition-all duration-500 text-lg py-6 group-hover:scale-105`}
-                    >
-                      <Link to={product.link}>
-                        Подробнее о продукте
-                        <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                      </Link>
-                    </Button>
-                  </div>
-                </Card>
+                  </Card>
+                </div>
               );
             })}
           </div>
           
-          {/* Call to Action */}
-          <div className="text-center">
-            <Button asChild size="lg" className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 hover:from-orange-600 hover:via-orange-700 hover:to-orange-600 text-white text-lg px-12 py-6 shadow-2xl hover:shadow-orange-500/25">
+          {/* Enhanced 3D Call to Action */}
+          <div className="text-center mt-16 px-4">
+            <Button asChild size="lg" className="group relative bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 hover:from-orange-600 hover:via-orange-700 hover:to-orange-600 text-white text-lg px-12 py-6 shadow-2xl hover:shadow-orange-500/25 transform hover:scale-110 transition-all duration-500 overflow-hidden">
               <Link to="/products">
-                Смотреть всю продукцию
-                <ArrowRight className="ml-2 h-6 w-6" />
+                <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <span className="relative z-10 flex items-center">
+                  Смотреть всю продукцию
+                  <ArrowRight className="ml-2 h-6 w-6 transform group-hover:translate-x-2 transition-transform duration-300" />
+                </span>
               </Link>
             </Button>
           </div>
