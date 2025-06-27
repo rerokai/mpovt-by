@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -27,7 +28,12 @@ import {
   Volume2,
   VolumeX,
   Sparkles,
-  Zap
+  Zap,
+  Cpu,
+  Battery,
+  Wifi,
+  Shield as ShieldIcon,
+  Layers
 } from "lucide-react";
 
 const Index = () => {
@@ -111,7 +117,14 @@ const Index = () => {
       gradient: "from-blue-600 via-blue-500 to-cyan-400",
       bgGradient: "from-blue-500/20 via-cyan-400/20 to-blue-600/20",
       badge: "Флагманская серия",
-      features: ["IP65 защита", "Температура -40°C до +85°C", "Модульная архитектура", "Промышленные интерфейсы"]
+      features: ["IP65 защита", "Температура -40°C до +85°C", "Модульная архитектура", "Промышленные интерфейсы"],
+      featureIcon: Cpu,
+      uniqueFeatures: [
+        { icon: ShieldIcon, text: "IP65 защита", color: "text-cyan-400" },
+        { icon: Cpu, text: "Температура -40°C до +85°C", color: "text-blue-400" },
+        { icon: Layers, text: "Модульная архитектура", color: "text-indigo-400" },
+        { icon: Settings, text: "Промышленные интерфейсы", color: "text-purple-400" }
+      ]
     },
     {
       title: "Промышленные ноутбуки (H-Book)",
@@ -123,7 +136,14 @@ const Index = () => {
       gradient: "from-emerald-600 via-emerald-500 to-teal-400",
       bgGradient: "from-emerald-500/20 via-teal-400/20 to-emerald-600/20",
       badge: "Мобильные решения",
-      features: ["Ударопрочный корпус", "20ч автономность", "Водонепроницаемость", "Горячая замена батарей"]
+      features: ["Ударопрочный корпус", "20ч автономность", "Водонепроницаемость", "Горячая замена батарей"],
+      featureIcon: Laptop,
+      uniqueFeatures: [
+        { icon: ShieldIcon, text: "Ударопрочный корпус", color: "text-emerald-400" },
+        { icon: Battery, text: "20ч автономность", color: "text-green-400" },
+        { icon: ShieldIcon, text: "Водонепроницаемость", color: "text-teal-400" },
+        { icon: Battery, text: "Горячая замена батарей", color: "text-cyan-400" }
+      ]
     },
     {
       title: "Промышленные мониторы (H)",
@@ -135,7 +155,14 @@ const Index = () => {
       gradient: "from-purple-600 via-purple-500 to-pink-400",
       bgGradient: "from-purple-500/20 via-pink-400/20 to-purple-600/20",
       badge: "Премиум дисплеи",
-      features: ["Антибликовые покрытия", "Сенсорные технологии", "Широкие углы обзора", "Высокая яркость"]
+      features: ["Антибликовые покрытия", "Сенсорные технологии", "Широкие углы обзора", "Высокая яркость"],
+      featureIcon: Monitor,
+      uniqueFeatures: [
+        { icon: Monitor, text: "Антибликовые покрытия", color: "text-purple-400" },
+        { icon: Monitor, text: "Сенсорные технологии", color: "text-pink-400" },
+        { icon: Monitor, text: "Широкие углы обзора", color: "text-violet-400" },
+        { icon: Monitor, text: "Высокая яркость", color: "text-fuchsia-400" }
+      ]
     },
     {
       title: "Промышленные планшеты (H-Tab)",
@@ -147,7 +174,14 @@ const Index = () => {
       gradient: "from-orange-600 via-orange-500 to-yellow-400",
       bgGradient: "from-orange-500/20 via-yellow-400/20 to-orange-600/20",
       badge: "Мобильный контроль",
-      features: ["Защита IP67", "Работа в перчатках", "Беспроводная связь", "Емкостные экраны"]
+      features: ["Защита IP67", "Работа в перчатках", "Беспроводная связь", "Емкостные экраны"],
+      featureIcon: Tablet,
+      uniqueFeatures: [
+        { icon: ShieldIcon, text: "Защита IP67", color: "text-orange-400" },
+        { icon: Settings, text: "Работа в перчатках", color: "text-yellow-400" },
+        { icon: Wifi, text: "Беспроводная связь", color: "text-amber-400" },
+        { icon: Tablet, text: "Емкостные экраны", color: "text-orange-300" }
+      ]
     },
     {
       title: "M2.SSD накопители (H-Storage)",
@@ -159,7 +193,14 @@ const Index = () => {
       gradient: "from-red-600 via-red-500 to-orange-400",
       bgGradient: "from-red-500/20 via-orange-400/20 to-red-600/20",
       badge: "Высокие технологии",
-      features: ["NVMe интерфейс", "Расширенный диапазон температур", "Высокая износостойкость", "Промышленная надежность"]
+      features: ["NVMe интерфейс", "Расширенный диапазон температур", "Высокая износостойкость", "Промышленная надежность"],
+      featureIcon: HardDrive,
+      uniqueFeatures: [
+        { icon: HardDrive, text: "NVMe интерфейс", color: "text-red-400" },
+        { icon: Settings, text: "Расширенный диапазон температур", color: "text-orange-400" },
+        { icon: ShieldIcon, text: "Высокая износостойкость", color: "text-red-300" },
+        { icon: Award, text: "Промышленная надежность", color: "text-orange-300" }
+      ]
     }
   ];
 
@@ -235,10 +276,10 @@ const Index = () => {
       <Navigation />
       
       {/* Hero Section - Black background with smooth animated abstract colors */}
-      <section className="pt-24 md:pt-28 lg:pt-32 pb-12 md:pb-16 lg:pb-20 px-4 text-center relative overflow-hidden bg-black">
+      <section className="pt-32 md:pt-36 lg:pt-40 pb-12 md:pb-16 lg:pb-20 px-4 text-center relative overflow-hidden bg-black">
         <div className="container mx-auto relative z-10">
           <div className="max-w-4xl mx-auto animate-fade-in">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-8xl font-extrabold mb-8 md:mb-12 text-white/90 leading-tight">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl xl:text-9xl font-extrabold mb-8 md:mb-12 text-white/90 leading-tight">
               ОАО «МПОВТ»
             </h1>
             <p className="text-lg md:text-xl xl:text-2xl text-gray-300 mb-6 md:mb-8" style={{ animationDelay: '200ms' }}>
@@ -272,28 +313,17 @@ const Index = () => {
       <section className="py-16 md:py-20 bg-gradient-to-b from-black via-slate-900 to-orange-50/30 dark:to-orange-950/30 relative overflow-hidden">
         {/* Background effects */}
         <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-3xl opacity-10 animate-pulse-slow"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-3xl opacity-10 animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-128 h-128 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full blur-3xl opacity-10 animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
         </div>
 
         <div className="relative z-10">
           <div className="text-center mb-12 md:mb-16 px-4">
-            <div className="inline-flex items-center gap-4 mb-8">
-              <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity animate-pulse"></div>
-                <div className="relative p-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl transform hover:scale-110 transition-all duration-500">
-                  <Sparkles className="h-8 w-8 text-white animate-pulse" />
-                </div>
-              </div>
-              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 bg-clip-text text-transparent">
+            <div className="mb-8">
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
                 Наша флагманская продукция
               </h2>
-              <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-600 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity animate-pulse"></div>
-                <div className="relative p-4 bg-gradient-to-r from-purple-500 to-pink-600 rounded-2xl transform hover:scale-110 transition-all duration-500">
-                  <Zap className="h-8 w-8 text-white animate-pulse" />
-                </div>
-              </div>
             </div>
             <p className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
               Революционные решения промышленной вычислительной техники нового поколения
@@ -303,8 +333,6 @@ const Index = () => {
           {/* Full-width cards */}
           <div className="space-y-8">
             {priorityProducts.map((product, index) => {
-              const isPlaying = playingVideo === index;
-              const isMuted = true; // Always muted
               const isHovered = hoveredCard === index;
               
               return (
@@ -314,7 +342,7 @@ const Index = () => {
                   style={{ animationDelay: `${index * 200}ms` }}
                 >
                   <Card className="group overflow-hidden bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 hover:border-slate-600/70 transition-all duration-700 mx-4 hover:shadow-2xl hover:shadow-slate-900/50">
-                    <div className="grid lg:grid-cols-2 gap-0 h-[60vh] max-h-[500px]">
+                    <div className="grid lg:grid-cols-2 gap-0 min-h-[60vh] max-h-[600px]">
                       {/* Video/Image Section */}
                       <div 
                         className="relative overflow-hidden bg-slate-900"
@@ -330,24 +358,28 @@ const Index = () => {
                           playsInline
                         />
                         
-                        {/* Title overlay */}
+                        {/* Glassmorphism overlay for title */}
                         <div className="absolute top-6 left-6 right-6">
-                          <h3 className="text-2xl lg:text-3xl font-bold text-white drop-shadow-2xl">
-                            {product.title}
-                          </h3>
+                          <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-4 shadow-2xl">
+                            <h3 className="text-2xl lg:text-3xl font-bold text-white drop-shadow-2xl">
+                              {product.title}
+                            </h3>
+                          </div>
                         </div>
 
-                        {/* Description overlay on hover */}
-                        <div className={`absolute inset-0 bg-black/60 backdrop-blur-sm transition-all duration-700 flex items-center justify-center p-6 ${
+                        {/* Description overlay on hover with glassmorphism */}
+                        <div className={`absolute inset-0 bg-black/40 backdrop-blur-sm transition-all duration-700 flex items-center justify-center p-6 ${
                           isHovered ? 'opacity-100' : 'opacity-0'
                         }`}>
-                          <div className="text-center text-white max-w-md">
-                            <p className="text-lg leading-relaxed mb-4">
-                              {product.description}
-                            </p>
-                            <div className={`inline-block relative bg-gradient-to-r ${product.gradient} text-white text-sm px-6 py-3 rounded-full font-semibold flex items-center gap-2 shadow-2xl`}>
-                              <Star className="w-4 h-4 animate-pulse" />
-                              <span>{product.badge}</span>
+                          <div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl p-8 shadow-2xl max-w-md">
+                            <div className="text-center text-white">
+                              <p className="text-lg leading-relaxed mb-4">
+                                {product.description}
+                              </p>
+                              <div className={`inline-block relative bg-gradient-to-r ${product.gradient} text-white text-sm px-6 py-3 rounded-full font-semibold flex items-center gap-2 shadow-2xl`}>
+                                <Star className="w-4 h-4 animate-pulse" />
+                                <span>{product.badge}</span>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -361,26 +393,28 @@ const Index = () => {
                           {product.fullDescription}
                         </p>
                         
-                        {/* Enhanced Features Grid with better hover animation */}
+                        {/* Enhanced Features Grid with unique styling for each card */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-                          {product.features.map((feature, featureIndex) => (
-                            <div key={featureIndex} className="group/feature flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-all duration-500 cursor-pointer">
-                              <div className="relative">
-                                <div className="absolute inset-0 bg-emerald-400 rounded-full blur-sm opacity-50 group-hover/feature:opacity-100 group-hover/feature:scale-150 transition-all duration-500"></div>
-                                <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0 relative z-10 drop-shadow-lg transform group-hover/feature:rotate-12 group-hover/feature:scale-125 transition-all duration-500" />
+                          {product.uniqueFeatures.map((feature, featureIndex) => {
+                            const FeatureIcon = feature.icon;
+                            return (
+                              <div key={featureIndex} className="group/feature flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-all duration-300 cursor-pointer">
+                                <div className="relative">
+                                  <FeatureIcon className={`w-5 h-5 ${feature.color} flex-shrink-0 relative z-10 drop-shadow-lg transform group-hover/feature:rotate-12 group-hover/feature:scale-125 transition-all duration-500`} />
+                                </div>
+                                <span className="text-slate-300 text-xs lg:text-sm group-hover/feature:text-white group-hover/feature:translate-x-2 transition-all duration-500">{feature.text}</span>
                               </div>
-                              <span className="text-slate-300 text-xs lg:text-sm group-hover/feature:text-white group-hover/feature:translate-x-2 transition-all duration-500">{feature}</span>
-                            </div>
-                          ))}
+                            );
+                          })}
                         </div>
                         
-                        {/* Enhanced 3D Action Button */}
+                        {/* Enhanced Non-colored Button */}
                         <Button 
                           asChild
-                          className={`group/btn relative w-full bg-gradient-to-r ${product.gradient} hover:shadow-2xl text-white transition-all duration-500 text-base lg:text-lg py-6 overflow-hidden transform hover:scale-105`}
+                          className="group/btn relative w-full bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/30 backdrop-blur-sm text-white transition-all duration-500 text-base lg:text-lg py-6 overflow-hidden transform hover:scale-105"
                         >
                           <Link to={product.link}>
-                            <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-white/10 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                            <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-white/10 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
                             <span className="relative z-10 flex items-center justify-center">
                               Подробнее о продукте
                               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover/btn:translate-x-2 duration-300 drop-shadow-lg" />
