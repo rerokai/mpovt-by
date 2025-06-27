@@ -287,22 +287,25 @@ const Index = () => {
             <h1 className="text-5xl sm:text-6xl md:text-7xl xl:text-9xl font-black mb-8 md:mb-12 text-white/95 leading-tight" style={{ fontWeight: '900', letterSpacing: '0.02em' }}>
               ОАО «МПОВТ»
             </h1>
-            <p className="text-lg md:text-xl xl:text-2xl text-white/60 mb-6 md:mb-8" style={{ animationDelay: '200ms' }}>
+            <p className="text-lg md:text-xl xl:text-2xl text-white/50 mb-6 md:mb-8" style={{ animationDelay: '200ms' }}>
               Ведущий производитель электронных компонентов и автокомпонентов с 1956 года
             </p>
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center" style={{ animationDelay: '400ms' }}>
-              <Button asChild size="lg" className="text-sm md:text-base bg-gradient-to-r from-cyan-500/80 via-blue-500/80 to-purple-500/80 hover:from-cyan-600/90 hover:via-blue-600/90 hover:to-purple-600/90 text-white border-0 shadow-2xl transition-all duration-300">
+              <Button asChild size="lg" className="text-sm md:text-base bg-gradient-to-r from-cyan-500/70 via-blue-500/70 to-purple-500/70 hover:from-cyan-600/80 hover:via-blue-600/80 hover:to-purple-600/80 text-white border-0 shadow-2xl transition-all duration-500 backdrop-blur-sm">
                 <Link to="/products">
                   Наша продукция
                   <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="text-sm md:text-base bg-white/5 backdrop-blur-sm border-2 border-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 hover:bg-white/10 transition-all duration-300 relative overflow-hidden">
+              <Button asChild variant="outline" size="lg" className="text-sm md:text-base bg-black/30 backdrop-blur-sm border-2 border-gradient-to-r from-emerald-400/60 via-teal-400/60 to-cyan-400/60 hover:bg-black/40 transition-all duration-500 relative overflow-hidden">
                 <Link to="/company">
-                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/20 via-teal-400/20 to-cyan-400/20 rounded"></div>
-                  <div className="absolute inset-[1px] bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 p-[1px] rounded">
-                    <div className="w-full h-full bg-black/90 rounded flex items-center justify-center">
-                      <span className="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent relative z-10">
+                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/10 via-teal-400/10 to-cyan-400/10 rounded"></div>
+                  <div className="absolute inset-[1px] rounded" style={{
+                    background: 'linear-gradient(90deg, rgba(52, 211, 153, 0.6), rgba(45, 212, 191, 0.6), rgba(34, 211, 238, 0.6))',
+                    padding: '1px'
+                  }}>
+                    <div className="w-full h-full bg-black/70 backdrop-blur-sm rounded flex items-center justify-center px-6 py-2">
+                      <span className="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent relative z-10 font-medium">
                         О компании
                       </span>
                     </div>
@@ -336,7 +339,7 @@ const Index = () => {
         <div className="relative z-10">
           <div className="text-center mb-12 md:mb-16 px-4">
             <div className="mb-8">
-              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-cyan-400/90 via-purple-500/90 to-emerald-400/90 bg-clip-text text-transparent">
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent">
                 Флагманская продукция
               </h2>
             </div>
@@ -356,7 +359,7 @@ const Index = () => {
                   className="w-full animate-fade-in-up"
                   style={{ animationDelay: `${index * 200}ms` }}
                 >
-                  <Card className="group overflow-hidden bg-slate-800/30 backdrop-blur-xl border border-slate-700/30 hover:border-slate-600/50 transition-all duration-700 mx-4 hover:shadow-2xl hover:shadow-slate-900/50">
+                  <Card className="group overflow-hidden bg-slate-800/20 backdrop-blur-xl border border-slate-700/30 hover:border-slate-600/50 transition-all duration-700 mx-4 hover:shadow-2xl hover:shadow-slate-900/50">
                     <div className="grid lg:grid-cols-2 gap-0 min-h-[60vh] max-h-[600px]">
                       {/* Video/Image Section */}
                       <div 
@@ -390,7 +393,7 @@ const Index = () => {
                       </div>
                       
                       {/* Content Section */}
-                      <div className="p-6 lg:p-8 flex flex-col justify-center bg-gradient-to-br from-slate-800/60 to-slate-900/60 backdrop-blur-sm">
+                      <div className="p-6 lg:p-8 flex flex-col justify-center bg-gradient-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-sm">
                         
                         {/* Product title */}
                         <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4 drop-shadow-lg">
@@ -459,7 +462,7 @@ const Index = () => {
         
         <div className="container mx-auto relative z-10">
           <div className="text-center mb-8 md:mb-12 lg:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 lg:mb-6 bg-gradient-to-r from-slate-600 via-slate-700 to-slate-600 bg-clip-text text-transparent">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 lg:mb-6 bg-gradient-to-r from-slate-700 via-blue-600 to-purple-600 bg-clip-text text-transparent">
               Инновационные решения для промышленности
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mt-4 md:mt-6">
@@ -569,7 +572,7 @@ const Index = () => {
       <section className="py-12 md:py-16 lg:py-20 px-4 bg-white/50 dark:bg-black/50">
         <div className="container mx-auto">
           <div className="text-center mb-8 md:mb-12 lg:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 lg:mb-6 bg-gradient-to-r from-slate-600 via-slate-700 to-slate-600 bg-clip-text text-transparent">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 lg:mb-6 bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-600 bg-clip-text text-transparent">
               Дополнительные направления
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mt-4 md:mt-6">
@@ -619,7 +622,7 @@ const Index = () => {
       <section className="py-16 md:py-20 px-4">
         <div className="container mx-auto">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-slate-600 via-slate-700 to-slate-600 bg-clip-text text-transparent">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-orange-600 via-red-500 to-pink-600 bg-clip-text text-transparent">
               Наши достижения
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mt-6">
@@ -646,7 +649,7 @@ const Index = () => {
       <section className="py-16 md:py-20 px-4 bg-white/50 dark:bg-black/50">
         <div className="container mx-auto">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-slate-600 via-slate-700 to-slate-600 bg-clip-text text-transparent">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-600 bg-clip-text text-transparent">
               Наши партнеры
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mt-6">
@@ -671,7 +674,9 @@ const Index = () => {
       <section className="py-16 md:py-20 px-4">
         <div className="container mx-auto text-center">
           <Card className="max-w-4xl mx-auto p-8 md:p-12 glass-card">
-            <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6">Готовы к сотрудничеству?</h2>
+            <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-blue-600 via-purple-500 to-emerald-600 bg-clip-text text-transparent">
+              Готовы к сотрудничеству?
+            </h2>
             <p className="text-lg md:text-xl text-muted-foreground mb-6 md:mb-8 max-w-2xl mx-auto">
               Свяжитесь с нами для обсуждения ваших потребностей в электронных компонентах и автокомпонентах
             </p>
