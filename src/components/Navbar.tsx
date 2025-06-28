@@ -56,9 +56,11 @@ export default function Navbar() {
     )}>
       <nav className="container flex justify-between items-center">
         <Link to="/" className="flex items-center space-x-2 animate-bounce-in">
-          <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center shadow-lg">
-            <span className="text-white font-bold text-lg">М</span>
-          </div>
+          <img 
+            src="/lovable-uploads/70fca613-4992-4ede-98c2-f9c7e669d23e.png" 
+            alt="ОАО МПОВТ Logo" 
+            className="h-10 w-auto shadow-lg transition-all duration-500 hover:scale-110"
+          />
           <span className="font-bold text-xl">МПОВТ</span>
         </Link>
 
