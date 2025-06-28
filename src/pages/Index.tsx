@@ -319,8 +319,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Priority Products Section - Updated with animated background spheres */}
-      <section className="py-16 md:py-20 bg-gradient-to-b from-black via-slate-900/50 to-slate-800/30 relative overflow-hidden shadow-2xl">        
+      {/* Priority Products Section - Updated with animated background spheres ending in black */}
+      <section className="py-16 md:py-20 bg-gradient-to-b from-black via-slate-900/50 to-black relative overflow-hidden shadow-2xl">        
         {/* Animated background spheres with cyan/purple/emerald colors */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-1/4 left-1/4 w-32 h-32 md:w-64 md:h-64 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '8s', animationDelay: '1s' }}></div>
@@ -440,15 +440,36 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Features Section - Updated with blue animated background spheres */}
+      {/* Features Section - Updated with moving gradient animation */}
       <section className="py-12 md:py-16 lg:py-20 px-4 bg-black relative transition-all duration-1000 ease-in-out">
-        {/* Animated background spheres with blue/cyan colors matching heading */}
+        {/* Moving animated background spheres with blue/cyan colors */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-32 h-32 md:w-64 md:h-64 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '8s', animationDelay: '1s' }}></div>
-          <div className="absolute bottom-1/3 right-1/4 w-48 h-48 md:w-96 md:h-96 bg-gradient-to-r from-blue-500/20 to-cyan-400/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '3s', animationDuration: '10s' }}></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-128 md:h-128 bg-gradient-to-r from-cyan-400/20 to-blue-400/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s', animationDuration: '12s' }}></div>
-          <div className="absolute top-3/4 left-1/3 w-40 h-40 md:w-80 md:h-80 bg-gradient-to-r from-blue-400/20 to-cyan-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '4s', animationDuration: '9s' }}></div>
-          <div className="absolute bottom-1/4 right-1/3 w-56 h-56 md:w-112 md:h-112 bg-gradient-to-r from-cyan-300/20 to-blue-300/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '5s', animationDuration: '11s' }}></div>
+          <div className="absolute w-32 h-32 md:w-64 md:h-64 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-full blur-3xl animate-pulse" 
+               style={{ 
+                 animationDuration: '8s', 
+                 left: '25%', 
+                 top: '25%',
+                 transform: 'translateX(-50%) translateY(-50%)',
+                 animation: 'pulse 8s infinite, moveX 20s infinite alternate, moveY 25s infinite alternate-reverse'
+               }}></div>
+          <div className="absolute w-48 h-48 md:w-96 md:h-96 bg-gradient-to-r from-blue-500/20 to-cyan-400/20 rounded-full blur-3xl animate-pulse" 
+               style={{ 
+                 animationDelay: '3s', 
+                 animationDuration: '10s',
+                 right: '25%',
+                 bottom: '33%',
+                 transform: 'translateX(50%) translateY(50%)',
+                 animation: 'pulse 10s infinite 3s, moveX 18s infinite alternate-reverse 3s, moveY 22s infinite alternate 3s'
+               }}></div>
+          <div className="absolute w-64 h-64 md:w-128 md:h-128 bg-gradient-to-r from-cyan-400/20 to-blue-400/20 rounded-full blur-3xl animate-pulse" 
+               style={{ 
+                 animationDelay: '2s', 
+                 animationDuration: '12s',
+                 left: '50%',
+                 top: '50%',
+                 transform: 'translateX(-50%) translateY(-50%)',
+                 animation: 'pulse 12s infinite 2s, moveX 24s infinite alternate 2s, moveY 28s infinite alternate-reverse 2s'
+               }}></div>
         </div>
         
         {/* Smooth gradient background that changes based on active feature */}
@@ -569,15 +590,33 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Secondary Products Section - Updated with emerald/teal animated background spheres */}
+      {/* Secondary Products Section - Updated with moving background spheres and improved buttons */}
       <section className="py-12 md:py-16 lg:py-20 px-4 bg-black relative">
-        {/* Animated background spheres with emerald/teal colors matching heading */}
+        {/* Moving animated background spheres with emerald/teal colors */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-32 h-32 md:w-64 md:h-64 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '8s', animationDelay: '1s' }}></div>
-          <div className="absolute bottom-1/3 right-1/4 w-48 h-48 md:w-96 md:h-96 bg-gradient-to-r from-teal-500/20 to-cyan-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '3s', animationDuration: '10s' }}></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-128 md:h-128 bg-gradient-to-r from-cyan-500/20 to-emerald-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s', animationDuration: '12s' }}></div>
-          <div className="absolute top-3/4 left-1/3 w-40 h-40 md:w-80 md:h-80 bg-gradient-to-r from-emerald-400/20 to-teal-400/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '4s', animationDuration: '9s' }}></div>
-          <div className="absolute bottom-1/4 right-1/3 w-56 h-56 md:w-112 md:h-112 bg-gradient-to-r from-teal-400/20 to-emerald-400/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '5s', animationDuration: '11s' }}></div>
+          <div className="absolute w-32 h-32 md:w-64 md:h-64 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 rounded-full blur-3xl animate-pulse" 
+               style={{ 
+                 animationDuration: '8s', 
+                 left: '25%', 
+                 top: '25%',
+                 animation: 'pulse 8s infinite, moveX 22s infinite alternate, moveY 26s infinite alternate-reverse'
+               }}></div>
+          <div className="absolute w-48 h-48 md:w-96 md:h-96 bg-gradient-to-r from-teal-500/20 to-cyan-500/20 rounded-full blur-3xl animate-pulse" 
+               style={{ 
+                 animationDelay: '3s', 
+                 animationDuration: '10s',
+                 right: '25%',
+                 bottom: '33%',
+                 animation: 'pulse 10s infinite 3s, moveX 20s infinite alternate-reverse 3s, moveY 24s infinite alternate 3s'
+               }}></div>
+          <div className="absolute w-64 h-64 md:w-128 md:h-128 bg-gradient-to-r from-cyan-500/20 to-emerald-500/20 rounded-full blur-3xl animate-pulse" 
+               style={{ 
+                 animationDelay: '2s', 
+                 animationDuration: '12s',
+                 left: '50%',
+                 top: '50%',
+                 animation: 'pulse 12s infinite 2s, moveX 26s infinite alternate 2s, moveY 30s infinite alternate-reverse 2s'
+               }}></div>
         </div>
         
         <div className="container mx-auto relative z-10">
@@ -596,7 +635,25 @@ const Index = () => {
               return (
                 <Card 
                   key={index} 
-                  className="group overflow-hidden hover:shadow-2xl transition-all duration-500 glass-card hover:scale-105 flex flex-col h-full bg-emerald-900/20 border-emerald-700/30"
+                  className="group overflow-hidden hover:shadow-2xl transition-all duration-500 glass-card flex flex-col h-full bg-emerald-900/20 border-emerald-700/30 hover:scale-105 perspective-1000"
+                  style={{ 
+                    transform: 'perspective(1000px)',
+                    transformStyle: 'preserve-3d'
+                  }}
+                  onMouseMove={(e) => {
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (y - centerY) / 10;
+                    const rotateY = (centerX - x) / 10;
+                    
+                    e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+                  }}
                 >
                   <div className="aspect-video bg-gradient-to-br from-emerald-100/20 to-teal-100/20 relative overflow-hidden">
                     <img 
@@ -614,7 +671,11 @@ const Index = () => {
                       {product.title}
                     </h3>
                     <p className="text-emerald-200 mb-3 md:mb-4 text-xs sm:text-sm md:text-base flex-grow">{product.description}</p>
-                    <Button asChild variant="outline" size="sm" className="w-full group-hover:bg-emerald-600 group-hover:text-white group-hover:border-emerald-600 mt-auto text-xs sm:text-sm border-emerald-600 text-emerald-400">
+                    <Button 
+                      asChild 
+                      size="sm" 
+                      className="w-full mt-auto text-xs sm:text-sm bg-gradient-to-r from-emerald-600 to-teal-600 text-white hover:from-emerald-700 hover:to-teal-700 border-0 transition-all duration-300 hover:shadow-lg"
+                    >
                       <Link to={product.link}>
                         Подробнее
                         <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
@@ -628,15 +689,33 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Achievements Section - Updated with orange/red animated background spheres */}
+      {/* Achievements Section - Updated with moving background spheres */}
       <section className="py-16 md:py-20 px-4 bg-black relative">
-        {/* Animated background spheres with orange/red colors matching heading */}
+        {/* Moving animated background spheres with orange/red colors */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-32 h-32 md:w-64 md:h-64 bg-gradient-to-r from-orange-500/20 to-red-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '8s', animationDelay: '1s' }}></div>
-          <div className="absolute bottom-1/3 right-1/4 w-48 h-48 md:w-96 md:h-96 bg-gradient-to-r from-red-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '3s', animationDuration: '10s' }}></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-128 md:h-128 bg-gradient-to-r from-pink-500/20 to-orange-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s', animationDuration: '12s' }}></div>
-          <div className="absolute top-3/4 left-1/3 w-40 h-40 md:w-80 md:h-80 bg-gradient-to-r from-orange-400/20 to-red-400/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '4s', animationDuration: '9s' }}></div>
-          <div className="absolute bottom-1/4 right-1/3 w-56 h-56 md:w-112 md:h-112 bg-gradient-to-r from-red-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '5s', animationDuration: '11s' }}></div>
+          <div className="absolute w-32 h-32 md:w-64 md:h-64 bg-gradient-to-r from-orange-500/20 to-red-500/20 rounded-full blur-3xl animate-pulse" 
+               style={{ 
+                 animationDuration: '8s', 
+                 left: '25%', 
+                 top: '25%',
+                 animation: 'pulse 8s infinite, moveX 18s infinite alternate, moveY 22s infinite alternate-reverse'
+               }}></div>
+          <div className="absolute w-48 h-48 md:w-96 md:h-96 bg-gradient-to-r from-red-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse" 
+               style={{ 
+                 animationDelay: '3s', 
+                 animationDuration: '10s',
+                 right: '25%',
+                 bottom: '33%',
+                 animation: 'pulse 10s infinite 3s, moveX 16s infinite alternate-reverse 3s, moveY 20s infinite alternate 3s'
+               }}></div>
+          <div className="absolute w-64 h-64 md:w-128 md:h-128 bg-gradient-to-r from-pink-500/20 to-orange-500/20 rounded-full blur-3xl animate-pulse" 
+               style={{ 
+                 animationDelay: '2s', 
+                 animationDuration: '12s',
+                 left: '50%',
+                 top: '50%',
+                 animation: 'pulse 12s infinite 2s, moveX 20s infinite alternate 2s, moveY 24s infinite alternate-reverse 2s'
+               }}></div>
         </div>
         
         <div className="container mx-auto relative z-10">
@@ -664,15 +743,33 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Partners Section - Updated with indigo/purple animated background spheres */}
+      {/* Partners Section - Updated with moving background spheres */}
       <section className="py-16 md:py-20 px-4 bg-black relative">
-        {/* Animated background spheres with indigo/purple colors matching heading */}
+        {/* Moving animated background spheres with indigo/purple colors */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-32 h-32 md:w-64 md:h-64 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '8s', animationDelay: '1s' }}></div>
-          <div className="absolute bottom-1/3 right-1/4 w-48 h-48 md:w-96 md:h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '3s', animationDuration: '10s' }}></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-128 md:h-128 bg-gradient-to-r from-pink-500/20 to-indigo-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s', animationDuration: '12s' }}></div>
-          <div className="absolute top-3/4 left-1/3 w-40 h-40 md:w-80 md:h-80 bg-gradient-to-r from-indigo-400/20 to-purple-400/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '4s', animationDuration: '9s' }}></div>
-          <div className="absolute bottom-1/4 right-1/3 w-56 h-56 md:w-112 md:h-112 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '5s', animationDuration: '11s' }}></div>
+          <div className="absolute w-32 h-32 md:w-64 md:h-64 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-full blur-3xl animate-pulse" 
+               style={{ 
+                 animationDuration: '8s', 
+                 left: '25%', 
+                 top: '25%',
+                 animation: 'pulse 8s infinite, moveX 24s infinite alternate, moveY 28s infinite alternate-reverse'
+               }}></div>
+          <div className="absolute w-48 h-48 md:w-96 md:h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse" 
+               style={{ 
+                 animationDelay: '3s', 
+                 animationDuration: '10s',
+                 right: '25%',
+                 bottom: '33%',
+                 animation: 'pulse 10s infinite 3s, moveX 22s infinite alternate-reverse 3s, moveY 26s infinite alternate 3s'
+               }}></div>
+          <div className="absolute w-64 h-64 md:w-128 md:h-128 bg-gradient-to-r from-pink-500/20 to-indigo-500/20 rounded-full blur-3xl animate-pulse" 
+               style={{ 
+                 animationDelay: '2s', 
+                 animationDuration: '12s',
+                 left: '50%',
+                 top: '50%',
+                 animation: 'pulse 12s infinite 2s, moveX 26s infinite alternate 2s, moveY 30s infinite alternate-reverse 2s'
+               }}></div>
         </div>
         
         <div className="container mx-auto relative z-10">
@@ -698,15 +795,33 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA Section - Updated with blue/purple animated background spheres */}
+      {/* CTA Section - Updated with moving background spheres and improved button */}
       <section className="py-16 md:py-20 px-4 bg-black relative">
-        {/* Animated background spheres with blue/purple colors matching heading */}
+        {/* Moving animated background spheres with blue/purple colors */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-32 h-32 md:w-64 md:h-64 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '8s', animationDelay: '1s' }}></div>
-          <div className="absolute bottom-1/3 right-1/4 w-48 h-48 md:w-96 md:h-96 bg-gradient-to-r from-purple-500/20 to-teal-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '3s', animationDuration: '10s' }}></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-128 md:h-128 bg-gradient-to-r from-teal-500/20 to-blue-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s', animationDuration: '12s' }}></div>
-          <div className="absolute top-3/4 left-1/3 w-40 h-40 md:w-80 md:h-80 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '4s', animationDuration: '9s' }}></div>
-          <div className="absolute bottom-1/4 right-1/3 w-56 h-56 md:w-112 md:h-112 bg-gradient-to-r from-purple-400/20 to-teal-400/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '5s', animationDuration: '11s' }}></div>
+          <div className="absolute w-32 h-32 md:w-64 md:h-64 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-3xl animate-pulse" 
+               style={{ 
+                 animationDuration: '8s', 
+                 left: '25%', 
+                 top: '25%',
+                 animation: 'pulse 8s infinite, moveX 20s infinite alternate, moveY 24s infinite alternate-reverse'
+               }}></div>
+          <div className="absolute w-48 h-48 md:w-96 md:h-96 bg-gradient-to-r from-purple-500/20 to-teal-500/20 rounded-full blur-3xl animate-pulse" 
+               style={{ 
+                 animationDelay: '3s', 
+                 animationDuration: '10s',
+                 right: '25%',
+                 bottom: '33%',
+                 animation: 'pulse 10s infinite 3s, moveX 18s infinite alternate-reverse 3s, moveY 22s infinite alternate 3s'
+               }}></div>
+          <div className="absolute w-64 h-64 md:w-128 md:h-128 bg-gradient-to-r from-teal-500/20 to-blue-500/20 rounded-full blur-3xl animate-pulse" 
+               style={{ 
+                 animationDelay: '2s', 
+                 animationDuration: '12s',
+                 left: '50%',
+                 top: '50%',
+                 animation: 'pulse 12s infinite 2s, moveX 22s infinite alternate 2s, moveY 26s infinite alternate-reverse 2s'
+               }}></div>
         </div>
         
         <div className="container mx-auto text-center relative z-10">
@@ -718,14 +833,16 @@ const Index = () => {
               Свяжитесь с нами для обсуждения ваших потребностей в электронных компонентах и автокомпонентах
             </p>
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
-              <Button asChild size="lg" className="text-sm md:text-base bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition-all duration-500">
+              <Button asChild size="lg" className="text-sm md:text-base bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 transition-all duration-500 shadow-lg">
                 <Link to="/contact">
                   Связаться с нами
                   <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="border-white/30 text-purple-100 hover:bg-white hover:text-purple-900 text-sm md:text-base bg-white transition-all duration-500">
-                <Link to="/products">Каталог продукции</Link>
+              <Button asChild variant="outline" size="lg" className="border-white/30 bg-white hover:bg-white/90 text-sm md:text-base transition-all duration-500">
+                <Link to="/products" className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-semibold">
+                  Каталог продукции
+                </Link>
               </Button>
             </div>
           </Card>
@@ -733,6 +850,18 @@ const Index = () => {
       </section>
 
       <Footer />
+      
+      <style jsx>{`
+        @keyframes moveX {
+          0%, 100% { transform: translateX(-20px); }
+          50% { transform: translateX(20px); }
+        }
+        
+        @keyframes moveY {
+          0%, 100% { transform: translateY(-15px); }
+          50% { transform: translateY(15px); }
+        }
+      `}</style>
     </div>
   );
 };
