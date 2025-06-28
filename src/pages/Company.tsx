@@ -1,8 +1,8 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { 
@@ -17,7 +17,13 @@ import {
   MapPin,
   Calendar,
   Building,
-  Quote
+  Quote,
+  Rocket,
+  Cpu,
+  Zap,
+  Target,
+  Crown,
+  Sparkles
 } from "lucide-react";
 
 const Company = () => {
@@ -59,37 +65,55 @@ const Company = () => {
       year: "1956",
       title: "Основание предприятия",
       description: "Создание Минского производственного объединения вычислительной техники",
-      color: "emerald-500"
+      color: "emerald-500",
+      bgColor: "bg-emerald-500",
+      textColor: "text-emerald-500",
+      icon: Rocket
     },
     {
       year: "1970-80",
       title: "Период роста",
       description: "Активное развитие производства электронных компонентов",
-      color: "blue-500"
+      color: "blue-500",
+      bgColor: "bg-blue-500",
+      textColor: "text-blue-500",
+      icon: TrendingUp
     },
     {
       year: "1990-2000",
       title: "Модернизация",
       description: "Внедрение современных технологий и оборудования",
-      color: "purple-500"
+      color: "purple-500",
+      bgColor: "bg-purple-500",
+      textColor: "text-purple-500",
+      icon: Settings
     },
     {
       year: "2001-2010",
       title: "Сертификация",
       description: "Получение международных сертификатов качества ISO 9001",
-      color: "orange-500"
+      color: "orange-500",
+      bgColor: "bg-orange-500",
+      textColor: "text-orange-500",
+      icon: Award
     },
     {
       year: "2011-2020",
       title: "Инновации",
       description: "Разработка новых продуктов и технологических решений",
-      color: "cyan-500"
+      color: "cyan-500",
+      bgColor: "bg-cyan-500",
+      textColor: "text-cyan-500",
+      icon: Cpu
     },
     {
       year: "2021-2024",
       title: "Цифровизация",
       description: "Внедрение цифровых технологий и автоматизация производства",
-      color: "pink-500"
+      color: "pink-500",
+      bgColor: "bg-pink-500",
+      textColor: "text-pink-500",
+      icon: Zap
     }
   ];
 
@@ -97,26 +121,25 @@ const Company = () => {
     {
       icon: Building,
       label: "Производственная площадь",
-      value: "15,000 м²"
+      value: "15,000 м²",
+      color: "text-emerald-500",
+      bgColor: "bg-emerald-500/20"
     },
     {
       icon: MapPin,
       label: "Локация",
-      value: "Минск, Беларусь"
+      value: "Минск, Беларусь",
+      color: "text-blue-500",
+      bgColor: "bg-blue-500/20"
     },
     {
       icon: Calendar,
       label: "Год основания",
-      value: "1956"
+      value: "1956",
+      color: "text-purple-500",
+      bgColor: "bg-purple-500/20"
     }
   ];
-
-  // Generate gradient between two timeline points
-  const getTimelineGradient = (fromIndex: number, toIndex: number) => {
-    const fromColor = timelineEvents[fromIndex]?.color || 'primary';
-    const toColor = timelineEvents[toIndex]?.color || 'primary';
-    return `linear-gradient(to right, rgb(var(--${fromColor})), rgb(var(--${toColor})))`;
-  };
 
   return (
     <div className="min-h-screen">
@@ -194,18 +217,26 @@ const Company = () => {
                   />
                 </div>
                 
+                {/* Image Caption */}
+                <div className="mb-4 text-center">
+                  <p className="text-white/90 font-medium text-sm md:text-base">
+                    Головной офис ОАО "МПОВТ"
+                  </p>
+                  <Separator className="my-3 bg-gradient-to-r from-transparent via-slate-600 to-transparent" />
+                </div>
+                
                 {/* Company Stats */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3 gap-3 md:gap-4">
+                <div className="grid grid-cols-1 gap-4">
                   {companyStats.map((stat, index) => {
                     const Icon = stat.icon;
                     return (
-                      <div key={index} className="flex items-center space-x-2 md:space-x-3 p-2 md:p-3 bg-white/10 dark:bg-black/10 backdrop-blur-sm rounded-lg">
-                        <div className="p-1.5 md:p-2 bg-primary/20 rounded-lg flex-shrink-0">
-                          <Icon className="h-3 w-3 md:h-4 md:w-4 text-primary" />
+                      <div key={index} className="flex items-center space-x-4 p-4 bg-white/5 dark:bg-black/20 backdrop-blur-sm rounded-lg hover:bg-white/10 transition-all duration-300">
+                        <div className={`p-3 ${stat.bgColor} rounded-xl flex-shrink-0`}>
+                          <Icon className={`h-6 w-6 ${stat.color}`} />
                         </div>
-                        <div className="min-w-0">
-                          <p className="text-xs md:text-sm font-medium text-white">{stat.value}</p>
-                          <p className="text-xs text-slate-400 truncate">{stat.label}</p>
+                        <div className="min-w-0 flex-1">
+                          <p className="text-base md:text-lg font-semibold text-white">{stat.value}</p>
+                          <p className="text-sm text-slate-400">{stat.label}</p>
                         </div>
                       </div>
                     );
@@ -261,68 +292,65 @@ const Company = () => {
               {/* Desktop Horizontal Timeline */}
               <div className="hidden md:block relative">
                 {/* Timeline segments with gradients */}
-                <div className="absolute top-6 left-0 right-0 h-0.5 flex">
-                  {timelineEvents.slice(0, -1).map((event, index) => (
-                    <div
-                      key={index}
-                      className="flex-1 h-full"
-                      style={{
-                        background: `linear-gradient(to right, rgb(34 197 94), rgb(59 130 246))`
-                      }}
-                    />
-                  ))}
+                <div className="absolute top-6 left-0 right-0 h-1 flex">
+                  {timelineEvents.slice(0, -1).map((event, index) => {
+                    const nextEvent = timelineEvents[index + 1];
+                    return (
+                      <div
+                        key={index}
+                        className="flex-1 h-full rounded-full"
+                        style={{
+                          background: `linear-gradient(to right, rgb(34 197 94 / 0.8), rgb(59 130 246 / 0.8), rgb(168 85 247 / 0.8), rgb(249 115 22 / 0.8), rgb(6 182 212 / 0.8))`
+                        }}
+                      />
+                    );
+                  })}
                 </div>
                 
                 {/* Timeline points */}
                 <div className="flex justify-between items-center relative z-10 mb-8">
-                  {timelineEvents.map((event, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setActiveTimelineIndex(index)}
-                      className={`relative group transition-all duration-300 ${
-                        activeTimelineIndex === index ? 'scale-110' : 'hover:scale-105'
-                      }`}
-                    >
-                      <div className={`w-12 h-12 rounded-full border-4 transition-all duration-300 flex items-center justify-center ${
-                        activeTimelineIndex === index 
-                          ? `bg-${event.color} border-${event.color} shadow-lg shadow-${event.color}/30` 
-                          : `bg-white dark:bg-gray-800 border-${event.color}/30 hover:border-${event.color}/60`
-                      }`}>
-                        <div className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  {timelineEvents.map((event, index) => {
+                    const Icon = event.icon;
+                    return (
+                      <button
+                        key={index}
+                        onClick={() => setActiveTimelineIndex(index)}
+                        className={`relative group transition-all duration-300 ${
+                          activeTimelineIndex === index ? 'scale-110' : 'hover:scale-105'
+                        }`}
+                      >
+                        <div className={`w-12 h-12 rounded-full border-4 transition-all duration-300 flex items-center justify-center ${
                           activeTimelineIndex === index 
-                            ? 'bg-white' 
-                            : `bg-${event.color}/40`
-                        }`}></div>
-                      </div>
-                      
-                      {/* Year label */}
-                      <div className={`absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs md:text-sm font-medium whitespace-nowrap transition-all duration-300 ${
-                        activeTimelineIndex === index 
-                          ? `text-${event.color} scale-110` 
-                          : 'text-slate-400'
-                      }`}>
-                        {event.year}
-                      </div>
-                    </button>
-                  ))}
+                            ? `${event.bgColor} border-${event.color} shadow-lg shadow-${event.color}/30` 
+                            : `bg-white dark:bg-gray-800 border-${event.color}/30 hover:border-${event.color}/60`
+                        }`}>
+                          <Icon className={`w-5 h-5 transition-all duration-300 ${
+                            activeTimelineIndex === index 
+                              ? 'text-white' 
+                              : `${event.textColor}/60`
+                          }`} />
+                        </div>
+                        
+                        {/* Year label */}
+                        <div className={`absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs md:text-sm font-medium whitespace-nowrap transition-all duration-300 ${
+                          activeTimelineIndex === index 
+                            ? `${event.textColor} scale-110` 
+                            : 'text-slate-400'
+                        }`}>
+                          {event.year}
+                        </div>
+                      </button>
+                    );
+                  })}
                 </div>
 
                 {/* Active event details */}
                 <div className="mt-12 min-h-[120px] relative overflow-hidden">
                   <div 
                     key={activeTimelineIndex}
-                    className="transition-all duration-400 ease-out"
-                    style={{
-                      animation: 'fadeInUp 0.4s ease-out forwards',
-                      opacity: 0,
-                      transform: 'translateY(16px)'
-                    }}
-                    onAnimationEnd={(e) => {
-                      e.currentTarget.style.opacity = '1';
-                      e.currentTarget.style.transform = 'translateY(0)';
-                    }}
+                    className="transition-all duration-400 ease-out animate-fade-in"
                   >
-                    <h3 className={`text-xl md:text-2xl font-bold mb-3 text-${timelineEvents[activeTimelineIndex].color}`}>
+                    <h3 className={`text-xl md:text-2xl font-bold mb-3 ${timelineEvents[activeTimelineIndex].textColor}`}>
                       {timelineEvents[activeTimelineIndex].title}
                     </h3>
                     <p className="text-slate-300 text-sm md:text-base leading-relaxed">
@@ -337,7 +365,7 @@ const Company = () => {
                         key={index}
                         className={`h-1 rounded-full transition-all duration-500 ease-out ${
                           index === activeTimelineIndex 
-                            ? `bg-${event.color} w-8` 
+                            ? `${event.bgColor} w-8` 
                             : `bg-${event.color}/20 w-2`
                         }`}
                         style={{
@@ -351,44 +379,47 @@ const Company = () => {
 
               {/* Mobile Vertical Snake Timeline */}
               <div className="md:hidden space-y-8">
-                {timelineEvents.map((event, index) => (
-                  <div 
-                    key={index} 
-                    className={`relative ${index % 2 === 0 ? 'ml-0 mr-8' : 'ml-8 mr-0'}`}
-                  >
-                    {/* Event card and point container */}
-                    <div className={`relative flex items-start ${
-                      index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
-                    }`}>
-                      {/* Timeline point */}
-                      <div className="flex-shrink-0 relative z-10">
-                        <div className={`w-12 h-12 rounded-full border-4 border-${event.color} bg-white dark:bg-gray-800 flex items-center justify-center shadow-lg`}>
-                          <div className={`w-3 h-3 rounded-full bg-${event.color}`}></div>
-                        </div>
-                      </div>
-                      
-                      {/* Connecting line from point to card */}
-                      <div className={`w-4 h-0.5 bg-${event.color}/40 mt-6 ${
-                        index % 2 === 0 ? 'ml-0' : 'mr-0'
-                      }`}></div>
-                      
-                      {/* Event content */}
-                      <div className={`flex-1 ${index % 2 === 0 ? 'ml-0' : 'mr-0'}`}>
-                        <div className="bg-white/20 dark:bg-black/20 backdrop-blur-sm rounded-lg p-4 shadow-md">
-                          <div className={`text-sm font-bold text-${event.color} mb-1`}>
-                            {event.year}
+                {timelineEvents.map((event, index) => {
+                  const Icon = event.icon;
+                  return (
+                    <div 
+                      key={index} 
+                      className={`relative ${index % 2 === 0 ? 'ml-0 mr-8' : 'ml-8 mr-0'}`}
+                    >
+                      {/* Event card and point container */}
+                      <div className={`relative flex items-start ${
+                        index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
+                      }`}>
+                        {/* Timeline point */}
+                        <div className="flex-shrink-0 relative z-10">
+                          <div className={`w-12 h-12 rounded-full border-4 border-${event.color} ${event.bgColor} flex items-center justify-center shadow-lg`}>
+                            <Icon className="w-5 h-5 text-white" />
                           </div>
-                          <h3 className="text-lg font-semibold mb-2 text-white">
-                            {event.title}
-                          </h3>
-                          <p className="text-sm text-slate-300 leading-relaxed">
-                            {event.description}
-                          </p>
+                        </div>
+                        
+                        {/* Connecting line from point to card */}
+                        <div className={`w-4 h-0.5 bg-${event.color}/40 mt-6 ${
+                          index % 2 === 0 ? 'ml-0' : 'mr-0'
+                        }`}></div>
+                        
+                        {/* Event content */}
+                        <div className={`flex-1 ${index % 2 === 0 ? 'ml-0' : 'mr-0'}`}>
+                          <div className="bg-white/20 dark:bg-black/20 backdrop-blur-sm rounded-lg p-4 shadow-md">
+                            <div className={`text-sm font-bold ${event.textColor} mb-1`}>
+                              {event.year}
+                            </div>
+                            <h3 className="text-lg font-semibold mb-2 text-white">
+                              {event.title}
+                            </h3>
+                            <p className="text-sm text-slate-300 leading-relaxed">
+                              {event.description}
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </Card>
           </div>
@@ -400,15 +431,15 @@ const Company = () => {
               Узнайте больше о наших возможностях и продукции
             </p>
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
-              <Button asChild size="lg" className="text-sm md:text-base bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 transition-all duration-500 shadow-lg">
+              <Button asChild size="lg" className="text-sm md:text-base bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 transition-all duration-500 shadow-lg">
                 <Link to="/contact">
                   Связаться с нами
                   <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="border-purple-400/30 bg-purple-500/10 hover:bg-purple-500/20 text-sm md:text-base transition-all duration-500">
+              <Button asChild variant="outline" size="lg" className="border-emerald-400/30 bg-emerald-500/10 hover:bg-emerald-500/20 text-sm md:text-base transition-all duration-500">
                 <Link to="/products">
-                  <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent font-semibold">
+                  <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent font-semibold">
                     Наша продукция
                   </span>
                 </Link>
