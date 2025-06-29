@@ -53,7 +53,7 @@ const PreloadManager = ({ children }: PreloadManagerProps) => {
   if (isLoading) {
     return (
       <div 
-        className={`fixed inset-0 z-50 bg-gradient-to-br from-orange-50 via-white to-orange-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 flex items-center justify-center transition-opacity duration-600 ${
+        className={`fixed inset-0 z-50 bg-gradient-to-br from-slate-900 via-slate-800 to-black flex items-center justify-center transition-opacity duration-600 ${
           fadeOut ? 'opacity-0' : 'opacity-100'
         }`}
       >
@@ -61,10 +61,10 @@ const PreloadManager = ({ children }: PreloadManagerProps) => {
           <div className="flex justify-center">
             <LoaderCircle 
               size={48} 
-              className="animate-spin text-primary" 
+              className="animate-spin text-orange-500" 
             />
           </div>
-          <p className="text-lg text-muted-foreground font-medium">
+          <p className="text-lg text-white/90 font-medium">
             Загрузка...
           </p>
         </div>
@@ -73,7 +73,7 @@ const PreloadManager = ({ children }: PreloadManagerProps) => {
   }
 
   return (
-    <div className="animate-fade-in">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-black animate-fade-in">
       {children}
     </div>
   );
