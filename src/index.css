@@ -10,12 +10,6 @@
   color-scheme: dark;
 }
 
-/* Ensure scroll is always visible */
-html, body {
-  overflow: auto !important;
-  scroll-behavior: smooth;
-}
-
 @layer base {
   :root {
     --background: 24 30% 12%;
