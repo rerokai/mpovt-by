@@ -372,73 +372,37 @@ const Products = () => {
         </div>
         
         <div className="container mx-auto text-center relative z-10">
-          <Card className="max-w-5xl mx-auto p-8 md:p-12 lg:p-16 relative overflow-hidden bg-gradient-to-br from-slate-900/80 via-slate-800/60 to-slate-900/80 backdrop-blur-xl border border-slate-700/30 hover:border-slate-600/50 transition-all duration-700 shadow-2xl">
-            {/* Decorative elements */}
-            <div className="absolute top-4 left-4 w-12 h-12 bg-gradient-to-br from-cyan-400/20 to-purple-400/20 rounded-full blur-lg"></div>
-            <div className="absolute bottom-4 right-4 w-8 h-8 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-lg"></div>
-            <div className="absolute top-1/2 left-1/4 w-6 h-6 bg-gradient-to-br from-emerald-400/20 to-cyan-400/20 rounded-full blur-lg"></div>
-            
-            {/* Icon */}
-            <div className="flex justify-center mb-6">
-              <div className="relative">
-                <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white/10">
-                  <Zap className="w-8 h-8 md:w-10 md:h-10 text-cyan-400" />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-purple-400/20 rounded-2xl blur-md"></div>
-              </div>
-            </div>
-
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-cyan-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-white">
               Нужна консультация?
             </h2>
-            <p className="text-base md:text-lg lg:text-xl text-slate-300 mb-6 md:mb-8 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-slate-300 mb-8 md:mb-12 leading-relaxed">
               Наши эксперты помогут подобрать идеальное решение для ваших бизнес-задач. Получите персональную консультацию и техническую поддержку на всех этапах внедрения.
             </p>
             
-            {/* Features */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-              <div className="flex items-center justify-center space-x-2 p-3 bg-white/5 rounded-lg backdrop-blur-sm">
-                <Star className="w-4 h-4 text-yellow-400" />
-                <span className="text-sm text-slate-300">Экспертная консультация</span>
-              </div>
-              <div className="flex items-center justify-center space-x-2 p-3 bg-white/5 rounded-lg backdrop-blur-sm">
-                <Zap className="w-4 h-4 text-cyan-400" />
-                <span className="text-sm text-slate-300">Быстрое решение</span>
-              </div>
-              <div className="flex items-center justify-center space-x-2 p-3 bg-white/5 rounded-lg backdrop-blur-sm">
-                <CheckCircle className="w-4 h-4 text-emerald-400" />
-                <span className="text-sm text-slate-300">Индивидуальный подход</span>
-              </div>
-            </div>
-
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 asChild 
                 size="lg" 
-                className="group relative bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 hover:from-cyan-500 hover:via-blue-500 hover:to-purple-500 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-500 text-base md:text-lg px-8 py-6 overflow-hidden"
+                className="btn-primary text-lg px-8 py-6"
               >
                 <Link to="/contact">
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <span className="relative z-10 flex items-center">
-                    Связаться с нами
-                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1 duration-300" />
-                  </span>
+                  Связаться с нами
+                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
               <Button 
                 asChild 
                 variant="outline" 
                 size="lg" 
-                className="group border-slate-600/50 bg-slate-800/50 hover:bg-slate-700/50 backdrop-blur-sm text-slate-300 hover:text-white transition-all duration-500 text-base md:text-lg px-8 py-6"
+                className="border-slate-600 bg-transparent hover:bg-slate-800 text-slate-300 hover:text-white transition-all duration-300 text-lg px-8 py-6"
               >
                 <Link to="/">
-                  <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent group-hover:from-cyan-300 group-hover:to-purple-300 font-semibold transition-all duration-300">
-                    На главную
-                  </span>
+                  На главную
                 </Link>
               </Button>
             </div>
-          </Card>
+          </div>
         </div>
       </section>
 
