@@ -39,7 +39,7 @@ const ScrollToTop = () => {
       size="icon"
       className={cn(
         "fixed bottom-6 right-6 z-[9997] rounded-full shadow-lg transition-all duration-500 ease-out",
-        "bg-black/20 backdrop-blur-xl border border-white/10 hover:bg-black/40 text-white hover:text-orange-300",
+        "bg-black/40 backdrop-blur-xl border border-white/20 hover:bg-black/60 text-white hover:text-orange-300",
         "hover:scale-110 hover:shadow-xl",
         isVisible 
           ? "opacity-100 translate-y-0 pointer-events-auto" 

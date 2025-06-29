@@ -70,13 +70,13 @@ export default function Navigation() {
 
   return (
     <>
-      {/* Desktop Navigation */}
-      <header className="fixed top-4 left-1/2 transform -translate-x-1/2 z-[9999] w-full max-w-6xl px-4 hidden xl:block">
+      {/* Desktop Navigation - FIXED POSITIONING */}
+      <header className="fixed top-4 left-1/2 transform -translate-x-1/2 z-[9999] w-full max-w-6xl px-4 hidden xl:block pointer-events-none">
         <nav className={cn(
-          "mx-auto rounded-2xl transition-all duration-500 ease-out",
+          "mx-auto rounded-2xl transition-all duration-500 ease-out pointer-events-auto",
           scrolled 
-            ? "bg-black/20 backdrop-blur-xl border border-white/10 shadow-2xl" 
-            : "bg-transparent border border-transparent"
+            ? "bg-black/40 backdrop-blur-xl border border-white/20 shadow-2xl" 
+            : "bg-black/20 backdrop-blur-md border border-white/10"
         )}>
           <div className="flex justify-between items-center px-6 py-3">
             <Link to="/" className="flex items-center group">
@@ -91,7 +91,7 @@ export default function Navigation() {
               <li>
                 <Link 
                   to="/" 
-                  className="px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105 relative z-10"
+                  className="px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105"
                 >
                   Главная
                 </Link>
@@ -100,7 +100,7 @@ export default function Navigation() {
               <li className="relative">
                 <button
                   onClick={(e) => handleDropdownClick(e, 'company')}
-                  className="flex items-center px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105 relative z-10"
+                  className="flex items-center px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105"
                 >
                   О компании 
                   <ChevronDown className={cn(
@@ -115,7 +115,7 @@ export default function Navigation() {
                     ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" 
                     : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
                 )}>
-                  <div className="rounded-xl p-2 shadow-2xl bg-black/40 backdrop-blur-xl border border-white/10">
+                  <div className="rounded-xl p-2 shadow-2xl bg-black/60 backdrop-blur-xl border border-white/20">
                     <Link
                       to="/company"
                       className="block px-4 py-3 text-sm text-white hover:text-orange-300 rounded-lg transition-all duration-300 hover:bg-white/20 border-b border-white/10 mb-2 font-medium"
@@ -140,7 +140,7 @@ export default function Navigation() {
               <li className="relative">
                 <button
                   onClick={(e) => handleDropdownClick(e, 'products')}
-                  className="flex items-center px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105 relative z-10"
+                  className="flex items-center px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105"
                 >
                   Продукция 
                   <ChevronDown className={cn(
@@ -155,7 +155,7 @@ export default function Navigation() {
                     ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" 
                     : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
                 )}>
-                  <div className="rounded-xl p-2 shadow-2xl bg-black/40 backdrop-blur-xl border border-white/10">
+                  <div className="rounded-xl p-2 shadow-2xl bg-black/60 backdrop-blur-xl border border-white/20">
                     <Link
                       to="/products"
                       className="block px-4 py-3 text-sm text-white hover:text-orange-300 rounded-lg transition-all duration-300 hover:bg-white/20 border-b border-white/10 mb-2 font-medium"
@@ -180,7 +180,7 @@ export default function Navigation() {
               <li>
                 <Link 
                   to="/services" 
-                  className="px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105 relative z-10"
+                  className="px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105"
                 >
                   Услуги
                 </Link>
@@ -188,7 +188,7 @@ export default function Navigation() {
               <li>
                 <Link 
                   to="/contact" 
-                  className="px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105 relative z-10"
+                  className="px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105"
                 >
                   Контакты
                 </Link>
@@ -196,7 +196,7 @@ export default function Navigation() {
               <li>
                 <Link 
                   to="/support" 
-                  className="px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105 relative z-10"
+                  className="px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105"
                 >
                   Поддержка и сервис
                 </Link>
@@ -206,13 +206,13 @@ export default function Navigation() {
         </nav>
       </header>
 
-      {/* Mobile Navigation */}
-      <header className="fixed top-4 right-4 z-[9999] xl:hidden">
+      {/* Mobile Navigation - FIXED POSITIONING */}
+      <header className="fixed top-4 right-4 z-[9999] xl:hidden pointer-events-none">
         <div className={cn(
-          "rounded-2xl transition-all duration-500 ease-out",
+          "rounded-2xl transition-all duration-500 ease-out pointer-events-auto",
           scrolled 
-            ? "bg-black/20 backdrop-blur-xl border border-white/10 shadow-2xl" 
-            : "bg-black/10 backdrop-blur-sm border border-white/5"
+            ? "bg-black/40 backdrop-blur-xl border border-white/20 shadow-2xl" 
+            : "bg-black/20 backdrop-blur-md border border-white/10"
         )}>
           <div className="flex items-center justify-between px-4 py-3">
             <Link to="/" className="flex items-center">
@@ -248,7 +248,7 @@ export default function Navigation() {
         />
         
         <div className={cn(
-          "absolute top-24 left-4 right-4 bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl p-6 transition-all duration-500 ease-out transform",
+          "absolute top-24 left-4 right-4 bg-black/60 backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl p-6 transition-all duration-500 ease-out transform",
           mobileMenuOpen 
             ? "translate-y-0 scale-100 opacity-100" 
             : "-translate-y-4 scale-95 opacity-0"
