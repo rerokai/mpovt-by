@@ -14,6 +14,7 @@ import { LanguageProvider } from "./contexts/LanguageContext";
 import ScrollToTop from "./components/ScrollToTop";
 import PreloadManager from "./components/PreloadManager";
 import Navigation from "./components/Navigation";
+import CustomScrollbar from "./components/CustomScrollbar";
 
 // Create a react-query client
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => {
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <LanguageProvider>
+            <CustomScrollbar />
             <Toaster />
             <Sonner />
             <BrowserRouter>

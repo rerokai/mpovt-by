@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -145,6 +146,14 @@ export default {
 				'scale-in': {
 					'0%': { opacity: '0', transform: 'scale(0.9)' },
 					'100%': { opacity: '1', transform: 'scale(1)' }
+				},
+				'scrollbar-fade-in': {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' }
+				},
+				'scrollbar-fade-out': {
+					'0%': { opacity: '1' },
+					'100%': { opacity: '0' }
 				}
 			},
 			animation: {
@@ -165,7 +174,9 @@ export default {
 				'slide-in-right': 'slide-in-right 0.5s ease-out',
 				'glow': 'glow 2s ease-in-out infinite alternate',
 				'text-glow': 'text-glow 2s ease-in-out infinite alternate',
-				'scale-in': 'scale-in 0.5s ease-out'
+				'scale-in': 'scale-in 0.5s ease-out',
+				'scrollbar-fade-in': 'scrollbar-fade-in 0.3s ease-out',
+				'scrollbar-fade-out': 'scrollbar-fade-out 0.5s ease-out 1s forwards'
 			}
 		}
 	},
