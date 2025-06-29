@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
@@ -78,7 +77,7 @@ export default function Navigation() {
         scrolled 
           ? "border-b border-white/20 dark:border-white/10 shadow-2xl" 
           : "border-b border-transparent"
-      )} style={{ position: 'fixed !important' }}>
+      )}>
         <nav className="container mx-auto px-4 flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center group">
