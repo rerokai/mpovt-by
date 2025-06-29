@@ -138,6 +138,27 @@ const Company = () => {
       value: "1956",
       color: "text-purple-500",
       bgColor: "bg-purple-500/20"
+    },
+    {
+      icon: Users,
+      label: "Сотрудники",
+      value: "500+",
+      color: "text-orange-500",
+      bgColor: "bg-orange-500/20"
+    },
+    {
+      icon: Award,
+      label: "Сертификаты",
+      value: "ISO 9001",
+      color: "text-cyan-500",
+      bgColor: "bg-cyan-500/20"
+    },
+    {
+      icon: Globe,
+      label: "Экспорт",
+      value: "15+ стран",
+      color: "text-pink-500",
+      bgColor: "bg-pink-500/20"
     }
   ];
 
@@ -197,7 +218,7 @@ const Company = () => {
               </div>
               
               {/* Quote Section */}
-              <div className="mt-6 md:mt-8 p-4 md:p-6 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-xl border border-cyan-500/20">
+              <div className="mt-4 md:mt-6 p-4 md:p-6 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-xl border border-cyan-500/20">
                 <div className="flex items-start space-x-3">
                   <Quote className="h-6 w-6 md:h-8 md:w-8 text-cyan-400 flex-shrink-0 mt-1" />
                   <div>
@@ -218,33 +239,33 @@ const Company = () => {
                   <img 
                     src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=600&fit=crop" 
                     alt="Здание МПОВТ"
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105 min-h-[250px] md:min-h-[300px]"
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105 min-h-[200px] md:min-h-[250px]"
                   />
                 </div>
                 
-                {/* Image Caption */}
-                <div className="mb-4 text-center">
-                  <p className="text-white/70 font-medium text-base md:text-lg">
-                    Головной офис ОАО "МПОВТ"
-                  </p>
-                </div>
-                
-                {/* Company Stats in 3x1 layout */}
-                <div className="grid grid-cols-3 gap-2 md:gap-3 flex-1">
+                {/* Company Stats in 3x2 layout */}
+                <div className="grid grid-cols-3 gap-2 md:gap-3 mb-6">
                   {companyStats.map((stat, index) => {
                     const Icon = stat.icon;
                     return (
-                      <div key={index} className="flex flex-col items-center space-y-2 p-3 md:p-4 bg-white/5 dark:bg-black/20 backdrop-blur-sm rounded-lg hover:bg-white/10 transition-all duration-300 h-full justify-center">
-                        <div className={`p-2 md:p-3 ${stat.bgColor} rounded-xl flex-shrink-0`}>
-                          <Icon className={`h-4 w-4 md:h-6 md:w-6 ${stat.color}`} />
+                      <div key={index} className="flex flex-col items-center space-y-2 p-2 md:p-3 bg-white/5 dark:bg-black/20 backdrop-blur-sm rounded-lg hover:bg-white/10 transition-all duration-300 h-full justify-center">
+                        <div className={`p-1.5 md:p-2 ${stat.bgColor} rounded-lg flex-shrink-0`}>
+                          <Icon className={`h-3 w-3 md:h-4 md:w-4 ${stat.color}`} />
                         </div>
                         <div className="text-center">
-                          <p className="text-sm md:text-lg font-semibold text-white">{stat.value}</p>
-                          <p className="text-xs md:text-sm text-slate-400">{stat.label}</p>
+                          <p className="text-xs md:text-sm font-semibold text-white">{stat.value}</p>
+                          <p className="text-xs text-slate-400">{stat.label}</p>
                         </div>
                       </div>
                     );
                   })}
+                </div>
+                
+                {/* Image Caption with increased spacing */}
+                <div className="text-center">
+                  <p className="text-white/70 font-medium text-base md:text-lg">
+                    Головной офис ОАО "МПОВТ"
+                  </p>
                 </div>
               </Card>
             </div>
