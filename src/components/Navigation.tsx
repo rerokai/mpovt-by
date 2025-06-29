@@ -1,8 +1,8 @@
+
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
-import ThemeToggle from "./ThemeToggle";
 import { Button } from "@/components/ui/button";
 
 export default function Navigation() {
@@ -57,7 +57,6 @@ export default function Navigation() {
     setMobileMenuOpen(false);
   };
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -71,161 +70,154 @@ export default function Navigation() {
 
   return (
     <>
-      <header className={cn(
-        "fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 ease-out",
-        "bg-white/15 dark:bg-black/15 backdrop-blur-xl py-4",
-        scrolled 
-          ? "border-b border-white/20 dark:border-white/10 shadow-2xl" 
-          : "border-b border-transparent"
-      )}>
-        <nav className="container mx-auto px-4 flex justify-between items-center">
-          {/* Logo */}
-          <Link to="/" className="flex items-center group">
-            <img 
-              src="/lovable-uploads/70fca613-4992-4ede-98c2-f9c7e669d23e.png" 
-              alt="ОАО МПОВТ Logo" 
-              className="h-8 xl:h-10 w-auto transition-all duration-500 group-hover:scale-110 group-hover:rotate-6"
-            />
-          </Link>
+      {/* Island-style Navigation */}
+      <header className="fixed top-4 left-1/2 transform -translate-x-1/2 z-[9999] w-full max-w-7xl px-4">
+        <nav className={cn(
+          "mx-auto rounded-2xl transition-all duration-300 ease-out",
+          "bg-white/10 dark:bg-black/10 backdrop-blur-xl border border-white/20 dark:border-white/10",
+          "shadow-lg hover:shadow-xl",
+          scrolled && "bg-white/15 dark:bg-black/15 shadow-2xl"
+        )}>
+          <div className="flex justify-between items-center px-6 py-3">
+            {/* Logo */}
+            <Link to="/" className="flex items-center group">
+              <img 
+                src="/lovable-uploads/70fca613-4992-4ede-98c2-f9c7e669d23e.png" 
+                alt="ОАО МПОВТ Logo" 
+                className="h-8 xl:h-10 w-auto transition-all duration-500 group-hover:scale-110"
+              />
+            </Link>
 
-          {/* Desktop Navigation */}
-          <ul className="hidden xl:flex items-center space-x-2">
-            <li>
-              <Link 
-                to="/" 
-                className="px-3 xl:px-4 py-2 rounded-lg font-medium text-sm xl:text-base transition-all duration-300 hover:bg-white/10 hover:text-primary hover:scale-105 hover:shadow-lg"
-              >
-                Главная
-              </Link>
-            </li>
-            
-            {/* Company Dropdown */}
-            <li className="relative">
-              <button
-                onClick={(e) => handleDropdownClick(e, 'company')}
-                className="flex items-center px-3 xl:px-4 py-2 rounded-lg font-medium text-sm xl:text-base transition-all duration-300 hover:bg-white/10 hover:text-primary hover:scale-105 hover:shadow-lg"
-              >
-                О компании 
-                <ChevronDown className={cn(
-                  "ml-1 h-4 w-4 transition-transform duration-300",
-                  activeDropdown === 'company' && "rotate-180"
-                )} />
-              </button>
+            {/* Desktop Navigation */}
+            <ul className="hidden xl:flex items-center space-x-1">
+              <li>
+                <Link 
+                  to="/" 
+                  className="px-4 py-2 rounded-xl font-medium text-sm xl:text-base transition-all duration-300 hover:bg-white/10 hover:text-primary hover:scale-105"
+                >
+                  Главная
+                </Link>
+              </li>
               
-              <div className={cn(
-                "absolute top-full left-0 mt-4 min-w-[320px] transition-all duration-300 ease-out origin-top z-50",
-                activeDropdown === 'company' 
-                  ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" 
-                  : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
-              )}>
-                <div className="bg-white/95 dark:bg-black/95 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-xl p-2 shadow-2xl custom-scrollbar max-h-80 overflow-y-auto">
-                  <Link
-                    to="/company"
-                    className="block px-4 py-3 text-sm rounded-lg transition-all duration-300 hover:bg-white/20 hover:text-primary border-b border-white/10 mb-2 font-medium"
-                    onClick={() => setActiveDropdown(null)}
-                  >
-                    О компании - Главная
-                  </Link>
-                  {companyMenuItems.map((item) => (
+              {/* Company Dropdown */}
+              <li className="relative">
+                <button
+                  onClick={(e) => handleDropdownClick(e, 'company')}
+                  className="flex items-center px-4 py-2 rounded-xl font-medium text-sm xl:text-base transition-all duration-300 hover:bg-white/10 hover:text-primary hover:scale-105"
+                >
+                  О компании 
+                  <ChevronDown className={cn(
+                    "ml-1 h-4 w-4 transition-transform duration-300",
+                    activeDropdown === 'company' && "rotate-180"
+                  )} />
+                </button>
+                
+                <div className={cn(
+                  "absolute top-full left-0 mt-2 min-w-[320px] transition-all duration-300 ease-out origin-top z-50",
+                  activeDropdown === 'company' 
+                    ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" 
+                    : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
+                )}>
+                  <div className="bg-white/15 dark:bg-black/15 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-xl p-2 shadow-2xl">
                     <Link
-                      key={item.path}
-                      to={item.path}
-                      className="block px-4 py-3 text-sm rounded-lg transition-all duration-300 hover:bg-white/10 hover:text-primary"
+                      to="/company"
+                      className="block px-4 py-3 text-sm rounded-lg transition-all duration-300 hover:bg-white/20 hover:text-primary border-b border-white/10 mb-2 font-medium"
                       onClick={() => setActiveDropdown(null)}
                     >
-                      {item.name}
+                      О компании - Главная
                     </Link>
-                  ))}
+                    {companyMenuItems.map((item) => (
+                      <Link
+                        key={item.path}
+                        to={item.path}
+                        className="block px-4 py-3 text-sm rounded-lg transition-all duration-300 hover:bg-white/10 hover:text-primary"
+                        onClick={() => setActiveDropdown(null)}
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </li>
+              </li>
 
-            {/* Products Dropdown */}
-            <li className="relative">
-              <button
-                onClick={(e) => handleDropdownClick(e, 'products')}
-                className="flex items-center px-3 xl:px-4 py-2 rounded-lg font-medium text-sm xl:text-base transition-all duration-300 hover:bg-white/10 hover:text-primary hover:scale-105 hover:shadow-lg"
-              >
-                Продукция 
-                <ChevronDown className={cn(
-                  "ml-1 h-4 w-4 transition-transform duration-300",
-                  activeDropdown === 'products' && "rotate-180"
-                )} />
-              </button>
-              
-              <div className={cn(
-                "absolute top-full left-0 mt-4 min-w-[360px] transition-all duration-300 ease-out origin-top z-50",
-                activeDropdown === 'products' 
-                  ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" 
-                  : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
-              )}>
-                <div className="bg-white/95 dark:bg-black/95 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-xl p-2 shadow-2xl custom-scrollbar max-h-80 overflow-y-auto">
-                  <Link
-                    to="/products"
-                    className="block px-4 py-3 text-sm rounded-lg transition-all duration-300 hover:bg-white/20 hover:text-primary border-b border-white/10 mb-2 font-medium"
-                    onClick={() => setActiveDropdown(null)}
-                  >
-                    Продукция - Главная
-                  </Link>
-                  {productMenuItems.map((item) => (
+              {/* Products Dropdown */}
+              <li className="relative">
+                <button
+                  onClick={(e) => handleDropdownClick(e, 'products')}
+                  className="flex items-center px-4 py-2 rounded-xl font-medium text-sm xl:text-base transition-all duration-300 hover:bg-white/10 hover:text-primary hover:scale-105"
+                >
+                  Продукция 
+                  <ChevronDown className={cn(
+                    "ml-1 h-4 w-4 transition-transform duration-300",
+                    activeDropdown === 'products' && "rotate-180"
+                  )} />
+                </button>
+                
+                <div className={cn(
+                  "absolute top-full left-0 mt-2 min-w-[360px] transition-all duration-300 ease-out origin-top z-50",
+                  activeDropdown === 'products' 
+                    ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" 
+                    : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
+                )}>
+                  <div className="bg-white/15 dark:bg-black/15 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-xl p-2 shadow-2xl">
                     <Link
-                      key={item.path}
-                      to={item.path}
-                      className="block px-4 py-3 text-sm rounded-lg transition-all duration-300 hover:bg-white/10 hover:text-primary"
+                      to="/products"
+                      className="block px-4 py-3 text-sm rounded-lg transition-all duration-300 hover:bg-white/20 hover:text-primary border-b border-white/10 mb-2 font-medium"
                       onClick={() => setActiveDropdown(null)}
                     >
-                      {item.name}
+                      Продукция - Главная
                     </Link>
-                  ))}
+                    {productMenuItems.map((item) => (
+                      <Link
+                        key={item.path}
+                        to={item.path}
+                        className="block px-4 py-3 text-sm rounded-lg transition-all duration-300 hover:bg-white/10 hover:text-primary"
+                        onClick={() => setActiveDropdown(null)}
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </li>
+              </li>
 
-            <li>
-              <Link 
-                to="/services" 
-                className="px-3 xl:px-4 py-2 rounded-lg font-medium text-sm xl:text-base transition-all duration-300 hover:bg-white/10 hover:text-primary hover:scale-105 hover:shadow-lg"
-              >
-                Услуги
-              </Link>
-            </li>
-            <li>
-              <Link 
-                to="/contact" 
-                className="px-3 xl:px-4 py-2 rounded-lg font-medium text-sm xl:text-base transition-all duration-300 hover:bg-white/10 hover:text-primary hover:scale-105 hover:shadow-lg"
-              >
-                Контакты
-              </Link>
-            </li>
-            <li>
-              <Link 
-                to="/support" 
-                className="px-3 xl:px-4 py-2 rounded-lg font-medium text-sm xl:text-base transition-all duration-300 hover:bg-white/10 hover:text-primary hover:scale-105 hover:shadow-lg"
-              >
-                Поддержка и сервис
-              </Link>
-            </li>
-          </ul>
+              <li>
+                <Link 
+                  to="/services" 
+                  className="px-4 py-2 rounded-xl font-medium text-sm xl:text-base transition-all duration-300 hover:bg-white/10 hover:text-primary hover:scale-105"
+                >
+                  Услуги
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/contact" 
+                  className="px-4 py-2 rounded-xl font-medium text-sm xl:text-base transition-all duration-300 hover:bg-white/10 hover:text-primary hover:scale-105"
+                >
+                  Контакты
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/support" 
+                  className="px-4 py-2 rounded-xl font-medium text-sm xl:text-base transition-all duration-300 hover:bg-white/10 hover:text-primary hover:scale-105"
+                >
+                  Поддержка и сервис
+                </Link>
+              </li>
+            </ul>
 
-          {/* Desktop Actions */}
-          <div className="hidden xl:flex items-center space-x-3">
-            <ThemeToggle />
-            <Button asChild className="btn-primary-smooth text-sm xl:text-base px-4 xl:px-6">
-              <Link to="/contact">Связаться с нами</Link>
-            </Button>
-          </div>
-
-          {/* Mobile Menu Toggle */}
-          <div className="xl:hidden flex items-center space-x-2">
-            <ThemeToggle />
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="rounded-full transition-all duration-300 hover:scale-110 hover:bg-white/10"
-            >
-              {mobileMenuOpen ? <X className="h-5 w-5 xl:h-6 xl:w-6" /> : <Menu className="h-5 w-5 xl:h-6 xl:w-6" />}
-            </Button>
+            {/* Mobile Menu Toggle */}
+            <div className="xl:hidden">
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="rounded-full transition-all duration-300 hover:scale-110 hover:bg-white/10"
+              >
+                {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </Button>
+            </div>
           </div>
         </nav>
       </header>
@@ -233,35 +225,27 @@ export default function Navigation() {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-40 xl:hidden">
-          {/* Background overlay */}
           <div 
-            className={cn(
-              "absolute inset-0 transition-all duration-500 ease-out",
-              "backdrop-blur-sm bg-black/30"
-            )}
+            className="absolute inset-0 backdrop-blur-sm bg-black/30"
             onClick={closeMobileMenu}
           />
           
-          {/* Mobile menu content */}
-          <div className={cn(
-            "absolute top-20 left-4 right-4 bg-white/20 dark:bg-black/20 backdrop-blur-xl border border-white/30 dark:border-white/10 rounded-xl shadow-2xl p-4 xl:p-6 transition-all duration-300 ease-out custom-scrollbar",
-            "animate-slide-down"
-          )}>
-            <div className="space-y-3 xl:space-y-4 max-h-[70vh] overflow-y-auto custom-scrollbar">
+          <div className="absolute top-24 left-4 right-4 bg-white/15 dark:bg-black/15 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-xl shadow-2xl p-6">
+            <div className="space-y-4 max-h-[70vh] overflow-y-auto">
               <Link 
                 to="/" 
-                className="block text-base xl:text-lg font-medium py-2 transition-all duration-300 hover:text-primary" 
+                className="block text-lg font-medium py-2 transition-all duration-300 hover:text-primary" 
                 onClick={closeMobileMenu}
               >
                 Главная
               </Link>
               
               <div>
-                <div className="text-base xl:text-lg font-medium py-2 text-muted-foreground">О компании</div>
+                <div className="text-lg font-medium py-2 text-muted-foreground">О компании</div>
                 <div className="ml-4 space-y-2">
                   <Link 
                     to="/company"
-                    className="block py-1 text-sm xl:text-base transition-all duration-300 hover:text-primary font-medium" 
+                    className="block py-1 text-base transition-all duration-300 hover:text-primary font-medium" 
                     onClick={closeMobileMenu}
                   >
                     О компании - Главная
@@ -270,7 +254,7 @@ export default function Navigation() {
                     <Link 
                       key={item.path}
                       to={item.path} 
-                      className="block py-1 text-sm xl:text-base transition-all duration-300 hover:text-primary" 
+                      className="block py-1 text-sm transition-all duration-300 hover:text-primary" 
                       onClick={closeMobileMenu}
                     >
                       {item.name}
@@ -280,11 +264,11 @@ export default function Navigation() {
               </div>
               
               <div>
-                <div className="text-base xl:text-lg font-medium py-2 text-muted-foreground">Продукция</div>
+                <div className="text-lg font-medium py-2 text-muted-foreground">Продукция</div>
                 <div className="ml-4 space-y-2">
                   <Link 
                     to="/products"
-                    className="block py-1 text-sm xl:text-base transition-all duration-300 hover:text-primary font-medium" 
+                    className="block py-1 text-base transition-all duration-300 hover:text-primary font-medium" 
                     onClick={closeMobileMenu}
                   >
                     Продукция - Главная
@@ -293,7 +277,7 @@ export default function Navigation() {
                     <Link 
                       key={item.path}
                       to={item.path} 
-                      className="block py-1 text-sm xl:text-base transition-all duration-300 hover:text-primary" 
+                      className="block py-1 text-sm transition-all duration-300 hover:text-primary" 
                       onClick={closeMobileMenu}
                     >
                       {item.name}
@@ -304,21 +288,21 @@ export default function Navigation() {
               
               <Link 
                 to="/services" 
-                className="block text-base xl:text-lg font-medium py-2 transition-all duration-300 hover:text-primary" 
+                className="block text-lg font-medium py-2 transition-all duration-300 hover:text-primary" 
                 onClick={closeMobileMenu}
               >
                 Услуги
               </Link>
               <Link 
                 to="/contact" 
-                className="block text-base xl:text-lg font-medium py-2 transition-all duration-300 hover:text-primary" 
+                className="block text-lg font-medium py-2 transition-all duration-300 hover:text-primary" 
                 onClick={closeMobileMenu}
               >
                 Контакты
               </Link>
               <Link 
                 to="/support" 
-                className="block text-base xl:text-lg font-medium py-2 transition-all duration-300 hover:text-primary" 
+                className="block text-lg font-medium py-2 transition-all duration-300 hover:text-primary" 
                 onClick={closeMobileMenu}
               >
                 Поддержка и сервис

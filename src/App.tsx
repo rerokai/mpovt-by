@@ -17,7 +17,7 @@ import PreloadManager from "./components/PreloadManager";
 const queryClient = new QueryClient();
 
 const App = () => (
-  <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-black custom-scrollbar">
+  <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-black">
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <LanguageProvider>
