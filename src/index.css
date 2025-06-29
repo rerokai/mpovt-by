@@ -10,7 +10,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.1);
+  background: rgba(15, 23, 42, 0.2);
   backdrop-filter: blur(10px);
   border-radius: 6px;
 }
@@ -26,15 +26,10 @@
   background: linear-gradient(135deg, rgba(249, 115, 22, 0.8), rgba(234, 88, 12, 0.8));
 }
 
-::-webkit-scrollbar-corner {
-  background: rgba(15, 23, 42, 0.1);
-  backdrop-filter: blur(10px);
-}
-
 /* For Firefox */
 html {
   scrollbar-width: thin;
-  scrollbar-color: rgba(249, 115, 22, 0.6) rgba(15, 23, 42, 0.1);
+  scrollbar-color: rgba(249, 115, 22, 0.6) rgba(15, 23, 42, 0.2);
 }
 
 /* Ensure scroll is always visible */
@@ -43,46 +38,13 @@ html, body {
   scroll-behavior: smooth;
 }
 
-/* Fix z-index issues */
-#root {
-  position: relative;
-  z-index: 1;
+/* Force dark theme */
+* {
+  color-scheme: dark;
 }
 
 @layer base {
   :root {
-    --background: 210 50% 98%;
-    --foreground: 210 40% 10%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 210 40% 10%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 210 40% 10%;
-
-    --primary: 24 95% 53%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 32 40% 96%;
-    --secondary-foreground: 24 40% 10%;
-
-    --muted: 32 40% 96%;
-    --muted-foreground: 24 30% 40%;
-
-    --accent: 32 40% 96%;
-    --accent-foreground: 24 40% 10%;
-
-    --destructive: 0 85% 60%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 32 20% 90%;
-    --input: 32 20% 90%;
-    --ring: 24 95% 53%;
-
-    --radius: 0.5rem;
-  }
-
-  .dark {
     --background: 24 30% 12%;
     --foreground: 32 20% 98%;
 
@@ -110,6 +72,8 @@ html, body {
     --border: 24 30% 25%;
     --input: 24 30% 25%;
     --ring: 24 95% 60%;
+
+    --radius: 0.5rem;
   }
 }
 
@@ -121,6 +85,8 @@ html, body {
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', sans-serif;
+    background: linear-gradient(to bottom right, rgb(15, 23, 42), rgb(30, 41, 59), rgb(0, 0, 0));
+    min-height: 100vh;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -138,25 +104,8 @@ html, body {
     @apply bg-primary text-primary-foreground rounded-lg px-6 py-2.5 font-medium transition-all duration-300 hover:shadow-lg active:scale-[0.98] hover:bg-primary/90;
   }
   
-  .btn-primary-smooth {
-    @apply bg-primary text-primary-foreground rounded-lg px-6 py-2.5 font-medium transition-all duration-300 hover:shadow-lg active:scale-[0.98] hover:bg-primary/90;
-  }
-  
-  .btn-primary-smooth:hover {
-    box-shadow: 0 0 6px rgba(249, 115, 22, 0.25), 0 0 12px rgba(249, 115, 22, 0.12);
-    animation: glow-smooth 0.2s ease-out forwards;
-  }
-  
-  .btn-primary-smooth:not(:hover) {
-    animation: glow-fade 0.3s ease-out forwards;
-  }
-  
-  .section {
-    @apply py-16 md:py-20 lg:py-28;
-  }
-  
   .glass-card {
-    @apply bg-white/20 dark:bg-black/20 backdrop-blur-lg border border-white/30 dark:border-white/10 rounded-xl shadow-lg;
+    @apply bg-black/20 backdrop-blur-lg border border-white/10 rounded-xl shadow-lg;
   }
   
   .animate-fade-in-left {
@@ -306,24 +255,6 @@ html, body {
   100% {
     opacity: 1;
     transform: scale(1);
-  }
-}
-
-@keyframes glow-smooth {
-  0% {
-    box-shadow: 0 0 2px rgba(249, 115, 22, 0.1);
-  }
-  100% {
-    box-shadow: 0 0 6px rgba(249, 115, 22, 0.25), 0 0 12px rgba(249, 115, 22, 0.12);
-  }
-}
-
-@keyframes glow-fade {
-  0% {
-    box-shadow: 0 0 6px rgba(249, 115, 22, 0.25), 0 0 12px rgba(249, 115, 22, 0.12);
-  }
-  100% {
-    box-shadow: 0 0 0px rgba(249, 115, 22, 0);
   }
 }
 

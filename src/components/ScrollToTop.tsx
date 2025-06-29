@@ -9,12 +9,10 @@ const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
   const location = useLocation();
 
-  // Reset scroll position when route changes
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
-  // Handle scroll visibility
   useEffect(() => {
     const toggleVisibility = () => {
       if (window.pageYOffset > 300) {
@@ -40,8 +38,8 @@ const ScrollToTop = () => {
       onClick={scrollToTop}
       size="icon"
       className={cn(
-        "fixed bottom-6 right-6 z-[90] rounded-full shadow-lg transition-all duration-500 ease-out",
-        "bg-white/10 backdrop-blur-xl border border-white/20 hover:bg-white/20 text-white hover:text-orange-300",
+        "fixed bottom-6 right-6 z-[9997] rounded-full shadow-lg transition-all duration-500 ease-out",
+        "bg-black/20 backdrop-blur-xl border border-white/10 hover:bg-black/40 text-white hover:text-orange-300",
         "hover:scale-110 hover:shadow-xl",
         isVisible 
           ? "opacity-100 translate-y-0 pointer-events-auto" 

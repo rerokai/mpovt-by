@@ -61,25 +61,24 @@ export default function Navigation() {
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = 'unset';
     }
     return () => {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = 'unset';
     };
   }, [mobileMenuOpen]);
 
   return (
     <>
-      {/* Desktop Navigation - Island Style */}
-      <header className="fixed top-4 left-1/2 transform -translate-x-1/2 z-[100] w-full max-w-6xl px-4 hidden xl:block">
+      {/* Desktop Navigation */}
+      <header className="fixed top-4 left-1/2 transform -translate-x-1/2 z-[9999] w-full max-w-6xl px-4 hidden xl:block">
         <nav className={cn(
-          "mx-auto rounded-2xl transition-all duration-500 ease-out transform",
+          "mx-auto rounded-2xl transition-all duration-500 ease-out",
           scrolled 
-            ? "bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl scale-100 opacity-100" 
-            : "bg-transparent border border-transparent scale-95 opacity-90"
+            ? "bg-black/20 backdrop-blur-xl border border-white/10 shadow-2xl" 
+            : "bg-transparent border border-transparent"
         )}>
           <div className="flex justify-between items-center px-6 py-3">
-            {/* Logo */}
             <Link to="/" className="flex items-center group">
               <img 
                 src="/lovable-uploads/70fca613-4992-4ede-98c2-f9c7e669d23e.png" 
@@ -88,22 +87,20 @@ export default function Navigation() {
               />
             </Link>
 
-            {/* Desktop Navigation */}
             <ul className="flex items-center space-x-1">
               <li>
                 <Link 
                   to="/" 
-                  className="px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105"
+                  className="px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105 relative z-10"
                 >
                   Главная
                 </Link>
               </li>
               
-              {/* Company Dropdown */}
               <li className="relative">
                 <button
                   onClick={(e) => handleDropdownClick(e, 'company')}
-                  className="flex items-center px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105"
+                  className="flex items-center px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105 relative z-10"
                 >
                   О компании 
                   <ChevronDown className={cn(
@@ -113,15 +110,12 @@ export default function Navigation() {
                 </button>
                 
                 <div className={cn(
-                  "absolute top-full left-0 mt-2 min-w-[320px] transition-all duration-500 ease-out origin-top z-[110]",
+                  "absolute top-full left-0 mt-2 min-w-[320px] transition-all duration-300 ease-out origin-top z-[10000]",
                   activeDropdown === 'company' 
                     ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" 
                     : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
                 )}>
-                  <div className={cn(
-                    "rounded-xl p-2 shadow-2xl transition-all duration-500",
-                    "bg-white/10 backdrop-blur-xl border border-white/20"
-                  )}>
+                  <div className="rounded-xl p-2 shadow-2xl bg-black/40 backdrop-blur-xl border border-white/10">
                     <Link
                       to="/company"
                       className="block px-4 py-3 text-sm text-white hover:text-orange-300 rounded-lg transition-all duration-300 hover:bg-white/20 border-b border-white/10 mb-2 font-medium"
@@ -143,11 +137,10 @@ export default function Navigation() {
                 </div>
               </li>
 
-              {/* Products Dropdown */}
               <li className="relative">
                 <button
                   onClick={(e) => handleDropdownClick(e, 'products')}
-                  className="flex items-center px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105"
+                  className="flex items-center px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105 relative z-10"
                 >
                   Продукция 
                   <ChevronDown className={cn(
@@ -157,15 +150,12 @@ export default function Navigation() {
                 </button>
                 
                 <div className={cn(
-                  "absolute top-full left-0 mt-2 min-w-[360px] transition-all duration-500 ease-out origin-top z-[110]",
+                  "absolute top-full left-0 mt-2 min-w-[360px] transition-all duration-300 ease-out origin-top z-[10000]",
                   activeDropdown === 'products' 
                     ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" 
                     : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
                 )}>
-                  <div className={cn(
-                    "rounded-xl p-2 shadow-2xl transition-all duration-500",
-                    "bg-white/10 backdrop-blur-xl border border-white/20"
-                  )}>
+                  <div className="rounded-xl p-2 shadow-2xl bg-black/40 backdrop-blur-xl border border-white/10">
                     <Link
                       to="/products"
                       className="block px-4 py-3 text-sm text-white hover:text-orange-300 rounded-lg transition-all duration-300 hover:bg-white/20 border-b border-white/10 mb-2 font-medium"
@@ -190,7 +180,7 @@ export default function Navigation() {
               <li>
                 <Link 
                   to="/services" 
-                  className="px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105"
+                  className="px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105 relative z-10"
                 >
                   Услуги
                 </Link>
@@ -198,7 +188,7 @@ export default function Navigation() {
               <li>
                 <Link 
                   to="/contact" 
-                  className="px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105"
+                  className="px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105 relative z-10"
                 >
                   Контакты
                 </Link>
@@ -206,7 +196,7 @@ export default function Navigation() {
               <li>
                 <Link 
                   to="/support" 
-                  className="px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105"
+                  className="px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105 relative z-10"
                 >
                   Поддержка и сервис
                 </Link>
@@ -216,13 +206,13 @@ export default function Navigation() {
         </nav>
       </header>
 
-      {/* Mobile Navigation - Compact top-right */}
-      <header className="fixed top-4 right-4 z-[100] xl:hidden">
+      {/* Mobile Navigation */}
+      <header className="fixed top-4 right-4 z-[9999] xl:hidden">
         <div className={cn(
           "rounded-2xl transition-all duration-500 ease-out",
           scrolled 
-            ? "bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl" 
-            : "bg-white/5 backdrop-blur-sm border border-white/10"
+            ? "bg-black/20 backdrop-blur-xl border border-white/10 shadow-2xl" 
+            : "bg-black/10 backdrop-blur-sm border border-white/5"
         )}>
           <div className="flex items-center justify-between px-4 py-3">
             <Link to="/" className="flex items-center">
@@ -247,7 +237,7 @@ export default function Navigation() {
 
       {/* Mobile Menu */}
       <div className={cn(
-        "fixed inset-0 z-50 xl:hidden transition-all duration-500 ease-out",
+        "fixed inset-0 z-[9998] xl:hidden transition-all duration-500 ease-out",
         mobileMenuOpen 
           ? "opacity-100 backdrop-blur-sm bg-black/30 pointer-events-auto" 
           : "opacity-0 pointer-events-none"
@@ -258,7 +248,7 @@ export default function Navigation() {
         />
         
         <div className={cn(
-          "absolute top-24 left-4 right-4 bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl p-6 transition-all duration-500 ease-out transform",
+          "absolute top-24 left-4 right-4 bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl p-6 transition-all duration-500 ease-out transform",
           mobileMenuOpen 
             ? "translate-y-0 scale-100 opacity-100" 
             : "-translate-y-4 scale-95 opacity-0"
