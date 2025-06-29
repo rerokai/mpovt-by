@@ -5,7 +5,11 @@ import { ArrowUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
-const ScrollToTop = () => {
+interface ScrollToTopProps {
+  isLoading?: boolean;
+}
+
+const ScrollToTop = ({ isLoading = false }: ScrollToTopProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const location = useLocation();
 
@@ -41,7 +45,7 @@ const ScrollToTop = () => {
         "rounded-full shadow-lg transition-all duration-500 ease-out",
         "bg-black/60 backdrop-blur-xl border border-white/20 hover:bg-black/80 text-white hover:text-orange-300",
         "hover:scale-110 hover:shadow-xl",
-        isVisible 
+        isVisible && !isLoading
           ? "opacity-100 translate-y-0 pointer-events-auto" 
           : "opacity-0 translate-y-2 pointer-events-none"
       )}

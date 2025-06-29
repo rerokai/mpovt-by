@@ -4,7 +4,11 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
-export default function Navigation() {
+interface NavigationProps {
+  isLoading?: boolean;
+}
+
+export default function Navigation({ isLoading = false }: NavigationProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -69,9 +73,12 @@ export default function Navigation() {
 
   return (
     <>
-      {/* Desktop Navigation - FIXED POSITIONING */}
+      {/* Desktop Navigation */}
       <header 
-        className="hidden xl:block"
+        className={cn(
+          "hidden xl:block transition-opacity duration-300",
+          isLoading ? "opacity-0" : "opacity-100"
+        )}
         style={{
           position: 'fixed',
           top: '0',
@@ -81,10 +88,8 @@ export default function Navigation() {
         }}
       >
         <nav className={cn(
-          "mx-auto max-w-6xl mt-4 mx-4 rounded-2xl transition-all duration-500 ease-out",
-          scrolled 
-            ? "bg-black/60 backdrop-blur-xl border border-white/20 shadow-2xl" 
-            : "bg-black/40 backdrop-blur-xl border border-white/10"
+          "mx-auto max-w-6xl mt-4 mx-4 rounded-2xl transition-all duration-500 ease-out bg-black/60 backdrop-blur-xl border border-white/20",
+          scrolled && "shadow-2xl"
         )}>
           <div className="flex justify-between items-center px-6 py-3">
             <Link to="/" className="flex items-center group">
@@ -218,9 +223,12 @@ export default function Navigation() {
         </nav>
       </header>
 
-      {/* Mobile Navigation - FIXED POSITIONING */}
+      {/* Mobile Navigation */}
       <header 
-        className="xl:hidden"
+        className={cn(
+          "xl:hidden transition-opacity duration-300",
+          isLoading ? "opacity-0" : "opacity-100"
+        )}
         style={{
           position: 'fixed',
           top: '16px',
@@ -228,12 +236,7 @@ export default function Navigation() {
           zIndex: 1000
         }}
       >
-        <div className={cn(
-          "rounded-2xl transition-all duration-500 ease-out",
-          scrolled 
-            ? "bg-black/60 backdrop-blur-xl border border-white/20 shadow-2xl" 
-            : "bg-black/40 backdrop-blur-xl border border-white/10"
-        )}>
+        <div className="rounded-2xl bg-black/60 backdrop-blur-xl border border-white/20">
           <div className="flex items-center justify-between px-4 py-3">
             <Link to="/" className="flex items-center">
               <img 

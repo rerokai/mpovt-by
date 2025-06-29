@@ -4,9 +4,10 @@ import { LoaderCircle } from 'lucide-react';
 
 interface PreloadManagerProps {
   children: React.ReactNode;
+  onLoadingChange?: (isLoading: boolean) => void;
 }
 
-const PreloadManager = ({ children }: PreloadManagerProps) => {
+const PreloadManager = ({ children, onLoadingChange }: PreloadManagerProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
 
@@ -31,6 +32,7 @@ const PreloadManager = ({ children }: PreloadManagerProps) => {
         // Минимальная длительность загрузки 2 секунды
         setTimeout(() => {
           setFadeOut(true);
+          onLoadingChange?.(false);
           // Дополнительная задержка для плавного исчезновения
           setTimeout(() => {
             setIsLoading(false);
@@ -40,6 +42,7 @@ const PreloadManager = ({ children }: PreloadManagerProps) => {
         console.warn('Some resources failed to preload:', error);
         setTimeout(() => {
           setFadeOut(true);
+          onLoadingChange?.(false);
           setTimeout(() => {
             setIsLoading(false);
           }, 600);
@@ -48,7 +51,7 @@ const PreloadManager = ({ children }: PreloadManagerProps) => {
     };
 
     preloadResources();
-  }, []);
+  }, [onLoadingChange]);
 
   if (isLoading) {
     return (
