@@ -19,8 +19,6 @@ const NotFound = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-950 dark:to-orange-900">
-      <Navigation />
-      
       <div className="min-h-screen flex flex-col items-center justify-center px-4 pt-20">
         <Card className="max-w-lg w-full text-center p-12 glass-card rounded-2xl shadow-2xl animate-fade-in">
           <div className="relative mb-8">

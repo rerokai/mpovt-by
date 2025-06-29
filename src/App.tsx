@@ -32,6 +32,7 @@ const App = () => {
             <Sonner />
             <BrowserRouter>
               <ScrollToTop isLoading={isLoading} />
+              <Navigation isLoading={isLoading} />
               <PreloadManager onLoadingChange={setIsLoading}>
                 <Routes>
                   <Route path="/" element={<Index />} />
