@@ -121,7 +121,6 @@ const Index = () => {
       link: "/products/h-pc",
       gradient: "from-blue-600 via-blue-500 to-cyan-400",
       bgGradient: "from-blue-500/20 via-cyan-400/20 to-blue-600/20",
-      badge: "Флагманская серия",
       features: ["IP65 защита", "Температура -40°C до +85°C", "Модульная архитектура", "Потребительские интерфейсы"],
       featureIcon: Cpu,
       uniqueFeatures: [
@@ -141,7 +140,6 @@ const Index = () => {
       link: "/products/h-book",
       gradient: "from-emerald-600 via-emerald-500 to-teal-400",
       bgGradient: "from-emerald-500/20 via-teal-400/20 to-emerald-600/20",
-      badge: "Мобильные решения",
       features: ["Ударопрочный корпус", "20ч автономность", "Водонепроницаемость", "Горячая замена батарей"],
       featureIcon: Laptop,
       uniqueFeatures: [
@@ -161,7 +159,6 @@ const Index = () => {
       link: "/products/h-monitors",
       gradient: "from-purple-600 via-purple-500 to-pink-400",
       bgGradient: "from-purple-500/20 via-pink-400/20 to-purple-600/20",
-      badge: "Премиум дисплеи",
       features: ["Антибликовые покрытия", "Сенсорные технологии", "Широкие углы обзора", "Высокая яркость"],
       featureIcon: Monitor,
       uniqueFeatures: [
@@ -181,7 +178,6 @@ const Index = () => {
       link: "/products/h-tab",
       gradient: "from-orange-600 via-orange-500 to-yellow-400",
       bgGradient: "from-orange-500/20 via-yellow-400/20 to-orange-600/20",
-      badge: "Мобильный контроль",
       features: ["Защита IP67", "Работа в перчатках", "Беспроводная связь", "Емкостные экраны"],
       featureIcon: Tablet,
       uniqueFeatures: [
@@ -201,7 +197,6 @@ const Index = () => {
       link: "/products/h-storage",
       gradient: "from-red-600 via-red-500 to-orange-400",
       bgGradient: "from-red-500/20 via-orange-400/20 to-red-600/20",
-      badge: "Высокие технологии",
       features: ["NVMe интерфейс", "Расширенный диапазон температур", "Высокая износостойкость", "Потребительская надежность"],
       featureIcon: HardDrive,
       uniqueFeatures: [
@@ -347,7 +342,7 @@ const Index = () => {
             </p>
           </div>
 
-          {/* Full-width cards with glassmorphism */}
+          {/* Full-width cards with glassmorphism - Updated with more horizontal padding */}
           <div className="space-y-8">
             {priorityProducts.map((product, index) => {
               const isHovered = hoveredCard === index;
@@ -358,7 +353,7 @@ const Index = () => {
                   className="w-full animate-fade-in-up"
                   style={{ animationDelay: `${index * 200}ms` }}
                 >
-                  <Card className="group overflow-hidden bg-slate-800/10 backdrop-blur-xl border border-slate-700/20 hover:border-slate-600/40 transition-all duration-700 mx-4 hover:shadow-2xl hover:shadow-slate-900/50">
+                  <Card className="group overflow-hidden bg-slate-800/10 backdrop-blur-xl border border-slate-700/20 hover:border-slate-600/40 transition-all duration-700 mx-8 md:mx-12 lg:mx-16 hover:shadow-2xl hover:shadow-slate-900/50">
                     <div className="grid lg:grid-cols-2 gap-0 min-h-[60vh] max-h-[600px]">
                       {/* Video/Image Section with features overlay */}
                       <div 
@@ -375,25 +370,23 @@ const Index = () => {
                           playsInline
                         />
 
-                        {/* Features overlay on hover - only on desktop */}
-                        <div className={`absolute inset-0 bg-black/60 backdrop-blur-sm transition-all duration-700 flex items-center justify-center p-6 hidden lg:flex ${
+                        {/* Features overlay on hover - only on desktop, without badge */}
+                        <div className={`absolute inset-0 bg-black/70 backdrop-blur-sm transition-all duration-700 flex items-center justify-center p-6 hidden lg:flex ${
                           isHovered ? 'opacity-100' : 'opacity-0'
                         }`}>
                           <div className="text-center text-white max-w-md">
-                            <div className="grid grid-cols-2 gap-4 mb-6">
+                            <div className="grid grid-cols-2 gap-3">
                               {product.uniqueFeatures.map((feature, featureIndex) => {
                                 const FeatureIcon = feature.icon;
                                 return (
-                                  <div key={featureIndex} className="flex flex-col items-center gap-2 p-4 rounded-lg bg-white/10 backdrop-blur-md border border-white/20">
-                                    <FeatureIcon className={`w-6 h-6 ${feature.color} flex-shrink-0`} />
-                                    <span className="text-white text-xs text-center font-medium">{feature.text}</span>
+                                  <div key={featureIndex} className="flex flex-col items-center gap-3 p-4 rounded-xl bg-white/5 backdrop-blur-lg border border-white/10 shadow-lg">
+                                    <div className={`p-2 rounded-lg bg-white/10 backdrop-blur-sm`}>
+                                      <FeatureIcon className={`w-5 h-5 ${feature.color} flex-shrink-0`} />
+                                    </div>
+                                    <span className="text-white text-xs text-center font-medium leading-tight">{feature.text}</span>
                                   </div>
                                 );
                               })}
-                            </div>
-                            <div className={`inline-block relative bg-gradient-to-r ${product.gradient} text-white text-sm px-6 py-3 rounded-full font-semibold flex items-center gap-2 shadow-2xl`}>
-                              <Sparkles className="w-4 h-4 animate-pulse" />
-                              <span>{product.badge}</span>
                             </div>
                           </div>
                         </div>
@@ -794,26 +787,26 @@ const Index = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
+        {/* CTA Section - Updated styling to match Company page */}
         <section className="py-16 md:py-20 px-4 relative z-10">
           <div className="container mx-auto text-center">
-            <Card className="max-w-4xl mx-auto p-8 md:p-12 glass-card bg-gradient-to-br from-blue-900/30 via-purple-900/20 to-slate-900/30 border-blue-700/30">
-              <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-teal-400 bg-clip-text text-transparent">
+            <Card className="max-w-4xl mx-auto p-8 md:p-12 bg-slate-800/10 backdrop-blur-xl border border-slate-700/20 hover:border-slate-600/40 transition-all duration-500">
+              <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6 text-white">
                 Готовы к сотрудничеству?
               </h2>
-              <p className="text-lg md:text-xl text-blue-100 mb-6 md:mb-8 max-w-2xl mx-auto">
+              <p className="text-lg md:text-xl text-slate-300 mb-6 md:mb-8 max-w-2xl mx-auto">
                 Свяжитесь с нами для обсуждения ваших потребностей в электронных компонентах и автокомпонентах
               </p>
               <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
-                <Button asChild size="lg" className="text-sm md:text-base bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 transition-all duration-500 shadow-lg">
+                <Button asChild size="lg" className="text-sm md:text-base bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 transition-all duration-500 shadow-lg">
                   <Link to="/contact">
                     Связаться с нами
                     <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                   </Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="border-white/30 bg-white/10 hover:bg-white/20 text-sm md:text-base transition-all duration-500">
+                <Button asChild variant="outline" size="lg" className="border-purple-400/30 bg-purple-500/10 hover:bg-purple-500/20 text-sm md:text-base transition-all duration-500">
                   <Link to="/products">
-                    <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-semibold">
+                    <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent font-semibold">
                       Каталог продукции
                     </span>
                   </Link>

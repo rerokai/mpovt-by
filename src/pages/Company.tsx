@@ -177,9 +177,9 @@ const Company = () => {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 mb-12 md:mb-16 lg:mb-20">
-            <Card className="p-4 sm:p-6 md:p-8 bg-slate-800/10 backdrop-blur-xl border border-slate-700/20 hover:border-slate-600/40 transition-all duration-500 animate-fade-in-left">
+            <Card className="p-4 sm:p-6 md:p-8 bg-slate-800/10 backdrop-blur-xl border border-slate-700/20 hover:border-slate-600/40 transition-all duration-500 animate-fade-in-left flex flex-col">
               <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 md:mb-4 lg:mb-6 text-white">Наша история</h2>
-              <div className="space-y-3 md:space-y-4 text-slate-300 leading-relaxed">
+              <div className="space-y-3 md:space-y-4 text-slate-300 leading-relaxed flex-grow">
                 <p className="text-sm md:text-base">
                   ОАО «МПОВТ» (Минское производственное объединение вычислительной техники) — ведущее предприятие Беларуси в области разработки и производства электронных компонентов и систем. Основанное в 1956 году, предприятие прошло долгий путь развития и модернизации.
                 </p>
@@ -207,13 +207,13 @@ const Company = () => {
               </div>
             </Card>
 
-            <div className="animate-fade-in-right space-y-4 md:space-y-6">
-              <Card className="p-3 sm:p-4 md:p-6 bg-slate-800/10 backdrop-blur-xl border border-slate-700/20 hover:border-slate-600/40 transition-all duration-500 h-full">
-                <div className="aspect-[4/3] bg-gradient-to-br from-primary/20 to-orange-400/20 rounded-xl overflow-hidden mb-4">
+            <div className="animate-fade-in-right space-y-4 md:space-y-6 flex flex-col">
+              <Card className="p-3 sm:p-4 md:p-6 bg-slate-800/10 backdrop-blur-xl border border-slate-700/20 hover:border-slate-600/40 transition-all duration-500 flex-grow flex flex-col">
+                <div className="flex-1 bg-gradient-to-br from-primary/20 to-orange-400/20 rounded-xl overflow-hidden mb-4">
                   <img 
                     src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=600&fit=crop" 
                     alt="Здание МПОВТ"
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105 min-h-[200px]"
                   />
                 </div>
                 
@@ -224,22 +224,40 @@ const Company = () => {
                   </p>
                 </div>
                 
-                {/* Company Stats - reduced icon size and adjusted positioning */}
-                <div className="grid grid-cols-1 gap-4 ml-0">
-                  {companyStats.map((stat, index) => {
-                    const Icon = stat.icon;
-                    return (
-                      <div key={index} className="flex items-center space-x-4 p-4 bg-white/5 dark:bg-black/20 backdrop-blur-sm rounded-lg hover:bg-white/10 transition-all duration-300">
-                        <div className={`p-3 ${stat.bgColor} rounded-xl flex-shrink-0`}>
-                          <Icon className={`h-6 w-6 ${stat.color}`} />
+                {/* Company Stats arranged in 2+1 layout */}
+                <div className="flex flex-col gap-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    {companyStats.slice(0, 2).map((stat, index) => {
+                      const Icon = stat.icon;
+                      return (
+                        <div key={index} className="flex flex-col items-center space-y-2 p-4 bg-white/5 dark:bg-black/20 backdrop-blur-sm rounded-lg hover:bg-white/10 transition-all duration-300">
+                          <div className={`p-3 ${stat.bgColor} rounded-xl flex-shrink-0`}>
+                            <Icon className={`h-6 w-6 ${stat.color}`} />
+                          </div>
+                          <div className="text-center">
+                            <p className="text-lg font-semibold text-white">{stat.value}</p>
+                            <p className="text-sm text-slate-400">{stat.label}</p>
+                          </div>
                         </div>
-                        <div className="min-w-0 flex-1">
-                          <p className="text-lg font-semibold text-white">{stat.value}</p>
-                          <p className="text-sm text-slate-400">{stat.label}</p>
+                      );
+                    })}
+                  </div>
+                  <div className="flex justify-center">
+                    {companyStats.slice(2, 3).map((stat, index) => {
+                      const Icon = stat.icon;
+                      return (
+                        <div key={index + 2} className="flex flex-col items-center space-y-2 p-4 bg-white/5 dark:bg-black/20 backdrop-blur-sm rounded-lg hover:bg-white/10 transition-all duration-300 w-1/2">
+                          <div className={`p-3 ${stat.bgColor} rounded-xl flex-shrink-0`}>
+                            <Icon className={`h-6 w-6 ${stat.color}`} />
+                          </div>
+                          <div className="text-center">
+                            <p className="text-lg font-semibold text-white">{stat.value}</p>
+                            <p className="text-sm text-slate-400">{stat.label}</p>
+                          </div>
                         </div>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
+                  </div>
                 </div>
               </Card>
             </div>
