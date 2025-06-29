@@ -113,12 +113,12 @@ export default function Navigation() {
               </button>
               
               <div className={cn(
-                "absolute top-full left-0 mt-4 min-w-[320px] transition-all duration-300 ease-out origin-top",
+                "absolute top-full left-0 mt-4 min-w-[320px] transition-all duration-300 ease-out origin-top z-50",
                 activeDropdown === 'company' 
                   ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" 
                   : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
               )}>
-                <div className="bg-white/95 dark:bg-black/95 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-xl p-2 shadow-2xl">
+                <div className="bg-white/95 dark:bg-black/95 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-xl p-2 shadow-2xl custom-scrollbar max-h-80 overflow-y-auto">
                   <Link
                     to="/company"
                     className="block px-4 py-3 text-sm rounded-lg transition-all duration-300 hover:bg-white/20 hover:text-primary border-b border-white/10 mb-2 font-medium"
@@ -154,12 +154,12 @@ export default function Navigation() {
               </button>
               
               <div className={cn(
-                "absolute top-full left-0 mt-4 min-w-[360px] transition-all duration-300 ease-out origin-top",
+                "absolute top-full left-0 mt-4 min-w-[360px] transition-all duration-300 ease-out origin-top z-50",
                 activeDropdown === 'products' 
                   ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" 
                   : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
               )}>
-                <div className="bg-white/95 dark:bg-black/95 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-xl p-2 shadow-2xl">
+                <div className="bg-white/95 dark:bg-black/95 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-xl p-2 shadow-2xl custom-scrollbar max-h-80 overflow-y-auto">
                   <Link
                     to="/products"
                     className="block px-4 py-3 text-sm rounded-lg transition-all duration-300 hover:bg-white/20 hover:text-primary border-b border-white/10 mb-2 font-medium"
@@ -244,10 +244,10 @@ export default function Navigation() {
           
           {/* Mobile menu content */}
           <div className={cn(
-            "absolute top-20 left-4 right-4 bg-white/20 dark:bg-black/20 backdrop-blur-xl border border-white/30 dark:border-white/10 rounded-xl shadow-2xl p-4 xl:p-6 transition-all duration-300 ease-out",
+            "absolute top-20 left-4 right-4 bg-white/20 dark:bg-black/20 backdrop-blur-xl border border-white/30 dark:border-white/10 rounded-xl shadow-2xl p-4 xl:p-6 transition-all duration-300 ease-out custom-scrollbar",
             "animate-slide-down"
           )}>
-            <div className="space-y-3 xl:space-y-4 max-h-[70vh] overflow-y-auto">
+            <div className="space-y-3 xl:space-y-4 max-h-[70vh] overflow-y-auto custom-scrollbar">
               <Link 
                 to="/" 
                 className="block text-base xl:text-lg font-medium py-2 transition-all duration-300 hover:text-primary" 

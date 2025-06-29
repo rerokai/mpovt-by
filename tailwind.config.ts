@@ -170,5 +170,34 @@ export default {
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [
+		require("tailwindcss-animate"),
+		function({ addUtilities }: { addUtilities: Function }) {
+			const newUtilities = {
+				'.custom-scrollbar': {
+					'&::-webkit-scrollbar': {
+						width: '8px',
+						height: '8px',
+					},
+					'&::-webkit-scrollbar-track': {
+						background: 'rgba(15, 23, 42, 0.3)',
+						borderRadius: '4px',
+					},
+					'&::-webkit-scrollbar-thumb': {
+						background: 'linear-gradient(45deg, #f97316, #ea580c)',
+						borderRadius: '4px',
+						border: '1px solid rgba(255, 255, 255, 0.1)',
+					},
+					'&::-webkit-scrollbar-thumb:hover': {
+						background: 'linear-gradient(45deg, #ea580c, #c2410c)',
+						boxShadow: '0 0 10px rgba(249, 115, 22, 0.5)',
+					},
+					'&::-webkit-scrollbar-corner': {
+						background: 'rgba(15, 23, 42, 0.3)',
+					},
+				},
+			};
+			addUtilities(newUtilities);
+		}
+	],
 } satisfies Config;
