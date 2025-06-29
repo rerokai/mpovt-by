@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, ChevronDown, FileText, Users, Cog, Briefcase, MapPin, Shield, ShoppingCart, Car, Tractor, Truck, Laptop, Phone, Radio, Database, Archive } from "lucide-react";
@@ -36,6 +35,12 @@ export default function Navigation({ isLoading = false }: NavigationProps) {
     { name: "Информационные системы", path: "/products/information-systems", icon: Database },
     { name: "Металлические шкафы", path: "/products/metal-cabinets", icon: Archive }
   ];
+
+  // Preload logo image
+  useEffect(() => {
+    const preloadLogo = new Image();
+    preloadLogo.src = "/lovable-uploads/70fca613-4992-4ede-98c2-f9c7e669d23e.png";
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {

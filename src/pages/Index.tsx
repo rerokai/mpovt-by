@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -283,7 +282,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
-      {/* <Navigation /> */}
+      <Navigation />
       
       {/* Hero Section - with existing animated background */}
       <section className="pt-40 md:pt-44 lg:pt-48 pb-12 md:pb-16 lg:pb-20 px-4 text-center relative overflow-hidden bg-black">
@@ -324,7 +323,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Priority Products Section - Updated with animated background spheres ending in black */}
+      {/* Priority Products Section - Updated with features overlay on video */}
       <section className="py-16 md:py-20 bg-gradient-to-b from-black via-slate-900/50 to-black relative overflow-hidden shadow-2xl">        
         {/* Animated background spheres with cyan/purple/emerald colors */}
         <div className="absolute inset-0 overflow-hidden">
@@ -363,7 +362,7 @@ const Index = () => {
                 >
                   <Card className="group overflow-hidden bg-slate-800/10 backdrop-blur-xl border border-slate-700/20 hover:border-slate-600/40 transition-all duration-700 mx-4 hover:shadow-2xl hover:shadow-slate-900/50">
                     <div className="grid lg:grid-cols-2 gap-0 min-h-[60vh] max-h-[600px]">
-                      {/* Video/Image Section */}
+                      {/* Video/Image Section with features overlay */}
                       <div 
                         className="relative overflow-hidden bg-slate-900"
                         onMouseEnter={() => setHoveredCard(index)}
@@ -378,14 +377,22 @@ const Index = () => {
                           playsInline
                         />
 
-                        {/* Description overlay on hover */}
-                        <div className={`absolute inset-0 bg-black/50 backdrop-blur-sm transition-all duration-700 flex items-center justify-center p-6 ${
+                        {/* Features overlay on hover - only on desktop */}
+                        <div className={`absolute inset-0 bg-black/60 backdrop-blur-sm transition-all duration-700 flex items-center justify-center p-6 hidden lg:flex ${
                           isHovered ? 'opacity-100' : 'opacity-0'
                         }`}>
-                          <div className="text-center text-white max-w-md bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20">
-                            <p className="text-lg leading-relaxed mb-4">
-                              {product.description}
-                            </p>
+                          <div className="text-center text-white max-w-md">
+                            <div className="grid grid-cols-2 gap-4 mb-6">
+                              {product.uniqueFeatures.map((feature, featureIndex) => {
+                                const FeatureIcon = feature.icon;
+                                return (
+                                  <div key={featureIndex} className="flex flex-col items-center gap-2 p-4 rounded-lg bg-white/10 backdrop-blur-md border border-white/20">
+                                    <FeatureIcon className={`w-6 h-6 ${feature.color} flex-shrink-0`} />
+                                    <span className="text-white text-xs text-center font-medium">{feature.text}</span>
+                                  </div>
+                                );
+                              })}
+                            </div>
                             <div className={`inline-block relative bg-gradient-to-r ${product.gradient} text-white text-sm px-6 py-3 rounded-full font-semibold flex items-center gap-2 shadow-2xl`}>
                               <Sparkles className="w-4 h-4 animate-pulse" />
                               <span>{product.badge}</span>
@@ -394,7 +401,7 @@ const Index = () => {
                         </div>
                       </div>
                       
-                      {/* Content Section - increased transparency */}
+                      {/* Content Section - simplified without features */}
                       <div className="p-6 lg:p-8 flex flex-col justify-center bg-gradient-to-br from-slate-800/5 to-slate-900/5 backdrop-blur-lg">
                         
                         {/* Product title */}
@@ -403,24 +410,9 @@ const Index = () => {
                         </h3>
 
                         {/* Full Description */}
-                        <p className="text-slate-300 leading-relaxed mb-6 text-sm lg:text-base">
+                        <p className="text-slate-300 leading-relaxed mb-8 text-sm lg:text-base">
                           {product.fullDescription}
                         </p>
-                        
-                        {/* Enhanced Features with unique styling for each card */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-                          {product.uniqueFeatures.map((feature, featureIndex) => {
-                            const FeatureIcon = feature.icon;
-                            return (
-                              <div key={featureIndex} className="group/feature flex items-center gap-3 p-3 rounded-lg transition-all duration-300 cursor-pointer">
-                                <div className="relative">
-                                  <FeatureIcon className={`w-5 h-5 ${feature.color} flex-shrink-0 relative z-10 drop-shadow-lg transform group-hover/feature:rotate-12 group-hover/feature:scale-125 transition-all duration-500`} />
-                                </div>
-                                <span className="text-slate-300 text-xs lg:text-sm group-hover/feature:text-white group-hover/feature:translate-x-2 transition-all duration-500">{feature.text}</span>
-                              </div>
-                            );
-                          })}
-                        </div>
                         
                         {/* Enhanced Non-colored Button */}
                         <Button 
