@@ -33,7 +33,6 @@ const App = () => {
             <BrowserRouter>
               <ScrollToTop isLoading={isLoading} />
               <PreloadManager onLoadingChange={setIsLoading}>
-                <Navigation isLoading={isLoading} />
                 <Routes>
                   <Route path="/" element={<Index />} />
                   <Route path="/company" element={<Company />} />
