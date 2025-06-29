@@ -13,6 +13,7 @@ export default function Navigation({ isLoading = false }: NavigationProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   const companyMenuItems = [
     { name: "Электронное обращение", path: "/company/electronic-appeal", icon: FileText },
@@ -52,6 +53,18 @@ export default function Navigation({ isLoading = false }: NavigationProps) {
     return () => document.removeEventListener('click', handleClickOutside);
   }, []);
 
+  // Показываем меню только после окончания загрузки
+  useEffect(() => {
+    if (!isLoading) {
+      const timer = setTimeout(() => {
+        setIsVisible(true);
+      }, 300); // Небольшая задержка для плавного появления
+      return () => clearTimeout(timer);
+    } else {
+      setIsVisible(false);
+    }
+  }, [isLoading]);
+
   const handleDropdownClick = (e: React.MouseEvent, dropdown: string) => {
     e.stopPropagation();
     setActiveDropdown(activeDropdown === dropdown ? null : dropdown);
@@ -77,8 +90,8 @@ export default function Navigation({ isLoading = false }: NavigationProps) {
       {/* Desktop Navigation */}
       <header 
         className={cn(
-          "hidden xl:block transition-opacity duration-300",
-          isLoading ? "opacity-0" : "opacity-100"
+          "hidden xl:block transition-all duration-700 ease-out",
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
         )}
         style={{
           position: 'fixed',
@@ -90,17 +103,17 @@ export default function Navigation({ isLoading = false }: NavigationProps) {
       >
         <div className="flex justify-center w-full pt-4">
           <nav className={cn(
-            "max-w-5xl transition-all duration-500 ease-out",
+            "max-w-5xl transition-all duration-700 ease-out transform",
             scrolled 
-              ? "bg-black/80 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl px-6 py-3" 
-              : "px-6 py-3"
+              ? "bg-black/85 backdrop-blur-xl border border-white/30 rounded-2xl shadow-2xl px-6 py-3 scale-95 hover:scale-100 shadow-orange-500/20" 
+              : "px-6 py-3 scale-100"
           )}>
             <div className="flex justify-between items-center">
               <Link to="/" className="flex items-center group">
                 <img 
                   src="/lovable-uploads/70fca613-4992-4ede-98c2-f9c7e669d23e.png" 
                   alt="ОАО МПОВТ Logo" 
-                  className="h-8 w-auto transition-all duration-300 group-hover:scale-110"
+                  className="h-8 w-auto transition-all duration-300 group-hover:scale-110 drop-shadow-lg"
                 />
               </Link>
 
@@ -108,7 +121,7 @@ export default function Navigation({ isLoading = false }: NavigationProps) {
                 <li>
                   <Link 
                     to="/" 
-                    className="px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105"
+                    className="px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105 hover:shadow-lg hover:shadow-orange-500/20"
                   >
                     Главная
                   </Link>
@@ -117,40 +130,40 @@ export default function Navigation({ isLoading = false }: NavigationProps) {
                 <li className="relative">
                   <button
                     onClick={(e) => handleDropdownClick(e, 'company')}
-                    className="flex items-center px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105"
+                    className="flex items-center px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105 hover:shadow-lg hover:shadow-orange-500/20"
                   >
                     О компании 
                     <ChevronDown className={cn(
-                      "ml-1 h-4 w-4 transition-transform duration-300",
-                      activeDropdown === 'company' && "rotate-180"
+                      "ml-1 h-4 w-4 transition-all duration-500 ease-out",
+                      activeDropdown === 'company' && "rotate-180 text-orange-300"
                     )} />
                   </button>
                   
                   <div className={cn(
-                    "absolute top-full left-0 mt-2 min-w-[360px] transition-all duration-300 ease-out origin-top",
+                    "absolute top-full left-0 mt-2 min-w-[360px] transition-all duration-500 ease-out origin-top transform",
                     activeDropdown === 'company' 
-                      ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" 
-                      : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
+                      ? "opacity-100 scale-100 translate-y-0 pointer-events-auto rotate-0" 
+                      : "opacity-0 scale-90 -translate-y-4 pointer-events-none -rotate-1"
                   )}
                   style={{ zIndex: 1001 }}
                   >
-                    <div className="rounded-xl p-2 shadow-2xl bg-black/90 backdrop-blur-xl border border-white/20">
+                    <div className="rounded-xl p-2 shadow-2xl bg-black/90 backdrop-blur-xl border border-white/20 shadow-orange-500/10">
                       <Link
                         to="/company"
-                        className="flex items-center px-4 py-3 text-sm text-white hover:text-orange-300 rounded-lg transition-all duration-200 hover:bg-white/10 border-b border-white/10 mb-2 font-medium"
+                        className="flex items-center px-4 py-3 text-sm text-white hover:text-orange-300 rounded-lg transition-all duration-300 hover:bg-white/10 border-b border-white/10 mb-2 font-medium hover:scale-105 hover:shadow-md"
                         onClick={() => setActiveDropdown(null)}
                       >
-                        <Users className="mr-3 h-4 w-4" />
+                        <Users className="mr-3 h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
                         О компании - Главная
                       </Link>
                       {companyMenuItems.map((item) => (
                         <Link
                           key={item.path}
                           to={item.path}
-                          className="flex items-center px-4 py-3 text-sm text-white/90 hover:text-orange-300 rounded-lg transition-all duration-200 hover:bg-white/5"
+                          className="flex items-center px-4 py-3 text-sm text-white/90 hover:text-orange-300 rounded-lg transition-all duration-300 hover:bg-white/5 hover:scale-105 group"
                           onClick={() => setActiveDropdown(null)}
                         >
-                          <item.icon className="mr-3 h-4 w-4" />
+                          <item.icon className="mr-3 h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
                           {item.name}
                         </Link>
                       ))}
@@ -161,40 +174,40 @@ export default function Navigation({ isLoading = false }: NavigationProps) {
                 <li className="relative">
                   <button
                     onClick={(e) => handleDropdownClick(e, 'products')}
-                    className="flex items-center px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105"
+                    className="flex items-center px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105 hover:shadow-lg hover:shadow-orange-500/20"
                   >
                     Продукция 
                     <ChevronDown className={cn(
-                      "ml-1 h-4 w-4 transition-transform duration-300",
-                      activeDropdown === 'products' && "rotate-180"
+                      "ml-1 h-4 w-4 transition-all duration-500 ease-out",
+                      activeDropdown === 'products' && "rotate-180 text-orange-300"
                     )} />
                   </button>
                   
                   <div className={cn(
-                    "absolute top-full left-0 mt-2 min-w-[400px] transition-all duration-300 ease-out origin-top",
+                    "absolute top-full left-0 mt-2 min-w-[400px] transition-all duration-500 ease-out origin-top transform",
                     activeDropdown === 'products' 
-                      ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" 
-                      : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
+                      ? "opacity-100 scale-100 translate-y-0 pointer-events-auto rotate-0" 
+                      : "opacity-0 scale-90 -translate-y-4 pointer-events-none -rotate-1"
                   )}
                   style={{ zIndex: 1001 }}
                   >
-                    <div className="rounded-xl p-2 shadow-2xl bg-black/90 backdrop-blur-xl border border-white/20">
+                    <div className="rounded-xl p-2 shadow-2xl bg-black/90 backdrop-blur-xl border border-white/20 shadow-orange-500/10">
                       <Link
                         to="/products"
-                        className="flex items-center px-4 py-3 text-sm text-white hover:text-orange-300 rounded-lg transition-all duration-200 hover:bg-white/10 border-b border-white/10 mb-2 font-medium"
+                        className="flex items-center px-4 py-3 text-sm text-white hover:text-orange-300 rounded-lg transition-all duration-300 hover:bg-white/10 border-b border-white/10 mb-2 font-medium hover:scale-105 hover:shadow-md group"
                         onClick={() => setActiveDropdown(null)}
                       >
-                        <ShoppingCart className="mr-3 h-4 w-4" />
+                        <ShoppingCart className="mr-3 h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
                         Продукция - Главная
                       </Link>
                       {productMenuItems.map((item) => (
                         <Link
                           key={item.path}
                           to={item.path}
-                          className="flex items-center px-4 py-3 text-sm text-white/90 hover:text-orange-300 rounded-lg transition-all duration-200 hover:bg-white/5"
+                          className="flex items-center px-4 py-3 text-sm text-white/90 hover:text-orange-300 rounded-lg transition-all duration-300 hover:bg-white/5 hover:scale-105 group"
                           onClick={() => setActiveDropdown(null)}
                         >
-                          <item.icon className="mr-3 h-4 w-4" />
+                          <item.icon className="mr-3 h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
                           {item.name}
                         </Link>
                       ))}
@@ -205,7 +218,7 @@ export default function Navigation({ isLoading = false }: NavigationProps) {
                 <li>
                   <Link 
                     to="/services" 
-                    className="px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105"
+                    className="px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105 hover:shadow-lg hover:shadow-orange-500/20"
                   >
                     Услуги
                   </Link>
@@ -213,7 +226,7 @@ export default function Navigation({ isLoading = false }: NavigationProps) {
                 <li>
                   <Link 
                     to="/contact" 
-                    className="px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105"
+                    className="px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105 hover:shadow-lg hover:shadow-orange-500/20"
                   >
                     Контакты
                   </Link>
@@ -221,7 +234,7 @@ export default function Navigation({ isLoading = false }: NavigationProps) {
                 <li>
                   <Link 
                     to="/support" 
-                    className="px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105"
+                    className="px-4 py-2 rounded-xl font-medium text-white hover:text-orange-300 transition-all duration-300 hover:bg-white/10 hover:scale-105 hover:shadow-lg hover:shadow-orange-500/20"
                   >
                     Поддержка и сервис
                   </Link>
@@ -235,8 +248,8 @@ export default function Navigation({ isLoading = false }: NavigationProps) {
       {/* Mobile Navigation */}
       <header 
         className={cn(
-          "xl:hidden transition-opacity duration-300",
-          isLoading ? "opacity-0" : "opacity-100"
+          "xl:hidden transition-all duration-700 ease-out",
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
         )}
         style={{
           position: 'fixed',
@@ -246,17 +259,17 @@ export default function Navigation({ isLoading = false }: NavigationProps) {
         }}
       >
         <div className={cn(
-          "transition-all duration-500 ease-out",
+          "transition-all duration-700 ease-out transform",
           scrolled 
-            ? "rounded-2xl bg-black/80 backdrop-blur-xl border border-white/20 shadow-2xl" 
-            : "rounded-2xl"
+            ? "rounded-2xl bg-black/85 backdrop-blur-xl border border-white/30 shadow-2xl scale-95 hover:scale-100 shadow-orange-500/20" 
+            : "rounded-2xl scale-100"
         )}>
           <div className="flex items-center justify-between px-4 py-3">
             <Link to="/" className="flex items-center">
               <img 
                 src="/lovable-uploads/70fca613-4992-4ede-98c2-f9c7e669d23e.png" 
                 alt="ОАО МПОВТ Logo" 
-                className="h-6 w-auto"
+                className="h-6 w-auto drop-shadow-lg"
               />
             </Link>
 
@@ -264,7 +277,7 @@ export default function Navigation({ isLoading = false }: NavigationProps) {
               variant="ghost" 
               size="icon" 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="ml-3 rounded-full transition-all duration-300 hover:scale-110 hover:bg-white/10 text-white hover:text-orange-300"
+              className="ml-3 rounded-full transition-all duration-300 hover:scale-110 hover:bg-white/10 text-white hover:text-orange-300 hover:shadow-lg hover:shadow-orange-500/20"
             >
               {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
@@ -294,10 +307,10 @@ export default function Navigation({ isLoading = false }: NavigationProps) {
         />
         
         <div className={cn(
-          "absolute bg-black/90 backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl p-6 transition-all duration-500 ease-out transform max-h-[70vh] overflow-y-auto",
+          "absolute bg-black/90 backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl p-6 transition-all duration-500 ease-out transform max-h-[70vh] overflow-y-auto shadow-orange-500/10",
           mobileMenuOpen 
-            ? "translate-y-0 scale-100 opacity-100" 
-            : "-translate-y-4 scale-95 opacity-0"
+            ? "translate-y-0 scale-100 opacity-100 rotate-0" 
+            : "-translate-y-4 scale-95 opacity-0 -rotate-1"
         )}
         style={{
           top: '100px',
@@ -308,7 +321,7 @@ export default function Navigation({ isLoading = false }: NavigationProps) {
           <div className="space-y-4">
             <Link 
               to="/" 
-              className="block text-lg font-medium py-2 text-white hover:text-orange-300 transition-all duration-300" 
+              className="block text-lg font-medium py-2 text-white hover:text-orange-300 transition-all duration-300 hover:scale-105" 
               onClick={closeMobileMenu}
             >
               Главная
@@ -319,7 +332,7 @@ export default function Navigation({ isLoading = false }: NavigationProps) {
               <div className="ml-4 space-y-2">
                 <Link 
                   to="/company"
-                  className="block py-1 text-base text-white hover:text-orange-300 transition-all duration-300 font-medium" 
+                  className="block py-1 text-base text-white hover:text-orange-300 transition-all duration-300 font-medium hover:scale-105" 
                   onClick={closeMobileMenu}
                 >
                   О компании - Главная
@@ -328,7 +341,7 @@ export default function Navigation({ isLoading = false }: NavigationProps) {
                   <Link 
                     key={item.path}
                     to={item.path} 
-                    className="block py-1 text-sm text-white/80 hover:text-orange-300 transition-all duration-300" 
+                    className="block py-1 text-sm text-white/80 hover:text-orange-300 transition-all duration-300 hover:scale-105" 
                     onClick={closeMobileMenu}
                   >
                     {item.name}
@@ -342,7 +355,7 @@ export default function Navigation({ isLoading = false }: NavigationProps) {
               <div className="ml-4 space-y-2">
                 <Link 
                   to="/products"
-                  className="block py-1 text-base text-white hover:text-orange-300 transition-all duration-300 font-medium" 
+                  className="block py-1 text-base text-white hover:text-orange-300 transition-all duration-300 font-medium hover:scale-105" 
                   onClick={closeMobileMenu}
                 >
                   Продукция - Главная
@@ -351,7 +364,7 @@ export default function Navigation({ isLoading = false }: NavigationProps) {
                   <Link 
                     key={item.path}
                     to={item.path} 
-                    className="block py-1 text-sm text-white/80 hover:text-orange-300 transition-all duration-300" 
+                    className="block py-1 text-sm text-white/80 hover:text-orange-300 transition-all duration-300 hover:scale-105" 
                     onClick={closeMobileMenu}
                   >
                     {item.name}
@@ -362,21 +375,21 @@ export default function Navigation({ isLoading = false }: NavigationProps) {
             
             <Link 
               to="/services" 
-              className="block text-lg font-medium py-2 text-white hover:text-orange-300 transition-all duration-300" 
+              className="block text-lg font-medium py-2 text-white hover:text-orange-300 transition-all duration-300 hover:scale-105" 
               onClick={closeMobileMenu}
             >
               Услуги
             </Link>
             <Link 
               to="/contact" 
-              className="block text-lg font-medium py-2 text-white hover:text-orange-300 transition-all duration-300" 
+              className="block text-lg font-medium py-2 text-white hover:text-orange-300 transition-all duration-300 hover:scale-105" 
               onClick={closeMobileMenu}
             >
               Контакты
             </Link>
             <Link 
               to="/support" 
-              className="block text-lg font-medium py-2 text-white hover:text-orange-300 transition-all duration-300" 
+              className="block text-lg font-medium py-2 text-white hover:text-orange-300 transition-all duration-300 hover:scale-105" 
               onClick={closeMobileMenu}
             >
               Поддержка и сервис
