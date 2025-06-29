@@ -210,7 +210,7 @@ const Products = () => {
                     <div className="grid lg:grid-cols-2 gap-0">
                       {/* Video/Image Section */}
                       <div 
-                        className="relative overflow-hidden bg-slate-900 aspect-video lg:aspect-auto lg:min-h-[400px]"
+                        className="relative overflow-hidden bg-slate-900 aspect-video lg:aspect-auto lg:min-h-[300px]"
                         onMouseEnter={() => setHoveredCard(index)}
                         onMouseLeave={() => setHoveredCard(null)}
                       >
@@ -238,25 +238,25 @@ const Products = () => {
                         </div>
                       </div>
                       
-                      {/* Content Section - Mobile optimized */}
-                      <div className="p-4 md:p-6 lg:p-8 flex flex-col justify-center bg-gradient-to-br from-slate-800/5 to-slate-900/5 backdrop-blur-lg">
+                      {/* Content Section - Mobile optimized and more compact */}
+                      <div className="p-4 md:p-6 lg:p-6 flex flex-col justify-center bg-gradient-to-br from-slate-800/5 to-slate-900/5 backdrop-blur-lg">
                         
                         {/* Product title */}
-                        <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-3 md:mb-4 drop-shadow-lg">
+                        <h3 className="text-xl md:text-2xl lg:text-2xl font-bold text-white mb-3 md:mb-4 drop-shadow-lg">
                           {product.title}
                         </h3>
 
-                        {/* Full Description */}
-                        <p className="text-slate-300 leading-relaxed mb-4 md:mb-6 text-sm md:text-base">
+                        {/* Full Description - more compact */}
+                        <p className="text-slate-300 leading-relaxed mb-4 md:mb-5 text-sm md:text-base">
                           {product.fullDescription}
                         </p>
                         
-                        {/* Enhanced Features - Mobile grid */}
-                        <div className="grid grid-cols-1 gap-2 md:gap-3 mb-6 md:mb-8">
+                        {/* Enhanced Features - Mobile grid, more compact */}
+                        <div className="grid grid-cols-1 gap-2 mb-5 md:mb-6">
                           {product.uniqueFeatures.map((feature, featureIndex) => {
                             const FeatureIcon = feature.icon;
                             return (
-                              <div key={featureIndex} className="group/feature flex items-center gap-2 md:gap-3 p-2 md:p-3 rounded-lg transition-all duration-300">
+                              <div key={featureIndex} className="group/feature flex items-center gap-2 md:gap-3 p-2 rounded-lg transition-all duration-300">
                                 <div className="relative">
                                   <FeatureIcon className={`w-4 h-4 md:w-5 md:h-5 ${feature.color} flex-shrink-0 relative z-10 drop-shadow-lg transform group-hover/feature:rotate-12 group-hover/feature:scale-125 transition-all duration-500`} />
                                 </div>
@@ -266,10 +266,10 @@ const Products = () => {
                           })}
                         </div>
                         
-                        {/* Mobile-optimized Button */}
+                        {/* Mobile-optimized Button - more compact */}
                         <Button 
                           asChild
-                          className="group/btn relative w-full bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/30 backdrop-blur-sm text-white transition-all duration-500 text-sm md:text-base lg:text-lg py-3 md:py-6 overflow-hidden transform hover:scale-105"
+                          className="group/btn relative w-full bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/30 backdrop-blur-sm text-white transition-all duration-500 text-sm md:text-base py-3 md:py-4 overflow-hidden transform hover:scale-105"
                         >
                           <Link to={product.link}>
                             <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-white/10 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
@@ -362,44 +362,26 @@ const Products = () => {
         </div>
       </section>
 
-      {/* CTA Section with new styling inspired by main page */}
-      <section className="py-16 md:py-20 px-4 bg-black relative">
-        {/* Moving animated background spheres with different positioning */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/3 left-1/6 w-32 h-32 md:w-64 md:h-64 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-3xl animate-pulse moving-sphere-11"></div>
-          <div className="absolute bottom-1/6 right-1/5 w-48 h-48 md:w-96 md:h-96 bg-gradient-to-r from-purple-500/20 to-teal-500/20 rounded-full blur-3xl animate-pulse moving-sphere-12"></div>
-          <div className="absolute top-1/6 right-1/2 w-64 h-64 md:w-128 md:h-128 bg-gradient-to-r from-teal-500/20 to-blue-500/20 rounded-full blur-3xl animate-pulse moving-sphere-13"></div>
-        </div>
-        
-        <div className="container mx-auto text-center relative z-10">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-white">
+      {/* CTA Section - Готовы к сотрудничеству? style from main page */}
+      <section className="py-20 md:py-24 lg:py-28 relative bg-black overflow-hidden">
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white/95">
               Нужна консультация?
             </h2>
-            <p className="text-lg md:text-xl text-slate-300 mb-8 md:mb-12 leading-relaxed">
-              Наши эксперты помогут подобрать идеальное решение для ваших бизнес-задач. Получите персональную консультацию и техническую поддержку на всех этапах внедрения.
+            <p className="text-xl md:text-2xl text-white/70 mb-12 max-w-3xl mx-auto leading-relaxed">
+              Наши эксперты помогут подобрать идеальное решение для ваших бизнес-задач
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                asChild 
-                size="lg" 
-                className="btn-primary text-lg px-8 py-6"
-              >
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Button asChild size="lg" className="btn-primary text-lg px-8 py-4">
                 <Link to="/contact">
                   Связаться с нами
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
-              <Button 
-                asChild 
-                variant="outline" 
-                size="lg" 
-                className="border-slate-600 bg-transparent hover:bg-slate-800 text-slate-300 hover:text-white transition-all duration-300 text-lg px-8 py-6"
-              >
-                <Link to="/">
-                  На главную
-                </Link>
+              <Button asChild variant="outline" size="lg" className="border-white/20 bg-white/5 hover:bg-white/10 text-white hover:text-white text-lg px-8 py-4">
+                <Link to="/">На главную</Link>
               </Button>
             </div>
           </div>
