@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -7,6 +6,12 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Company from "./pages/Company";
+import QualityManagement from "./pages/QualityManagement";
+import Vacancies from "./pages/Vacancies";
+import Cooperation from "./pages/Cooperation";
+import RentalAreas from "./pages/RentalAreas";
+import AntiCorruption from "./pages/AntiCorruption";
+import AssetSales from "./pages/AssetSales";
 import Products from "./pages/Products";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
@@ -35,6 +40,12 @@ const App = () => {
                 <Routes>
                   <Route path="/" element={<Index />} />
                   <Route path="/company" element={<Company />} />
+                  <Route path="/company/quality-management" element={<QualityManagement />} />
+                  <Route path="/company/vacancies" element={<Vacancies />} />
+                  <Route path="/company/cooperation" element={<Cooperation />} />
+                  <Route path="/company/rental-areas" element={<RentalAreas />} />
+                  <Route path="/company/anti-corruption" element={<AntiCorruption />} />
+                  <Route path="/company/asset-sales" element={<AssetSales />} />
                   <Route path="/products" element={<Products />} />
                   <Route path="/contact" element={<Contact />} />
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
