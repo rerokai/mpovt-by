@@ -19,33 +19,50 @@ const OptimizedVideoPlayer: React.FC<OptimizedVideoPlayerProps> = ({
   const [isIntersecting, setIsIntersecting] = useState(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [showPlaceholder, setShowPlaceholder] = useState(true);
+  const [savedTime, setSavedTime] = useState(0);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
-  // Функция для остановки видео
+  // Функция для остановки видео с сохранением позиции
   const stopVideo = () => {
     const video = videoRef.current;
-    if (video) {
+    if (video && !video.paused) {
+      setSavedTime(video.currentTime);
       video.pause();
-      video.currentTime = 0;
       setShowPlaceholder(true);
-      console.log('Video stopped:', src);
+      console.log('Video stopped at:', video.currentTime, 'src:', src);
+    }
+  };
+
+  // Функция для воспроизведения видео с восстановлением позиции
+  const playVideo = async () => {
+    const video = videoRef.current;
+    if (video && isVideoLoaded) {
+      try {
+        if (savedTime > 0) {
+          video.currentTime = savedTime;
+        }
+        await video.play();
+        setShowPlaceholder(false);
+        console.log('Video playing from:', video.currentTime, 'src:', src);
+      } catch (error) {
+        console.error('Error playing video:', src, error);
+        setShowPlaceholder(true);
+      }
     }
   };
 
   // Эффект для обработки видимости элемента
   useEffect(() => {
-    // Создаем observer с строгими параметрами
-    observerRef.current = new IntersectionObserver(
-      ([entry]) => {
-        const isVisible = entry.isIntersecting && entry.intersectionRatio > 0.5;
-        console.log('Video visibility changed:', src, 'visible:', isVisible, 'ratio:', entry.intersectionRatio);
-        setIsIntersecting(isVisible);
-      },
-      {
-        threshold: 0.5, // Видео воспроизводится только когда видно минимум 50%
-        rootMargin: '0px'
-      }
-    );
+    const handleIntersection = ([entry]: IntersectionObserverEntry[]) => {
+      const isVisible = entry.isIntersecting && entry.intersectionRatio > 0.5;
+      console.log('Video visibility changed:', src, 'visible:', isVisible, 'ratio:', entry.intersectionRatio);
+      setIsIntersecting(isVisible);
+    };
+
+    observerRef.current = new IntersectionObserver(handleIntersection, {
+      threshold: 0.5,
+      rootMargin: '0px'
+    });
 
     const container = containerRef.current;
     if (container && observerRef.current) {
@@ -53,8 +70,7 @@ const OptimizedVideoPlayer: React.FC<OptimizedVideoPlayerProps> = ({
     }
 
     return () => {
-      if (observerRef.current && container) {
-        observerRef.current.unobserve(container);
+      if (observerRef.current) {
         observerRef.current.disconnect();
       }
     };
@@ -62,24 +78,12 @@ const OptimizedVideoPlayer: React.FC<OptimizedVideoPlayerProps> = ({
 
   // Эффект для управления воспроизведением видео
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
     if (isIntersecting && isVideoLoaded) {
-      console.log('Playing video:', src);
-      video.play().then(() => {
-        setShowPlaceholder(false);
-      }).catch((error) => {
-        console.error('Error playing video:', src, error);
-        setShowPlaceholder(true);
-      });
-    } else {
-      console.log('Pausing video:', src);
-      video.pause();
-      video.currentTime = 0;
-      setShowPlaceholder(true);
+      playVideo();
+    } else if (!isIntersecting) {
+      stopVideo();
     }
-  }, [isIntersecting, isVideoLoaded, src]);
+  }, [isIntersecting, isVideoLoaded]);
 
   // Глобальный эффект для остановки всех видео при уходе со страницы
   useEffect(() => {
@@ -103,11 +107,18 @@ const OptimizedVideoPlayer: React.FC<OptimizedVideoPlayerProps> = ({
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       stopVideo();
     };
-  }, [src]);
+  }, []);
 
   const handleVideoLoad = () => {
     setIsVideoLoaded(true);
     console.log('Video loaded:', src);
+  };
+
+  const handleTimeUpdate = () => {
+    const video = videoRef.current;
+    if (video && !video.paused) {
+      setSavedTime(video.currentTime);
+    }
   };
 
   return (
@@ -124,10 +135,11 @@ const OptimizedVideoPlayer: React.FC<OptimizedVideoPlayerProps> = ({
         playsInline
         preload="metadata"
         onLoadedData={handleVideoLoad}
+        onTimeUpdate={handleTimeUpdate}
         {...props}
       />
 
-      {/* Изображение-заглушка */}
+      {/* Изображение-заглушка без кнопки плей */}
       <div 
         className={`absolute inset-0 w-full h-full transition-opacity duration-700 ${
           showPlaceholder ? 'opacity-100' : 'opacity-0'
@@ -138,11 +150,7 @@ const OptimizedVideoPlayer: React.FC<OptimizedVideoPlayerProps> = ({
           alt="Video placeholder"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-          <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-            <div className="w-0 h-0 border-l-[8px] border-l-white border-y-[6px] border-y-transparent ml-1"></div>
-          </div>
-        </div>
+        <div className="absolute inset-0 bg-black/10"></div>
       </div>
     </div>
   );
