@@ -30,14 +30,14 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-          {t('hero.title', 'Премиальная недвижимость')}
+          {t.hero.title}
           <span className="block bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
-            {t('hero.subtitle', 'в Италии')}
+            {t.hero.subtitle}
           </span>
         </h1>
         
         <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
-          {t('hero.description', 'Откройте для себя эксклюзивные апартаменты и виллы в самых престижных районах Италии. Инвестируйте в недвижимость мечты.')}
+          {t.hero.description}
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -46,7 +46,7 @@ const HeroSection = () => {
             className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 text-lg font-semibold"
             onClick={scrollToContent}
           >
-            {t('hero.cta', 'Посмотреть объекты')}
+            {t.hero.exploreApartments}
           </Button>
           
           <Button 
@@ -55,7 +55,7 @@ const HeroSection = () => {
             className="border-white/30 text-white hover:bg-white/10 px-8 py-3 text-lg"
             onClick={scrollToContent}
           >
-            {t('hero.learn_more', 'Узнать больше')}
+            {t.hero.bookStay}
           </Button>
         </div>
       </div>
