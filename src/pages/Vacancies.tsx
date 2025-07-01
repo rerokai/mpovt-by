@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -137,7 +136,7 @@ const Vacancies = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto justify-items-center">
               {benefits.map((benefit, index) => {
                 const Icon = benefit.icon;
                 const iconColors = [
@@ -149,7 +148,7 @@ const Vacancies = () => {
                 return (
                   <Card 
                     key={index} 
-                    className="p-6 text-center bg-white/5 backdrop-blur-xl border border-white/10 hover:border-transparent transition-all duration-300 group relative"
+                    className="p-6 text-center bg-white/5 backdrop-blur-xl border border-white/10 hover:border-transparent transition-all duration-300 group relative w-full max-w-sm"
                   >
                     {/* Background glow on hover */}
                     <div className={`absolute inset-0 bg-gradient-to-br ${iconColors.bg} rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300`}></div>
@@ -157,7 +156,7 @@ const Vacancies = () => {
                     <div className={`absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br ${iconColors.border} p-px`}>
                       <div className="w-full h-full bg-black/90 rounded-lg"></div>
                     </div>
-                    <div className={`w-16 h-16 bg-gradient-to-br ${iconColors.bg} rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:bg-gradient-to-br group-hover:${iconColors.bgHover} transition-all duration-300 relative z-20`}>
+                    <div className={`w-16 h-16 bg-gradient-to-br ${iconColors.bg} rounded-xl flex items-center justify-center mx-auto mb-6 transition-all duration-300 group-hover:bg-gradient-to-br group-hover:${iconColors.bgHover} relative z-20`}>
                       <Icon className={`h-8 w-8 ${iconColors.icon}`} />
                     </div>
                     <h3 className="text-xl font-semibold mb-3 text-white relative z-20">{benefit.title}</h3>
@@ -242,10 +241,10 @@ const Vacancies = () => {
                         </p>
                       </div>
                       
-                      <div className={`transition-all duration-500 ease-in-out overflow-hidden ${
+                      <div className={`transition-all duration-700 ease-in-out overflow-hidden ${
                         expandedVacancies[vacancy.id] 
-                          ? 'max-h-96 opacity-100 transform translate-y-0' 
-                          : 'max-h-0 opacity-0 transform -translate-y-4'
+                          ? 'max-h-[500px] opacity-100' 
+                          : 'max-h-0 opacity-0'
                       }`}>
                         {expandedVacancies[vacancy.id] && (
                           <div className="space-y-4 mb-6 pt-4 border-t border-white/10">
@@ -305,11 +304,11 @@ const Vacancies = () => {
               </p>
             </div>
             
-            <Card className="max-w-4xl mx-auto p-8 bg-gradient-to-r from-blue-900/20 via-cyan-900/20 to-blue-900/20 backdrop-blur-xl border border-blue-500/30 hover:border-blue-400/50 transition-all duration-300 group relative hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/20">
+            <Card className="max-w-4xl mx-auto p-8 bg-gradient-to-r from-slate-900/40 via-slate-800/40 to-slate-900/40 backdrop-blur-xl border border-slate-500/30 hover:border-slate-400/50 transition-all duration-300 group relative hover:scale-[1.02] hover:shadow-2xl hover:shadow-slate-500/20">
               {/* Background glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-slate-500/10 to-slate-600/10 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
               <div className="text-center relative z-10">
-                <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-slate-300 to-slate-400 bg-clip-text text-transparent">
                   Больше вакансий на rabota.by
                 </h3>
                 <p className="text-lg text-slate-200 mb-6 leading-relaxed">
@@ -318,12 +317,12 @@ const Vacancies = () => {
                 </p>
                 <Button
                   size="lg"
-                  className="bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-blue-400/50 backdrop-blur-sm transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-blue-500/20 hover:scale-[1.02] group/btn"
+                  className="bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-slate-400/50 backdrop-blur-sm transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-slate-500/20 hover:scale-[1.02] group/btn"
                   onClick={() => window.open('https://rabota.by/search/vacancy?from=employerPage&employer_id=1006818&hhtmFrom=employer', '_blank')}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-md opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-slate-500/10 to-slate-600/10 rounded-md opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
                   <ExternalLink className="w-5 h-5 mr-2 relative z-10" />
-                  <span className="relative z-10">Все актуальные вакансии</span>
+                  <span className="relative z-10">Перейти на rabota.by</span>
                 </Button>
               </div>
             </Card>
@@ -347,8 +346,8 @@ const Vacancies = () => {
             <Card className="max-w-2xl mx-auto overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 relative">
               {/* Background glow */}
               <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-teal-500/10 rounded-lg opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="flex h-full relative z-10">
-                <div className="w-40 flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-green-500/10 to-teal-500/10">
+              <div className="flex flex-col md:flex-row h-full relative z-10">
+                <div className="w-full md:w-40 flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-green-500/10 to-teal-500/10 p-4 md:p-0">
                   <img
                     src={hrManager.photo}
                     alt={hrManager.name}

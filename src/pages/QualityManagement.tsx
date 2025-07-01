@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -46,24 +45,40 @@ const QualityManagement = () => {
       title: "Автотракторная продукция",
       description: "Электронные блоки управления для тракторов и сельскохозяйственной техники",
       icon: Factory,
+      iconColor: "text-orange-400",
+      bgColor: "from-orange-500/20 to-red-500/20",
+      hoverBg: "from-orange-500/10 to-red-500/10",
+      borderColor: "from-orange-500/30 to-red-500/30",
       url: "https://mpovt.by/gallery/%D0%A1%D0%95%D0%A0%D0%A2%D0%98%D0%A4%D0%98%D0%9A%D0%90%D0%A2%20%D0%A1%D0%9E%D0%91%D0%A1%D0%A2%D0%92%D0%95%D0%9D%D0%9D%D0%9E%D0%93%D0%9E%20%D0%9F%D0%A0%D0%9E%D0%98%D0%97%D0%92%D0%9E%D0%94%D0%A1%D0%A2%D0%92%D0%90%20(%D0%B0%D0%B2%D1%82%D0%BE%D1%82%D1%80%D0%B0%D0%BA%D1%82%D0%BE%D1%80%D0%BD%D0%BE%D0%B5).pdf"
     },
     {
       title: "Ноутбуки",
       description: "Портативные компьютеры для профессионального и образовательного использования",
       icon: Computer,
+      iconColor: "text-blue-400",
+      bgColor: "from-blue-500/20 to-cyan-500/20",
+      hoverBg: "from-blue-500/10 to-cyan-500/10",
+      borderColor: "from-blue-500/30 to-cyan-500/30",
       url: "https://mpovt.by/gallery/%D0%A1%D0%95%D0%A0%D0%A2%D0%98%D0%A4%D0%98%D0%9A%D0%90%D0%A2%20%D0%A1%D0%9E%D0%91%D0%A1%D0%A2%D0%92%D0%95%D0%9D%D0%9D%D0%9E%D0%93%D0%9E%20%D0%9F%D0%A0%D0%9E%D0%98%D0%97%D0%92%D0%9E%D0%94%D0%A1%D0%A2%D0%92%D0%90%20%D0%9D%D0%90%20%D0%9D%D0%9E%D0%A3%D0%A2%D0%91%D0%A3%D0%9A%D0%98.PDF"
     },
     {
       title: "Адаптер сетевой",
       description: "Источники питания и зарядные устройства для электронной техники",
       icon: Zap,
+      iconColor: "text-yellow-400",
+      bgColor: "from-yellow-500/20 to-orange-500/20",
+      hoverBg: "from-yellow-500/10 to-orange-500/10",
+      borderColor: "from-yellow-500/30 to-orange-500/30",
       url: "https://mpovt.by/gallery/%D0%90%D0%B4%D0%B0%D0%BF%D1%82%D0%B5%D1%80%20%D1%81%D0%B5%D1%82%D0%B5%D0%B2%D0%BE%D0%B9%20%D1%81%D0%B5%D1%80%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%82%20%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%BE%D0%B3%D0%BE%20%D0%BF%D1%80%D0%BE%D0%B8%D0%B7%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%B0.PDF"
     },
     {
       title: "Плата системная",
       description: "Основные компоненты и материнские платы для компьютерной техники",
       icon: Microchip,
+      iconColor: "text-green-400",
+      bgColor: "from-green-500/20 to-emerald-500/20",
+      hoverBg: "from-green-500/10 to-emerald-500/10",
+      borderColor: "from-green-500/30 to-emerald-500/30",
       url: "https://mpovt.by/gallery/%D0%9F%D0%BB%D0%B0%D1%82%D0%B0%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%BD%D0%B0%D1%8F%20%D1%81%D0%B5%D1%80%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%82%20%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%BE%D0%B3%D0%BE%20%D0%BF%D1%80%D0%BE%D0%B8%D0%B7%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%B0.PDF"
     }
   ];
@@ -132,16 +147,16 @@ const QualityManagement = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto justify-items-center">
               {advantages.map((advantage, index) => {
                 const Icon = advantage.icon;
                 return (
                   <Card 
                     key={index} 
-                    className="p-6 text-center bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 group hover:scale-105 relative"
+                    className="p-6 text-center bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 group hover:scale-105 relative w-full max-w-sm"
                   >
                     {/* Background glow on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-purple-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-purple-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div className="w-16 h-16 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:bg-gradient-to-br group-hover:from-cyan-500/30 group-hover:to-purple-500/30 transition-all duration-300 relative z-10">
                       <Icon className="h-8 w-8 text-cyan-400" />
                     </div>
@@ -277,21 +292,15 @@ const QualityManagement = () => {
             <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
               {productCertificates.map((cert, index) => {
                 const Icon = cert.icon;
-                const iconColors = [
-                  { icon: "text-orange-400", bg: "from-orange-500/30 to-red-500/30" },
-                  { icon: "text-blue-400", bg: "from-blue-500/30 to-cyan-500/30" },
-                  { icon: "text-yellow-400", bg: "from-yellow-500/30 to-orange-500/30" },
-                  { icon: "text-green-400", bg: "from-green-500/30 to-emerald-500/30" }
-                ][index % 4];
                 
                 return (
                   <Card key={index} className="overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 group relative">
                     {/* Background glow */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-yellow-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div className="flex h-full relative z-10">
-                      <div className="w-32 flex-shrink-0">
-                        <div className={`w-full h-full bg-gradient-to-br ${iconColors.bg} flex items-center justify-center`}>
-                          <Icon className={`w-12 h-12 ${iconColors.icon}`} />
+                    <div className={`absolute inset-0 bg-gradient-to-br ${cert.hoverBg} rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+                    <div className="flex flex-col md:flex-row h-full relative z-10">
+                      <div className="w-full md:w-32 flex-shrink-0">
+                        <div className={`w-full h-32 md:h-full bg-gradient-to-br ${cert.bgColor} flex items-center justify-center`}>
+                          <Icon className={`w-12 h-12 ${cert.iconColor}`} />
                         </div>
                       </div>
                       <div className="flex-1 p-6">
@@ -301,10 +310,10 @@ const QualityManagement = () => {
                         <p className="text-slate-300 text-sm mb-4">{cert.description}</p>
                         <Button
                           size="sm"
-                          className="bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-orange-400/50 backdrop-blur-sm transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-orange-500/20 hover:scale-[1.02] group/btn"
+                          className={`bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-${cert.iconColor.split('-')[1]}-400/50 backdrop-blur-sm transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-${cert.iconColor.split('-')[1]}-500/20 hover:scale-[1.02] group/btn`}
                           onClick={() => window.open(cert.url, '_blank')}
                         >
-                          <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 to-yellow-500/10 rounded-md opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                          <div className={`absolute inset-0 bg-gradient-to-r ${cert.hoverBg} rounded-md opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300`}></div>
                           <Download className="w-4 h-4 mr-2 relative z-10" />
                           <span className="relative z-10">PDF</span>
                         </Button>

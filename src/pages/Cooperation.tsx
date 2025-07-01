@@ -91,7 +91,7 @@ const Cooperation = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-12 justify-items-center">
               {advantages.map((advantage, index) => {
                 const Icon = advantage.icon;
                 const iconColors = [
@@ -103,11 +103,11 @@ const Cooperation = () => {
                 return (
                   <Card 
                     key={index} 
-                    className="p-6 text-center bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 group hover:scale-105 relative"
+                    className="p-6 text-center bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 group hover:scale-105 relative w-full max-w-sm"
                   >
                     {/* Background glow on hover */}
                     <div className={`absolute inset-0 bg-gradient-to-br ${iconColors.bg} rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
-                    <div className={`w-16 h-16 bg-gradient-to-br ${iconColors.bg} rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:bg-gradient-to-br group-hover:${iconColors.bgHover} transition-all duration-300 relative z-10`}>
+                    <div className={`w-16 h-16 bg-gradient-to-br ${iconColors.bg} rounded-xl flex items-center justify-center mx-auto mb-6 transition-all duration-300 group-hover:bg-gradient-to-br group-hover:${iconColors.bgHover} relative z-10`}>
                       <Icon className={`h-8 w-8 ${iconColors.icon}`} />
                     </div>
                     <h3 className="text-xl font-semibold mb-3 text-white relative z-10">{advantage.title}</h3>
@@ -118,11 +118,11 @@ const Cooperation = () => {
             </div>
 
             {/* Cooperation Approach Info Card */}
-            <Card className="max-w-4xl mx-auto p-8 bg-gradient-to-r from-slate-900/30 via-slate-800/30 to-slate-900/30 backdrop-blur-xl border border-cyan-500/20 hover:border-cyan-400/30 transition-all duration-300 group relative">
+            <Card className="max-w-4xl mx-auto p-8 bg-gradient-to-r from-slate-900/30 via-slate-700/30 to-slate-900/30 backdrop-blur-xl border border-slate-500/20 hover:border-slate-400/30 transition-all duration-300 group relative">
               {/* Background glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-purple-500/5 to-emerald-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-slate-500/5 via-slate-600/5 to-slate-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="text-center relative z-10">
-                <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent">
+                <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-slate-300 via-slate-200 to-slate-300 bg-clip-text text-transparent">
                   О нашем подходе к кооперации
                 </h3>
                 <p className="text-lg text-slate-200 leading-relaxed">
@@ -197,8 +197,8 @@ const Cooperation = () => {
             <Card className="max-w-2xl mx-auto overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 relative">
               {/* Background glow */}
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-yellow-500/10 rounded-lg opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="flex h-full relative z-10">
-                <div className="w-40 flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-orange-500/10 to-yellow-500/10">
+              <div className="flex flex-col md:flex-row h-full relative z-10">
+                <div className="w-full md:w-40 flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-orange-500/10 to-yellow-500/10 p-4 md:p-0">
                   <img
                     src={contactPerson.photo}
                     alt={contactPerson.name}
