@@ -103,7 +103,7 @@ const Vacancies = () => {
         
         <div className="container mx-auto relative z-10">
           <div className="max-w-4xl mx-auto animate-fade-in">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-8xl font-black mb-6 md:mb-8 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-8xl font-black mb-6 md:mb-8 text-white leading-tight">
               Вакансии
             </h1>
             <p className="text-lg md:text-xl xl:text-2xl text-white/70 mb-6 md:mb-8 max-w-3xl mx-auto">
@@ -123,8 +123,10 @@ const Vacancies = () => {
         {/* Benefits Section */}
         <section className="py-16 md:py-20 px-4 relative z-10">
           <div className="container mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-cyan-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent">
+            <div className="text-center mb-12 relative">
+              {/* Background glow */}
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/10 via-purple-400/10 to-emerald-400/10 rounded-3xl blur-3xl"></div>
+              <h2 className="text-3xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-cyan-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent relative z-10">
                 Почему стоит работать с нами?
               </h2>
             </div>
@@ -135,13 +137,15 @@ const Vacancies = () => {
                 return (
                   <Card 
                     key={index} 
-                    className="p-6 text-center bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300"
+                    className="p-6 text-center bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 group hover:scale-105 relative"
                   >
-                    <div className="w-16 h-16 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-xl flex items-center justify-center mx-auto mb-6">
+                    {/* Background glow on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-purple-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="w-16 h-16 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:bg-gradient-to-br group-hover:from-cyan-500/30 group-hover:to-purple-500/30 transition-all duration-300 relative z-10">
                       <Icon className="h-8 w-8 text-cyan-400" />
                     </div>
-                    <h3 className="text-xl font-semibold mb-3 text-white">{benefit.title}</h3>
-                    <p className="text-slate-300">{benefit.description}</p>
+                    <h3 className="text-xl font-semibold mb-3 text-white relative z-10">{benefit.title}</h3>
+                    <p className="text-slate-300 relative z-10">{benefit.description}</p>
                   </Card>
                 );
               })}
@@ -152,8 +156,10 @@ const Vacancies = () => {
         {/* Vacancies Section */}
         <section className="py-16 md:py-20 px-4 relative z-10">
           <div className="container mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <div className="text-center mb-12 relative">
+              {/* Background glow */}
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-400/10 to-pink-400/10 rounded-3xl blur-3xl"></div>
+              <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent relative z-10">
                 Открытые позиции
               </h2>
             </div>
@@ -171,8 +177,10 @@ const Vacancies = () => {
             ) : (
               <div className="grid gap-6 max-w-5xl mx-auto">
                 {vacancies.map((vacancy) => (
-                  <Card key={vacancy.id} className="bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300">
-                    <div className="p-6">
+                  <Card key={vacancy.id} className="bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 relative">
+                    {/* Background glow */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 rounded-lg opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="p-6 relative z-10">
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex items-center space-x-3 flex-1">
                           <div className="w-10 h-10 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-lg flex items-center justify-center">
@@ -211,13 +219,16 @@ const Vacancies = () => {
                           Опыт работы: {vacancy.experience}
                         </div>
                         <p className="text-slate-200 leading-relaxed">
-                          {expandedVacancies[vacancy.id] ? vacancy.fullDescription : vacancy.shortDescription}
+                          {vacancy.shortDescription}
                         </p>
                       </div>
                       
                       {expandedVacancies[vacancy.id] && (
-                        <div className="space-y-4 mb-6 animate-fade-in">
+                        <div className="space-y-4 mb-6 animate-accordion-down overflow-hidden">
                           <div>
+                            <p className="text-slate-200 leading-relaxed mb-4">
+                              {vacancy.fullDescription}
+                            </p>
                             <h4 className="text-lg font-semibold mb-3 text-white">
                               Требования:
                             </h4>
@@ -231,7 +242,7 @@ const Vacancies = () => {
                           <div className="flex gap-4 pt-6 border-t border-white/10">
                             <Button 
                               size="sm"
-                              className="bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-white/30 backdrop-blur-sm transition-all duration-300"
+                              className="bg-white/10 hover:bg-white/20 text-white border border-white/30 hover:border-white/50 backdrop-blur-sm transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02]"
                               onClick={() => window.open('https://rabota.by/search/vacancy?from=employerPage&employer_id=1006818&hhtmFrom=employer', '_blank')}
                             >
                               <ExternalLink className="w-4 h-4 mr-2" />
@@ -251,10 +262,16 @@ const Vacancies = () => {
                 ))}
               </div>
             )}
-            
-            {/* Additional info block */}
-            <Card className="max-w-4xl mx-auto mt-12 p-8 bg-gradient-to-r from-emerald-500/10 via-cyan-500/10 to-emerald-500/10 backdrop-blur-xl border border-emerald-500/20 hover:border-emerald-500/30 transition-all duration-300">
-              <div className="text-center">
+          </div>
+        </section>
+
+        {/* Rabota.by info block */}
+        <section className="py-16 md:py-20 px-4 relative z-10">
+          <div className="container mx-auto">
+            <Card className="max-w-4xl mx-auto p-8 bg-gradient-to-r from-slate-800/20 via-slate-700/15 to-slate-800/20 backdrop-blur-xl border border-slate-700/30 hover:border-slate-600/40 transition-all duration-300 group relative hover:scale-[1.01]">
+              {/* Background glow */}
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-cyan-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="text-center relative z-10">
                 <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
                   Больше вакансий на rabota.by
                 </h3>
@@ -264,7 +281,7 @@ const Vacancies = () => {
                 </p>
                 <Button
                   size="lg"
-                  className="bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-white/30 backdrop-blur-sm transition-all duration-300"
+                  className="bg-white/10 hover:bg-white/20 text-white border border-white/30 hover:border-white/50 backdrop-blur-sm transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02]"
                   onClick={() => window.open('https://rabota.by/search/vacancy?from=employerPage&employer_id=1006818&hhtmFrom=employer', '_blank')}
                 >
                   <ExternalLink className="w-5 h-5 mr-2" />
@@ -278,22 +295,26 @@ const Vacancies = () => {
         {/* HR Manager Contact */}
         <section className="py-16 md:py-20 px-4 relative z-10">
           <div className="container mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent">
+            <div className="text-center mb-12 relative">
+              {/* Background glow */}
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-400/10 to-yellow-400/10 rounded-3xl blur-3xl"></div>
+              <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent relative z-10">
                 Контакты по вопросам трудоустройства
               </h2>
             </div>
             
-            <Card className="p-8 max-w-2xl mx-auto bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300">
-              <div className="flex items-start space-x-6">
-                <div className="w-24 h-32 bg-gradient-to-br from-orange-500/20 to-yellow-500/20 rounded-lg overflow-hidden flex-shrink-0">
+            <Card className="max-w-2xl mx-auto overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 relative">
+              {/* Background glow */}
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-yellow-500/5 rounded-lg opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="flex h-full relative z-10">
+                <div className="w-32 flex-shrink-0">
                   <img
                     src={hrManager.photo}
                     alt={hrManager.name}
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 p-6">
                   <h3 className="text-xl font-bold mb-2 text-white">
                     {hrManager.name}
                   </h3>
