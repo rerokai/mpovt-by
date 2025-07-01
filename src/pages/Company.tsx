@@ -120,7 +120,7 @@ const Company = () => {
   const companyStats = [
     {
       icon: Building,
-      label: "Производственная площадь",
+      label: "Фабричная площадь",
       value: "15,000 м²",
       color: "text-emerald-500",
       bgColor: "bg-emerald-500/20"
