@@ -156,13 +156,13 @@ const QualityManagement = () => {
             
             <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
               {certificates.map((cert, index) => (
-                <Card key={index} className="p-8 bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300">
+                <Card key={index} className="p-8 bg-white/5 backdrop-blur-xl border border-white/10 hover:border-emerald-400/30 transition-all duration-300 group">
                   <div className="flex items-start justify-between mb-6">
                     <div className="w-12 h-12 bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 rounded-xl flex items-center justify-center">
                       <Award className="w-6 h-6 text-emerald-400" />
                     </div>
-                    <Badge className="bg-slate-700/50 text-slate-200 border-slate-600 px-3 py-1 text-sm">
-                      Действителен до {cert.validUntil}
+                    <Badge className="bg-emerald-500/10 text-emerald-300 border-emerald-500/20 px-3 py-1 text-sm">
+                      до {cert.validUntil}
                     </Badge>
                   </div>
                   <h3 className="text-xl font-bold mb-4 text-white">
@@ -173,14 +173,14 @@ const QualityManagement = () => {
                   </p>
                   <div className="space-y-3 mb-6">
                     <p className="text-slate-300 text-sm">
-                      <span className="text-cyan-400 font-medium">Номер:</span> {cert.number}
+                      <span className="text-emerald-400 font-medium">Номер:</span> {cert.number}
                     </p>
                     <p className="text-slate-300 text-sm">
-                      <span className="text-cyan-400 font-medium">Орган сертификации:</span> {cert.certifier}
+                      <span className="text-emerald-400 font-medium">Орган сертификации:</span> {cert.certifier}
                     </p>
                   </div>
                   <Button
-                    className="w-full bg-slate-700 hover:bg-slate-600 text-white border-0"
+                    className="w-full bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-white/30 backdrop-blur-sm transition-all duration-300"
                     onClick={() => window.open(cert.pdfUrl, '_blank')}
                   >
                     <Download className="w-4 h-4 mr-2" />
@@ -218,7 +218,7 @@ const QualityManagement = () => {
                     </div>
                     <Button
                       size="sm"
-                      className="bg-slate-700 hover:bg-slate-600 text-white border-0 flex-shrink-0 ml-4"
+                      className="bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-white/30 backdrop-blur-sm transition-all duration-300 flex-shrink-0 ml-4"
                       onClick={() => window.open(doc.url, '_blank')}
                     >
                       <Download className="w-4 h-4 mr-2" />
@@ -259,7 +259,7 @@ const QualityManagement = () => {
                       </div>
                       <Button
                         size="sm"
-                        className="bg-slate-700 hover:bg-slate-600 text-white border-0 flex-shrink-0 ml-4"
+                        className="bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-white/30 backdrop-blur-sm transition-all duration-300 flex-shrink-0 ml-4"
                         onClick={() => window.open(cert.url, '_blank')}
                       >
                         <Download className="w-4 h-4 mr-2" />

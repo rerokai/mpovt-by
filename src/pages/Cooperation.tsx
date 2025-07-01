@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -11,13 +10,15 @@ const Cooperation = () => {
       name: "Соболевская Елена Анатольевна",
       position: "Руководитель Департамента логистики и внешнеэкономической деятельности",
       phone: "+375 17 3889398",
-      email: "sobolevskaya@mpovt.by"
+      email: "sobolevskaya@mpovt.by",
+      photo: "https://mpovt.by/gallery_gen/81e58fda2be845b3a58d1d39baea37d0_290x307_10x0_300x307_crop.jpg?ts=1746513904"
     },
     {
       name: "Матюшонок Дмитрий Эдуардович",
       position: "Начальник сектора Департамента разработок",
       phone: "+375 17 3889083",
-      email: null
+      email: null,
+      photo: "https://mpovt.by/gallery_gen/81e58fda2be845b3a58d1d39baea37d0_290x307_10x0_300x307_crop.jpg?ts=1746513904"
     }
   ];
 
@@ -108,9 +109,13 @@ const Cooperation = () => {
                 );
               })}
             </div>
+          </div>
+        </section>
             
-            {/* Information Card */}
-            <Card className="max-w-4xl mx-auto p-8 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-cyan-500/10 backdrop-blur-xl border border-blue-500/20 hover:border-blue-500/30 transition-all duration-300">
+        {/* Information Card */}
+        <section className="py-16 md:py-20 px-4 relative z-10">
+          <div className="container mx-auto">
+            <Card className="max-w-4xl mx-auto p-8 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-blue-500/5 backdrop-blur-xl border border-blue-500/20 hover:border-blue-500/30 transition-all duration-300">
               <div className="flex items-start space-x-6">
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
                   <Info className="w-8 h-8 text-blue-400" />
@@ -151,7 +156,7 @@ const Cooperation = () => {
                     </div>
                     <Button
                       size="sm"
-                      className="bg-slate-700 hover:bg-slate-600 text-white border-0 ml-4 flex-shrink-0"
+                      className="bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-white/30 backdrop-blur-sm transition-all duration-300 ml-4 flex-shrink-0"
                       onClick={() => window.open(link.url, '_blank')}
                     >
                       <ExternalLink className="w-4 h-4 mr-2" />
@@ -176,26 +181,30 @@ const Cooperation = () => {
             <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
               {contacts.map((contact, index) => (
                 <Card key={index} className="p-8 bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-orange-500/20 to-yellow-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <User className="w-6 h-6 text-orange-400" />
+                  <div className="flex items-start space-x-6">
+                    <div className="w-24 h-32 bg-gradient-to-br from-orange-500/20 to-yellow-500/20 rounded-lg overflow-hidden flex-shrink-0">
+                      <img
+                        src={contact.photo}
+                        alt={contact.name}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                     <div className="flex-1">
                       <h3 className="text-lg font-bold mb-2 text-white">
                         {contact.name}
                       </h3>
-                      <p className="text-orange-300 mb-4 text-sm">{contact.position}</p>
+                      <p className="text-white/60 mb-4 text-sm">{contact.position}</p>
                       <div className="space-y-2">
                         <div className="flex items-center text-slate-300">
-                          <Phone className="w-4 h-4 mr-2 text-orange-400" />
-                          <a href={`tel:${contact.phone}`} className="hover:text-orange-400 transition-colors text-sm">
+                          <Phone className="w-4 h-4 mr-2 text-cyan-400" />
+                          <a href={`tel:${contact.phone}`} className="hover:text-cyan-400 transition-colors text-sm">
                             {contact.phone}
                           </a>
                         </div>
                         {contact.email && (
                           <div className="flex items-center text-slate-300">
-                            <Mail className="w-4 h-4 mr-2 text-orange-400" />
-                            <a href={`mailto:${contact.email}`} className="hover:text-orange-400 transition-colors text-sm">
+                            <Mail className="w-4 h-4 mr-2 text-purple-400" />
+                            <a href={`mailto:${contact.email}`} className="hover:text-purple-400 transition-colors text-sm">
                               {contact.email}
                             </a>
                           </div>

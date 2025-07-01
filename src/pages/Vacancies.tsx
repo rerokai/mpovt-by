@@ -3,12 +3,13 @@ import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { MapPin, Clock, ExternalLink, Phone, Mail, User, TrendingUp, Users, Award, Briefcase } from "lucide-react";
+import { MapPin, Clock, ExternalLink, Phone, Mail, User, TrendingUp, Users, Award, Briefcase, ChevronDown, ChevronUp } from "lucide-react";
 import Footer from "@/components/Footer";
 
 const Vacancies = () => {
   const [vacancies, setVacancies] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [expandedVacancies, setExpandedVacancies] = useState({});
 
   // Mock data for vacancies
   const mockVacancies = [
@@ -16,30 +17,30 @@ const Vacancies = () => {
       id: 1,
       title: "Инженер-программист",
       department: "Департамент разработок",
-      location: "г. Минск, ул. Притыцкого, 62",
       type: "Полная занятость",
       experience: "от 2 лет",
-      description: "Разработка и поддержка программного обеспечения для автомобильной электроники. Участие в проектах по созданию электронных блоков управления для ведущих автопроизводителей.",
+      shortDescription: "Разработка и поддержка программного обеспечения для автомобильной электроники.",
+      fullDescription: "Разработка и поддержка программного обеспечения для автомобильной электроники. Участие в проектах по созданию электронных блоков управления для ведущих автопроизводителей.",
       requirements: ["Высшее техническое образование", "Знание C/C++", "Опыт работы с микроконтроллерами", "Знание протоколов CAN, LIN"]
     },
     {
       id: 2,
       title: "Технолог производства",
       department: "Производственный отдел",
-      location: "г. Минск, ул. Притыцкого, 62",
       type: "Полная занятость",
       experience: "от 3 лет",
-      description: "Разработка и оптимизация технологических процессов производства электронных блоков. Контроль качества на всех этапах производственного цикла.",
+      shortDescription: "Разработка и оптимизация технологических процессов производства электронных блоков.",
+      fullDescription: "Разработка и оптимизация технологических процессов производства электронных блоков. Контроль качества на всех этапах производственного цикла.",
       requirements: ["Высшее техническое образование", "Опыт в производстве электроники", "Знание LEAN-технологий", "Опыт работы с SMT-линиями"]
     },
     {
       id: 3,
       title: "Менеджер по качеству",
       department: "Отдел качества",
-      location: "г. Минск, ул. Притыцкого, 62",
       type: "Полная занятость",
       experience: "от 2 лет",
-      description: "Контроль качества продукции, ведение документации по системе менеджмента качества в соответствии с требованиями ISO 9001 и IATF 16949.",
+      shortDescription: "Контроль качества продукции, ведение документации по системе менеджмента качества.",
+      fullDescription: "Контроль качества продукции, ведение документации по системе менеджмента качества в соответствии с требованиями ISO 9001 и IATF 16949.",
       requirements: ["Высшее образование", "Знание стандартов ISO", "Аналитические способности", "Опыт аудита качества"]
     }
   ];
@@ -55,6 +56,13 @@ const Vacancies = () => {
 
     fetchVacancies();
   }, []);
+
+  const toggleVacancy = (id) => {
+    setExpandedVacancies(prev => ({
+      ...prev,
+      [id]: !prev[id]
+    }));
+  };
 
   const hrManager = {
     name: "Улькин Максим Владимирович",
@@ -96,19 +104,11 @@ const Vacancies = () => {
         <div className="container mx-auto relative z-10">
           <div className="max-w-4xl mx-auto animate-fade-in">
             <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-8xl font-black mb-6 md:mb-8 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent leading-tight">
-              Карьера в ОАО "МПОВТ"
+              Вакансии
             </h1>
             <p className="text-lg md:text-xl xl:text-2xl text-white/70 mb-6 md:mb-8 max-w-3xl mx-auto">
               Присоединяйтесь к команде профессионалов и развивайте свою карьеру в одной из ведущих компаний Беларуси в области электронных технологий.
             </p>
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 text-white border-0"
-              onClick={() => window.open('https://rabota.by/search/vacancy?from=employerPage&employer_id=1006818&hhtmFrom=employer', '_blank')}
-            >
-              <ExternalLink className="w-5 h-5 mr-2" />
-              Актуальные вакансии на rabota.by
-            </Button>
           </div>
         </div>
       </section>
@@ -169,21 +169,34 @@ const Vacancies = () => {
                 ))}
               </div>
             ) : (
-              <div className="grid gap-8 max-w-5xl mx-auto">
+              <div className="grid gap-6 max-w-5xl mx-auto">
                 {vacancies.map((vacancy) => (
-                  <Card key={vacancy.id} className="p-8 bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300">
-                    <div className="mb-6">
+                  <Card key={vacancy.id} className="bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300">
+                    <div className="p-6">
                       <div className="flex items-start justify-between mb-4">
-                        <div className="flex items-center space-x-3">
+                        <div className="flex items-center space-x-3 flex-1">
                           <div className="w-10 h-10 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-lg flex items-center justify-center">
                             <Briefcase className="w-5 h-5 text-blue-400" />
                           </div>
-                          <h3 className="text-2xl font-bold text-white">
+                          <h3 className="text-xl font-bold text-white">
                             {vacancy.title}
                           </h3>
                         </div>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => toggleVacancy(vacancy.id)}
+                          className="text-white hover:bg-white/10"
+                        >
+                          {expandedVacancies[vacancy.id] ? (
+                            <ChevronUp className="w-4 h-4" />
+                          ) : (
+                            <ChevronDown className="w-4 h-4" />
+                          )}
+                        </Button>
                       </div>
-                      <div className="flex flex-wrap gap-3 mb-6">
+                      
+                      <div className="flex flex-wrap gap-3 mb-4">
                         <Badge className="bg-slate-700/50 text-slate-200 border-slate-600 px-3 py-1">
                           {vacancy.department}
                         </Badge>
@@ -191,49 +204,74 @@ const Vacancies = () => {
                           {vacancy.type}
                         </Badge>
                       </div>
-                    </div>
-                    
-                    <div className="space-y-4 mb-8">
-                      <div className="flex items-center text-slate-300">
-                        <MapPin className="w-5 h-5 mr-3 text-cyan-400" />
-                        {vacancy.location}
+                      
+                      <div className="mb-4">
+                        <div className="flex items-center text-slate-300 mb-2">
+                          <Clock className="w-4 h-4 mr-2 text-purple-400" />
+                          Опыт работы: {vacancy.experience}
+                        </div>
+                        <p className="text-slate-200 leading-relaxed">
+                          {expandedVacancies[vacancy.id] ? vacancy.fullDescription : vacancy.shortDescription}
+                        </p>
                       </div>
-                      <div className="flex items-center text-slate-300">
-                        <Clock className="w-5 h-5 mr-3 text-purple-400" />
-                        Опыт работы: {vacancy.experience}
-                      </div>
-                      <p className="text-slate-200 leading-relaxed">{vacancy.description}</p>
-                      <div>
-                        <h4 className="text-lg font-semibold mb-3 text-white">
-                          Требования:
-                        </h4>
-                        <ul className="list-disc list-inside text-slate-300 space-y-1">
-                          {vacancy.requirements.map((req, index) => (
-                            <li key={index}>{req}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                    
-                    <div className="flex gap-4 pt-6 border-t border-white/10">
-                      <Button 
-                        className="bg-slate-700 hover:bg-slate-600 text-white border-0"
-                        onClick={() => window.open('https://rabota.by/search/vacancy?from=employerPage&employer_id=1006818&hhtmFrom=employer', '_blank')}
-                      >
-                        <ExternalLink className="w-4 h-4 mr-2" />
-                        Смотреть на rabota.by
-                      </Button>
-                      <Button 
-                        className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white border-0"
-                        onClick={() => window.open('https://rabota.by/search/vacancy?from=employerPage&employer_id=1006818&hhtmFrom=employer', '_blank')}
-                      >
-                        Откликнуться на вакансию
-                      </Button>
+                      
+                      {expandedVacancies[vacancy.id] && (
+                        <div className="space-y-4 mb-6 animate-fade-in">
+                          <div>
+                            <h4 className="text-lg font-semibold mb-3 text-white">
+                              Требования:
+                            </h4>
+                            <ul className="list-disc list-inside text-slate-300 space-y-1">
+                              {vacancy.requirements.map((req, index) => (
+                                <li key={index}>{req}</li>
+                              ))}
+                            </ul>
+                          </div>
+                          
+                          <div className="flex gap-4 pt-6 border-t border-white/10">
+                            <Button 
+                              size="sm"
+                              className="bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-white/30 backdrop-blur-sm transition-all duration-300"
+                              onClick={() => window.open('https://rabota.by/search/vacancy?from=employerPage&employer_id=1006818&hhtmFrom=employer', '_blank')}
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              Смотреть на rabota.by
+                            </Button>
+                            <Button 
+                              className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white border-0"
+                              onClick={() => window.open('https://rabota.by/search/vacancy?from=employerPage&employer_id=1006818&hhtmFrom=employer', '_blank')}
+                            >
+                              Откликнуться на вакансию
+                            </Button>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </Card>
                 ))}
               </div>
             )}
+            
+            {/* Additional info block */}
+            <Card className="max-w-4xl mx-auto mt-12 p-8 bg-gradient-to-r from-emerald-500/10 via-cyan-500/10 to-emerald-500/10 backdrop-blur-xl border border-emerald-500/20 hover:border-emerald-500/30 transition-all duration-300">
+              <div className="text-center">
+                <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+                  Больше вакансий на rabota.by
+                </h3>
+                <p className="text-lg text-slate-200 mb-6 leading-relaxed">
+                  Полный список актуальных вакансий ОАО "МПОВТ" доступен на нашей странице в rabota.by. 
+                  Здесь вы найдете самую свежую информацию о всех открытых позициях.
+                </p>
+                <Button
+                  size="lg"
+                  className="bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-white/30 backdrop-blur-sm transition-all duration-300"
+                  onClick={() => window.open('https://rabota.by/search/vacancy?from=employerPage&employer_id=1006818&hhtmFrom=employer', '_blank')}
+                >
+                  <ExternalLink className="w-5 h-5 mr-2" />
+                  Все актуальные вакансии
+                </Button>
+              </div>
+            </Card>
           </div>
         </section>
 
@@ -247,31 +285,31 @@ const Vacancies = () => {
             </div>
             
             <Card className="p-8 max-w-2xl mx-auto bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300">
-              <div className="flex items-center space-x-6">
-                <div className="flex-shrink-0">
+              <div className="flex items-start space-x-6">
+                <div className="w-24 h-32 bg-gradient-to-br from-orange-500/20 to-yellow-500/20 rounded-lg overflow-hidden flex-shrink-0">
                   <img
                     src={hrManager.photo}
                     alt={hrManager.name}
-                    className="w-24 h-24 rounded-full object-cover border-2 border-orange-500/50"
+                    className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold mb-2 text-white">
                     {hrManager.name}
                   </h3>
-                  <p className="text-orange-300 mb-4">{hrManager.position}</p>
+                  <p className="text-white/60 mb-4">{hrManager.position}</p>
                   <div className="space-y-2">
                     {hrManager.phones.map((phone, index) => (
                       <div key={index} className="flex items-center text-slate-300">
-                        <Phone className="w-4 h-4 mr-2 text-orange-400" />
-                        <a href={`tel:${phone}`} className="hover:text-orange-400 transition-colors">
+                        <Phone className="w-4 h-4 mr-2 text-cyan-400" />
+                        <a href={`tel:${phone}`} className="hover:text-cyan-400 transition-colors">
                           {phone}
                         </a>
                       </div>
                     ))}
                     <div className="flex items-center text-slate-300">
-                      <Mail className="w-4 h-4 mr-2 text-orange-400" />
-                      <a href={`mailto:${hrManager.email}`} className="hover:text-orange-400 transition-colors">
+                      <Mail className="w-4 h-4 mr-2 text-purple-400" />
+                      <a href={`mailto:${hrManager.email}`} className="hover:text-purple-400 transition-colors">
                         {hrManager.email}
                       </a>
                     </div>
