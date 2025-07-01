@@ -83,7 +83,7 @@ const Cooperation = () => {
             <div className="text-center mb-12 relative">
               {/* Background glow */}
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/15 via-purple-400/15 to-emerald-400/15 rounded-3xl blur-3xl"></div>
-              <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent relative z-10">
+              <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-orange-400 to-pink-400 bg-clip-text text-transparent relative z-10">
                 Развитие партнерских отношений
               </h2>
               <p className="text-lg text-white/60 relative z-10">
@@ -91,27 +91,33 @@ const Cooperation = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-12 justify-items-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-12 justify-center items-stretch place-items-center">
               {advantages.map((advantage, index) => {
                 const Icon = advantage.icon;
                 const iconColors = [
-                  { icon: "text-cyan-400", bg: "from-cyan-500/20 to-purple-500/20", bgHover: "from-cyan-500/30 to-purple-500/30" },
-                  { icon: "text-purple-400", bg: "from-purple-500/20 to-pink-500/20", bgHover: "from-purple-500/30 to-pink-500/30" },
-                  { icon: "text-emerald-400", bg: "from-emerald-500/20 to-teal-500/20", bgHover: "from-emerald-500/30 to-teal-500/30" }
+                  { icon: "text-blue-400", bg: "bg-blue-500/20", bgHover: "bg-blue-500/40", border: "from-blue-500/20 to-cyan-500/20", cardHover: "bg-blue-500/20" },
+                  { icon: "text-orange-400", bg: "bg-orange-500/20", bgHover: "bg-orange-500/40", border: "from-orange-500/20 to-yellow-500/20", cardHover: "bg-orange-500/20" },
+                  { icon: "text-pink-400", bg: "bg-pink-500/20", bgHover: "bg-pink-500/40", border: "from-pink-500/20 to-purple-500/20", cardHover: "bg-pink-500/20" }
                 ][index];
-                
                 return (
                   <Card 
                     key={index} 
-                    className="p-6 text-center bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 group hover:scale-105 relative w-full max-w-sm"
+                    className={`p-6 text-center bg-white/5 backdrop-blur-xl border border-white/10 transition-all duration-300 group relative w-full max-w-sm h-full flex flex-col transform-gpu hover:scale-105 ${iconColors.cardHover} hover:!bg-opacity-30 hover:!bg-blend-lighten`}
+                    style={{ transitionProperty: 'background, border, box-shadow, transform', transitionDuration: '300ms' }}
                   >
                     {/* Background glow on hover */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${iconColors.bg} rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
-                    <div className={`w-16 h-16 bg-gradient-to-br ${iconColors.bg} rounded-xl flex items-center justify-center mx-auto mb-6 transition-all duration-300 group-hover:bg-gradient-to-br group-hover:${iconColors.bgHover} relative z-10`}>
+                    <div className={`absolute inset-0 ${iconColors.bg} rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none`}></div>
+                    {/* Border glow on hover */}
+                    <div className={`absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br ${iconColors.border} p-px pointer-events-none`}>
+                      <div className="w-full h-full bg-black/90 rounded-lg"></div>
+                    </div>
+                    <div
+                      className={`w-16 h-16 ${iconColors.bg} rounded-xl flex items-center justify-center mx-auto mb-6 transition-colors duration-300 group-hover:${iconColors.bgHover} relative z-20`}
+                    >
                       <Icon className={`h-8 w-8 ${iconColors.icon}`} />
                     </div>
-                    <h3 className="text-xl font-semibold mb-3 text-white relative z-10">{advantage.title}</h3>
-                    <p className="text-slate-300 relative z-10">{advantage.description}</p>
+                    <h3 className="text-xl font-semibold mb-3 text-white relative z-20">{advantage.title}</h3>
+                    <p className="text-slate-300 relative z-20">{advantage.description}</p>
                   </Card>
                 );
               })}

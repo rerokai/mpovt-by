@@ -15,7 +15,7 @@ export default function Navigation({ isLoading = false }: NavigationProps) {
   const [isVisible, setIsVisible] = useState(false);
 
   const companyMenuItems = [
-    { name: "Электронное обращение", path: "/company/electronic-appeal", icon: FileText },
+    // { name: "Электронное обращение", path: "/company/electronic-appeal", icon: FileText },
     { name: "Система менеджмента качества", path: "/company/quality-management", icon: Cog },
     { name: "Кооперация", path: "/company/cooperation", icon: Users },
     { name: "Вакансии", path: "/company/vacancies", icon: Briefcase },
