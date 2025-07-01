@@ -110,10 +110,12 @@ const QualityManagement = () => {
       </section>
 
       <div className="bg-gradient-to-b from-black to-black relative overflow-hidden">
-        {/* Animated background spheres */}
+        {/* Enhanced animated background spheres */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-1/4 left-1/4 w-32 h-32 md:w-64 md:h-64 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-full blur-3xl animate-pulse moving-sphere-5"></div>
           <div className="absolute bottom-1/3 right-1/4 w-48 h-48 md:w-96 md:h-96 bg-gradient-to-r from-purple-500/10 to-emerald-500/10 rounded-full blur-3xl animate-pulse moving-sphere-6"></div>
+          <div className="absolute top-2/3 left-1/6 w-36 h-36 md:w-72 md:h-72 bg-gradient-to-r from-pink-500/10 to-orange-500/10 rounded-full blur-3xl animate-pulse moving-sphere-7"></div>
+          <div className="absolute bottom-1/4 center w-44 h-44 md:w-88 md:h-88 bg-gradient-to-r from-yellow-500/10 to-red-500/10 rounded-full blur-3xl animate-pulse moving-sphere-8"></div>
         </div>
 
         {/* Advantages Section */}
@@ -139,7 +141,7 @@ const QualityManagement = () => {
                     className="p-6 text-center bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 group hover:scale-105 relative"
                   >
                     {/* Background glow on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-purple-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-purple-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
                     <div className="w-16 h-16 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:bg-gradient-to-br group-hover:from-cyan-500/30 group-hover:to-purple-500/30 transition-all duration-300 relative z-10">
                       <Icon className="h-8 w-8 text-cyan-400" />
                     </div>
@@ -194,11 +196,12 @@ const QualityManagement = () => {
                     </p>
                   </div>
                   <Button
-                    className="w-full bg-gradient-to-r from-emerald-600/20 to-cyan-600/20 hover:from-emerald-500/30 hover:to-cyan-500/30 text-white border border-emerald-400/30 hover:border-emerald-300/50 backdrop-blur-sm transition-all duration-300 shadow-lg hover:shadow-xl relative z-10"
+                    className="w-full bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-emerald-400/50 backdrop-blur-sm transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-emerald-500/20 hover:scale-[1.02] relative z-10 group/btn"
                     onClick={() => window.open(cert.pdfUrl, '_blank')}
                   >
-                    <Download className="w-4 h-4 mr-2" />
-                    Скачать сертификат
+                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 to-cyan-500/10 rounded-md opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                    <Download className="w-4 h-4 mr-2 relative z-10" />
+                    <span className="relative z-10">Скачать сертификат</span>
                   </Button>
                 </Card>
               ))}
@@ -243,11 +246,12 @@ const QualityManagement = () => {
                     </div>
                     <Button
                       size="sm"
-                      className="bg-gradient-to-r from-purple-600/20 to-pink-600/20 hover:from-purple-500/30 hover:to-pink-500/30 text-white border border-purple-400/30 hover:border-purple-300/50 backdrop-blur-sm transition-all duration-300 flex-shrink-0 ml-4 shadow-lg hover:shadow-xl"
+                      className="bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-purple-400/50 backdrop-blur-sm transition-all duration-300 flex-shrink-0 ml-4 shadow-lg hover:shadow-xl hover:shadow-purple-500/20 hover:scale-[1.02] group/btn"
                       onClick={() => window.open(doc.url, '_blank')}
                     >
-                      <Download className="w-4 h-4 mr-2" />
-                      PDF
+                      <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-md opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                      <Download className="w-4 h-4 mr-2 relative z-10" />
+                      <span className="relative z-10">PDF</span>
                     </Button>
                   </div>
                 </Card>
@@ -284,26 +288,25 @@ const QualityManagement = () => {
                   <Card key={index} className="overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 group relative">
                     {/* Background glow */}
                     <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-yellow-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div className="p-6 relative z-10">
-                      <div className="flex items-start justify-between mb-4">
-                        <div className="flex items-start space-x-4 flex-1">
-                          <div className={`w-full h-20 bg-gradient-to-br ${iconColors.bg} rounded-xl flex items-center justify-center`}>
-                            <Icon className={`w-8 h-8 ${iconColors.icon}`} />
-                          </div>
+                    <div className="flex h-full relative z-10">
+                      <div className="w-32 flex-shrink-0">
+                        <div className={`w-full h-full bg-gradient-to-br ${iconColors.bg} flex items-center justify-center`}>
+                          <Icon className={`w-12 h-12 ${iconColors.icon}`} />
                         </div>
                       </div>
-                      <div className="mt-4">
+                      <div className="flex-1 p-6">
                         <h3 className="text-lg font-semibold mb-2 text-white">
                           {cert.title}
                         </h3>
                         <p className="text-slate-300 text-sm mb-4">{cert.description}</p>
                         <Button
                           size="sm"
-                          className="bg-gradient-to-r from-orange-600/20 to-yellow-600/20 hover:from-orange-500/30 hover:to-yellow-500/30 text-white border border-orange-400/30 hover:border-orange-300/50 backdrop-blur-sm transition-all duration-300 shadow-lg hover:shadow-xl"
+                          className="bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-orange-400/50 backdrop-blur-sm transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-orange-500/20 hover:scale-[1.02] group/btn"
                           onClick={() => window.open(cert.url, '_blank')}
                         >
-                          <Download className="w-4 h-4 mr-2" />
-                          PDF
+                          <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 to-yellow-500/10 rounded-md opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                          <Download className="w-4 h-4 mr-2 relative z-10" />
+                          <span className="relative z-10">PDF</span>
                         </Button>
                       </div>
                     </div>

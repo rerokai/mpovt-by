@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -70,10 +69,12 @@ const Cooperation = () => {
       </section>
 
       <div className="bg-gradient-to-b from-black to-black relative overflow-hidden">
-        {/* Animated background spheres */}
+        {/* Enhanced animated background spheres */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-1/4 left-1/4 w-32 h-32 md:w-64 md:h-64 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-full blur-3xl animate-pulse moving-sphere-5"></div>
           <div className="absolute bottom-1/3 right-1/4 w-48 h-48 md:w-96 md:h-96 bg-gradient-to-r from-purple-500/10 to-emerald-500/10 rounded-full blur-3xl animate-pulse moving-sphere-6"></div>
+          <div className="absolute top-2/3 left-1/6 w-36 h-36 md:w-72 md:h-72 bg-gradient-to-r from-pink-500/10 to-orange-500/10 rounded-full blur-3xl animate-pulse moving-sphere-7"></div>
+          <div className="absolute bottom-1/4 center w-44 h-44 md:w-88 md:h-88 bg-gradient-to-r from-yellow-500/10 to-red-500/10 rounded-full blur-3xl animate-pulse moving-sphere-8"></div>
         </div>
 
         {/* Partnership Development Section */}
@@ -81,7 +82,7 @@ const Cooperation = () => {
           <div className="container mx-auto">
             <div className="text-center mb-12 relative">
               {/* Background glow */}
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/10 via-purple-400/10 to-emerald-400/10 rounded-3xl blur-3xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/15 via-purple-400/15 to-emerald-400/15 rounded-3xl blur-3xl"></div>
               <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent relative z-10">
                 Развитие партнерских отношений
               </h2>
@@ -90,7 +91,7 @@ const Cooperation = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-12">
               {advantages.map((advantage, index) => {
                 const Icon = advantage.icon;
                 const iconColors = [
@@ -117,7 +118,7 @@ const Cooperation = () => {
             </div>
 
             {/* Cooperation Approach Info Card */}
-            <Card className="max-w-4xl mx-auto p-8 bg-gradient-to-r from-cyan-900/15 via-purple-900/15 to-emerald-900/15 backdrop-blur-xl border border-cyan-500/20 hover:border-cyan-400/30 transition-all duration-300 group relative">
+            <Card className="max-w-4xl mx-auto p-8 bg-gradient-to-r from-slate-900/30 via-slate-800/30 to-slate-900/30 backdrop-blur-xl border border-cyan-500/20 hover:border-cyan-400/30 transition-all duration-300 group relative">
               {/* Background glow */}
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-purple-500/5 to-emerald-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="text-center relative z-10">
@@ -137,7 +138,7 @@ const Cooperation = () => {
           <div className="container mx-auto">
             <div className="text-center mb-12 relative">
               {/* Background glow */}
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-400/10 to-pink-400/10 rounded-3xl blur-3xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-400/15 to-pink-400/15 rounded-3xl blur-3xl"></div>
               <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent relative z-10">
                 Информация о сотрудничестве
               </h2>
@@ -165,11 +166,12 @@ const Cooperation = () => {
                     </div>
                     <Button
                       size="sm"
-                      className="bg-gradient-to-r from-purple-600/20 to-pink-600/20 hover:from-purple-500/30 hover:to-pink-500/30 text-white border border-purple-400/30 hover:border-purple-300/50 backdrop-blur-sm transition-all duration-300 flex-shrink-0 ml-4 shadow-lg hover:shadow-xl"
+                      className="bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-purple-400/50 backdrop-blur-sm transition-all duration-300 flex-shrink-0 ml-4 shadow-lg hover:shadow-xl hover:shadow-purple-500/20 hover:scale-[1.02] group/btn"
                       onClick={() => window.open(info.url, '_blank')}
                     >
-                      <Download className="w-4 h-4 mr-2" />
-                      PDF
+                      <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-md opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                      <Download className="w-4 h-4 mr-2 relative z-10" />
+                      <span className="relative z-10">PDF</span>
                     </Button>
                   </div>
                 </Card>
@@ -183,7 +185,7 @@ const Cooperation = () => {
           <div className="container mx-auto">
             <div className="text-center mb-12 relative">
               {/* Background glow */}
-              <div className="absolute inset-0 bg-gradient-to-r from-orange-400/10 to-yellow-400/10 rounded-3xl blur-3xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-400/15 to-yellow-400/15 rounded-3xl blur-3xl"></div>
               <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent relative z-10">
                 Контакты по вопросам кооперации
               </h2>
@@ -196,11 +198,11 @@ const Cooperation = () => {
               {/* Background glow */}
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-yellow-500/10 rounded-lg opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
               <div className="flex h-full relative z-10">
-                <div className="w-32 flex-shrink-0 h-full">
+                <div className="w-40 flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-orange-500/10 to-yellow-500/10">
                   <img
                     src={contactPerson.photo}
                     alt={contactPerson.name}
-                    className="w-full h-full object-cover"
+                    className="w-28 h-32 object-cover rounded-lg shadow-lg"
                   />
                 </div>
                 <div className="flex-1 p-6">
@@ -210,14 +212,14 @@ const Cooperation = () => {
                   <p className="text-white/60 mb-4">{contactPerson.position}</p>
                   <div className="space-y-2">
                     <div className="flex items-center text-slate-300">
-                      <Phone className="w-4 h-4 mr-2 text-cyan-400" />
-                      <a href={`tel:${contactPerson.phone}`} className="hover:text-cyan-400 transition-colors">
+                      <Phone className="w-4 h-4 mr-2 text-orange-400" />
+                      <a href={`tel:${contactPerson.phone}`} className="hover:text-orange-400 transition-colors">
                         {contactPerson.phone}
                       </a>
                     </div>
                     <div className="flex items-center text-slate-300">
-                      <Mail className="w-4 h-4 mr-2 text-purple-400" />
-                      <a href={`mailto:${contactPerson.email}`} className="hover:text-purple-400 transition-colors">
+                      <Mail className="w-4 h-4 mr-2 text-yellow-400" />
+                      <a href={`mailto:${contactPerson.email}`} className="hover:text-yellow-400 transition-colors">
                         {contactPerson.email}
                       </a>
                     </div>

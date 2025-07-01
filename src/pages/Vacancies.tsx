@@ -149,14 +149,10 @@ const Vacancies = () => {
                 return (
                   <Card 
                     key={index} 
-                    className={`p-6 text-center bg-white/5 backdrop-blur-xl border border-white/10 hover:border-transparent transition-all duration-300 group relative hover:bg-gradient-to-br ${iconColors.border}`}
-                    style={{
-                      background: 'rgba(255, 255, 255, 0.05)',
-                      backdropFilter: 'blur(20px)',
-                    }}
+                    className="p-6 text-center bg-white/5 backdrop-blur-xl border border-white/10 hover:border-transparent transition-all duration-300 group relative"
                   >
                     {/* Background glow on hover */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${iconColors.bg} rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+                    <div className={`absolute inset-0 bg-gradient-to-br ${iconColors.bg} rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300`}></div>
                     {/* Border glow on hover */}
                     <div className={`absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br ${iconColors.border} p-px`}>
                       <div className="w-full h-full bg-black/90 rounded-lg"></div>
@@ -246,10 +242,10 @@ const Vacancies = () => {
                         </p>
                       </div>
                       
-                      <div className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                      <div className={`transition-all duration-500 ease-in-out overflow-hidden ${
                         expandedVacancies[vacancy.id] 
-                          ? 'max-h-96 opacity-100' 
-                          : 'max-h-0 opacity-0'
+                          ? 'max-h-96 opacity-100 transform translate-y-0' 
+                          : 'max-h-0 opacity-0 transform -translate-y-4'
                       }`}>
                         {expandedVacancies[vacancy.id] && (
                           <div className="space-y-4 mb-6 pt-4 border-t border-white/10">
@@ -270,11 +266,12 @@ const Vacancies = () => {
                             <div className="flex gap-4 pt-6">
                               <Button 
                                 size="sm"
-                                className="bg-white/10 hover:bg-white/20 text-white border border-white/30 hover:border-white/50 backdrop-blur-sm transition-all duration-300 shadow-lg hover:shadow-xl"
+                                className="bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-white/40 backdrop-blur-sm transition-all duration-300 shadow-lg hover:shadow-xl h-10 group/btn overflow-hidden"
                                 onClick={() => window.open('https://rabota.by/search/vacancy?from=employerPage&employer_id=1006818&hhtmFrom=employer', '_blank')}
                               >
-                                <ExternalLink className="w-4 h-4 mr-2" />
-                                Смотреть на rabota.by
+                                <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                                <ExternalLink className="w-4 h-4 mr-2 relative z-10" />
+                                <span className="relative z-10">Смотреть на rabota.by</span>
                               </Button>
                               <Button 
                                 className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white border-0 h-10"
@@ -299,8 +296,8 @@ const Vacancies = () => {
           <div className="container mx-auto">
             <div className="text-center mb-12 relative">
               {/* Background glow */}
-              <div className="absolute inset-0 bg-gradient-to-r from-orange-400/15 to-yellow-400/15 rounded-3xl blur-3xl"></div>
-              <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent relative z-10">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-400/15 to-cyan-400/15 rounded-3xl blur-3xl"></div>
+              <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent relative z-10">
                 Актуальные вакансии
               </h2>
               <p className="text-lg text-white/60 relative z-10">
@@ -308,11 +305,11 @@ const Vacancies = () => {
               </p>
             </div>
             
-            <Card className="max-w-4xl mx-auto p-8 bg-gradient-to-r from-orange-900/10 via-yellow-900/10 to-orange-900/10 backdrop-blur-xl border border-orange-500/20 hover:border-orange-400/40 transition-all duration-300 group relative hover:scale-[1.02] hover:shadow-2xl hover:shadow-orange-500/20">
+            <Card className="max-w-4xl mx-auto p-8 bg-gradient-to-r from-blue-900/20 via-cyan-900/20 to-blue-900/20 backdrop-blur-xl border border-blue-500/30 hover:border-blue-400/50 transition-all duration-300 group relative hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/20">
               {/* Background glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-yellow-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
               <div className="text-center relative z-10">
-                <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent">
+                <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
                   Больше вакансий на rabota.by
                 </h3>
                 <p className="text-lg text-slate-200 mb-6 leading-relaxed">
@@ -321,11 +318,12 @@ const Vacancies = () => {
                 </p>
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-orange-600/20 to-yellow-600/20 hover:from-orange-500/30 hover:to-yellow-500/30 text-white border border-orange-400/30 hover:border-orange-300/50 backdrop-blur-sm transition-all duration-300 shadow-lg hover:shadow-xl"
+                  className="bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-blue-400/50 backdrop-blur-sm transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-blue-500/20 hover:scale-[1.02] group/btn"
                   onClick={() => window.open('https://rabota.by/search/vacancy?from=employerPage&employer_id=1006818&hhtmFrom=employer', '_blank')}
                 >
-                  <ExternalLink className="w-5 h-5 mr-2" />
-                  Все актуальные вакансии
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-md opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                  <ExternalLink className="w-5 h-5 mr-2 relative z-10" />
+                  <span className="relative z-10">Все актуальные вакансии</span>
                 </Button>
               </div>
             </Card>
@@ -337,8 +335,8 @@ const Vacancies = () => {
           <div className="container mx-auto">
             <div className="text-center mb-12 relative">
               {/* Background glow */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-400/15 to-purple-400/15 rounded-3xl blur-3xl"></div>
-              <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent relative z-10">
+              <div className="absolute inset-0 bg-gradient-to-r from-green-400/15 to-teal-400/15 rounded-3xl blur-3xl"></div>
+              <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-green-400 to-teal-400 bg-clip-text text-transparent relative z-10">
                 Контакты по вопросам трудоустройства
               </h2>
               <p className="text-lg text-white/60 relative z-10">
@@ -348,13 +346,13 @@ const Vacancies = () => {
             
             <Card className="max-w-2xl mx-auto overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 relative">
               {/* Background glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-lg opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-teal-500/10 rounded-lg opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
               <div className="flex h-full relative z-10">
-                <div className="w-32 flex-shrink-0 h-full">
+                <div className="w-40 flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-green-500/10 to-teal-500/10">
                   <img
                     src={hrManager.photo}
                     alt={hrManager.name}
-                    className="w-full h-full object-cover"
+                    className="w-28 h-32 object-cover rounded-lg shadow-lg"
                   />
                 </div>
                 <div className="flex-1 p-6">
@@ -365,15 +363,15 @@ const Vacancies = () => {
                   <div className="space-y-2">
                     {hrManager.phones.map((phone, index) => (
                       <div key={index} className="flex items-center text-slate-300">
-                        <Phone className="w-4 h-4 mr-2 text-cyan-400" />
-                        <a href={`tel:${phone}`} className="hover:text-cyan-400 transition-colors">
+                        <Phone className="w-4 h-4 mr-2 text-green-400" />
+                        <a href={`tel:${phone}`} className="hover:text-green-400 transition-colors">
                           {phone}
                         </a>
                       </div>
                     ))}
                     <div className="flex items-center text-slate-300">
-                      <Mail className="w-4 h-4 mr-2 text-purple-400" />
-                      <a href={`mailto:${hrManager.email}`} className="hover:text-purple-400 transition-colors">
+                      <Mail className="w-4 h-4 mr-2 text-teal-400" />
+                      <a href={`mailto:${hrManager.email}`} className="hover:text-teal-400 transition-colors">
                         {hrManager.email}
                       </a>
                     </div>
