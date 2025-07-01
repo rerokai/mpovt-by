@@ -1,58 +1,50 @@
 
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Phone, Mail, User, Building2, Handshake, Globe, Info } from "lucide-react";
+import { FileText, Download, ExternalLink, Handshake, Target, Users, TrendingUp, Award, CheckCircle, Phone, Mail, Building } from "lucide-react";
 import Footer from "@/components/Footer";
 
 const Cooperation = () => {
-  const contacts = [
-    {
-      name: "Соболевская Елена Анатольевна",
-      position: "Руководитель Департамента логистики и внешнеэкономической деятельности",
-      phone: "+375 17 3889398",
-      email: "sobolevskaya@mpovt.by",
-      photo: "https://mpovt.by/gallery_gen/81e58fda2be845b3a58d1d39baea37d0_290x307_10x0_300x307_crop.jpg?ts=1746513904"
-    },
-    {
-      name: "Матюшонок Дмитрий Эдуардович",
-      position: "Начальник сектора Департамента разработок",
-      phone: "+375 17 3889083",
-      email: null,
-      photo: "https://mpovt.by/gallery_gen/81e58fda2be845b3a58d1d39baea37d0_290x307_10x0_300x307_crop.jpg?ts=1746513904"
-    }
-  ];
-
-  const links = [
+  const cooperationInfo = [
     {
       title: "Участие ОАО \"МПОВТ\" в процедурах закупок",
-      url: "https://icetrade.by/search/aucArchive?search_text=%D0%9E%D0%90%D0%9E+%D0%9C%D0%9F%D0%9E%D0%92%D0%A2&zakup_type%5B1%5D=1&zakup_type%5B2%5D=1&auc_num=&okrb=&company_title=&participant=&establishment=0&industries=&period=&created_from=&created_to=&request_end_from=&request_end_to=&t%5BTrade%5D=1&t%5BeTrade%5D=1&t%5BsocialOrder%5D=1&t%5BsingleSource%5D=1&t%5BAuction%5D=1&t%5BRequest%5D=1&t%5BcontractingTrades%5D=1&t%5Bnegotiations%5D=1&t%5BOther%5D=1&r%5B1%5D=1&r%5B2%5D=2&r%5B7%5D=7&r%5B3%5D=3&r%5B4%5D=4&r%5B6%5D=6&r%5B5%5D=5&sort=num%3Adesc&sbm=1&onPage=20",
-      description: "Информация о участии компании в торговых процедурах и закупках на платформе IceTrade"
+      description: "Информация о участии предприятия в государственных и коммерческих закупках",
+      url: "https://mpovt.by/gallery/%D0%A3%D1%87%D0%B0%D1%81%D1%82%D0%B8%D0%B5%20%D0%9E%D0%90%D0%9E%20%D0%9C%D0%9F%D0%9E%D0%92%D0%A2%20%D0%B2%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D0%B4%D1%83%D1%80%D0%B0%D1%85%20%D0%B7%D0%B0%D0%BA%D1%83%D0%BF%D0%BE%D0%BA.pdf"
     },
     {
       title: "Перечень основных средств ОАО \"МПОВТ\", подлежащих реализации",
-      url: "https://mpovt.by/gallery/%D0%A0%D0%B5%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F%2022.pdf",
-      description: "Документ со списком основных средств компании, доступных для реализации"
+      description: "Актуальная информация об основных средствах предприятия, доступных для реализации",
+      url: "https://mpovt.by/gallery/%D0%9F%D0%B5%D1%80%D0%B5%D1%87%D0%B5%D0%BD%D1%8C%20%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D1%8B%D1%85%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%20%D0%9E%D0%90%D0%9E%20%D0%9C%D0%9F%D0%9E%D0%92%D0%A2%20%D0%B4%D0%BB%D1%8F%20%D1%80%D0%B5%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.pdf"
     }
   ];
 
   const advantages = [
     {
-      icon: Building2,
-      title: "Надежное партнерство",
-      description: "Многолетний опыт успешного сотрудничества с ведущими компаниями отрасли"
-    },
-    {
       icon: Handshake,
-      title: "Взаимовыгодное сотрудничество",
-      description: "Гибкие условия партнерства и индивидуальный подход к каждому проекту"
+      title: "Долгосрочное партнерство",
+      description: "Стремимся к построению долгосрочных и взаимовыгодных отношений с надежными партнерами"
     },
     {
-      icon: Globe,
-      title: "Международный опыт",
-      description: "Опыт работы на международных рынках и знание глобальных стандартов"
+      icon: Target,
+      title: "Гибкие условия сотрудничества",
+      description: "Индивидуальный подход к каждому партнеру и готовность к различным формам кооперации"
+    },
+    {
+      icon: Award,
+      title: "Высокие стандарты качества",
+      description: "Соблюдение международных стандартов качества во всех аспектах сотрудничества"
     }
   ];
+
+  const contactPerson = {
+    name: "Иванов Алексей Петрович",
+    position: "Заместитель генерального директора по коммерческим вопросам",
+    photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=200&fit=crop&crop=face",
+    phone: "+375 17 3889456",
+    email: "cooperation@mpovt.by"
+  };
 
   return (
     <div className="min-h-screen">
@@ -71,7 +63,7 @@ const Cooperation = () => {
               Кооперация
             </h1>
             <p className="text-lg md:text-xl xl:text-2xl text-white/70 mb-6 md:mb-8 max-w-3xl mx-auto">
-              ОАО "МПОВТ" активно развивает партнерские отношения и участвует в различных формах сотрудничества для достижения взаимовыгодных результатов.
+              Развиваем взаимовыгодные партнерские отношения и создаем возможности для успешного бизнеса вместе с надежными партнерами.
             </p>
           </div>
         </div>
@@ -84,29 +76,38 @@ const Cooperation = () => {
           <div className="absolute bottom-1/3 right-1/4 w-48 h-48 md:w-96 md:h-96 bg-gradient-to-r from-purple-500/10 to-emerald-500/10 rounded-full blur-3xl animate-pulse moving-sphere-6"></div>
         </div>
 
-        {/* Advantages Section */}
+        {/* Partnership Development Section */}
         <section className="py-16 md:py-20 px-4 relative z-10">
           <div className="container mx-auto">
             <div className="text-center mb-12 relative">
               {/* Background glow */}
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/10 via-purple-400/10 to-emerald-400/10 rounded-3xl blur-3xl"></div>
-              <h2 className="text-3xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-cyan-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent relative z-10">
+              <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent relative z-10">
                 Развитие партнерских отношений
               </h2>
+              <p className="text-lg text-white/60 relative z-10">
+                Строим долгосрочные партнерства на основе взаимного доверия и профессионализма
+              </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-8">
               {advantages.map((advantage, index) => {
                 const Icon = advantage.icon;
+                const iconColors = [
+                  { icon: "text-cyan-400", bg: "from-cyan-500/20 to-purple-500/20", bgHover: "from-cyan-500/30 to-purple-500/30" },
+                  { icon: "text-purple-400", bg: "from-purple-500/20 to-pink-500/20", bgHover: "from-purple-500/30 to-pink-500/30" },
+                  { icon: "text-emerald-400", bg: "from-emerald-500/20 to-teal-500/20", bgHover: "from-emerald-500/30 to-teal-500/30" }
+                ][index];
+                
                 return (
                   <Card 
                     key={index} 
                     className="p-6 text-center bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 group hover:scale-105 relative"
                   >
                     {/* Background glow on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-purple-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div className="w-16 h-16 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:bg-gradient-to-br group-hover:from-cyan-500/30 group-hover:to-purple-500/30 transition-all duration-300 relative z-10">
-                      <Icon className="h-8 w-8 text-cyan-400" />
+                    <div className={`absolute inset-0 bg-gradient-to-br ${iconColors.bg} rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+                    <div className={`w-16 h-16 bg-gradient-to-br ${iconColors.bg} rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:bg-gradient-to-br group-hover:${iconColors.bgHover} transition-all duration-300 relative z-10`}>
+                      <Icon className={`h-8 w-8 ${iconColors.icon}`} />
                     </div>
                     <h3 className="text-xl font-semibold mb-3 text-white relative z-10">{advantage.title}</h3>
                     <p className="text-slate-300 relative z-10">{advantage.description}</p>
@@ -114,60 +115,61 @@ const Cooperation = () => {
                 );
               })}
             </div>
-            
-            {/* Information Card positioned closer to grid */}
-            <Card className="max-w-4xl mx-auto p-8 bg-gradient-to-br from-blue-500/5 via-slate-900/30 to-slate-800/20 backdrop-blur-xl border border-blue-500/20 hover:border-blue-500/30 transition-all duration-300 relative">
+
+            {/* Cooperation Approach Info Card */}
+            <Card className="max-w-4xl mx-auto p-8 bg-gradient-to-r from-cyan-900/15 via-purple-900/15 to-emerald-900/15 backdrop-blur-xl border border-cyan-500/20 hover:border-cyan-400/30 transition-all duration-300 group relative">
               {/* Background glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 rounded-lg"></div>
-              <div className="flex items-start space-x-6 relative z-10">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Info className="w-8 h-8 text-blue-400" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                    О нашем подходе к кооперации
-                  </h3>
-                  <p className="text-lg text-slate-200 leading-relaxed">
-                    ОАО "МПОВТ" заинтересовано в развитии долгосрочных партнерских отношений с поставщиками, 
-                    подрядчиками и другими участниками рынка. Мы стремимся к взаимовыгодному сотрудничеству 
-                    и готовы рассмотреть различные формы кооперации.
-                  </p>
-                </div>
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-purple-500/5 to-emerald-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="text-center relative z-10">
+                <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent">
+                  О нашем подходе к кооперации
+                </h3>
+                <p className="text-lg text-slate-200 leading-relaxed">
+                  ОАО "МПОВТ" заинтересовано в развитии долгосрочных партнерских отношений с поставщиками, подрядчиками и другими участниками рынка. Мы стремимся к взаимовыгодному сотрудничеству и готовы рассмотреть различные формы кооперации.
+                </p>
               </div>
             </Card>
           </div>
         </section>
 
-        {/* Links Section */}
+        {/* Cooperation Information Section */}
         <section className="py-16 md:py-20 px-4 relative z-10">
           <div className="container mx-auto">
             <div className="text-center mb-12 relative">
               {/* Background glow */}
               <div className="absolute inset-0 bg-gradient-to-r from-purple-400/10 to-pink-400/10 rounded-3xl blur-3xl"></div>
-              <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent relative z-10">
+              <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent relative z-10">
                 Информация о сотрудничестве
               </h2>
+              <p className="text-lg text-white/60 relative z-10">
+                Документы и материалы для потенциальных партнеров и участников закупочных процедур
+              </p>
             </div>
             
             <div className="grid gap-6 max-w-5xl mx-auto">
-              {links.map((link, index) => (
+              {cooperationInfo.map((info, index) => (
                 <Card key={index} className="p-6 bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 group relative">
                   {/* Background glow */}
                   <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="flex items-start justify-between relative z-10">
-                    <div className="flex-1">
-                      <h3 className="text-xl font-semibold mb-3 text-white">
-                        {link.title}
-                      </h3>
-                      <p className="text-slate-300 mb-4">{link.description}</p>
+                  <div className="flex items-center justify-between relative z-10">
+                    <div className="flex items-start space-x-4 flex-1">
+                      <div className="w-12 h-12 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <FileText className="w-6 h-6 text-purple-400" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-semibold mb-2 text-white">
+                          {info.title}
+                        </h3>
+                        <p className="text-slate-400 text-sm">{info.description}</p>
+                      </div>
                     </div>
                     <Button
                       size="sm"
-                      className="bg-white/10 hover:bg-white/20 text-white border border-white/30 hover:border-white/50 backdrop-blur-sm transition-all duration-300 ml-4 flex-shrink-0 shadow-lg hover:shadow-xl hover:scale-[1.02]"
-                      onClick={() => window.open(link.url, '_blank')}
+                      className="bg-gradient-to-r from-purple-600/20 to-pink-600/20 hover:from-purple-500/30 hover:to-pink-500/30 text-white border border-purple-400/30 hover:border-purple-300/50 backdrop-blur-sm transition-all duration-300 flex-shrink-0 ml-4 shadow-lg hover:shadow-xl"
+                      onClick={() => window.open(info.url, '_blank')}
                     >
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Открыть
+                      <Download className="w-4 h-4 mr-2" />
+                      PDF
                     </Button>
                   </div>
                 </Card>
@@ -176,56 +178,53 @@ const Cooperation = () => {
           </div>
         </section>
 
-        {/* Contacts Section */}
+        {/* Contact Person Section */}
         <section className="py-16 md:py-20 px-4 relative z-10">
           <div className="container mx-auto">
             <div className="text-center mb-12 relative">
               {/* Background glow */}
               <div className="absolute inset-0 bg-gradient-to-r from-orange-400/10 to-yellow-400/10 rounded-3xl blur-3xl"></div>
-              <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent relative z-10">
-                Контактные лица
+              <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent relative z-10">
+                Контакты по вопросам кооперации
               </h2>
+              <p className="text-lg text-white/60 relative z-10">
+                Свяжитесь с нашим специалистом для обсуждения возможностей сотрудничества
+              </p>
             </div>
             
-            <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              {contacts.map((contact, index) => (
-                <Card key={index} className="overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 relative">
-                  {/* Background glow */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-yellow-500/5 rounded-lg opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="flex h-full relative z-10">
-                    <div className="w-32 flex-shrink-0">
-                      <img
-                        src={contact.photo}
-                        alt={contact.name}
-                        className="w-full h-full object-cover"
-                      />
+            <Card className="max-w-2xl mx-auto overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 relative">
+              {/* Background glow */}
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-yellow-500/10 rounded-lg opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="flex h-full relative z-10">
+                <div className="w-32 flex-shrink-0 h-full">
+                  <img
+                    src={contactPerson.photo}
+                    alt={contactPerson.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="flex-1 p-6">
+                  <h3 className="text-xl font-bold mb-2 text-white">
+                    {contactPerson.name}
+                  </h3>
+                  <p className="text-white/60 mb-4">{contactPerson.position}</p>
+                  <div className="space-y-2">
+                    <div className="flex items-center text-slate-300">
+                      <Phone className="w-4 h-4 mr-2 text-cyan-400" />
+                      <a href={`tel:${contactPerson.phone}`} className="hover:text-cyan-400 transition-colors">
+                        {contactPerson.phone}
+                      </a>
                     </div>
-                    <div className="flex-1 p-6">
-                      <h3 className="text-lg font-bold mb-2 text-white">
-                        {contact.name}
-                      </h3>
-                      <p className="text-white/60 mb-4 text-sm">{contact.position}</p>
-                      <div className="space-y-2">
-                        <div className="flex items-center text-slate-300">
-                          <Phone className="w-4 h-4 mr-2 text-cyan-400" />
-                          <a href={`tel:${contact.phone}`} className="hover:text-cyan-400 transition-colors text-sm">
-                            {contact.phone}
-                          </a>
-                        </div>
-                        {contact.email && (
-                          <div className="flex items-center text-slate-300">
-                            <Mail className="w-4 h-4 mr-2 text-purple-400" />
-                            <a href={`mailto:${contact.email}`} className="hover:text-purple-400 transition-colors text-sm">
-                              {contact.email}
-                            </a>
-                          </div>
-                        )}
-                      </div>
+                    <div className="flex items-center text-slate-300">
+                      <Mail className="w-4 h-4 mr-2 text-purple-400" />
+                      <a href={`mailto:${contactPerson.email}`} className="hover:text-purple-400 transition-colors">
+                        {contactPerson.email}
+                      </a>
                     </div>
                   </div>
-                </Card>
-              ))}
-            </div>
+                </div>
+              </div>
+            </Card>
           </div>
         </section>
 

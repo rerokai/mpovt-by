@@ -46,28 +46,24 @@ const QualityManagement = () => {
       title: "Автотракторная продукция",
       description: "Электронные блоки управления для тракторов и сельскохозяйственной техники",
       icon: Factory,
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop",
       url: "https://mpovt.by/gallery/%D0%A1%D0%95%D0%A0%D0%A2%D0%98%D0%A4%D0%98%D0%9A%D0%90%D0%A2%20%D0%A1%D0%9E%D0%91%D0%A1%D0%A2%D0%92%D0%95%D0%9D%D0%9D%D0%9E%D0%93%D0%9E%20%D0%9F%D0%A0%D0%9E%D0%98%D0%97%D0%92%D0%9E%D0%94%D0%A1%D0%A2%D0%92%D0%90%20(%D0%B0%D0%B2%D1%82%D0%BE%D1%82%D1%80%D0%B0%D0%BA%D1%82%D0%BE%D1%80%D0%BD%D0%BE%D0%B5).pdf"
     },
     {
       title: "Ноутбуки",
       description: "Портативные компьютеры для профессионального и образовательного использования",
       icon: Computer,
-      image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop",
       url: "https://mpovt.by/gallery/%D0%A1%D0%95%D0%A0%D0%A2%D0%98%D0%A4%D0%98%D0%9A%D0%90%D0%A2%20%D0%A1%D0%9E%D0%91%D0%A1%D0%A2%D0%92%D0%95%D0%9D%D0%9D%D0%9E%D0%93%D0%9E%20%D0%9F%D0%A0%D0%9E%D0%98%D0%97%D0%92%D0%9E%D0%94%D0%A1%D0%A2%D0%92%D0%90%20%D0%9D%D0%90%20%D0%9D%D0%9E%D0%A3%D0%A2%D0%91%D0%A3%D0%9A%D0%98.PDF"
     },
     {
       title: "Адаптер сетевой",
       description: "Источники питания и зарядные устройства для электронной техники",
       icon: Zap,
-      image: "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400&h=300&fit=crop",
       url: "https://mpovt.by/gallery/%D0%90%D0%B4%D0%B0%D0%BF%D1%82%D0%B5%D1%80%20%D1%81%D0%B5%D1%82%D0%B5%D0%B2%D0%BE%D0%B9%20%D1%81%D0%B5%D1%80%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%82%20%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%BE%D0%B3%D0%BE%20%D0%BF%D1%80%D0%BE%D0%B8%D0%B7%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%B0.PDF"
     },
     {
       title: "Плата системная",
       description: "Основные компоненты и материнские платы для компьютерной техники",
       icon: Microchip,
-      image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=300&fit=crop",
       url: "https://mpovt.by/gallery/%D0%9F%D0%BB%D0%B0%D1%82%D0%B0%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%BD%D0%B0%D1%8F%20%D1%81%D0%B5%D1%80%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%82%20%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%BE%D0%B3%D0%BE%20%D0%BF%D1%80%D0%BE%D0%B8%D0%B7%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%B0.PDF"
     }
   ];
@@ -126,9 +122,12 @@ const QualityManagement = () => {
             <div className="text-center mb-8 md:mb-12 relative">
               {/* Background glow */}
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/10 via-purple-400/10 to-emerald-400/10 rounded-3xl blur-3xl"></div>
-              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-8 bg-gradient-to-r from-cyan-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent relative z-10">
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent relative z-10">
                 Наша приверженность качеству
               </h2>
+              <p className="text-lg text-white/60 relative z-10">
+                Соответствие международным стандартам и непрерывное совершенствование процессов
+              </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -159,9 +158,12 @@ const QualityManagement = () => {
             <div className="text-center mb-12 relative">
               {/* Background glow */}
               <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/10 to-cyan-400/10 rounded-3xl blur-3xl"></div>
-              <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent relative z-10">
+              <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent relative z-10">
                 Сертификаты соответствия
               </h2>
+              <p className="text-lg text-white/60 relative z-10">
+                Официальные документы, подтверждающие соответствие международным стандартам качества
+              </p>
             </div>
             
             <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -192,7 +194,7 @@ const QualityManagement = () => {
                     </p>
                   </div>
                   <Button
-                    className="w-full bg-white/10 hover:bg-white/20 text-white border border-white/30 hover:border-white/50 backdrop-blur-sm transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02] relative z-10"
+                    className="w-full bg-gradient-to-r from-emerald-600/20 to-cyan-600/20 hover:from-emerald-500/30 hover:to-cyan-500/30 text-white border border-emerald-400/30 hover:border-emerald-300/50 backdrop-blur-sm transition-all duration-300 shadow-lg hover:shadow-xl relative z-10"
                     onClick={() => window.open(cert.pdfUrl, '_blank')}
                   >
                     <Download className="w-4 h-4 mr-2" />
@@ -210,16 +212,23 @@ const QualityManagement = () => {
             <div className="text-center mb-12 relative">
               {/* Background glow */}
               <div className="absolute inset-0 bg-gradient-to-r from-purple-400/10 to-pink-400/10 rounded-3xl blur-3xl"></div>
-              <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent relative z-10">
+              <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent relative z-10">
                 Документы и руководства
               </h2>
+              <p className="text-lg text-white/60 relative z-10">
+                Нормативная документация и руководящие материалы по системе менеджмента качества
+              </p>
             </div>
             
             <div className="grid gap-6 max-w-5xl mx-auto">
               {documents.map((doc, index) => (
-                <Card key={index} className="p-6 bg-white/5 backdrop-blur-xl border border-white/10 transition-all duration-300 group hover:scale-105 hover:border-purple-400/30 relative">
+                <Card key={index} className="p-6 bg-white/5 backdrop-blur-xl border border-white/10 transition-all duration-300 group hover:scale-105 hover:border-transparent relative">
                   {/* Background glow */}
                   <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  {/* Border glow on hover */}
+                  <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-purple-500/20 to-pink-500/20 p-px">
+                    <div className="w-full h-full bg-black/90 rounded-lg"></div>
+                  </div>
                   <div className="flex items-center justify-between relative z-10">
                     <div className="flex items-start space-x-4 flex-1">
                       <div className="w-12 h-12 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -234,7 +243,7 @@ const QualityManagement = () => {
                     </div>
                     <Button
                       size="sm"
-                      className="bg-white/10 hover:bg-white/20 text-white border border-white/30 hover:border-white/50 backdrop-blur-sm transition-all duration-300 flex-shrink-0 ml-4 shadow-lg hover:shadow-xl hover:scale-[1.02]"
+                      className="bg-gradient-to-r from-purple-600/20 to-pink-600/20 hover:from-purple-500/30 hover:to-pink-500/30 text-white border border-purple-400/30 hover:border-purple-300/50 backdrop-blur-sm transition-all duration-300 flex-shrink-0 ml-4 shadow-lg hover:shadow-xl"
                       onClick={() => window.open(doc.url, '_blank')}
                     >
                       <Download className="w-4 h-4 mr-2" />
@@ -253,41 +262,44 @@ const QualityManagement = () => {
             <div className="text-center mb-12 relative">
               {/* Background glow */}
               <div className="absolute inset-0 bg-gradient-to-r from-orange-400/10 to-yellow-400/10 rounded-3xl blur-3xl"></div>
-              <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent relative z-10">
+              <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent relative z-10">
                 Сертификаты соответствия продукции собственного производства
               </h2>
+              <p className="text-lg text-white/60 relative z-10">
+                Документы, подтверждающие качество и безопасность выпускаемой продукции
+              </p>
             </div>
             
             <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
               {productCertificates.map((cert, index) => {
                 const Icon = cert.icon;
+                const iconColors = [
+                  { icon: "text-orange-400", bg: "from-orange-500/30 to-red-500/30" },
+                  { icon: "text-blue-400", bg: "from-blue-500/30 to-cyan-500/30" },
+                  { icon: "text-yellow-400", bg: "from-yellow-500/30 to-orange-500/30" },
+                  { icon: "text-green-400", bg: "from-green-500/30 to-emerald-500/30" }
+                ][index % 4];
+                
                 return (
                   <Card key={index} className="overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 group relative">
                     {/* Background glow */}
                     <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-yellow-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div className="h-48 overflow-hidden">
-                      <img 
-                        src={cert.image} 
-                        alt={cert.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                      />
-                    </div>
                     <div className="p-6 relative z-10">
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex items-start space-x-4 flex-1">
-                          <div className="w-12 h-12 bg-gradient-to-br from-orange-500/20 to-yellow-500/20 rounded-xl flex items-center justify-center">
-                            <Icon className="w-6 h-6 text-orange-400" />
-                          </div>
-                          <div className="flex-1">
-                            <h3 className="text-lg font-semibold mb-2 text-white">
-                              {cert.title}
-                            </h3>
-                            <p className="text-slate-300 text-sm">{cert.description}</p>
+                          <div className={`w-full h-20 bg-gradient-to-br ${iconColors.bg} rounded-xl flex items-center justify-center`}>
+                            <Icon className={`w-8 h-8 ${iconColors.icon}`} />
                           </div>
                         </div>
+                      </div>
+                      <div className="mt-4">
+                        <h3 className="text-lg font-semibold mb-2 text-white">
+                          {cert.title}
+                        </h3>
+                        <p className="text-slate-300 text-sm mb-4">{cert.description}</p>
                         <Button
                           size="sm"
-                          className="bg-white/10 hover:bg-white/20 text-white border border-white/30 hover:border-white/50 backdrop-blur-sm transition-all duration-300 flex-shrink-0 ml-4 shadow-lg hover:shadow-xl hover:scale-[1.02]"
+                          className="bg-gradient-to-r from-orange-600/20 to-yellow-600/20 hover:from-orange-500/30 hover:to-yellow-500/30 text-white border border-orange-400/30 hover:border-orange-300/50 backdrop-blur-sm transition-all duration-300 shadow-lg hover:shadow-xl"
                           onClick={() => window.open(cert.url, '_blank')}
                         >
                           <Download className="w-4 h-4 mr-2" />
