@@ -21,7 +21,7 @@ export default function Navigation({ isLoading = false }: NavigationProps) {
     { name: "Вакансии", path: "/company/vacancies", icon: Briefcase },
     { name: "Арендные площади", path: "/company/rental-areas", icon: MapPin },
     { name: "Противодействие коррупции", path: "/company/anti-corruption", icon: Shield },
-    { name: "Продажа неликвидов", path: "/company/asset-sales", icon: ShoppingCart }
+    // { name: "Продажа неликвидов", path: "/company/asset-sales", icon: ShoppingCart }
   ];
 
   const productMenuItems = [

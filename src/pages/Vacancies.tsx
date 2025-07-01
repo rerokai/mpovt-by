@@ -10,6 +10,9 @@ const Vacancies = () => {
   const [loading, setLoading] = useState(true);
   const [expandedVacancies, setExpandedVacancies] = useState({});
 
+  // Для хранения ref на раскрывающиеся блоки
+  const detailsRefs = React.useRef({});
+
   // Mock data for vacancies
   const mockVacancies = [
     {
@@ -136,27 +139,30 @@ const Vacancies = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto justify-items-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto justify-center items-stretch place-items-center">
               {benefits.map((benefit, index) => {
                 const Icon = benefit.icon;
                 const iconColors = [
-                  { icon: "text-cyan-400", bg: "from-cyan-500/20 to-purple-500/20", bgHover: "from-cyan-500/30 to-purple-500/30", border: "from-cyan-500/20 to-purple-500/20" },
-                  { icon: "text-purple-400", bg: "from-purple-500/20 to-pink-500/20", bgHover: "from-purple-500/30 to-pink-500/30", border: "from-purple-500/20 to-pink-500/20" },
-                  { icon: "text-emerald-400", bg: "from-emerald-500/20 to-teal-500/20", bgHover: "from-emerald-500/30 to-teal-500/30", border: "from-emerald-500/20 to-teal-500/20" }
+                  { icon: "text-cyan-400", bg: "bg-cyan-500/20", bgHover: "bg-cyan-500/40", border: "from-cyan-500/20 to-purple-500/20", cardHover: "bg-cyan-500/20" },
+                  { icon: "text-purple-400", bg: "bg-purple-500/20", bgHover: "bg-purple-500/40", border: "from-purple-500/20 to-pink-500/20", cardHover: "bg-purple-500/20" },
+                  { icon: "text-emerald-400", bg: "bg-emerald-500/20", bgHover: "bg-emerald-500/40", border: "from-emerald-500/20 to-teal-500/20", cardHover: "bg-emerald-500/20" }
                 ][index];
                 
                 return (
                   <Card 
                     key={index} 
-                    className="p-6 text-center bg-white/5 backdrop-blur-xl border border-white/10 hover:border-transparent transition-all duration-300 group relative w-full max-w-sm"
+                    className={`p-6 text-center bg-white/5 backdrop-blur-xl border border-white/10 transition-all duration-300 group relative w-full max-w-sm h-full flex flex-col transform-gpu hover:scale-105 ${iconColors.cardHover} hover:!bg-opacity-30 hover:!bg-blend-lighten`}
+                    style={{ transitionProperty: 'background, border, box-shadow, transform', transitionDuration: '300ms' }}
                   >
                     {/* Background glow on hover */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${iconColors.bg} rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300`}></div>
+                    <div className={`absolute inset-0 ${iconColors.bg} rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none`}></div>
                     {/* Border glow on hover */}
-                    <div className={`absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br ${iconColors.border} p-px`}>
+                    <div className={`absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br ${iconColors.border} p-px pointer-events-none`}>
                       <div className="w-full h-full bg-black/90 rounded-lg"></div>
                     </div>
-                    <div className={`w-16 h-16 bg-gradient-to-br ${iconColors.bg} rounded-xl flex items-center justify-center mx-auto mb-6 transition-all duration-300 group-hover:bg-gradient-to-br group-hover:${iconColors.bgHover} relative z-20`}>
+                    <div
+                      className={`w-16 h-16 ${iconColors.bg} rounded-xl flex items-center justify-center mx-auto mb-6 transition-colors duration-300 group-hover:${iconColors.bgHover} relative z-20`}
+                    >
                       <Icon className={`h-8 w-8 ${iconColors.icon}`} />
                     </div>
                     <h3 className="text-xl font-semibold mb-3 text-white relative z-20">{benefit.title}</h3>
@@ -241,46 +247,56 @@ const Vacancies = () => {
                         </p>
                       </div>
                       
-                      <div className={`transition-all duration-700 ease-in-out overflow-hidden ${
-                        expandedVacancies[vacancy.id] 
-                          ? 'max-h-[500px] opacity-100' 
-                          : 'max-h-0 opacity-0'
-                      }`}>
-                        {expandedVacancies[vacancy.id] && (
-                          <div className="space-y-4 mb-6 pt-4 border-t border-white/10">
-                            <div>
-                              <p className="text-slate-200 leading-relaxed mb-4">
-                                {vacancy.fullDescription}
-                              </p>
-                              <h4 className="text-lg font-semibold mb-3 text-white">
-                                Требования:
-                              </h4>
-                              <ul className="list-disc list-inside text-slate-300 space-y-1">
-                                {vacancy.requirements.map((req, index) => (
-                                  <li key={index}>{req}</li>
-                                ))}
-                              </ul>
-                            </div>
-                            
-                            <div className="flex gap-4 pt-6">
-                              <Button 
-                                size="sm"
-                                className="bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-white/40 backdrop-blur-sm transition-all duration-300 shadow-lg hover:shadow-xl h-10 group/btn overflow-hidden"
-                                onClick={() => window.open('https://rabota.by/search/vacancy?from=employerPage&employer_id=1006818&hhtmFrom=employer', '_blank')}
-                              >
-                                <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
-                                <ExternalLink className="w-4 h-4 mr-2 relative z-10" />
-                                <span className="relative z-10">Смотреть на rabota.by</span>
-                              </Button>
-                              <Button 
-                                className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white border-0 h-10"
-                                onClick={() => window.open('https://rabota.by/search/vacancy?from=employerPage&employer_id=1006818&hhtmFrom=employer', '_blank')}
-                              >
-                                Откликнуться на вакансию
-                              </Button>
-                            </div>
+                      <div
+                        ref={el => {
+                          if (el) detailsRefs.current[vacancy.id] = el;
+                        }}
+                        style={{
+                          maxHeight: expandedVacancies[vacancy.id]
+                            ? detailsRefs.current[vacancy.id]?.scrollHeight + 'px'
+                            : '0px',
+                          opacity: expandedVacancies[vacancy.id] ? 1 : 0,
+                          transition: 'max-height 0.5s cubic-bezier(0.4,0,0.2,1), opacity 0.4s cubic-bezier(0.4,0,0.2,1)',
+                          overflow: 'hidden',
+                        }}
+                      >
+                        <div
+                          className="space-y-4 mb-6 pt-4 border-t border-white/10"
+                          style={{
+                            pointerEvents: expandedVacancies[vacancy.id] ? 'auto' : 'none',
+                          }}
+                        >
+                          <div>
+                            <p className="text-slate-200 leading-relaxed mb-4">
+                              {vacancy.fullDescription}
+                            </p>
+                            <h4 className="text-lg font-semibold mb-3 text-white">
+                              Требования:
+                            </h4>
+                            <ul className="list-disc list-inside text-slate-300 space-y-1">
+                              {vacancy.requirements.map((req, index) => (
+                                <li key={index}>{req}</li>
+                              ))}
+                            </ul>
                           </div>
-                        )}
+                          <div className="flex flex-col md:flex-row gap-4 pt-6">
+                            <Button 
+                              size="sm"
+                              className="bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-white/40 backdrop-blur-sm transition-all duration-300 shadow-lg hover:shadow-xl h-10 group/btn overflow-hidden"
+                              onClick={() => window.open('https://rabota.by/search/vacancy?from=employerPage&employer_id=1006818&hhtmFrom=employer', '_blank')}
+                            >
+                              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                              <ExternalLink className="w-4 h-4 mr-2 relative z-10" />
+                              <span className="relative z-10">Смотреть на rabota.by</span>
+                            </Button>
+                            <Button 
+                              className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white border-0 h-10"
+                              onClick={() => window.open('https://rabota.by/search/vacancy?from=employerPage&employer_id=1006818&hhtmFrom=employer', '_blank')}
+                            >
+                              Откликнуться на вакансию
+                            </Button>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </Card>
@@ -304,25 +320,25 @@ const Vacancies = () => {
               </p>
             </div>
             
-            <Card className="max-w-4xl mx-auto p-8 bg-gradient-to-r from-slate-900/40 via-slate-800/40 to-slate-900/40 backdrop-blur-xl border border-slate-500/30 hover:border-slate-400/50 transition-all duration-300 group relative hover:scale-[1.02] hover:shadow-2xl hover:shadow-slate-500/20">
+            <Card className="max-w-4xl mx-auto p-8 bg-gradient-to-r from-cyan-900/70 via-blue-900/70 to-slate-900/70 backdrop-blur-xl border border-cyan-500/20 hover:border-cyan-400/40 transition-all duration-300 group relative hover:scale-[1.01] hover:shadow-2xl hover:shadow-cyan-500/10">
               {/* Background glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-slate-500/10 to-slate-600/10 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
               <div className="text-center relative z-10">
-                <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-slate-300 to-slate-400 bg-clip-text text-transparent">
+                <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-transparent">
                   Больше вакансий на rabota.by
                 </h3>
-                <p className="text-lg text-slate-200 mb-6 leading-relaxed">
+                <p className="text-lg text-cyan-100 mb-6 leading-relaxed">
                   Полный список актуальных вакансий ОАО "МПОВТ" доступен на нашей странице в rabota.by. 
                   Здесь вы найдете самую свежую информацию о всех открытых позициях.
                 </p>
                 <Button
                   size="lg"
-                  className="bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-slate-400/50 backdrop-blur-sm transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-slate-500/20 hover:scale-[1.02] group/btn"
+                  variant="outline"
+                  className="border-cyan-400/40 text-cyan-100 hover:bg-cyan-800/30 hover:text-white transition-all duration-200 shadow-none px-6 py-2"
                   onClick={() => window.open('https://rabota.by/search/vacancy?from=employerPage&employer_id=1006818&hhtmFrom=employer', '_blank')}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-slate-500/10 to-slate-600/10 rounded-md opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
-                  <ExternalLink className="w-5 h-5 mr-2 relative z-10" />
-                  <span className="relative z-10">Перейти на rabota.by</span>
+                  <ExternalLink className="w-5 h-5 mr-2" />
+                  <span>Перейти на rabota.by</span>
                 </Button>
               </div>
             </Card>
@@ -334,7 +350,7 @@ const Vacancies = () => {
           <div className="container mx-auto">
             <div className="text-center mb-12 relative">
               {/* Background glow */}
-              <div className="absolute inset-0 bg-gradient-to-r from-green-400/15 to-teal-400/15 rounded-3xl blur-3xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-green-400/25 via-green-500/20 to-teal-400/25 rounded-3xl blur-3xl"></div>
               <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-green-400 to-teal-400 bg-clip-text text-transparent relative z-10">
                 Контакты по вопросам трудоустройства
               </h2>
