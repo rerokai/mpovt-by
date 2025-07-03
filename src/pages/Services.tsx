@@ -131,60 +131,66 @@ const Services = () => {
           </div>
 
           <div className="max-w-6xl mx-auto">
-            <Card className="group overflow-hidden bg-cyan-800/10 backdrop-blur-xl border border-cyan-700/30 hover:border-cyan-500/50 transition-all duration-700 hover:shadow-2xl hover:shadow-cyan-500/20">
-              <div className="p-8 md:p-12">
-                <div className="grid lg:grid-cols-2 gap-12 items-start">
-                  <div>
-                    <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">Государственная аккредитация</h3>
-                    <p className="text-slate-300 text-lg mb-8 leading-relaxed">
-                      Наша лаборатория имеет полную государственную аккредитацию и международное признание. 
-                      Мы обеспечиваем комплексные испытания промышленной продукции с выдачей официальных сертификатов соответствия.
-                    </p>
-                    <div className="space-y-4 mb-8">
-                      {certifications.map((cert, index) => (
-                        <div key={index} className="flex items-start text-slate-300 group/cert">
-                          <div className="w-2 h-2 bg-emerald-400 rounded-full mr-4 mt-2 flex-shrink-0 group-hover/cert:bg-cyan-400 transition-colors"></div>
-                          <span className="leading-relaxed">{cert}</span>
+            <div className="grid lg:grid-cols-2 gap-6">
+              {/* First Card - Accreditation Info */}
+              <Card className="group overflow-hidden bg-cyan-800/10 backdrop-blur-xl border border-cyan-700/30 hover:border-cyan-500/50 transition-all duration-700 hover:shadow-2xl hover:shadow-cyan-500/20">
+                <div className="p-6 md:p-8">
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Государственная аккредитация</h3>
+                  <p className="text-slate-300 text-base md:text-lg mb-6 leading-relaxed">
+                    Наша лаборатория имеет полную государственную аккредитацию и международное признание. 
+                    Мы обеспечиваем комплексные испытания промышленной продукции с выдачей официальных сертификатов соответствия.
+                  </p>
+                  <div className="space-y-3">
+                    {certifications.map((cert, index) => (
+                      <div key={index} className="flex items-start text-slate-300 group/cert">
+                        <div className="w-2 h-2 bg-emerald-400 rounded-full mr-3 mt-2 flex-shrink-0 group-hover/cert:bg-cyan-400 transition-colors"></div>
+                        <span className="leading-relaxed text-sm md:text-base">{cert}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </Card>
+
+              {/* Second Card - Testing Types */}
+              <Card className="group overflow-hidden bg-cyan-800/10 backdrop-blur-xl border border-cyan-700/30 hover:border-cyan-500/50 transition-all duration-700 hover:shadow-2xl hover:shadow-cyan-500/20">
+                <div className="p-6 md:p-8 h-full flex flex-col">
+                  <div className="flex-grow">
+                    <div className="flex items-center mb-6">
+                      <Award className="w-6 h-6 md:w-8 md:h-8 text-cyan-400 mr-3" />
+                      <h4 className="text-xl md:text-2xl font-bold text-white">Виды испытаний</h4>
+                    </div>
+                    <div className="space-y-3 md:space-y-4">
+                      {[
+                        "Электронные испытания и EMC тестирование",
+                        "Химический и материаловедческий анализ", 
+                        "Механические и климатические испытания",
+                        "Сертификация продукции и систем качества",
+                        "Калибровка измерительного оборудования",
+                        "Сертификация персонала"
+                      ].map((service, index) => (
+                        <div key={index} className="flex items-center text-slate-300">
+                          <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-emerald-400 mr-3 flex-shrink-0" />
+                          <span className="text-sm md:text-base">{service}</span>
                         </div>
                       ))}
                     </div>
                   </div>
-                  <div className="relative flex flex-col items-stretch">
-                    <div className="bg-gradient-to-br from-cyan-500/10 to-purple-500/10 p-8 rounded-3xl border border-cyan-500/20 mb-6">
-                      <div className="flex items-center mb-6">
-                        <Award className="w-8 h-8 text-cyan-400 mr-3" />
-                        <h4 className="text-2xl font-bold text-white">Виды испытаний</h4>
-                      </div>
-                      <div className="space-y-4">
-                        {[
-                          "Электронные испытания и EMC тестирование",
-                          "Химический и материаловедческий анализ", 
-                          "Механические и климатические испытания",
-                          "Сертификация продукции и систем качества",
-                          "Калибровка измерительного оборудования",
-                          "Сертификация персонала"
-                        ].map((service, index) => (
-                          <div key={index} className="flex items-center text-slate-300">
-                            <CheckCircle className="w-5 h-5 text-emerald-400 mr-3 flex-shrink-0" />
-                            <span>{service}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
+                  
+                  <div className="mt-6 flex justify-center">
                     <Button 
                       asChild
                       size="lg"
-                      className="rounded-3xl bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white border-0 text-lg px-8 py-6 hover:scale-105 transition-all duration-300 self-end"
+                      className="w-full md:w-auto rounded-3xl bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white border-0 text-base md:text-lg px-6 md:px-8 py-4 md:py-6 hover:scale-105 transition-all duration-300"
                     >
                       <Link to="/services/testing-laboratories">
                         Подробнее об испытательных лабораториях
-                        <ArrowRight className="ml-2 h-5 w-5" />
+                        <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                       </Link>
                     </Button>
                   </div>
                 </div>
-              </div>
-            </Card>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
