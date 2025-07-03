@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Footer from "@/components/Footer";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { 
   ArrowRight,
   FlaskConical,
@@ -22,6 +23,8 @@ import {
 } from "lucide-react";
 
 const Services = () => {
+  const isMobile = useIsMobile();
+
   const certifications = [
     "БГЦА - Белорусский государственный центр аккредитации",
     "EA BLA - Европейское сотрудничество по аккредитации (испытания, калибровки, сертификация)",
@@ -152,7 +155,7 @@ const Services = () => {
               </Card>
 
               {/* Second Card - Testing Types */}
-              <Card className="group overflow-hidden bg-cyan-800/10 backdrop-blur-xl border border-cyan-700/30 hover:border-cyan-500/50 transition-all duration-700 hover:shadow-2xl hover:shadow-cyan-500/20 lg:flex lg:flex-col">
+              <Card className="group overflow-hidden bg-cyan-800/10 backdrop-blur-xl border border-cyan-700/30 hover:border-cyan-500/50 transition-all duration-700 hover:shadow-2xl hover:shadow-cyan-500/20 lg:flex lg:flex-col lg:w-full w-fit mx-auto">
                 <div className="p-6 md:p-8 h-full flex flex-col lg:justify-center lg:max-w-none max-w-md mx-auto">
                   <div className="flex-grow lg:flex-grow-0">
                     <div className="mb-6">
@@ -185,7 +188,7 @@ const Services = () => {
                       className="w-full rounded-3xl bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white border-0 text-base md:text-lg px-6 md:px-8 py-4 md:py-6 hover:scale-105 transition-all duration-300"
                     >
                       <Link to="/services/testing-laboratories">
-                        Подробнее об испытательных лабораториях
+                        {isMobile ? "Подробнее о лабораториях" : "Подробнее об испытательных лабораториях"}
                         <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                       </Link>
                     </Button>
@@ -282,47 +285,35 @@ const Services = () => {
               );
             })}
           </div>
-
-          <div className="text-center mt-16">
-            <div className="bg-gradient-to-r from-slate-800/40 to-slate-900/40 backdrop-blur-xl border border-slate-700/30 rounded-2xl p-8 max-w-2xl mx-auto">
-              <h3 className="text-2xl font-bold text-white mb-4">Индивидуальные решения</h3>
-              <p className="text-slate-300 text-lg mb-6 leading-relaxed">
-                Не нашли нужную услугу? Мы готовы разработать индивидуальное решение под ваши потребности
-              </p>
-              <Button 
-                asChild
-                size="lg"
-                className="bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-500 hover:to-slate-600 text-white border-0 text-lg px-8 py-4"
-              >
-                <Link to="/contact">
-                  Обсудить проект
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 md:py-24 lg:py-28 relative bg-black overflow-hidden">
+      {/* CTA Section - styled like "Ready for Cooperation" from home page */}
+      <section className="relative py-20 md:py-24 lg:py-28 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-black">
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
+        </div>
+        
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white/95">
-              Нужна консультация?
-            </h2>
-            <p className="text-xl md:text-2xl text-white/70 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Свяжитесь с нами для получения подробной информации о наших услугах
-            </p>
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="mb-8">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent mb-6 leading-tight">
+                Нужна консультация?
+              </h2>
+              <p className="text-xl md:text-2xl text-slate-300 leading-relaxed max-w-3xl mx-auto">
+                Свяжитесь с нами для получения подробной информации о наших услугах
+              </p>
+            </div>
             
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Button asChild size="lg" className="btn-primary text-lg px-8 py-4">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <Button asChild size="lg" className="btn-primary text-lg px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white border-0 rounded-3xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
                 <Link to="/contact">
                   Связаться с нами
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="border-white/20 bg-white/5 hover:bg-white/10 text-white hover:text-white text-lg px-8 py-4">
+              <Button asChild variant="outline" size="lg" className="border-white/20 bg-white/5 hover:bg-white/10 text-white hover:text-white text-lg px-8 py-4 rounded-3xl backdrop-blur-sm hover:scale-105 transition-all duration-300">
                 <Link to="/">На главную</Link>
               </Button>
             </div>
