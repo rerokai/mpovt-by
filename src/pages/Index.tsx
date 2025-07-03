@@ -354,7 +354,7 @@ const Index = () => {
                   style={{ animationDelay: `${index * 200}ms` }}
                 >
                   <Card className="group overflow-hidden bg-slate-800/10 backdrop-blur-xl border border-slate-700/20 hover:border-slate-600/40 transition-all duration-700 mx-8 md:mx-12 lg:mx-16 hover:shadow-2xl hover:shadow-slate-900/50">
-                    <div className="grid lg:grid-cols-2 gap-0 min-h-[60vh] max-h-[600px]">
+                    <div className="grid lg:grid-cols-2 gap-0 min-h-[20vh] h-[315px]">
                       {/* Video/Image Section with features overlay */}
                       <div 
                         className="relative overflow-hidden bg-slate-900"
@@ -487,7 +487,7 @@ const Index = () => {
                   <Card
                     key={index}
                     className={cn(
-                      "p-3 sm:p-4 md:p-6 cursor-pointer transition-all duration-700 ease-in-out hover:shadow-xl glass-card bg-slate-900/20 border-slate-700/30",
+                      "p-6 sm:p-4 md:p-6 cursor-pointer transition-all duration-700 ease-in-out hover:shadow-xl glass-card bg-slate-900/20 border-slate-700/30",
                       activeFeature === index 
                         ? `${colors.activeBorder} ${colors.activeBackground} shadow-2xl scale-105 bg-slate-800/40 border-opacity-100` 
                         : 'hover:scale-102 hover:bg-slate-800/30'

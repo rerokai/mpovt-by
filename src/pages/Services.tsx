@@ -3,7 +3,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { 
   ArrowRight,
@@ -122,9 +121,6 @@ const Services = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-12 md:mb-16">
             <div className="inline-flex items-center gap-4 mb-8">
-              <div className="bg-gradient-to-r from-cyan-500/20 to-purple-500/20 p-4 rounded-2xl">
-                <FlaskConical className="w-12 h-12 text-cyan-400" />
-              </div>
               <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent">
                 Испытательные лаборатории
               </h2>
@@ -135,7 +131,7 @@ const Services = () => {
           </div>
 
           <div className="max-w-6xl mx-auto">
-            <Card className="group overflow-hidden bg-gradient-to-br from-slate-800/20 to-slate-900/40 backdrop-blur-xl border border-slate-700/30 hover:border-cyan-500/50 transition-all duration-700 hover:shadow-2xl hover:shadow-cyan-500/20">
+            <Card className="group overflow-hidden bg-cyan-800/10 backdrop-blur-xl border border-cyan-700/30 hover:border-cyan-500/50 transition-all duration-700 hover:shadow-2xl hover:shadow-cyan-500/20">
               <div className="p-8 md:p-12">
                 <div className="grid lg:grid-cols-2 gap-12 items-start">
                   <div>
@@ -144,7 +140,6 @@ const Services = () => {
                       Наша лаборатория имеет полную государственную аккредитацию и международное признание. 
                       Мы обеспечиваем комплексные испытания промышленной продукции с выдачей официальных сертификатов соответствия.
                     </p>
-                    
                     <div className="space-y-4 mb-8">
                       {certifications.map((cert, index) => (
                         <div key={index} className="flex items-start text-slate-300 group/cert">
@@ -153,21 +148,9 @@ const Services = () => {
                         </div>
                       ))}
                     </div>
-                    
-                    <Button 
-                      asChild
-                      size="lg"
-                      className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white border-0 text-lg px-8 py-4 hover:scale-105 transition-all duration-300"
-                    >
-                      <Link to="/services/testing-laboratories">
-                        Подробнее об испытательных лабораториях
-                        <ArrowRight className="ml-2 h-5 w-5" />
-                      </Link>
-                    </Button>
                   </div>
-                  
-                  <div className="relative">
-                    <div className="bg-gradient-to-br from-cyan-500/10 to-purple-500/10 p-8 rounded-3xl border border-cyan-500/20">
+                  <div className="relative flex flex-col items-stretch">
+                    <div className="bg-gradient-to-br from-cyan-500/10 to-purple-500/10 p-8 rounded-3xl border border-cyan-500/20 mb-6">
                       <div className="flex items-center mb-6">
                         <Award className="w-8 h-8 text-cyan-400 mr-3" />
                         <h4 className="text-2xl font-bold text-white">Виды испытаний</h4>
@@ -188,6 +171,16 @@ const Services = () => {
                         ))}
                       </div>
                     </div>
+                    <Button 
+                      asChild
+                      size="lg"
+                      className="rounded-3xl bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white border-0 text-lg px-8 py-6 hover:scale-105 transition-all duration-300 self-end"
+                    >
+                      <Link to="/services/testing-laboratories">
+                        Подробнее об испытательных лабораториях
+                        <ArrowRight className="ml-2 h-5 w-5" />
+                      </Link>
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -208,34 +201,73 @@ const Services = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 px-2 md:px-8 xl:px-24">
             {additionalServices.map((service, index) => {
               const Icon = service.icon;
+              // Цвет для solid background и hover
+              let solidBg = '';
+              let hoverBg = '';
+              switch (service.title) {
+                case 'Металлообработка':
+                  solidBg = 'bg-blue-500/20';
+                  hoverBg = 'hover:bg-blue-900/40';
+                  break;
+                case 'Термообработка':
+                  solidBg = 'bg-red-500/20';
+                  hoverBg = 'hover:bg-red-900/40';
+                  break;
+                case 'Литье пластика':
+                  solidBg = 'bg-green-500/20';
+                  hoverBg = 'hover:bg-green-900/40';
+                  break;
+                case 'SMD-монтаж':
+                  solidBg = 'bg-purple-500/20';
+                  hoverBg = 'hover:bg-purple-900/40';
+                  break;
+                case 'Волновая пайка':
+                  solidBg = 'bg-teal-500/20';
+                  hoverBg = 'hover:bg-teal-900/40';
+                  break;
+                case 'Ручной монтаж':
+                  solidBg = 'bg-amber-500/20';
+                  hoverBg = 'hover:bg-amber-900/40';
+                  break;
+                case 'Селективная пайка':
+                  solidBg = 'bg-pink-500/20';
+                  hoverBg = 'hover:bg-pink-900/40';
+                  break;
+                case 'Полимерное покрытие':
+                  solidBg = 'bg-indigo-500/20';
+                  hoverBg = 'hover:bg-indigo-900/40';
+                  break;
+                case 'Прессование термоактивных материалов':
+                  solidBg = 'bg-slate-500/20';
+                  hoverBg = 'hover:bg-slate-900/40';
+                  break;
+                default:
+                  solidBg = 'bg-slate-800/20';
+                  hoverBg = 'hover:bg-slate-900/40';
+              }
               return (
                 <Card 
                   key={index}
-                  className="group overflow-hidden bg-slate-800/20 backdrop-blur-xl border border-slate-700/30 hover:border-slate-600/50 transition-all duration-500 hover:shadow-xl hover:shadow-slate-900/50 hover:-translate-y-2"
-                  style={{
-                    animationDelay: `${index * 100}ms`
-                  }}
+                  className={`group overflow-hidden backdrop-blur-xl bg-slate- border border-slate-700/30 transition-all duration-500 hover:shadow-xl hover:shadow-slate-900/50 hover:-translate-y-2 ${hoverBg}`}
+                  style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div className="p-6 h-full flex flex-col">
                     <div className="mb-6">
-                      <div className={`bg-gradient-to-r ${service.color}/20 group-hover:${service.color}/30 p-4 rounded-2xl transition-all duration-500 inline-block group-hover:scale-110`}>
+                      <div className={`inline-block p-4 rounded-2xl transition-all duration-500 group-hover:scale-110 ${solidBg}`}>
                         <Icon className={`w-8 h-8 ${service.iconColor} group-hover:scale-110 transition-transform duration-300`} />
                       </div>
                     </div>
-                    
                     <h3 className="text-xl font-bold text-white mb-4 group-hover:text-white/90 transition-colors">
                       {service.title}
                     </h3>
-                    
                     <p className="text-slate-300 leading-relaxed flex-grow group-hover:text-slate-200 transition-colors">
                       {service.description}
                     </p>
-                    
                     <div className="mt-6 pt-4 border-t border-slate-700/50">
-                      <div className={`bg-gradient-to-r ${service.color} h-1 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`}></div>
+                      <div className={`h-1 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left ${solidBg}`}></div>
                     </div>
                   </div>
                 </Card>
