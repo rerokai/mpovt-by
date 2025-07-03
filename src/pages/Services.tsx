@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Footer from "@/components/Footer";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { 
+import {
   ArrowRight,
   FlaskConical,
   Settings,
@@ -41,7 +41,7 @@ const Services = () => {
       iconColor: "text-blue-400"
     },
     {
-      title: "Термообработка", 
+      title: "Термообработка",
       description: "Специализированная термическая обработка для улучшения свойств материалов",
       icon: Flame,
       color: "from-red-500 to-orange-500",
@@ -106,7 +106,7 @@ const Services = () => {
           <div className="absolute top-1/4 left-1/4 w-32 h-32 md:w-64 md:h-64 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-1/6 right-1/4 w-48 h-48 md:w-96 md:h-96 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-full blur-3xl animate-pulse"></div>
         </div>
-        
+
         <div className="container mx-auto relative z-10">
           <div className="max-w-4xl mx-auto animate-fade-in">
             <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-8xl font-black mb-6 md:mb-8 text-white/95 leading-tight">
@@ -139,8 +139,8 @@ const Services = () => {
               <Card className="group overflow-hidden bg-cyan-800/10 backdrop-blur-xl border border-cyan-700/30 hover:border-cyan-500/50 transition-all duration-700 hover:shadow-2xl hover:shadow-cyan-500/20">
                 <div className="p-6 md:p-8">
                   <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Государственная аккредитация</h3>
-                  <p className="text-slate-300 text-base md:text-lg mb-6 leading-relaxed">
-                    Наша лаборатория имеет полную государственную аккредитацию и международное признание. 
+                  <p className="text-slate-400 text-sm md:text-base leading-relaxed pb-5">
+                    Наша лаборатория имеет полную государственную аккредитацию и международное признание.
                     Мы обеспечиваем комплексные испытания промышленной продукции с выдачей официальных сертификатов соответствия.
                   </p>
                   <div className="space-y-3">
@@ -155,8 +155,8 @@ const Services = () => {
               </Card>
 
               {/* Second Card - Testing Types */}
-              <Card className="group overflow-hidden bg-cyan-800/10 backdrop-blur-xl border border-cyan-700/30 hover:border-cyan-500/50 transition-all duration-700 hover:shadow-2xl hover:shadow-cyan-500/20 lg:flex lg:flex-col lg:w-full w-fit mx-auto">
-                <div className="p-6 md:p-8 h-full flex flex-col lg:justify-center lg:max-w-none max-w-md">
+              <Card className="group overflow-hidden bg-cyan-800/10 backdrop-blur-xl border border-cyan-700/30 hover:border-cyan-500/50 transition-all duration-700 hover:shadow-2xl hover:shadow-cyan-500/20">
+                <div className="p-6 md:p-8 h-full lg:max-w-none">
                   <div className="flex-grow lg:flex-grow-0">
                     <div className="mb-6">
                       <h4 className="text-2xl md:text-3xl font-bold text-white mb-3">Виды испытаний</h4>
@@ -167,7 +167,7 @@ const Services = () => {
                     <div className="space-y-3 md:space-y-4">
                       {[
                         "Электронные испытания и EMC тестирование",
-                        "Химический и материаловедческий анализ", 
+                        "Химический и материаловедческий анализ",
                         "Механические и климатические испытания",
                         "Сертификация продукции и систем качества",
                         "Калибровка измерительного оборудования",
@@ -180,15 +180,15 @@ const Services = () => {
                       ))}
                     </div>
                   </div>
-                  
+
                   <div className="mt-6 flex justify-center">
-                    <Button 
+                    <Button
                       asChild
                       size="lg"
                       className="w-full rounded-lg bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white border-0 text-base md:text-lg sd:text-xs px-6 md:px-8 py-4 md:py-6 hover:scale-105 transition-all duration-300"
                     >
                       <Link to="/services/testing-laboratories">
-                        {isMobile ? "Подробнее о лабораториях" : "Подробнее о лабораториях" }
+                        {isMobile ? "Подробнее о лабораториях" : "Подробнее о лабораториях"}
                         <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                       </Link>
                     </Button>
@@ -260,7 +260,7 @@ const Services = () => {
                   hoverBg = 'hover:bg-slate-900/40';
               }
               return (
-                <Card 
+                <Card
                   key={index}
                   className={`group overflow-hidden backdrop-blur-xl bg-slate- border border-slate-700/30 transition-all duration-500 hover:shadow-xl hover:shadow-slate-900/50 hover:-translate-y-2 ${hoverBg}`}
                   style={{ animationDelay: `${index * 100}ms` }}
@@ -287,40 +287,6 @@ const Services = () => {
           </div>
         </div>
       </section>
-
-      {/* CTA Section - styled like "Ready for Cooperation" from home page */}
-      <section className="relative py-20 md:py-24 lg:py-28 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-black">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
-        </div>
-        
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="mb-8">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent mb-6 leading-tight">
-                Нужна консультация?
-              </h2>
-              <p className="text-xl md:text-2xl text-slate-300 leading-relaxed max-w-3xl mx-auto">
-                Свяжитесь с нами для получения подробной информации о наших услугах
-              </p>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <Button asChild size="lg" className="btn-primary text-lg px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white border-0 rounded-3xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
-                <Link to="/contact">
-                  Связаться с нами
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="border-white/20 bg-white/5 hover:bg-white/10 text-white hover:text-white text-lg px-8 py-4 rounded-3xl backdrop-blur-sm hover:scale-105 transition-all duration-300">
-                <Link to="/">На главную</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <Footer />
     </div>
   );

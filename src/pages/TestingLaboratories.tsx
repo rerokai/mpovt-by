@@ -126,7 +126,7 @@ const TestingLaboratories = () => {
               return (
                 <Card 
                   key={index}
-                  className="group overflow-hidden bg-slate-800/10 backdrop-blur-xl border border-slate-700/20 hover:border-slate-600/40 transition-all duration-700 hover:shadow-2xl hover:shadow-slate-900/50 h-full"
+                  className="group overflow-hidden bg-slate-900/30 backdrop-blur-xl border border-slate-700/20 hover:border-slate-600/40 transition-all duration-700 hover:shadow-2xl hover:shadow-slate-900/50 h-full"
                 >
                   <div className="p-6 flex flex-col h-full">
                     <div className="flex items-center mb-4">
