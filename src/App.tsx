@@ -15,6 +15,8 @@ import AntiCorruption from "./pages/AntiCorruption";
 import Products from "./pages/Products";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import Services from "./pages/Services";
+import TestingLabs from "./pages/TestingLaboratories"
 import { LanguageProvider } from "./contexts/LanguageContext";
 import ScrollToTop from "./components/ScrollToTop";
 import PreloadManager from "./components/PreloadManager";
@@ -46,6 +48,8 @@ const App = () => {
                   <Route path="/company/rental-areas" element={<RentalAreas />} />
                   <Route path="/company/anti-corruption" element={<AntiCorruption />} />
                   {/* <Route path="/company/asset-sales" element={<AssetSales />} /> */}
+                  <Route path="/services" element={<Servies />} />
+                  <Route path="/services/testing-laboratories" element={<TestingLabs />} />
                   <Route path="/products" element={<Products />} />
                   <Route path="/contact" element={<Contact />} />
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
