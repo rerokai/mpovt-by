@@ -13,6 +13,7 @@ import RentalAreas from "./pages/RentalAreas";
 import AntiCorruption from "./pages/AntiCorruption";
 // import AssetSales from "./pages/AssetSales";
 import Products from "./pages/Products";
+import Notebooks from "./pages/Products/Notebooks";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import Services from "./pages/Services";
@@ -51,6 +52,7 @@ const App = () => {
                   <Route path="/services" element={<Services />} />
                   <Route path="/services/testing-laboratories" element={<TestingLabs />} />
                   <Route path="/products" element={<Products />} />
+                  <Route path="/products/laptops" element={<Notebooks />} />
                   <Route path="/contact" element={<Contact />} />
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" element={<NotFound />} />

@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { 
   Factory, 
@@ -14,26 +13,14 @@ import {
   Car,
   Radio,
   FileText,
-  Users,
-  TrendingUp,
-  Globe,
-  CheckCircle,
   Monitor,
   Tablet,
   HardDrive,
-  Star,
-  Play,
-  Pause,
-  Volume2,
-  VolumeX,
-  Sparkles,
-  Zap,
   Cpu,
   Battery,
   Wifi,
   Shield as ShieldIcon,
   Layers,
-  Mouse,
   ChevronDown
 } from "lucide-react";
 
@@ -41,7 +28,7 @@ const Index = () => {
   const [activeFeature, setActiveFeature] = useState(0);
   const [playingVideo, setPlayingVideo] = useState<number | null>(null);
   const [mutedVideos, setMutedVideos] = useState<{ [key: number]: boolean }>({});
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   const features = [
     {
@@ -120,7 +107,9 @@ const Index = () => {
       image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&h=800&fit=crop",
       link: "/products/h-pc",
       gradient: "from-blue-600 via-blue-500 to-cyan-400",
-      bgGradient: "from-blue-500/20 via-cyan-400/20 to-blue-600/20",
+      bgGradient: "from-blue-900/30 via-slate-900/60 to-cyan-900/40",
+      borderHover: "hover:border-cyan-400/50",
+      buttonShine: "before:from-transparent before:via-cyan-400/60 before:to-transparent",
       features: ["IP65 защита", "Температура -40°C до +85°C", "Модульная архитектура", "Потребительские интерфейсы"],
       featureIcon: Cpu,
       uniqueFeatures: [
@@ -139,7 +128,9 @@ const Index = () => {
       image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=1200&h=800&fit=crop",
       link: "/products/h-book",
       gradient: "from-emerald-600 via-emerald-500 to-teal-400",
-      bgGradient: "from-emerald-500/20 via-teal-400/20 to-emerald-600/20",
+      bgGradient: "from-emerald-900/60 via-slate-900/50 to-teal-900/50",
+      borderHover: "hover:border-emerald-400/50",
+      buttonShine: "before:from-transparent before:via-emerald-400/60 before:to-transparent",
       features: ["Ударопрочный корпус", "20ч автономность", "Водонепроницаемость", "Горячая замена батарей"],
       featureIcon: Laptop,
       uniqueFeatures: [
@@ -158,7 +149,9 @@ const Index = () => {
       image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=800&fit=crop",
       link: "/products/h-monitors",
       gradient: "from-purple-600 via-purple-500 to-pink-400",
-      bgGradient: "from-purple-500/20 via-pink-400/20 to-purple-600/20",
+      bgGradient: "from-purple-900/60 via-slate-900/30 to-pink-900/30",
+      borderHover: "hover:border-purple-400/50",
+      buttonShine: "before:from-transparent before:via-purple-400/60 before:to-transparent",
       features: ["Антибликовые покрытия", "Сенсорные технологии", "Широкие углы обзора", "Высокая яркость"],
       featureIcon: Monitor,
       uniqueFeatures: [
@@ -177,7 +170,9 @@ const Index = () => {
       image: "https://images.unsplash.com/photo-1473091534298-04dcbce3278c?w=1200&h=800&fit=crop",
       link: "/products/h-tab",
       gradient: "from-orange-600 via-orange-500 to-yellow-400",
-      bgGradient: "from-orange-500/20 via-yellow-400/20 to-orange-600/20",
+      bgGradient: "from-orange-900/30 via-slate-900/10 to-yellow-900/40",
+      borderHover: "hover:border-orange-400/50",
+      buttonShine: "before:from-transparent before:via-orange-400/60 before:to-transparent",
       features: ["Защита IP67", "Работа в перчатках", "Беспроводная связь", "Емкостные экраны"],
       featureIcon: Tablet,
       uniqueFeatures: [
@@ -196,7 +191,9 @@ const Index = () => {
       image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&h=800&fit=crop",
       link: "/products/h-storage",
       gradient: "from-red-600 via-red-500 to-orange-400",
-      bgGradient: "from-red-500/20 via-orange-400/20 to-red-600/20",
+      bgGradient: "from-red-900/50 via-slate-900/10 to-orange-900/30",
+      borderHover: "hover:border-red-400/50",
+      buttonShine: "before:from-transparent before:via-red-400/60 before:to-transparent",
       features: ["NVMe интерфейс", "Расширенный диапазон температур", "Высокая износостойкость", "Потребительская надежность"],
       featureIcon: HardDrive,
       uniqueFeatures: [
@@ -275,6 +272,51 @@ const Index = () => {
     }));
   };
 
+  // Intersection Observer для отслеживания видимости карточек
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const videoElement = entry.target as HTMLVideoElement;
+          if (entry.isIntersecting) {
+            // Начинаем проигрывание когда видео попадает в viewport
+            videoElement.play().catch((error) => {
+              console.log('Autoplay prevented:', error);
+            });
+          } else {
+            // Останавливаем проигрывание когда видео выходит из viewport
+            videoElement.pause();
+          }
+        });
+      },
+      {
+        threshold: 0.5, // Видео начинает проигрываться когда 50% элемента видно
+        rootMargin: '0px 0px -100px 0px' // Небольшой отступ снизу
+      }
+    );
+
+    // Наблюдаем за всеми видео элементами после их создания
+    const videos = videoRefs.current.filter(video => video !== null);
+    videos.forEach((video) => {
+      if (video) {
+        observer.observe(video);
+      }
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [priorityProducts]); // Перезапускаем когда изменяется список продуктов
+
+  // Инициализация всех видео в состоянии паузы
+  useEffect(() => {
+    videoRefs.current.forEach((video) => {
+      if (video) {
+        video.pause();
+      }
+    });
+  }, []);
+
   return (
     <div className="min-h-screen">
       {/* Hero Section - with existing animated background */}
@@ -345,51 +387,31 @@ const Index = () => {
           {/* Full-width cards with glassmorphism - Updated with more horizontal padding */}
           <div className="space-y-8">
             {priorityProducts.map((product, index) => {
-              const isHovered = hoveredCard === index;
-              
               return (
                 <div 
                   key={index} 
                   className="w-full animate-fade-in-up"
                   style={{ animationDelay: `${index * 200}ms` }}
                 >
-                  <Card className="group overflow-hidden bg-slate-800/10 backdrop-blur-xl border border-slate-700/20 hover:border-slate-600/40 transition-all duration-700 mx-8 md:mx-12 lg:mx-16 hover:shadow-2xl hover:shadow-slate-900/50">
+                  <Card className={`group overflow-hidden bg-gradient-to-br ${product.bgGradient} backdrop-blur-xl border border-slate-700/20 ${product.borderHover} transition-all duration-700 mx-8 md:mx-12 lg:mx-16 hover:shadow-2xl hover:shadow-slate-900/50`}>
                     <div className="grid lg:grid-cols-2 gap-0 min-h-[20vh] h-[315px]">
-                      {/* Video/Image Section with features overlay */}
-                      <div 
-                        className="relative overflow-hidden bg-slate-900"
-                        onMouseEnter={() => setHoveredCard(index)}
-                        onMouseLeave={() => setHoveredCard(null)}
-                      >
+                      {/* Video/Image Section */}
+                      <div className="relative overflow-hidden bg-slate-900">
                         <video
+                          ref={(el) => {
+                            videoRefs.current[index] = el;
+                            // Принудительно ставим видео на паузу при инициализации
+                            if (el) {
+                              el.pause();
+                            }
+                          }}
                           src={product.videoUrl}
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                          autoPlay
                           loop
                           muted
                           playsInline
+                          preload="metadata"
                         />
-
-                        {/* Features overlay on hover - only on desktop, without badge */}
-                        <div className={`absolute inset-0 bg-black/70 backdrop-blur-sm transition-all duration-700 flex items-center justify-center p-6 hidden lg:flex ${
-                          isHovered ? 'opacity-100' : 'opacity-0'
-                        }`}>
-                          <div className="text-center text-white max-w-md">
-                            <div className="grid grid-cols-2 gap-3">
-                              {product.uniqueFeatures.map((feature, featureIndex) => {
-                                const FeatureIcon = feature.icon;
-                                return (
-                                  <div key={featureIndex} className="flex flex-col items-center gap-3 p-4 rounded-xl bg-white/5 backdrop-blur-lg border border-white/10 shadow-lg">
-                                    <div className={`p-2 rounded-lg bg-white/10 backdrop-blur-sm`}>
-                                      <FeatureIcon className={`w-5 h-5 ${feature.color} flex-shrink-0`} />
-                                    </div>
-                                    <span className="text-white text-xs text-center font-medium leading-tight">{feature.text}</span>
-                                  </div>
-                                );
-                              })}
-                            </div>
-                          </div>
-                        </div>
                       </div>
                       
                       {/* Content Section - simplified without features */}
@@ -405,13 +427,12 @@ const Index = () => {
                           {product.fullDescription}
                         </p>
                         
-                        {/* Enhanced Non-colored Button */}
+                        {/* Enhanced Button with shine effect */}
                         <Button 
                           asChild
-                          className="group/btn relative w-full bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/30 backdrop-blur-sm text-white transition-all duration-500 text-base lg:text-lg py-6 overflow-hidden transform hover:scale-105"
+                          className={`shine-button group/btn relative w-full bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/30 backdrop-blur-sm text-white transition-all duration-500 text-base lg:text-lg py-6 overflow-hidden transform hover:scale-95 ${product.buttonShine}`}
                         >
                           <Link to={product.link}>
-                            <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-white/10 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
                             <span className="relative z-10 flex items-center justify-center">
                               Подробнее о продукте
                               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover/btn:translate-x-2 duration-300 drop-shadow-lg" />
@@ -820,6 +841,37 @@ const Index = () => {
       <Footer />
       
       <style>{`
+        .shine-button::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+          transition: left 0.6s ease;
+          pointer-events: none;
+        }
+        
+        .shine-button:hover::before {
+          left: 100%;
+        }
+        
+        @keyframes fade-in-up {
+          from {
+            opacity: 0;
+            transform: translateY(20px) scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
+        
+        .animate-fade-in-up {
+          animation: fade-in-up 0.4s ease-out forwards;
+        }
+        
         @keyframes moveX {
           0%, 100% { transform: translateX(-20px); }
           50% { transform: translateX(20px); }
