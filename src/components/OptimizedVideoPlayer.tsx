@@ -27,8 +27,12 @@ const OptimizedVideoPlayer: React.FC<OptimizedVideoPlayerProps> = ({
     const video = videoRef.current;
     if (video && !video.paused) {
       setSavedTime(video.currentTime);
-      video.pause();
+      // Сначала показываем placeholder, затем останавливаем видео
       setShowPlaceholder(true);
+      // Задержка для плавного перехода
+      setTimeout(() => {
+        video.pause();
+      }, 300);
       console.log('Video stopped at:', video.currentTime, 'src:', src);
     }
   };
@@ -42,7 +46,10 @@ const OptimizedVideoPlayer: React.FC<OptimizedVideoPlayerProps> = ({
           video.currentTime = savedTime;
         }
         await video.play();
-        setShowPlaceholder(false);
+        // Задержка для плавного перехода от placeholder к видео
+        setTimeout(() => {
+          setShowPlaceholder(false);
+        }, 100);
         console.log('Video playing from:', video.currentTime, 'src:', src);
       } catch (error) {
         console.error('Error playing video:', src, error);
@@ -54,7 +61,7 @@ const OptimizedVideoPlayer: React.FC<OptimizedVideoPlayerProps> = ({
   // Эффект для обработки видимости элемента
   useEffect(() => {
     const handleIntersection = ([entry]: IntersectionObserverEntry[]) => {
-      const isVisible = entry.isIntersecting && entry.intersectionRatio > 0.5;
+      const isVisible = entry.isIntersecting && entry.intersectionRatio > 1;
       console.log('Video visibility changed:', src, 'visible:', isVisible, 'ratio:', entry.intersectionRatio);
       setIsIntersecting(isVisible);
     };
@@ -127,7 +134,7 @@ const OptimizedVideoPlayer: React.FC<OptimizedVideoPlayerProps> = ({
       <video
         ref={videoRef}
         src={src}
-        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
+        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
           showPlaceholder ? 'opacity-0' : 'opacity-100'
         } ${className}`}
         loop
@@ -139,9 +146,9 @@ const OptimizedVideoPlayer: React.FC<OptimizedVideoPlayerProps> = ({
         {...props}
       />
 
-      {/* Изображение-заглушка без кнопки плей */}
+      {/* Изображение-заглушка */}
       <div 
-        className={`absolute inset-0 w-full h-full transition-opacity duration-700 ${
+        className={`absolute inset-0 w-full h-full transition-opacity duration-500 ${
           showPlaceholder ? 'opacity-100' : 'opacity-0'
         }`}
       >

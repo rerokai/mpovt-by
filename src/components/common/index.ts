@@ -1,0 +1,16 @@
+// Common components barrel file
+export { AnimatedBackground } from './AnimatedBackground';
+export { IconCard } from './IconCard';
+export { CTASection } from './CTASection';
+export { PageHero } from './PageHero';
+export { SectionHeader } from './SectionHeader';
+export { ProductCard } from './ProductCard';
+export { ContactCard } from './ContactCard';
+export { FeatureCard } from './FeatureCard';
+export { DownloadsSection } from './DownloadsSection';
+export { ProductOverview } from './ProductOverview';
+export { MainPageHero } from './MainPageHero';
+export { PriorityProductsSection } from './PriorityProductsSection';
+export { InteractiveFeatures } from './InteractiveFeatures';
+export { SecondaryProductsSection } from './SecondaryProductsSection';
+export { AchievementsSection } from './AchievementsSection';
