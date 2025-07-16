@@ -25,7 +25,7 @@ const Notebooks = () => {
     {
       icon: Cpu,
       title: "Процессор",
-      description: "Intel Core 11-го поколения",
+      description: "Intel Core от 13-го поколения",
       color: "text-blue-400"
     },
     {
@@ -37,7 +37,7 @@ const Notebooks = () => {
     {
       icon: Battery,
       title: "Автономность",
-      description: "До 8 часов работы от батареи",
+      description: "До 12 часов работы от батареи",
       color: "text-yellow-400"
     },
     {
@@ -81,7 +81,7 @@ const Notebooks = () => {
     {
       icon: Shield,
       title: "Надежность",
-      description: "Производство ОАО \"МПОВТ\" под брендами \"H\" и \"ITEL\""
+      description: "Производство ОАО \"МПОВТ\" под брендами \"H\" и индивидуальными брендами заказчиков"
     },
     {
       icon: Zap,
@@ -160,7 +160,7 @@ const Notebooks = () => {
               </h2>
               <div className="space-y-4 text-slate-300 leading-relaxed">
                 <p>
-                  Ноутбуки производства ОАО "МПОВТ" изготавливаются под брендами "H" и "ITEL", имеется возможность изготовления под сторонними брендами.
+                  Ноутбуки производства ОАО "МПОВТ" изготавливаются под брендом "H", имеется возможность изготовления под сторонними брендами.
                 </p>
                 <p>
                   Данный продукт будет доступен любому пользователю по приемлимым ценам, что делает его особенно привлекательным на фоне других конкурентов.
@@ -170,7 +170,7 @@ const Notebooks = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 rounded-3xl blur-3xl"></div>
               <img 
-                src="https://mpovt.by/gallery_gen/c185d26024f28ea2bb65671168123da2_fit.png?ts=1746513905" 
+                src="../public/imgs/laptops/p1.png" 
                 alt="H-Book Ноутбук" 
                 className="relative rounded-2xl shadow-2xl w-full h-auto transform hover:scale-105 transition-transform duration-700"
               />
@@ -186,7 +186,7 @@ const Notebooks = () => {
             <div className="order-2 lg:order-1 relative">
               <div className="absolute inset-0 bg-gradient-to-r from-teal-500/20 to-cyan-500/20 rounded-3xl blur-3xl"></div>
               <img 
-                src="https://mpovt.by/gallery/h-book1000-ts1675078830.png?ts=1746513905" 
+                src="../public/imgs/laptops/p2.png" 
                 alt="H-Book Performance" 
                 className="relative rounded-2xl shadow-2xl w-full h-auto transform hover:scale-105 transition-transform duration-700"
               />
@@ -197,7 +197,7 @@ const Notebooks = () => {
               </h2>
               <div className="space-y-4 text-slate-300 leading-relaxed">
                 <p>
-                  Мобильный процессор Intel Core 11-го поколения обладает производительностью уровня полноценной рабочей станции, обеспечивая эффективную работу в любом месте, куда бы вы ни отправились.
+                  Мобильные процессоры Intel Core обладают производительностью уровня полноценной рабочей станции, обеспечивая эффективную работу в любом месте, куда бы вы ни отправились.
                 </p>
                 <p>
                   Даже вдали от офиса благодаря H-book вам будут доступны в любом месте все необходимые для эффективной работы компоненты, а заряда батареи хватит до 8 часов работы.
