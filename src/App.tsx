@@ -14,6 +14,8 @@ import AntiCorruption from "./pages/company/AntiCorruption";
 // import AssetSales from "./pages/AssetSales";
 import Products from "./pages/Products/Products";
 import Notebooks from "./pages/Products/Notebooks";
+import Monitors from "./pages/products/Monitors";
+import Computers from "./pages/products/Computers";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import Services from "./pages/services/Services";
@@ -52,7 +54,9 @@ const App = () => {
                   <Route path="/services" element={<Services />} />
                   <Route path="/services/testing-laboratories" element={<TestingLabs />} />
                   <Route path="/products" element={<Products />} />
-                  <Route path="/products/laptops" element={<Notebooks />} />
+                  <Route path="/products/notebooks" element={<Notebooks />} />
+                  <Route path="/products/monitors" element={<Monitors />} />
+                  <Route path="/products/computers" element={<Computers />} />
                   <Route path="/contact" element={<Contact />} />
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" element={<NotFound />} />
