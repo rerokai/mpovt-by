@@ -35,7 +35,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
     <section className={`py-16 md:py-20 px-4 relative ${className}`}>
       <div className="container mx-auto text-center">
         <Card className="max-w-4xl mx-auto p-8 md:p-12 bg-slate-800/10 backdrop-blur-xl border border-slate-700/20 hover:border-slate-600/40 transition-all duration-500 animate-fade-in">
-          <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6 text-white">
+          <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6 text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
             {title}
           </h2>
           <p className="text-lg md:text-xl text-slate-300 mb-6 md:mb-8 max-w-2xl mx-auto">

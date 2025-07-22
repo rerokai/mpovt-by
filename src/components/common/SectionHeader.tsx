@@ -30,7 +30,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
           {subtitle}
         </p>
       )}
-      <h2 className={`text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r ${gradientColors} bg-clip-text text-transparent`}>
+      <h2 className={`text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r ${gradientColors} bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(16,185,129,0.4)]`}>
         {title}
       </h2>
       {description && (

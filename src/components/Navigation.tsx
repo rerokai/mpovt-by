@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, ChevronDown, FileText, Users, Cog, Briefcase, MapPin, Shield, ShoppingCart, Car, Tractor, Truck, Laptop, Phone, Radio, Database, Archive, FlaskConical } from "lucide-react";
+import { Menu, X, ChevronDown, FileText, Users, Cog, Briefcase, MapPin, Shield, ShoppingCart, Laptop, Monitor, Tablet, HardDrive, MoreHorizontal, FlaskConical, Computer } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
@@ -23,15 +23,12 @@ export default function Navigation({ isLoading = false }: NavigationProps) {
   ];
 
   const productMenuItems = [
-    { name: "Блоки для автомобилей", path: "/products/car-blocks", icon: Car },
-    { name: "Блоки для тракторов", path: "/products/tractor-blocks", icon: Tractor },
-    { name: "Блоки для комбайнов", path: "/products/combine-blocks", icon: Tractor },
-    { name: "Блоки для карьерных самосвалов", path: "/products/dump-truck-blocks", icon: Truck },
+    { name: "Персональные компьютеры", path: "/products/computers", icon: Computer },
     { name: "Ноутбуки", path: "/products/laptops", icon: Laptop },
-    { name: "Домофоны", path: "/products/intercoms", icon: Phone },
-    { name: "Специальная связь", path: "/products/special-communication", icon: Radio },
-    { name: "Информационные системы", path: "/products/information-systems", icon: Database },
-    { name: "Металлические шкафы", path: "/products/metal-cabinets", icon: Archive }
+    { name: "Мониторы", path: "/products/monitors", icon: Monitor },
+    { name: "Планшеты", path: "/products/tablets", icon: Tablet },
+    { name: "Накопители", path: "/products/storage", icon: HardDrive },
+    { name: "Другое", path: "/products/other", icon: MoreHorizontal }
   ];
 
   const servicesMenuItems = [
@@ -210,7 +207,7 @@ export default function Navigation({ isLoading = false }: NavigationProps) {
                   </button>
                   
                   <div className={cn(
-                    "absolute top-full left-0 mt-6 min-w-[400px] transition-all duration-500 ease-out origin-top transform",
+                    "absolute top-full left-0 mt-6 min-w-[280px] transition-all duration-500 ease-out origin-top transform",
                     activeDropdown === 'products' 
                       ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" 
                       : "opacity-0 scale-95 -translate-y-2 pointer-events-none"

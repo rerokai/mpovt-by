@@ -1,6 +1,16 @@
 import React from "react";
 import Footer from "@/components/Footer";
-import { PageHero, SectionHeader, IconCard, CTASection, FeatureCard, DownloadsSection, ProductOverview } from "@/components/common";
+import { 
+  PageHero, 
+  SectionHeader, 
+  IconCard, 
+  CTASection, 
+  FeatureCard, 
+  DownloadsSection,
+  VideoSection,
+  DescriptionSection,
+  ImageContentSection
+} from "@/components/common";
 import { 
   Download,
   Monitor,
@@ -18,6 +28,7 @@ import {
 } from "lucide-react";
 
 const Notebooks = () => {
+  // Данные для компонентов
   const specifications = [
     {
       icon: Cpu,
@@ -119,6 +130,13 @@ const Notebooks = () => {
     }
   ];
 
+  const displayDescriptionParagraphs = [
+    "Легкий и удобный в переноске H-book оснащён 15,6-дюймовым дисплеем стандарта FHD с широким углом обзора, позволяющим демонстрировать изображение сразу нескольким людям - без искажений и потери качества.",
+    "H-book поддерживает работу в беспроводных сетях 5 поколения (AC) и идеально подходит для просмотра потокового видео, а IPS матрица радует пользователей отличным качеством изображения.",
+    "Благодаря узким рамкам H-book зрительно увеличивается площадь экрана - как будто вы приобрели ноутбук с большей диагональю дисплея.",
+    "Простой в использовании и подключении к другим устройствам H-book оснащён веб-камерой стандарта HD (720p) с чётким и качественным изображением, и микрофоном с интеллектуальной системой шумоподавления. Полнофункциональный порт USB Type-C для подключения других устройств."
+  ];
+
   return (
     <div className="min-h-screen bg-black">
       <PageHero
@@ -127,112 +145,48 @@ const Notebooks = () => {
         backgroundVariant="default"
       />
 
-      {/* Product Overview */}
-      <section className="py-16 md:py-20 px-4 relative">
-        <div className="container mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="animate-fade-in-left">
-              <ProductOverview
-                title='Производство ОАО "МПОВТ"'
-                description='Ноутбуки производства ОАО "МПОВТ" изготавливаются под брендом "H", имеется возможность изготовления под сторонними брендами.'
-                features={["Приемлемые цены", "Качественное производство", "Индивидуальный брендинг", "Белорусский производитель"]}
-                variant="primary"
-                animationDelay={0}
-              />
-            </div>
-            <div className="relative animate-fade-in-right">
-              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 rounded-3xl blur-3xl"></div>
-              <img 
-                src="/imgs/laptops/p1.png" 
-                alt="H-Book Ноутбук" 
-                className="relative rounded-2xl shadow-2xl w-full h-auto transform hover:scale-105 transition-transform duration-700"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Секция с обзором продукта */}
+      <ImageContentSection
+        title='Производство ОАО "МПОВТ"'
+        description='Ноутбуки производства ОАО "МПОВТ" изготавливаются под брендом "H", с возможностью производства под сторонними брендами'
+        features={["Приемлемые цены", "Качественное производство", "Индивидуальный брендинг", "Белорусский производитель"]}
+        imageSrc="/imgs/laptops/p1.png"
+        imageAlt="H-Book Ноутбук"
+        variant="primary"
+        imagePosition="right"
+        glowColors="from-emerald-500/20 to-teal-500/20"
+        animationDelay={0}
+      />
 
-      {/* Performance Section */}
-      <section className="px-4 bg-gradient-to-b from-black to-slate-900/50 relative">
-        <div className="container mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="order-2 lg:order-1 relative animate-fade-in-left">
-              <div className="absolute inset-0 bg-gradient-to-r from-teal-500/20 to-cyan-500/20 rounded-3xl blur-3xl"></div>
-              <img 
-                src="/imgs/laptops/p2.png" 
-                alt="H-Book Performance" 
-                className="relative rounded-2xl shadow-2xl w-full h-auto transform hover:scale-105 transition-transform duration-700"
-              />
-            </div>
-            <div className="order-1 lg:order-2 animate-fade-in-right">
-              <ProductOverview
-                title="Производительность рабочей станции"
-                description="Мобильные процессоры Intel Core обладают производительностью уровня полноценной рабочей станции, обеспечивая эффективную работу в любом месте."
-                features={["До 8 часов работы", "Процессоры Intel Core", "Мобильность", "Высокая производительность"]}
-                variant="secondary"
-                animationDelay={200}
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Секция с производительностью */}
+      <ImageContentSection
+        title="Производительность рабочей станции"
+        description="Мобильные процессоры Intel Core обладают производительностью уровня полноценной рабочей станции, обеспечивая эффективную работу в любом месте"
+        features={["До 8 часов работы", "Процессоры Intel Core", "Мобильность", "Высокая производительность"]}
+        imageSrc="/imgs/laptops/p2.png"
+        imageAlt="H-Book Performance"
+        variant="secondary"
+        imagePosition="left"
+        glowColors="from-teal-500/20 to-cyan-500/20"
+        animationDelay={200}
+        className="bg-gradient-to-b from-black to-slate-900/50"
+      />
 
-      {/* Video Presentation Section */}
-      <section id="video" className="py-16 md:py-20 px-4 bg-gradient-to-b from-black to-slate-900/50 relative">
-        <div className="container mx-auto">
-          <div className="text-center mb-12 animate-fade-in">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-              H-Book в действии
-            </h2>
-            <p className="text-slate-300 text-lg max-w-2xl mx-auto">
-              Посмотрите видеопрезентацию наших ноутбуков и убедитесь в их возможностях
-            </p>
-          </div>
+      {/* Видео секция */}
+      <VideoSection
+        title="H-Book в действии"
+        description="Посмотрите видеопрезентацию наших ноутбуков и убедитесь в их возможностях"
+        videoSrc="/videos/h-book.mp4"
+        posterSrc="/placeholder.svg"
+        gradientColors="from-cyan-400 to-blue-400"
+      />
 
-          <div className="max-w-4xl mx-auto animate-fade-in-up" style={{ animationDelay: '300ms' }}>
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-2xl blur-2xl"></div>
-              <video 
-                className="w-full h-auto rounded-2xl relative z-10"
-                controls
-                autoPlay
-                muted
-                loop
-                preload="auto"
-                poster="/placeholder.svg"
-              >
-                <source src="/videos/h-book.mp4" type="video/mp4" />
-                Ваш браузер не поддерживает воспроизведение видео.
-              </video>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Display & Features Section */}
-      <section className="py-16 md:py-20 px-4 relative">
-        <div className="container mx-auto">
-          <div className="max-w-4xl mx-auto text-center mb-12 animate-fade-in">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-              Дисплей и возможности
-            </h2>
-            <div className="text-slate-300 leading-relaxed space-y-4">
-              <p>
-                Легкий и удобный в переноске H-book оснащён 15,6-дюймовым дисплеем стандарта FHD с широким углом обзора, позволяющим демонстрировать изображение сразу нескольким людям - без искажений и потери качества.
-              </p>
-              <p>
-                H-book поддерживает работу в беспроводных сетях 5 поколения (AC) и идеально подходит для просмотра потокового видео, а IPS матрица радует пользователей отличным качеством изображения.
-              </p>
-              <p>
-                Благодаря узким рамкам H-book зрительно увеличивается площадь экрана - как будто вы приобрели ноутбук с большей диагональю дисплея.
-              </p>
-              <p>
-                Простой в использовании и подключении к другим устройствам H-book оснащён веб-камерой стандарта HD (720p) с чётким и качественным изображением, и микрофоном с интеллектуальной системой шумоподавления. Полнофункциональный порт USB Type-C для подключения других устройств.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Секция с описанием дисплея */}
+      <DescriptionSection
+        title="Дисплей и возможности"
+        paragraphs={displayDescriptionParagraphs}
+        gradientColors="from-cyan-400 to-blue-400"
+      />
 
       {/* Specifications Section */}
       <section id="specifications" className="py-16 md:py-20 px-4 bg-gradient-to-b from-slate-900/50 to-black relative">

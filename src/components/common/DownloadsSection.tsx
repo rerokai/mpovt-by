@@ -68,7 +68,7 @@ export const DownloadsSection: React.FC<DownloadsSectionProps> = ({
     <section className="py-16 md:py-20 px-4 bg-gradient-to-b from-slate-900/20 to-black/20 relative">
       <div className="container mx-auto">
         <div className="text-center mb-12 animate-fade-in">
-          <h2 className={`text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r ${gradientColors} bg-clip-text text-transparent`}>
+          <h2 className={`text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r ${gradientColors} bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(34,211,238,0.4)]`}>
             {title}
           </h2>
           <p className="text-slate-300 text-lg">

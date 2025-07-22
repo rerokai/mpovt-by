@@ -14,3 +14,6 @@ export { PriorityProductsSection } from './PriorityProductsSection';
 export { InteractiveFeatures } from './InteractiveFeatures';
 export { SecondaryProductsSection } from './SecondaryProductsSection';
 export { AchievementsSection } from './AchievementsSection';
+export { VideoSection } from './VideoSection';
+export { DescriptionSection } from './DescriptionSection';
+export { ImageContentSection } from './ImageContentSection';

@@ -62,7 +62,7 @@ export const ProductOverview: React.FC<ProductOverviewProps> = ({
       style={{ animationDelay: `${animationDelay}ms` }}
     >
       <div className="text-center">
-        <h3 className={`text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r ${styles.titleGradient} bg-clip-text text-transparent`}>
+        <h3 className={`text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r ${styles.titleGradient} bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(16,185,129,0.3)]`}>
           {title}
         </h3>
         <p className="text-slate-300 text-lg mb-6">
