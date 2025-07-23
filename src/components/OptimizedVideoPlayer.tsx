@@ -33,7 +33,7 @@ const OptimizedVideoPlayer: React.FC<OptimizedVideoPlayerProps> = ({
       setTimeout(() => {
         video.pause();
       }, 300);
-      console.log('Video stopped at:', video.currentTime, 'src:', src);
+      //console.log('Video stopped at:', video.currentTime, 'src:', src);
     }
   };
 
@@ -50,7 +50,7 @@ const OptimizedVideoPlayer: React.FC<OptimizedVideoPlayerProps> = ({
         setTimeout(() => {
           setShowPlaceholder(false);
         }, 100);
-        console.log('Video playing from:', video.currentTime, 'src:', src);
+        //console.log('Video playing from:', video.currentTime, 'src:', src);
       } catch (error) {
         console.error('Error playing video:', src, error);
         setShowPlaceholder(true);
@@ -62,7 +62,7 @@ const OptimizedVideoPlayer: React.FC<OptimizedVideoPlayerProps> = ({
   useEffect(() => {
     const handleIntersection = ([entry]: IntersectionObserverEntry[]) => {
       const isVisible = entry.isIntersecting && entry.intersectionRatio > 1;
-      console.log('Video visibility changed:', src, 'visible:', isVisible, 'ratio:', entry.intersectionRatio);
+      //console.log('Video visibility changed:', src, 'visible:', isVisible, 'ratio:', entry.intersectionRatio);
       setIsIntersecting(isVisible);
     };
 

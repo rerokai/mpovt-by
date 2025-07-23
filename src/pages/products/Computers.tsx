@@ -8,6 +8,8 @@ import { IconCard } from '@/components/common/IconCard';
 import { FeatureCard } from '@/components/common/FeatureCard';
 import { DownloadsSection } from '@/components/common/DownloadsSection';
 import { CTASection } from '@/components/common/CTASection';
+import { OptimizedImage } from '@/components/OptimizedImage';
+import { MEDIA_ASSETS } from '@/lib/media-assets';
 import { Cpu, HardDrive, Wifi, Thermometer, Volume2, Zap } from 'lucide-react';
 
 const Computers = () => {
@@ -54,22 +56,22 @@ const Computers = () => {
     {
       title: "Компактный форм-фактор",
       description: "Мощный компьютер в корпусе размером с книгу - идеально для любого рабочего места",
-      image: "/imgs/mini-pc/H-top.jpg"
+      image: MEDIA_ASSETS.priorityProducts.miniPc
     },
     {
       title: "Тихая работа",
       description: "Продвинутая система охлаждения обеспечивает бесшумную работу даже под нагрузкой",
-      image: "/imgs/mini-pc/H-top1.jpg"
+      image: MEDIA_ASSETS.computers.hTop1
     },
     {
       title: "Высокая производительность",
       description: "Современные процессоры и быстрые SSD накопители для максимальной скорости работы",
-      image: "/imgs/mini-pc/H-top3.jpg"
+      image: MEDIA_ASSETS.computers.hTop3
     },
     {
       title: "Богатые возможности подключения",
       description: "Множество портов для подключения периферии и внешних устройств",
-      image: "/imgs/mini-pc/H-top4.jpg"
+      image: MEDIA_ASSETS.computers.hTop4
     }
   ];
 
@@ -126,7 +128,7 @@ const Computers = () => {
       <ImageContentSection
         title="Мощь в миниатюре"
         description="H-Top доказывает, что размер не влияет на производительность - современные технологии в минималистичном дизайне"
-        imageSrc="/imgs/mini-pc/H-top5-nobg.png"
+        imageSrc={MEDIA_ASSETS.computers.hTop5}
         imageAlt="H-Top мини-ПК"
         features={[
           "Процессоры последнего поколения",
