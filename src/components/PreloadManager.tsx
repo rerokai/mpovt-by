@@ -75,8 +75,8 @@ const PreloadManager = ({ children, onLoadingChange }: PreloadManagerProps) => {
           onLoadingChange?.(false);
           setTimeout(() => {
             setIsLoading(false);
-          }, 300);
-        }, 200);
+          }, 1300);
+        }, 1200);
         
       } catch (error) {
         console.warn('Preload error:', error);
@@ -87,8 +87,8 @@ const PreloadManager = ({ children, onLoadingChange }: PreloadManagerProps) => {
           onLoadingChange?.(false);
           setTimeout(() => {
             setIsLoading(false);
-          }, 300);
-        }, 200);
+          }, 1300);
+        }, 1200);
       }
     };
 
