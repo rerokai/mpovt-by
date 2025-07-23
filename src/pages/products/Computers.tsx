@@ -54,12 +54,12 @@ const Computers = () => {
     {
       title: "Компактный форм-фактор",
       description: "Мощный компьютер в корпусе размером с книгу - идеально для любого рабочего места",
-      image: "/imgs/mini-pc/h-top.jpg"
+      image: "/imgs/mini-pc/H-top.jpg"
     },
     {
       title: "Тихая работа",
       description: "Продвинутая система охлаждения обеспечивает бесшумную работу даже под нагрузкой",
-      image: "/imgs/mini-pc/h-top 1.jpg"
+      image: "/imgs/mini-pc/H-top1.jpg"
     },
     {
       title: "Высокая производительность",

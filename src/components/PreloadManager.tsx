@@ -39,7 +39,7 @@ const PreloadManager = ({ children, onLoadingChange }: PreloadManagerProps) => {
         '/placeholder.svg',
         
         // Главная страница - приоритетные продукты
-        '/imgs/mini-pc/h-top.jpg',
+        '/imgs/mini-pc/H-top.jpg',
         '/imgs/laptops/h-book-pro.jpg',
         '/imgs/displays/h-monitor.jpg',
         '/imgs/ssd/h-storage.jpg',
@@ -56,7 +56,7 @@ const PreloadManager = ({ children, onLoadingChange }: PreloadManagerProps) => {
         '/imgs/displays/A7_03517-min.png',
         
         // Компьютеры
-        '/imgs/mini-pc/h-top 1.jpg',
+        '/imgs/mini-pc/H-top1.jpg',
         '/imgs/mini-pc/H-top3.jpg',
         '/imgs/mini-pc/H-top4.jpg',
         '/imgs/mini-pc/H-top5-nobg.png',
@@ -133,7 +133,7 @@ const PreloadManager = ({ children, onLoadingChange }: PreloadManagerProps) => {
         { href: '/imgs/logos/freakstudio-transparent.svg', as: 'image' },
         { href: '/imgs/logos/H-transparent.svg', as: 'image' },
         { href: '/placeholder.svg', as: 'image' },
-        { href: '/imgs/mini-pc/h-top.jpg', as: 'image' },
+        { href: '/imgs/mini-pc/H-top.jpg', as: 'image' },
         { href: '/imgs/laptops/h-book-pro.jpg', as: 'image' },
         { href: '/imgs/displays/h-monitor.jpg', as: 'image' },
         { href: '/imgs/ssd/h-storage.jpg', as: 'image' },
@@ -198,7 +198,7 @@ const PreloadManager = ({ children, onLoadingChange }: PreloadManagerProps) => {
               }
             }, 5000);
           }, 600);
-        }, 2500);
+        }, 1500);
       } catch (error) {
         console.warn('Some resources failed to preload:', error);
         // Все равно завершаем загрузку даже при ошибках

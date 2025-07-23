@@ -10,7 +10,7 @@ const IMAGES_TO_CACHE = [
   '/placeholder.svg',
   
   // Главная страница - приоритетные продукты
-  '/imgs/mini-pc/h-top.jpg',
+  '/imgs/mini-pc/H-top.jpg',
   '/imgs/laptops/h-book-pro.jpg',
   '/imgs/displays/h-monitor.jpg',
   '/imgs/ssd/h-storage.jpg',
@@ -27,7 +27,7 @@ const IMAGES_TO_CACHE = [
   '/imgs/displays/A7_03517-min.png',
   
   // Компьютеры
-  '/imgs/mini-pc/h-top 1.jpg',
+  '/imgs/mini-pc/H-top1.jpg',
   '/imgs/mini-pc/H-top3.jpg',
   '/imgs/mini-pc/H-top4.jpg',
   '/imgs/mini-pc/H-top5-nobg.png',
