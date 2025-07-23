@@ -14,6 +14,16 @@ const PreloadManager = ({ children, onLoadingChange }: PreloadManagerProps) => {
 
   useEffect(() => {
     const preloadResources = async () => {
+      // Регистрируем Service Worker для кэширования
+      if ('serviceWorker' in navigator) {
+        try {
+          const registration = await navigator.serviceWorker.register('/sw.js');
+          console.log('SW registered: ', registration);
+        } catch (error) {
+          console.warn('SW registration failed: ', error);
+        }
+      }
+      
       setLoadingStatus('Кеширую изображения...');
       
       // Все изображения используемые на сайте
@@ -62,17 +72,41 @@ const PreloadManager = ({ children, onLoadingChange }: PreloadManagerProps) => {
         '/videos/h-tab.mp4'
       ];
 
-      // Предзагрузка изображений
+      // Предзагрузка изображений с принудительным кэшированием
       setLoadingStatus('Кеширую изображения...');
       const imagePromises = imagesToPreload.map((src) => {
         return new Promise((resolve, reject) => {
           const img = new Image();
-          img.onload = () => resolve(img);
+          
+          // Устанавливаем кэширование
+          img.crossOrigin = 'anonymous';
+          
+          img.onload = () => {
+            // Принудительно добавляем в кэш браузера
+            try {
+              const canvas = document.createElement('canvas');
+              const ctx = canvas.getContext('2d');
+              if (ctx) {
+                canvas.width = img.width;
+                canvas.height = img.height;
+                ctx.drawImage(img, 0, 0);
+                // Это заставляет браузер закэшировать изображение
+                canvas.toDataURL();
+              }
+            } catch (e) {
+              // Игнорируем ошибки CORS, изображение все равно должно быть предзагружено
+            }
+            resolve(img);
+          };
+          
           img.onerror = (error) => {
             console.warn(`Failed to preload image: ${src}`, error);
             resolve(null); // Продолжаем даже при ошибке
           };
-          img.src = src;
+          
+          // Добавляем параметры для предотвращения кэширования проблем
+          const timestamp = Date.now();
+          img.src = src.includes('?') ? `${src}&_t=${timestamp}` : `${src}?_t=${timestamp}`;
         });
       });
 
@@ -92,7 +126,7 @@ const PreloadManager = ({ children, onLoadingChange }: PreloadManagerProps) => {
         });
       });
 
-      // Добавляем link теги для критических ресурсов
+      // Добавляем link теги для критических ресурсов с агрессивным кэшированием
       setLoadingStatus('Оптимизирую ресурсы...');
       const criticalResources = [
         { href: '/imgs/logos/mpovt.png', as: 'image' },
@@ -108,17 +142,45 @@ const PreloadManager = ({ children, onLoadingChange }: PreloadManagerProps) => {
       ];
 
       criticalResources.forEach(resource => {
+        // Создаем link для preload
         const link = document.createElement('link');
         link.rel = 'preload';
         link.href = resource.href;
         link.as = resource.as;
+        link.crossOrigin = 'anonymous';
         document.head.appendChild(link);
+        
+        // Создаем дополнительный link для prefetch (для будущих страниц)
+        const prefetchLink = document.createElement('link');
+        prefetchLink.rel = 'prefetch';
+        prefetchLink.href = resource.href;
+        prefetchLink.crossOrigin = 'anonymous';
+        document.head.appendChild(prefetchLink);
       });
 
       try {
         // Запускаем предзагрузку изображений и видео параллельно
         setLoadingStatus('Завершаю загрузку...');
         await Promise.all([...imagePromises, ...videoPromises]);
+        
+        // Дополнительно создаем невидимые img элементы для гарантированного кэширования
+        setLoadingStatus('Финализирую кэш...');
+        const hiddenContainer = document.createElement('div');
+        hiddenContainer.style.position = 'absolute';
+        hiddenContainer.style.top = '-9999px';
+        hiddenContainer.style.left = '-9999px';
+        hiddenContainer.style.opacity = '0';
+        hiddenContainer.style.pointerEvents = 'none';
+        hiddenContainer.id = 'hidden-preload-container';
+        
+        imagesToPreload.forEach(src => {
+          const img = document.createElement('img');
+          img.src = src;
+          img.loading = 'eager';
+          hiddenContainer.appendChild(img);
+        });
+        
+        document.body.appendChild(hiddenContainer);
         
         // Минимальная длительность загрузки 2.5 секунды для UX
         setLoadingStatus('Готово!');
@@ -128,6 +190,13 @@ const PreloadManager = ({ children, onLoadingChange }: PreloadManagerProps) => {
           // Дополнительная задержка для плавного исчезновения
           setTimeout(() => {
             setIsLoading(false);
+            // Удаляем скрытый контейнер через 5 секунд
+            setTimeout(() => {
+              const container = document.getElementById('hidden-preload-container');
+              if (container) {
+                document.body.removeChild(container);
+              }
+            }, 5000);
           }, 600);
         }, 2500);
       } catch (error) {
@@ -149,9 +218,11 @@ const PreloadManager = ({ children, onLoadingChange }: PreloadManagerProps) => {
     // Очистка при размонтировании
     return () => {
       // Удаляем добавленные link теги
-      const preloadLinks = document.querySelectorAll('link[rel="preload"]') as NodeListOf<HTMLLinkElement>;
+      const preloadLinks = document.querySelectorAll('link[rel="preload"], link[rel="prefetch"]') as NodeListOf<HTMLLinkElement>;
       preloadLinks.forEach(link => {
-        if (link.href.includes('imgs/') || link.href.includes('lovable-uploads/')) {
+        if (link.href.includes('imgs/') || 
+            link.href.includes('placeholder.svg') || 
+            link.href.includes('lovable-uploads/')) {
           try {
             document.head.removeChild(link);
           } catch (error) {
