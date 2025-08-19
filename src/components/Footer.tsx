@@ -16,7 +16,7 @@ export default function Footer() {
               компьютерной техники и средств связи на интеллектуальной платформе.
             </p>
             <div className="flex space-x-4">
-              <a href="https://github.com/MPOVT" className="text-slate-400 hover:text-amber-200 transition-all duration-300 hover:scale-110">
+              <a href="https://github.com/MPOVT/mpovt-by/" className="text-slate-400 hover:text-amber-200 transition-all duration-300 hover:scale-110">
                 <Github size={20} />
                 <span className="sr-only">Github</span>
               </a>
