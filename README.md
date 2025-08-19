@@ -1,6 +1,6 @@
 # OJSC "MPOVT" Web App
 
-A modern, visually-rich website for the commercial property rental division of OAO "MPOVT". Built with React, Vite, and Tailwind CSS, this project delivers a premium, adaptive user experience for showcasing available rental spaces, amenities, and company advantages.
+A modern, visually-rich website for the commercial property rental division of OJSC "MPOVT". Built with React, Vite, and Tailwind CSS, this project delivers a premium, adaptive user experience for showcasing available rental spaces, amenities, and company advantages.
 
 
 ## 🚀 Live Demo
@@ -108,10 +108,10 @@ mpovt-by/
 
 - First development stages by [lovable.dev](https://lovable.dev)
 - Icons by [Lucide](https://lucide.dev)
-- Sponsored by [JSC "MPOVT"](https://mpovt.by)
+- Sponsored by [OJSC "MPOVT"](https://mpovt.by)
 - Special thanks to the JSC "MPOVT" team for content and feedback.
 
 
 ## 📄 License
 
-This project is proprietary and for internal use by JSC "MPOVT". Contact [JSC "MPOVT"](https://mpovt.by) for partnership or licensing inquiries.
+This project is proprietary and for internal use by OJSC "MPOVT". Contact [OJSC "MPOVT"](https://mpovt.by) for partnership or licensing inquiries.
