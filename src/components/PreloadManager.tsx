@@ -29,8 +29,8 @@ const PreloadManager = ({ children, onLoadingChange }: PreloadManagerProps) => {
         return new Promise((resolve) => {
           const img = new Image();
           img.onload = () => resolve();
-          img.onerror = () => {
-            console.warn(`Failed to preload: ${src}`);
+          img.onerror = (e) => {
+            console.warn(`Failed to preload: ${src}`, e);
             resolve(); // Продолжаем даже при ошибке
           };
           img.src = src;
