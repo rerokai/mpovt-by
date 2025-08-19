@@ -121,7 +121,7 @@ const IndexRefactored = () => {
       fullDescription: "Наши потребительские мониторы H обеспечивают кристально четкое изображение в любых условиях освещения. Антибликовые покрытия, сенсорные технологии и широкие углы обзора гарантируют комфортную работу операторов",
       videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
       image: "/imgs/displays/h-monitor.jpg",
-      link: "/products/h-monitors",
+      link: "/products/monitors",
       gradient: "from-amber-600 via-amber-500 to-orange-400",
       bgGradient: "from-amber-900/50 via-slate-900/20 to-slate-900/50",
       borderHover: "hover:border-orange-400/50",

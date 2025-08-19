@@ -140,8 +140,8 @@ const Monitors = () => {
       />
 
       <VideoSection
-        title="H-Monitor в действии"
-        description="Посмотрите, как H-Monitor раскрывает весь потенциал вашего контента"
+        title=""
+        description=""
         videoSrc="/videos/multi-render.mp4"
       />
 
