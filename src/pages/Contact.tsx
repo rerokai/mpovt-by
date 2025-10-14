@@ -76,7 +76,7 @@ const Contact = () => {
               </div>
             </Card>
 
-            <Card className="p-4 sm:p-6 md:p-8 bg-slate-800/10 backdrop-blur-xl border border-slate-700/20 hover:border-slate-600/40 transition-all duration-500 animate-fade-in-left" style={{ animationDelay: '200ms' }}>
+            <Card className="p-4 sm:p-6 md:p-8 bg-slate-800/10 backdrop-blur-xl border border-slate-700/20 hover:border-slate-600/40 transition-all duration-500 animate-fade-in-left" style={{ animationDelay: '200ms' }}>             
               <div className="flex items-center space-x-3 md:space-x-4 mb-3 md:mb-4 lg:mb-6">
                 <div className="p-2 md:p-3 bg-purple-500/20 rounded-xl">
                   <MapPin className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-purple-500" />
@@ -190,14 +190,16 @@ const Contact = () => {
           </Card>
 
           {/* Map Section */}
-          <Card className="p-4 sm:p-6 md:p-8 bg-slate-800/10 backdrop-blur-xl border border-slate-700/20 animate-fade-in-up" style={{ animationDelay: '400ms' }}>
+          <Card className="p-1 sm:p-6 md:p-8 bg-slate-800/10 backdrop-blur-xl border border-slate-700/20 animate-fade-in-up" style={{ animationDelay: '400ms' }}>
             <h3 className="text-base sm:text-lg md:text-2xl font-semibold mb-3 md:mb-4 lg:mb-6 text-center text-white">Как нас найти</h3>
             <div className="aspect-[16/9] sm:aspect-[21/9] md:aspect-video bg-gradient-to-br from-primary/10 to-orange-400/10 rounded-xl flex items-center justify-center">
-              <div className="text-center">
+              
+              <div className="text-center mr-24">
                 <MapPin className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 lg:h-16 lg:w-16 text-primary mx-auto mb-3 md:mb-4" />
                 <p className="text-sm sm:text-base md:text-lg font-medium text-white">Карта будет загружена</p>
                 <p className="text-slate-400 text-xs sm:text-sm md:text-base">ул. Академика Купревича, 21, Минск</p>
               </div>
+              <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Abfc3ea831d96eec5aa9555a466a3a38cdd93ff72d0d7b1e384901485a46bab31&amp;source=constructor" width="580" height="394" frameBorder="0"></iframe>
             </div>
           </Card>
         </div>

@@ -139,12 +139,6 @@ const Monitors = () => {
         imageSize="small"
       />
 
-      <VideoSection
-        title=""
-        description=""
-        videoSrc="/videos/multi-render.mp4"
-      />
-
       <DescriptionSection
         title="Революционные дисплеи"
         paragraphs={displayDescriptionParagraphs}

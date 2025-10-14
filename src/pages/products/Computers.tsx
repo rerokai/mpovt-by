@@ -150,7 +150,7 @@ const Computers = () => {
         paragraphs={computerDescriptionParagraphs}
       />
 
-      <section className="py-20">
+      <section className="pt-20">
         <div className="bg-gradient-to-br from-gray-950 via-gray-900 to-black">
           <div className="container mx-auto px-4 py-20">
             <SectionHeader

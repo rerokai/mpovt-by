@@ -48,7 +48,7 @@ const Products = () => {
       fullDescription: "Профессиональные ноутбуки с 15,6\" FHD IPS дисплеем и автономностью до 12 часов. Идеальное сочетание мобильности и производительности для работы в любом месте.",
       videoUrl: "/videos/h-book.mp4",
       image: MEDIA_ASSETS.priorityProducts.laptop,
-      link: "/products/notebooks",
+      link: "/products/laptops",
       gradient: "from-amber-400 to-orange-500",
       bgGradient: "from-amber-900/20 to-orange-900/20",
       borderHover: "hover:border-amber-400/50",
@@ -61,7 +61,7 @@ const Products = () => {
       fullDescription: "Высококачественные мониторы с 4K UHD разрешением и 100% покрытием sRGB. Антибликовое покрытие и эргономичная подставка для комфортной работы.",
       videoUrl: "/videos/h-tab.mp4",
       image: MEDIA_ASSETS.priorityProducts.monitor,
-      link: "/products/displays",
+      link: "/products/monitors",
       gradient: "from-amber-400 to-orange-500",
       bgGradient: "from-amber-900/20 to-orange-900/20",
       borderHover: "hover:border-amber-400/50",
@@ -89,13 +89,6 @@ const Products = () => {
       icon: Car,
       image: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=400&h=300&fit=crop",
       link: "/products/car-blocks"
-    },
-    {
-      title: "Средства связи",
-      description: "Системы связи и телекоммуникационное оборудование для обеспечения защищенной и надежной связи",
-      icon: Radio,
-      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop",
-      link: "/products/special-communication"
     },
     {
       title: "Информационные системы",

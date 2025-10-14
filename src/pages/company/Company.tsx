@@ -98,7 +98,7 @@ const Company = () => {
       icon: Award
     },
     {
-      year: "2011-2020",
+      year: "2011-2021",
       title: "Инновации",
       description: "Разработка новых продуктов и технологических решений",
       color: "cyan-500",
@@ -107,9 +107,9 @@ const Company = () => {
       icon: Cpu
     },
     {
-      year: "2021-2024",
+      year: "2022-2025",
       title: "Цифровизация",
-      description: "Внедрение цифровых технологий и автоматизация производства",
+      description: "Внедрение цифровых технологий и автоматизация производства. Запуск производства SSD, планшетов, компьютерной техники",
       color: "pink-500",
       bgColor: "bg-pink-500",
       textColor: "text-pink-500",
@@ -120,8 +120,8 @@ const Company = () => {
   const companyStats = [
     {
       icon: Building,
-      label: "Фабричная площадь",
-      value: "15,000 м²",
+      label: "Общая площадь",
+      value: "150,000 м²",
       color: "text-emerald-500",
       bgColor: "bg-emerald-500/20"
     },
@@ -237,7 +237,7 @@ const Company = () => {
               <Card className="p-3 sm:p-4 md:p-6 bg-slate-800/10 backdrop-blur-xl border border-slate-700/20 hover:border-slate-600/40 transition-all duration-500 flex-1 flex flex-col">
                 <div className="flex-1 bg-gradient-to-br from-primary/20 to-orange-400/20 rounded-xl overflow-hidden mb-4">
                   <img 
-                    src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=600&fit=crop" 
+                    src="https://www.mpovt.by/gallery_gen/3ae539902c5dfe25dca944087a3ecda1_fit.jpg?ts=1756203533" 
                     alt="Здание МПОВТ"
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-105 min-h-[200px] md:min-h-[250px]"
                   />

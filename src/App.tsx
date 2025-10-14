@@ -24,6 +24,8 @@ import { LanguageProvider } from "./contexts/LanguageContext";
 import ScrollToTop from "./components/ScrollToTop";
 import PreloadManager from "./components/PreloadManager";
 import Navigation from "./components/Navigation";
+import Tablets from "./pages/products/Tablets";
+import Storage from "./pages/products/Storage";
 
 // Create a react-query client
 const queryClient = new QueryClient();
@@ -57,6 +59,8 @@ const App = () => {
                   <Route path="/products/laptops" element={<Notebooks />} />
                   <Route path="/products/monitors" element={<Monitors />} />
                   <Route path="/products/computers" element={<Computers />} />
+                  <Route path="/products/tablets" element={<Tablets />} />
+                  <Route path="/products/storage" element={<Storage />} />
                   <Route path="/contact" element={<Contact />} />
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" element={<NotFound />} />

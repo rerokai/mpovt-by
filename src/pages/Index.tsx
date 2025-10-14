@@ -151,13 +151,6 @@ const IndexRefactored = () => {
       link: "/products/car-blocks"
     },
     {
-      title: "Средства связи",
-      description: "Системы связи и телекоммуникационное оборудование",
-      icon: Radio,
-      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop",
-      link: "/products/special-communication"
-    },
-    {
       title: "Информационные системы",
       description: "Комплексные IT-решения для бизнеса любых размеров",
       icon: FileText,

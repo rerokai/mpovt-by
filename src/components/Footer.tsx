@@ -12,8 +12,8 @@ export default function Footer() {
           <div className="animate-slide-in-left">
             <h4 className="text-xl font-bold mb-4 text-amber-200">ОАО «МПОВТ»</h4>
             <p className="text-slate-300 mb-4">
-              Отечественный производитель изделий промышленной электроники, автокомпонентов, 
-              компьютерной техники и средств связи на интеллектуальной платформе.
+              Отечественный производитель изделий промышленной электроники, автокомпонентов и 
+              компьютерной техники на интеллектуальной платформе
             </p>
             <div className="flex space-x-4">
               <a href="https://github.com/MPOVT/mpovt-by/" className="text-slate-400 hover:text-amber-200 transition-all duration-300 hover:scale-110">
@@ -84,17 +84,24 @@ export default function Footer() {
               <li className="flex items-start transition-all duration-300 hover:translate-x-1">
                 <MapPin className="w-5 h-5 mr-2 mt-0.5 text-amber-200" />
                 <span className="text-slate-300">
-                  г. Минск, Фрунзенский район<br />
+                  <a target="_blank" rel="noopener noreferrer" href="https://yandex.by/maps/-/CLFTYGK3">
+                  г. Минск, Фрунзенский район,<br />
+                  улица Притыкого 62к1,<br />
                   Беларусь
+                  </a>
                 </span>
               </li>
               <li className="flex items-center transition-all duration-300 hover:translate-x-1">
                 <Phone className="w-5 h-5 mr-2 text-amber-200" />
-                <span className="text-slate-300">+375 (17) XXX-XX-XX</span>
+                <span className="text-slate-300">
+                  <a href="tel:+375173889099">+375 (17) 388-90-99</a>
+                </span>
               </li>
               <li className="flex items-center transition-all duration-300 hover:translate-x-1">
                 <Mail className="w-5 h-5 mr-2 text-amber-200" />
-                <span className="text-slate-300">info@mpovt.by</span>
+                <span className="text-slate-300">
+                  <a href="mailto:mpovt@mpovt.by">mpovt@mpovt.by</a>
+                </span>
               </li>
               <li className="flex items-center transition-all duration-300 hover:translate-x-1">
                 <Building2 className="w-5 h-5 mr-2 text-amber-200" />
@@ -107,12 +114,12 @@ export default function Footer() {
             <h4 className="text-xl font-bold mb-4 text-amber-200">Наша продукция</h4>
             <p className="text-slate-300 mb-4">
               Сертифицированная компьютерная и потребительская техника, 
-              автоэлектроника, промышленная электроника.
+              автоэлектроника, промышленная электроника
             </p>
             <div className="space-y-2">
-              <div className="text-sm text-slate-400">
+              {/* <div className="text-sm text-slate-400">
                 <strong className="text-slate-300">Партнеры:</strong> БЕЛАЗ, МАЗ, МТЗ, Гомсельмаш, ПТЗ, КАМАЗ
-              </div>
+              </div> */}
               <div className="text-sm text-amber-200 font-medium">
                 Доля инновационной продукции: 85%+
               </div>
@@ -121,7 +128,7 @@ export default function Footer() {
         </div>
         
         <div className="border-t border-slate-800 pt-8 mt-8 text-center text-slate-400 animate-fade-in" style={{ animationDelay: '800ms' }}>
-          <p>&copy; {currentYear} ОАО «МПОВТ». Все права защищены.</p>
+          <p>&copy; {currentYear} ОАО «МПОВТ». Все права защищены</p>
         </div>
       </div>
     </footer>
