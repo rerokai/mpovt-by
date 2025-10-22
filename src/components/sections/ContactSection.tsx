@@ -24,7 +24,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
   title,
   subtitle,
   titleGradientFrom = "from-purple-400",
-  titleGradientVia = "via-pink-400",
+  titleGradientVia = "",
   titleGradientTo = "to-purple-400",
   glowFrom = "from-purple-500/20",
   glowTo = "to-pink-500/20",
@@ -46,7 +46,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
 
       {/* Контент */}
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-10 md:mb-12">
           <h2
             className={`text-3xl md:text-5xl font-bold bg-gradient-to-r ${titleGradientFrom} ${titleGradientVia} ${titleGradientTo} bg-clip-text text-transparent mb-2`}
           >

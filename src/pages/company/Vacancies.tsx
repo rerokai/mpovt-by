@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { MapPin, Clock, ExternalLink, Phone, Mail, User, TrendingUp, Users, Award, Briefcase, ChevronDown, ChevronUp } from "lucide-react";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/contexts/LanguageContext";
+import InfoCardsSection from "@/components/sections/InfoCardsSection";
+import ContactSection from "@/components/sections/ContactSection";
 
 const Vacancies = () => {
   const { t } = useLanguage();
@@ -76,23 +78,13 @@ const Vacancies = () => {
     email: "ekononovich@mpovt.by"
   };
 
-  const benefits = [
-    {
-      icon: TrendingUp,
-      title: t?.company?.vacancies?.whyUsCards?.stability?.title ?? "Стабильность и рост",
-      description: t?.company?.vacancies?.whyUsCards?.stability?.description ?? "Надежная компания с многолетней историей и стабильным финансовым положением"
-    },
-    {
-      icon: Users,
-      title: t?.company?.vacancies?.whyUsCards?.improvement?.title ?? "Развитие и обучение",
-      description: t?.company?.vacancies?.whyUsCards?.improvement?.description ?? "Возможности для профессионального роста и обучения новым технологиям"
-    },
-    {
-      icon: Award,
-      title: t?.company?.vacancies?.whyUsCards?.benefits?.title ?? "Социальный пакет",
-      description: t?.company?.vacancies?.whyUsCards?.benefits?.description ?? "Полный социальный пакет, медицинская страховка и дополнительные льготы"
-    }
-  ];
+  const contact = {
+    name: t?.company?.vacancies?.contactInfo?.name ?? "Кононович Елена Александровна",
+    position: t?.company?.vacancies?.contactInfo?.jobLabel ?? "Руководитель департамента подбора персонала",
+    photo: "/imgs/workers/elena_kononovich.jpg",
+    phones: ["+375 17 3886446"],
+    email: "ekononovich@mpovt.by"
+  };
 
   return (
     <div className="min-h-screen">
@@ -105,7 +97,7 @@ const Vacancies = () => {
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-128 md:h-128 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 rounded-full blur-3xl animate-pulse moving-sphere-3"></div>
           <div className="absolute top-1/3 right-1/3 w-40 h-40 md:w-80 md:h-80 bg-gradient-to-r from-orange-500/15 to-yellow-500/15 rounded-full blur-3xl animate-pulse moving-sphere-4"></div>
         </div>
-        
+
         <div className="container mx-auto relative z-10">
           <div className="max-w-4xl mx-auto animate-fade-in">
             <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-8xl font-black mb-6 md:mb-8 text-white leading-tight">
@@ -127,54 +119,66 @@ const Vacancies = () => {
           <div className="absolute bottom-1/4 center w-44 h-44 md:w-88 md:h-88 bg-gradient-to-r from-yellow-500/15 to-red-500/15 rounded-full blur-3xl animate-pulse moving-sphere-8"></div>
         </div>
 
-        {/* Benefits Section */}
-        <section className="py-16 md:py-20 px-4 relative z-10">
-          <div className="container mx-auto">
-            <div className="text-center mb-12 relative">
-              {/* Background glow */}
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/15 via-purple-400/15 to-emerald-400/15 rounded-3xl blur-3xl"></div>
-              <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent relative z-10">
-                {t?.company?.vacancies?.whyUsTitle ?? "Почему стоит работать с нами?"}
-              </h2>
-              <p className="text-lg text-white/60 relative z-10">
-                {t?.company?.vacancies?.whyUsSubtitle ?? "Стабильность, развитие и комфортные условия для успешной карьеры"}
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto justify-center items-stretch place-items-center">
-              {benefits.map((benefit, index) => {
-                const Icon = benefit.icon;
-                const iconColors = [
-                  { icon: "text-cyan-400", bg: "bg-cyan-500/20", bgHover: "bg-cyan-500/40", border: "from-cyan-500/20 to-purple-500/20", cardHover: "bg-cyan-500/20" },
-                  { icon: "text-purple-400", bg: "bg-purple-500/20", bgHover: "bg-purple-500/40", border: "from-purple-500/20 to-pink-500/20", cardHover: "bg-purple-500/20" },
-                  { icon: "text-emerald-400", bg: "bg-emerald-500/20", bgHover: "bg-emerald-500/40", border: "from-emerald-500/20 to-teal-500/20", cardHover: "bg-emerald-500/20" }
-                ][index];
-                
-                return (
-                  <Card 
-                    key={index} 
-                    className={`p-6 text-center bg-white/5 backdrop-blur-xl border border-white/10 transition-all duration-300 group relative w-full max-w-sm h-full flex flex-col transform-gpu hover:scale-105 ${iconColors.cardHover} hover:!bg-opacity-30 hover:!bg-blend-lighten`}
-                    style={{ transitionProperty: 'background, border, box-shadow, transform', transitionDuration: '300ms' }}
-                  >
-                    {/* Background glow on hover */}
-                    <div className={`absolute inset-0 ${iconColors.bg} rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none`}></div>
-                    {/* Border glow on hover */}
-                    <div className={`absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br ${iconColors.border} p-px pointer-events-none`}>
-                      <div className="w-full h-full bg-black/90 rounded-lg"></div>
-                    </div>
-                    <div
-                      className={`w-16 h-16 ${iconColors.bg} rounded-xl flex items-center justify-center mx-auto mb-6 transition-colors duration-300 group-hover:${iconColors.bgHover} relative z-20`}
-                    >
-                      <Icon className={`h-8 w-8 ${iconColors.icon}`} />
-                    </div>
-                    <h3 className="text-xl font-semibold mb-3 text-white relative z-20">{benefit.title}</h3>
-                    <p className="text-slate-300 relative z-20">{benefit.description}</p>
-                  </Card>
-                );
-              })}
-            </div>
-          </div>
-        </section>
+        <InfoCardsSection
+          title={t?.company?.vacancies?.whyUsTitle ?? "Почему стоит работать с нами?"}
+          subtitle={
+            t?.company?.vacancies?.whyUsSubtitle ??
+            "Стабильность, развитие и комфортные условия для успешной карьеры"
+          }
+          titleGradientFrom="from-cyan-400"
+          titleGradientVia="via-purple-400"
+          titleGradientTo="to-emerald-400"
+          backgroundGlowFrom="from-cyan-400/15"
+          backgroundGlowVia="via-purple-400/15"
+          backgroundGlowTo="to-emerald-400/15"
+          columns={3}
+          cards={[
+            {
+              title:
+                t?.company?.vacancies?.whyUsCards?.stability?.title ??
+                "Стабильность и рост",
+              description:
+                t?.company?.vacancies?.whyUsCards?.stability?.description ??
+                "Надежная компания с многолетней историей и стабильным финансовым положением",
+              icon: TrendingUp,
+              iconColor: "text-cyan-400",
+              iconBg: "bg-cyan-500/20",
+              iconBgHover: "bg-cyan-500/40",
+              borderFrom: "from-cyan-500/20",
+              borderTo: "to-purple-500/20",
+              cardHoverBg: "bg-cyan-500/20",
+            },
+            {
+              title:
+                t?.company?.vacancies?.whyUsCards?.improvement?.title ??
+                "Развитие и обучение",
+              description:
+                t?.company?.vacancies?.whyUsCards?.improvement?.description ??
+                "Возможности для профессионального роста и обучения новым технологиям",
+              icon: Users,
+              iconColor: "text-purple-400",
+              iconBg: "bg-purple-500/20",
+              iconBgHover: "bg-purple-500/40",
+              borderFrom: "from-purple-500/20",
+              borderTo: "to-pink-500/20",
+              cardHoverBg: "bg-purple-500/20",
+            },
+            {
+              title:
+                t?.company?.vacancies?.whyUsCards?.benefits?.title ?? "Социальный пакет",
+              description:
+                t?.company?.vacancies?.whyUsCards?.benefits?.description ??
+                "Полный социальный пакет, медицинская страховка и дополнительные льготы",
+              icon: Award,
+              iconColor: "text-emerald-400",
+              iconBg: "bg-emerald-500/20",
+              iconBgHover: "bg-emerald-500/40",
+              borderFrom: "from-emerald-500/20",
+              borderTo: "to-teal-500/20",
+              cardHoverBg: "bg-emerald-500/20",
+            },
+          ]}
+        />
 
         {/* <section className="py-16 md:py-20 px-4 relative z-10">
           <div className="container mx-auto">
@@ -318,7 +322,7 @@ const Vacancies = () => {
                 {t?.company?.vacancies?.offersSubtitle ?? "Полный список открытых позиций на ведущей платформе поиска работы"}
               </p>
             </div>
-            
+
             <Card className="max-w-4xl mx-auto p-8 bg-gradient-to-r from-cyan-900/70 via-blue-900/70 to-slate-900/70 backdrop-blur-xl border border-cyan-500/20 hover:border-cyan-400/40 transition-all duration-300 group relative hover:scale-[1.01] hover:shadow-2xl hover:shadow-cyan-500/10">
               {/* Background glow */}
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
@@ -343,8 +347,26 @@ const Vacancies = () => {
           </div>
         </section>
 
+        <ContactSection
+          title={t?.company?.vacancies?.contactTitle ?? "Контакты по вопросам трудоустройства"}
+          subtitle={t?.company?.vacancies?.contactSubtitle ?? "Свяжитесь с нашим специалистом по подбору персонала для получения подробной информации"}
+          titleGradientFrom="from-green-400"
+          titleGradientTo="to-teal-400"
+          glowFrom="from-green-400/25"
+          glowTo="to-teal-400/25"
+          contact={{
+            name: contact.name,
+            position: contact.position,
+            phones: contact.phones,
+            emails: [contact.email],
+            photo: contact.photo
+          }}
+          holderColorFrom="from-green-500/10"
+          holderColorTo="to-teal-500/10"
+        />
+
         {/* HR Manager Contact */}
-        <section className="py-16 md:py-20 px-4 relative z-10">
+        <section className="hidden py-16 md:py-20 px-4 relative z-10">
           <div className="container mx-auto">
             <div className="text-center mb-12 relative">
               {/* Background glow */}
@@ -356,7 +378,7 @@ const Vacancies = () => {
                 {t?.company?.vacancies?.contactSubtitle ?? "Свяжитесь с нашим специалистом по подбору персонала для получения подробной информации"}
               </p>
             </div>
-            
+
             <Card className="max-w-2xl mx-auto overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 relative">
               {/* Background glow */}
               <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-teal-500/10 rounded-lg opacity-0 hover:opacity-100 transition-opacity duration-300"></div>

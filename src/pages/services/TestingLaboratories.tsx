@@ -5,7 +5,7 @@ import HeroSection from "@/components/TestingLabs/HeroSection";
 import LaboratoriesSection from "@/components/TestingLabs/LaboratoriesSection";
 import AdvantagesSection from "@/components/TestingLabs/AdvantagesSection";
 import DocumentsSection from "@/components/TestingLabs/DocumentsSection";
-import ContactSection from "@/components/TestingLabs/ContactSection";
+import ContactSection from "@/components/sections/ContactSection";
 
 const TestingLaboratories = () => {
   return (

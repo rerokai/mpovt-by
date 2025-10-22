@@ -33,7 +33,8 @@ import { Button } from "@/components/ui/button";
 import { MapPin, Phone, Mail, User, Download, Building, Car, Zap, Droplets, Home, Shield, CheckCircle, Award, Star, Sun, Droplet, Thermometer, Eye } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import Footer from "@/components/Footer";
-import ContactSection from "@/components/TestingLabs/ContactSection";
+import ContactSection from "@/components/sections/ContactSection";
+import InfoCardsSection from "@/components/sections/InfoCardsSection";
 
 const RentalAreas = () => {
   const { t } = useLanguage();
@@ -67,8 +68,8 @@ const RentalAreas = () => {
       icon: Zap,
       title: t?.company?.rent?.benefitsCards?.electricity?.title ?? "Электроснабжение",
       description: t?.company?.rent?.benefitsCards?.electricity?.description ?? "Стабильное электроснабжение с резервными источниками питания",
-      color: "from-yellow-400/20 to-orange-400/20", 
-      iconColor: "text-yellow-400", 
+      color: "from-yellow-400/20 to-orange-400/20",
+      iconColor: "text-yellow-400",
       titleColor: "from-yellow-400 to-orange-400"
     },
     {
@@ -95,35 +96,6 @@ const RentalAreas = () => {
       iconColor: "text-green-400",
       titleColor: "from-green-400 to-lime-400"
     }
-  ];
-
-  const advantages = [
-    {
-      icon: Shield,
-      title: t?.company?.rent?.whyUsCards?.reliability?.title ?? "Надежный собственник",
-      description: t?.company?.rent?.whyUsCards?.reliability?.description ?? "ОАО \"МПОВТ\" - юридическое лицо с многолетней репутацией и стабильным положением"
-    },
-    {
-      icon: Star,
-      title: t?.company?.rent?.whyUsCards?.location?.title ?? "Удобное расположение",
-      description: t?.company?.rent?.whyUsCards?.location?.description ?? "Центральное расположение в Минске с развитой инфраструктурой и транспортной доступностью"
-    },
-    {
-      icon: Award,
-      title: t?.company?.rent?.whyUsCards?.flexibility?.title ?? "Гибкие условия",
-      description: t?.company?.rent?.whyUsCards?.flexibility?.description ?? "Различные варианты площадей от 10 до 10,000 кв.м с индивидуальными условиями аренды"
-    }
-  ];
-
-  const characteristics = [
-    "Площади от 10 кв. м до 10 000 кв. м",
-    "Естественное освещение во всех помещениях",
-    "Централизованное отопление и вентиляция",
-    "Стабильное электроснабжение 380/220В",
-    "Холодное и горячее водоснабжение",
-    "Охраняемые парковочные места",
-    "Удобные выездные пути на основные магистрали",
-    "Возможность размещения вывесок и рекламы"
   ];
 
   // --- Пассивные анимации для 3D-покачивания карточек ---
@@ -168,52 +140,58 @@ const RentalAreas = () => {
           <div className="absolute top-2/3 left-1/6 w-36 h-36 md:w-72 md:h-72 bg-gradient-to-r from-fuchsia-500/10 to-indigo-500/10 rounded-full blur-3xl animate-pulse moving-sphere-7"></div>
         </div>
 
-        {/* Advantages Section */}
-        <section className="py-16 md:py-20 px-4 relative z-10">
-          <div className="container mx-auto">
-            <div className="text-center mb-12 relative">
-              {/* Background glow */}
-              <div className="absolute inset-0 bg-gradient-to-r from-violet-400/15 via-fuchsia-400/15 to-indigo-400/15 rounded-3xl blur-3xl"></div>
-              <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-violet-400 via-fuchsia-400 to-indigo-400 bg-clip-text text-transparent relative z-10">
-                {t?.company?.rent?.whyUsTitle ?? "Преимущества аренды у нас"}
-              </h2>
-              <p className="text-lg text-white/60 relative z-10">
-                {t?.company?.rent?.whyUsSubtitle ?? "Почему стоит выбрать арендные площади ОАО \"МПОВТ\""}
-              </p>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-12 justify-center items-stretch place-items-center">
-              {advantages.map((advantage, index) => {
-                const Icon = advantage.icon;
-                const iconColors = [
-                  { icon: "text-violet-400", bg: "bg-violet-500/20", bgHover: "bg-violet-500/40", border: "from-violet-500/20 to-fuchsia-500/20", cardHover: "bg-violet-500/20" },
-                  { icon: "text-fuchsia-400", bg: "bg-fuchsia-500/20", bgHover: "bg-fuchsia-500/40", border: "from-fuchsia-500/20 to-pink-500/20", cardHover: "bg-fuchsia-500/20" },
-                  { icon: "text-indigo-400", bg: "bg-indigo-500/20", bgHover: "bg-indigo-500/40", border: "from-indigo-500/20 to-blue-500/20", cardHover: "bg-indigo-500/20" }
-                ][index];
-                return (
-                  <Card 
-                    key={index} 
-                    className={`p-6 text-center bg-white/5 backdrop-blur-xl border border-white/10 transition-all duration-300 group relative w-full max-w-sm h-full flex flex-col transform-gpu hover:scale-105 ${iconColors.cardHover} hover:!bg-opacity-30 hover:!bg-blend-lighten`}
-                    style={{ transitionProperty: 'background, border, box-shadow, transform', transitionDuration: '300ms' }}
-                  >
-                    {/* Background glow on hover */}
-                    <div className={`absolute inset-0 ${iconColors.bg} rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none`}></div>
-                    {/* Border glow on hover */}
-                    <div className={`absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br ${iconColors.border} p-px pointer-events-none`}>
-                      <div className="w-full h-full bg-black/90 rounded-lg"></div>
-                    </div>
-                    <div
-                      className={`w-16 h-16 ${iconColors.bg} rounded-xl flex items-center justify-center mx-auto mb-6 transition-colors duration-300 group-hover:${iconColors.bgHover} relative z-20`}
-                    >
-                      <Icon className={`h-8 w-8 ${iconColors.icon}`} />
-                    </div>
-                    <h3 className="text-xl font-semibold mb-3 text-white relative z-20">{advantage.title}</h3>
-                    <p className="text-slate-300 relative z-20">{advantage.description}</p>
-                  </Card>
-                );
-              })}
-            </div>
-          </div>
-        </section>
+        <InfoCardsSection
+          title={t?.company?.rent?.whyUsTitle ?? "Преимущества аренды у нас"}
+          subtitle={t?.company?.rent?.whyUsSubtitle ?? "Почему стоит выбрать арендные площади ОАО \"МПОВТ\""}
+          titleGradientFrom="from-violet-400"
+          titleGradientVia="via-fuchsia-400"
+          titleGradientTo="to-indigo-400"
+          backgroundGlowFrom="from-violet-400/15"
+          backgroundGlowVia="via-fuchsia-400/15"
+          backgroundGlowTo="to-indigo-400/15"
+          columns={3}
+          cards={[
+            {
+              title: t?.company?.rent?.whyUsCards?.reliability?.title ?? "Надежный собственник",
+              description:
+                t?.company?.rent?.whyUsCards?.reliability?.description ??
+                "ОАО \"МПОВТ\" — юридическое лицо с многолетней репутацией и стабильным положением",
+              icon: Shield,
+              iconColor: "text-violet-400",
+              iconBg: "bg-violet-500/20",
+              iconBgHover: "bg-violet-500/40",
+              borderFrom: "from-violet-500/20",
+              borderTo: "to-fuchsia-500/20",
+              cardHoverBg: "bg-violet-500/20",
+            },
+            {
+              title: t?.company?.rent?.whyUsCards?.location?.title ?? "Удобное расположение",
+              description:
+                t?.company?.rent?.whyUsCards?.location?.description ??
+                "Центральное расположение в Минске с развитой инфраструктурой и транспортной доступностью",
+              icon: Star,
+              iconColor: "text-fuchsia-400",
+              iconBg: "bg-fuchsia-500/20",
+              iconBgHover: "bg-fuchsia-500/40",
+              borderFrom: "from-fuchsia-500/20",
+              borderTo: "to-pink-500/20",
+              cardHoverBg: "bg-fuchsia-500/20",
+            },
+            {
+              title: t?.company?.rent?.whyUsCards?.flexibility?.title ?? "Гибкие условия",
+              description:
+                t?.company?.rent?.whyUsCards?.flexibility?.description ??
+                "Различные варианты площадей от 10 до 10 000 кв.м с индивидуальными условиями аренды",
+              icon: Award,
+              iconColor: "text-indigo-400",
+              iconBg: "bg-indigo-500/20",
+              iconBgHover: "bg-indigo-500/40",
+              borderFrom: "from-indigo-500/20",
+              borderTo: "to-blue-500/20",
+              cardHoverBg: "bg-indigo-500/20",
+            },
+          ]}
+        />
 
         {/* Main Info Section (новый стиль) */}
         <section className="py-16 md:py-20 px-4 relative z-10">
@@ -424,7 +402,7 @@ const RentalAreas = () => {
                     </thead>
                     <tbody className="divide-y divide-white/10">
                       {Array.from({ length: 20 }).map((_, i) => {
-                        
+
                         const floor = (i % 5) + 1;
                         const inv = 100000 + i * 123;
                         const types = ["Офисное помещение", "Складское помещение", "Производственное помещение", "Парковка"];
@@ -471,80 +449,23 @@ const RentalAreas = () => {
             </div>
           </div>
         </section>
-        
-      <ContactSection
-        title={t?.company?.rent?.contactTitle ?? "Контактное лицо"}
-        subtitle={t?.company?.rent?.contactSubtitle ?? "Свяжитесь с нашим специалистом по вопросам аренды"}
-        titleGradientFrom="from-purple-400"
-        titleGradientTo="to-pink-400"
-        glowFrom="from-purple-400/20"
-        glowTo="to-pink-500/20"
-        contact={{
-          name: contact.name,
-          position: contact.position,
-          phones: contact.phones,
-          emails: [contact.email],
-        }}
-        holderColorFrom="from-purple-500/10"
-        holderColorTo="to-pink-500/10"
-      />
 
-        {/* Contact Person Section */}
-        <section className="hidden py-16 md:py-20 px-4 relative z-10">
-          <div className="container mx-auto">
-            <div className="text-center mb-12 relative">
-              {/* Background glow */}
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-400/15 to-pink-400/15 rounded-3xl blur-3xl"></div>
-              <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent relative z-10">
-                {t?.company?.rent?.contactTitle ?? "Контактное лицо"}
-              </h2>
-              <p className="text-lg text-white/60 relative z-10">
-                {t?.company?.rent?.contactSubtitle ?? "Свяжитесь с нашим специалистом по вопросам аренды"}
-              </p>
-            </div>
-
-            <CTACard
-              name={contact.name}
-              position={contact.position}
-              phoneNumbers={contact.phones}
-              emails={[contact.email]}
-              holderColorFrom="from-purple-500/10"
-              holderColorTo="to-pink-500/10"
-            />
-
-            <Card className="hidden p-8 max-w-2xl mx-auto bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 group relative">
-              {/* Background glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="flex items-start space-x-6 relative z-10">
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <User className="w-8 h-8 text-purple-400" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold mb-2 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                    {contact.name}
-                  </h3>
-                  <p className="text-purple-300 mb-4">{contact.position}</p>
-                  <div className="space-y-2">
-                    {contact.phones.map((phone, index) => (
-                      <div key={index} className="flex items-center text-slate-300">
-                        <Phone className="w-4 h-4 mr-3 text-purple-400 flex-shrink-0" />
-                        <a href={`tel:${phone}`} className="hover:text-purple-400 transition-colors">
-                          {phone} {index === 1 && <span className="text-sm text-slate-400">(факс)</span>}
-                        </a>
-                      </div>
-                    ))}
-                    <div className="flex items-center text-slate-300">
-                      <Mail className="w-4 h-4 mr-3 text-purple-400 flex-shrink-0" />
-                      <a href={`mailto:${contact.email}`} className="hover:text-purple-400 transition-colors">
-                        {contact.email}
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Card>
-          </div>
-        </section>
+        <ContactSection
+          title={t?.company?.rent?.contactTitle ?? "Контактное лицо"}
+          subtitle={t?.company?.rent?.contactSubtitle ?? "Свяжитесь с нашим специалистом по вопросам аренды"}
+          titleGradientFrom="from-purple-400"
+          titleGradientTo="to-pink-400"
+          glowFrom="from-purple-400/20"
+          glowTo="to-pink-500/20"
+          contact={{
+            name: contact.name,
+            position: contact.position,
+            phones: contact.phones,
+            emails: [contact.email],
+          }}
+          holderColorFrom="from-purple-500/10"
+          holderColorTo="to-pink-500/10"
+        />
 
         <Footer />
       </div>

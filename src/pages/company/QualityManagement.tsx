@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { FileText, Download, CheckCircle, Award, Shield, Target, Users, Truck, Laptop, Cable, Cpu, Factory, Computer, Zap, Microchip } from "lucide-react";
 import Footer from "@/components/Footer";
 import { useLanguage } from '@/contexts/LanguageContext';
+import InfoCardsSection from "@/components/sections/InfoCardsSection";
 
 const QualityManagement = () => {
   const { t } = useLanguage();
@@ -88,24 +89,6 @@ const QualityManagement = () => {
     }
   ];
 
-  const advantages = [
-    {
-      icon: Shield,
-      title: t?.company?.qas?.qualityCards?.iso?.title ?? "Международные стандарты",
-      description: t?.company?.qas?.qualityCards?.iso?.description ?? "Сертификация по ISO 9001 и IATF 16949 подтверждает соответствие мировым стандартам качества"
-    },
-    {
-      icon: Target,
-      title: t?.company?.qas?.qualityCards?.growing?.title ?? "Постоянное совершенствование",
-      description: t?.company?.qas?.qualityCards?.growing?.description ?? "Непрерывное улучшение процессов и внедрение передовых методов управления качеством"
-    },
-    {
-      icon: Users,
-      title: t?.company?.qas?.qualityCards?.team?.title ?? "Квалифицированная команда",
-      description: t?.company?.qas?.qualityCards?.team?.description ?? "Высококвалифицированные специалисты обеспечивают контроль качества на всех этапах"
-    }
-  ];
-
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -116,7 +99,7 @@ const QualityManagement = () => {
           <div className="absolute bottom-1/6 right-1/4 w-48 h-48 md:w-96 md:h-96 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-full blur-3xl animate-pulse moving-sphere-2"></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-128 md:h-128 bg-gradient-to-r from-emerald-500/30 to-teal-500/30 rounded-full blur-3xl animate-pulse moving-sphere-3"></div>
         </div>
-        
+
         <div className="container mx-auto relative z-10">
           <div className="max-w-4xl mx-auto animate-fade-in">
             <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-8xl font-black mb-6 md:mb-8 text-white leading-tight">
@@ -138,54 +121,67 @@ const QualityManagement = () => {
           <div className="absolute bottom-1/4 center w-44 h-44 md:w-88 md:h-88 bg-gradient-to-r from-yellow-500/10 to-red-500/10 rounded-full blur-3xl animate-pulse moving-sphere-8"></div>
         </div>
 
-        {/* Advantages Section */}
-        <section className="py-16 md:py-20 px-4 relative z-10">
-          <div className="container mx-auto">
-            <div className="text-center mb-8 md:mb-12 relative">
-              {/* Background glow */}
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/10 via-purple-400/10 to-emerald-400/10 rounded-3xl blur-3xl"></div>
-              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent relative z-10">
-                {t?.company?.qas?.qualityTitle ?? "Наша приверженность качеству"}
-              </h2>
-              <p className="text-lg text-white/60 relative z-10">
-                {t?.company?.qas?.qualitySubtitle ?? "Соответствие международным стандартам и непрерывное совершенствование процессов"}
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto justify-center items-stretch place-items-center">
-              {advantages.map((advantage, index) => {
-                const Icon = advantage.icon;
-                // Цвета для карточек: cyan, purple, emerald (по аналогии с Vacancies)
-                const iconColors = [
-                  { icon: "text-cyan-400", bg: "bg-cyan-500/20", bgHover: "bg-cyan-500/40", border: "from-cyan-500/20 to-purple-500/20", cardHover: "bg-cyan-500/20" },
-                  { icon: "text-purple-400", bg: "bg-purple-500/20", bgHover: "bg-purple-500/40", border: "from-purple-500/20 to-pink-500/20", cardHover: "bg-purple-500/20" },
-                  { icon: "text-emerald-400", bg: "bg-emerald-500/20", bgHover: "bg-emerald-500/40", border: "from-emerald-500/20 to-teal-500/20", cardHover: "bg-emerald-500/20" }
-                ][index];
-                return (
-                  <Card 
-                    key={index} 
-                    className={`p-6 text-center bg-white/5 backdrop-blur-xl border border-white/10 transition-all duration-300 group relative w-full max-w-sm h-full flex flex-col transform-gpu hover:scale-105 ${iconColors.cardHover} hover:!bg-opacity-30 hover:!bg-blend-lighten`}
-                    style={{ transitionProperty: 'background, border, box-shadow, transform', transitionDuration: '300ms' }}
-                  >
-                    {/* Background glow on hover */}
-                    <div className={`absolute inset-0 ${iconColors.bg} rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none`}></div>
-                    {/* Border glow on hover */}
-                    <div className={`absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br ${iconColors.border} p-px pointer-events-none`}>
-                      <div className="w-full h-full bg-black/90 rounded-lg"></div>
-                    </div>
-                    <div
-                      className={`w-16 h-16 ${iconColors.bg} rounded-xl flex items-center justify-center mx-auto mb-6 transition-colors duration-300 group-hover:${iconColors.bgHover} relative z-20`}
-                    >
-                      <Icon className={`h-8 w-8 ${iconColors.icon}`} />
-                    </div>
-                    <h3 className="text-xl font-semibold mb-3 text-white relative z-20">{advantage.title}</h3>
-                    <p className="text-slate-300 relative z-20">{advantage.description}</p>
-                  </Card>
-                );
-              })}
-            </div>
-          </div>
-        </section>
+        <InfoCardsSection
+          title={t?.company?.qas?.qualityTitle ?? "Наша приверженность качеству"}
+          subtitle={
+            t?.company?.qas?.qualitySubtitle ??
+            "Соответствие международным стандартам и непрерывное совершенствование процессов"
+          }
+          titleGradientFrom="from-cyan-400"
+          titleGradientVia="via-purple-400"
+          titleGradientTo="to-emerald-400"
+          backgroundGlowFrom="from-cyan-400/10"
+          backgroundGlowVia="via-purple-400/10"
+          backgroundGlowTo="to-emerald-400/10"
+          columns={3}
+          cards={[
+            {
+              title:
+                t?.company?.qas?.qualityCards?.iso?.title ??
+                "Международные стандарты",
+              description:
+                t?.company?.qas?.qualityCards?.iso?.description ??
+                "Сертификация по ISO 9001 и IATF 16949 подтверждает соответствие мировым стандартам качества",
+              icon: Shield,
+              iconColor: "text-cyan-400",
+              iconBg: "bg-cyan-500/20",
+              iconBgHover: "bg-cyan-500/40",
+              borderFrom: "from-cyan-500/20",
+              borderTo: "to-purple-500/20",
+              cardHoverBg: "bg-cyan-500/20",
+            },
+            {
+              title:
+                t?.company?.qas?.qualityCards?.growing?.title ??
+                "Постоянное совершенствование",
+              description:
+                t?.company?.qas?.qualityCards?.growing?.description ??
+                "Непрерывное улучшение процессов и внедрение передовых методов управления качеством",
+              icon: Target,
+              iconColor: "text-purple-400",
+              iconBg: "bg-purple-500/20",
+              iconBgHover: "bg-purple-500/40",
+              borderFrom: "from-purple-500/20",
+              borderTo: "to-pink-500/20",
+              cardHoverBg: "bg-purple-500/20",
+            },
+            {
+              title:
+                t?.company?.qas?.qualityCards?.team?.title ??
+                "Квалифицированная команда",
+              description:
+                t?.company?.qas?.qualityCards?.team?.description ??
+                "Высококвалифицированные специалисты обеспечивают контроль качества на всех этапах",
+              icon: Users,
+              iconColor: "text-emerald-400",
+              iconBg: "bg-emerald-500/20",
+              iconBgHover: "bg-emerald-500/40",
+              borderFrom: "from-emerald-500/20",
+              borderTo: "to-teal-500/20",
+              cardHoverBg: "bg-emerald-500/20",
+            },
+          ]}
+        />
 
         {/* Certificates Section */}
         <section className="py-16 md:py-20 px-4 relative z-10">
@@ -200,7 +196,7 @@ const QualityManagement = () => {
                 {t?.company?.qas?.certsSubtitle ?? "Официальные документы, подтверждающие соответствие международным стандартам качества"}
               </p>
             </div>
-            
+
             <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
               {certificates.map((cert, index) => (
                 <Card key={index} className="p-8 bg-white/5 backdrop-blur-xl border border-white/10 transition-all duration-300 group transform-gpu hover:scale-105 hover:rotate-1 hover:shadow-2xl hover:shadow-emerald-500/20 relative hover:border-emerald-400/30 [transform-style:preserve-3d]">
@@ -255,7 +251,7 @@ const QualityManagement = () => {
                 {t?.company?.qas?.docsSubtitle ?? "Нормативная документация и руководящие материалы по системе менеджмента качества"}
               </p>
             </div>
-            
+
             <div className="grid gap-6 max-w-5xl mx-auto">
               {documents.map((doc, index) => (
                 <Card key={index} className="p-6 bg-white/5 backdrop-blur-xl border border-white/10 transition-all duration-300 group hover:scale-105 hover:border-transparent relative">
@@ -306,11 +302,11 @@ const QualityManagement = () => {
                 {t?.company?.qas?.validCertsSubtitle ?? "Документы, подтверждающие качество и безопасность выпускаемой продукции"}
               </p>
             </div>
-            
+
             <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
               {productCertificates.map((cert, index) => {
                 const Icon = cert.icon;
-                
+
                 return (
                   <Card key={index} className="overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 group relative">
                     {/* Background glow */}
