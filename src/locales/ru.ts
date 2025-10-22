@@ -133,7 +133,7 @@ export const ru = {
       }
     },
     achievements: {
-      title: "Наши достижени",
+      title: "Наши достижения",
       description: "Цифры, которые говорят о нашем успехе и надежности",
       years: { number: "65+", label: "лет опыта", description: "Богатая история с 1956 года" },
       employees: { number: "500+", label: "сотрудников", description: "Квалифицированная команда" },
