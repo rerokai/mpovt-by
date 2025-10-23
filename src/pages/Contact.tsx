@@ -11,6 +11,7 @@ import {
   Clock,
   Send
 } from "lucide-react";
+import SmallMap from "@/components/common/SmallMap";
 
 const Contact = () => {
   const { t } = useLanguage();
@@ -193,15 +194,10 @@ const Contact = () => {
           </Card> */}
 
           {/* Map Section */}
-          <Card className="p-1 sm:p-6 md:p-8 bg-slate-800/10 backdrop-blur-xl border border-slate-700/20 animate-fade-in-up" style={{ animationDelay: '400ms' }}>
-            <div className="aspect-[16/9] sm:aspect-[21/9] md:aspect-video bg-gradient-to-br from-primary/10 to-orange-400/10 rounded-xl flex items-center justify-center">
-              
-              <div className="text-center mr-24">
-                <MapPin className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 lg:h-16 lg:w-16 text-primary mx-auto mb-3 md:mb-4" />
-                <p className="text-sm sm:text-base md:text-lg font-medium text-white">{ t?.contact?.map?.placeholder ?? 'Карта будет загружена' }</p>
-                <p className="text-slate-400 text-xs sm:text-sm md:text-base">{ t?.contact?.map?.address ?? 'ул. Академика Купревича, 21, Минск' }</p>
-              </div>
-              <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Abfc3ea831d96eec5aa9555a466a3a38cdd93ff72d0d7b1e384901485a46bab31&amp;source=constructor" width="580" height="394" frameBorder="0"></iframe>
+          <Card className="p-0 bg-slate-800/10 backdrop-blur-xl border border-slate-700/20 animate-fade-in-up overflow-hidden" style={{ animationDelay: '400ms' }}>
+            {/* Full-bleed map: SmallMap fills the entire card */}
+            <div className="w-full h-[min(60vh,560px)] md:h-[min(70vh,760px)]">
+              <SmallMap className="w-full h-full" address="ул. Притыцкого, 62 к.2, Минск" />
             </div>
           </Card>
         </div>

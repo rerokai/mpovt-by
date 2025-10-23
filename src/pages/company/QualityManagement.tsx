@@ -6,6 +6,7 @@ import { FileText, Download, CheckCircle, Award, Shield, Target, Users, Truck, L
 import Footer from "@/components/Footer";
 import { useLanguage } from '@/contexts/LanguageContext';
 import InfoCardsSection from "@/components/sections/InfoCardsSection";
+import { DownloadsSection } from "@/components/common/DownloadsSection";
 
 const QualityManagement = () => {
   const { t } = useLanguage();
@@ -33,12 +34,12 @@ const QualityManagement = () => {
     {
       title: t?.company?.qas?.docsCards?.pipQualityPolicy?.title ?? "Руководство по менеджменту качества поставщиков ПКИ и материалов для производства автокомпонентов",
       description: t?.company?.qas?.docsCards?.pipQualityPolicy?.description ?? "Документ, определяющий требования и стандарты качества для поставщиков продукции и материалов, используемых в производстве автокомпонентов",
-      url: "https://mpovt.by/gallery/%D0%A0%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%BE.pdf"
+      downloadUrl: "https://mpovt.by/gallery/%D0%A0%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%BE.pdf"
     },
     {
       title: t?.company?.qas?.docsCards?.qualityPolicy?.title ?? "Политика в области качества",
       description: t?.company?.qas?.docsCards?.qualityPolicy?.description ?? "Официальный документ, отражающий приверженность компании обеспечению высокого качества продукции и услуг",
-      url: "https://mpovt.by/gallery/%D0%9E%D0%A2%D0%9A%D0%A0%D0%AB%D0%A2%D0%9E%D0%95%20%D0%90%D0%9A%D0%A6%D0%98%D0%9E%D0%9D%D0%95%D0%A0%D0%9D%D0%9E%D0%95%20%D0%9E%D0%91%D0%A9%D0%95%D0%A1%D0%A2%D0%92%D0%9E.pdf"
+      downloadUrl: "https://mpovt.by/gallery/%D0%9E%D0%A2%D0%9A%D0%A0%D0%AB%D0%A2%D0%9E%D0%95%20%D0%90%D0%9A%D0%A6%D0%98%D0%9E%D0%9D%D0%95%D0%A0%D0%9D%D0%9E%D0%95%20%D0%9E%D0%91%D0%A9%D0%95%D0%A1%D0%A2%D0%92%D0%9E.pdf"
     },
     // {
     //   title: "План выполнения ОАО \"МПОВТ\" мероприятий Республиканского плана мероприятий по проведению в 2024 году Года качества",
@@ -237,57 +238,15 @@ const QualityManagement = () => {
             </div>
           </div>
         </section>
-
-        {/* Documents Section */}
-        <section className="py-16 md:py-20 px-4 relative z-10">
-          <div className="container mx-auto">
-            <div className="text-center mb-12 relative">
-              {/* Background glow */}
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-400/10 to-pink-400/10 rounded-3xl blur-3xl"></div>
-              <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent relative z-10">
-                {t?.company?.qas?.docsTitle ?? "Документы и руководства"}
-              </h2>
-              <p className="text-lg text-white/60 relative z-10">
-                {t?.company?.qas?.docsSubtitle ?? "Нормативная документация и руководящие материалы по системе менеджмента качества"}
-              </p>
-            </div>
-
-            <div className="grid gap-6 max-w-5xl mx-auto">
-              {documents.map((doc, index) => (
-                <Card key={index} className="p-6 bg-white/5 backdrop-blur-xl border border-white/10 transition-all duration-300 group hover:scale-105 hover:border-transparent relative">
-                  {/* Background glow */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  {/* Border glow on hover */}
-                  <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-purple-500/20 to-pink-500/20 p-px">
-                    <div className="w-full h-full bg-black/90 rounded-lg"></div>
-                  </div>
-                  <div className="flex items-center justify-between relative z-10">
-                    <div className="flex items-start space-x-4 flex-1">
-                      <div className="w-12 h-12 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                        <FileText className="w-6 h-6 text-purple-400" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-lg font-semibold mb-2 text-white">
-                          {doc.title}
-                        </h3>
-                        <p className="text-slate-400 text-sm">{doc.description}</p>
-                      </div>
-                    </div>
-                    <Button
-                      size="sm"
-                      className="bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-purple-400/50 backdrop-blur-sm transition-all duration-300 flex-shrink-0 ml-4 shadow-lg hover:shadow-xl hover:shadow-purple-500/20 hover:scale-[1.02] group/btn"
-                      onClick={() => window.open(doc.url, '_blank')}
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-md opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
-                      <Download className="w-4 h-4 mr-2 relative z-10" />
-                      <span className="relative z-10">PDF</span>
-                    </Button>
-                  </div>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
+        
+        <DownloadsSection
+          title={t?.company?.qas?.docsTitle ?? "Документы и руководства"}
+          description={t?.company?.qas?.docsSubtitle ?? "Нормативная документация и руководящие материалы по системе менеджмента качества"}
+          downloads={documents}
+          gradientFrom="purple-400"
+          gradientTo="pink-400"
+          accentColor="purple-400"
+        />
 
         {/* Product Certificates Section */}
         <section className="py-16 md:py-20 px-4 relative z-10">

@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import CTACard from "@/components/common/CTACard";
+import SmallMap from "@/components/common/SmallMap";
 
 // Кастомный хук для 3D-tilt/parallax эффекта
 function useCardTilt() {
@@ -258,7 +259,7 @@ const RentalAreas = () => {
                     <span className="w-10 h-10 flex items-center justify-center rounded-lg bg-gradient-to-r from-blue-500/10 to-cyan-500/10">
                       <MapPin className="w-6 h-6 text-blue-400" />
                     </span>
-                    <span className="text-slate-200 text-base">{t?.company?.rent?.infoCards?.location?.address ?? "г. Минск, ул. Притыцкого, 62"}</span>
+                    <span className="text-slate-200 text-base">{t?.company?.rent?.infoCards?.location?.address ?? "г. Минск, ул. Притыцкого, 62к2"}</span>
                   </div>
                   <div className="flex items-center gap-4 p-4 rounded-xl border border-emerald-500/20 shadow-lg">
                     <span className="w-10 h-10 flex items-center justify-center rounded-lg bg-gradient-to-r from-emerald-500/10 to-lime-500/10">
@@ -267,14 +268,8 @@ const RentalAreas = () => {
                     <span className="text-slate-200 text-base">{t?.company?.rent?.infoCards?.location?.organization ?? "Собственник: ОАО \"МПОВТ\""}</span>
                   </div>
                 </div>
-                {/* Мини-карта/заглушка */}
-                <div className="h-48 md:h-60 bg-gradient-to-br from-slate-800/50 to-slate-900/50 flex items-center justify-center rounded-xl mt-2">
-                  <div className="text-center">
-                    <MapPin className="w-10 h-10 text-emerald-400 mx-auto mb-2" />
-                    <p className="text-white text-base font-semibold">г. Минск, ул. Притыцкого, 62</p>
-                    <p className="text-slate-400 text-sm">Интерактивная карта</p>
-                  </div>
-                </div>
+                {/* Мини-карта */}
+                <SmallMap className="h-48 md:h-60 mt-2 rounded-xl" address="ул. Притыцкого, 62 к.2, Минск"/>
               </Card>
             </div>
           </div>
