@@ -116,7 +116,7 @@ export const DownloadsSection: React.FC<DownloadsSectionProps> = ({
                   ></div>
                   <Download className="w-4 h-4 mr-2 relative z-10" />
                   <span className="relative z-10">
-                    {t?.downloads?.downloadButton ?? "Скачать"}
+                    {t?.components?.downloads?.downloadButton ?? "Скачать"}
                   </span>
                 </Button>
               </div>

@@ -192,6 +192,89 @@ export const zh = {
         bookNow: "联系我们"
       }
     },
+    testingLabs: {
+      pageTitle: "测试实验室",
+      pageSubtitle: "专业的产品测试与质量控制",
+      ourLabsTitle: "我们的测试实验室",
+      ourLabsSubtitle: "配备先进设备的现代化实验室，用于产品的综合测试与认证",
+      accreditation: {
+        title: "提供服务的依据",
+        description: "认证证书",
+        expiresTitle: "有效期限",
+        expiresFromDescription: "从",
+        expiresDescription: "至",
+      },
+      ourLabsCards: {
+        testing: {
+          name: "测试实验室",
+          description: "提供汽车零部件及其他产品的全方位机械与气候测试服务",
+          services: {
+            mechanical: "机械测试",
+            climatic: "气候测试",
+            autoComponents: "汽车零部件测试",
+            vibration: "振动与冲击测试",
+            emc: "电磁兼容测试",
+          }
+        },
+        metrology: {
+          name: "计量实验室",
+          description: "对无线电技术、电学量、压力与温度测量设备进行检定",
+          services: {
+            radio: "无线电技术设备检定",
+            electric: "电学量检定",
+            pressure: "压力测量设备检定",
+            temperature: "温度测量设备检定",
+            calibration: "测量设备校准",
+          }
+        }
+      },
+      advantages: "我们的优势",
+      advantagesSubtitle: "为什么选择在我们的实验室进行测试",
+      advantagesCards: {
+        accreditation: {
+          title: "官方认证",
+          description: "所有实验室均获得国家级认证"
+        },
+        specs: {
+          title: "高素质人员",
+          description: "由具有专业教育背景的经验丰富专家组成的团队"
+        },
+        speed: {
+          title: "高效时限",
+          description: "快速完成测试并及时提供结果"
+        },
+        secure: {
+          title: "可靠性",
+          description: "结果精准可靠，保障数据与商业信息安全"
+        }
+      },
+      docsTitle: "认证文件",
+      docsSubtitle: "实验室的认证证书与业务范围",
+      docsCards: {
+        testing: {
+          title: "测试实验室认证证书",
+          description: "测试实验室的认证证书，确认其具备开展汽车零部件及其他产品测试的能力"
+        },
+        metrology: {
+          title: "计量实验室认证证书",
+          description: "计量实验室的认证证书，确认其具备对无线电、电学量、压力及温度测量设备进行检定的能力"
+        },
+        lis: {
+          title: "LIS 认证范围",
+          description: "实验室获得官方认可的服务、测试及方法清单"
+        },
+        lm: {
+          title: "LM 认证范围",
+          description: "计量实验室获得官方认可的测量设备与检定方法清单"
+        }
+      },
+      contactTitle: "联系方式",
+      contactSubtitle: "请联系质量管理部门负责人以获取咨询",
+      contactInfo: {
+        name: "阿尔乔姆·谢尔盖耶维奇·什利亚耶夫",
+        jobLabel: "质量管理部负责人"
+      }
+    }
   },
   company: {
     main: {

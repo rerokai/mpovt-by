@@ -190,6 +190,89 @@ export const en = {
         description: "Contact us to discuss your projects",
         bookNow: "Contact Us"
       }
+    },
+    testingLabs: {
+      pageTitle: "Testing Laboratories",
+      pageSubtitle: "Professional product testing and quality control",
+      ourLabsTitle: "Our Testing Laboratories",
+      ourLabsSubtitle: "Modern laboratories equipped with advanced technology for comprehensive product testing and certification",
+      accreditation: {
+        title: "Service Basis",
+        description: "accreditation certificate",
+        expiresTitle: "Validity period",
+        expiresFromDescription: "from",
+        expiresDescription: "until",
+      },
+      ourLabsCards: {
+        testing: {
+          name: "Testing Laboratory",
+          description: "A full range of mechanical and climatic tests for automotive components and other products",
+          services: {
+            mechanical: "Mechanical testing",
+            climatic: "Climatic testing",
+            autoComponents: "Automotive component testing",
+            vibration: "Vibration and shock testing",
+            emc: "Electromagnetic compatibility (EMC)",
+          }
+        },
+        metrology: {
+          name: "Metrology Laboratory",
+          description: "Verification of measuring instruments for radio engineering, electrical quantities, pressure, and temperature",
+          services: {
+            radio: "Verification of radio measuring instruments",
+            electric: "Verification of electrical measurements",
+            pressure: "Verification of pressure measuring instruments",
+            temperature: "Verification of temperature measuring instruments",
+            calibration: "Calibration of measuring equipment",
+          }
+        }
+      },
+      advantages: "Our Advantages",
+      advantagesSubtitle: "Why testing in our laboratories is the best choice",
+      advantagesCards: {
+        accreditation: {
+          title: "Accreditation",
+          description: "All laboratories are officially accredited by the state"
+        },
+        specs: {
+          title: "Highly Qualified Staff",
+          description: "A team of experienced professionals with specialized education"
+        },
+        speed: {
+          title: "Fast Turnaround",
+          description: "Prompt testing and delivery of results"
+        },
+        secure: {
+          title: "Reliability",
+          description: "Accurate and trustworthy results, with protection of data and commercial information"
+        }
+      },
+      docsTitle: "Accreditation Documents",
+      docsSubtitle: "Accreditation certificates and scopes of activity of our laboratories",
+      docsCards: {
+        testing: {
+          title: "Testing Laboratory Certificate",
+          description: "Accreditation certificate confirming the competence of the testing laboratory in performing tests on automotive components and other products"
+        },
+        metrology: {
+          title: "Metrology Laboratory Certificate",
+          description: "Accreditation certificate confirming the competence of the metrology laboratory in verifying radio engineering, electrical, pressure, and temperature measuring instruments"
+        },
+        lis: {
+          title: "Scope of Accreditation – Testing Laboratory",
+          description: "List of services, tests, and methods officially recognized within the laboratory’s competence"
+        },
+        lm: {
+          title: "Scope of Accreditation – Metrology Laboratory",
+          description: "List of measuring instruments and calibration methods officially confirmed within the metrology laboratory’s competence"
+        }
+      },
+      contactTitle: "Contacts",
+      contactSubtitle: "Get in touch with the head of the department for consultation",
+      contactInfo: {
+        name: "Artyom Shlyaev",
+        jobLabel: "Head of the Quality Management Department",
+      }
     }
   },
   company: {

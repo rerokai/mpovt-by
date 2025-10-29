@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { useLanguage } from '@/contexts/LanguageContext';
 import { 
