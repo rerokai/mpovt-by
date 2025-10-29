@@ -1,9 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Play, Pause, Volume2, VolumeX } from 'lucide-react';
-import { AnimatedBackground } from './AnimatedBackground';
+import { ArrowRight } from 'lucide-react';
+import { AnimatedBackground } from '@/components/common/AnimatedBackground';
 import OptimizedVideoPlayer from '@/components/OptimizedVideoPlayer';
 
 interface PriorityProduct {

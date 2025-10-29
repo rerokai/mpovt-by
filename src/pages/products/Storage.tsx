@@ -1,7 +1,7 @@
 import Footer from '@/components/Footer';
 import { PageHero } from '@/components/common/PageHero';
 import { ImageContentSection } from '@/components/sections/ImageContentSection';
-import { DescriptionSection } from '@/components/common/DescriptionSection';
+import { DescriptionSection } from '@/components/sections/DescriptionSection';
 import { SectionHeader } from '@/components/common/SectionHeader';
 import { IconCard } from '@/components/common/IconCard';
 import { FeatureCard } from '@/components/common/FeatureCard';

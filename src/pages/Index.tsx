@@ -135,7 +135,7 @@ const IndexRefactored = () => {
       fullDescription: t?.products?.priority?.ssd?.card?.fullDescription ?? "H-Storage SSD накопители разработаны для работы в промышленных условиях с расширенным температурным диапазоном. Высокая скорость, надежность и защита данных делают их идеальными для критически важных систем",
       videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
       image: "/imgs/ssd/h-storage.jpg",
-      link: "/products/h-ssd",
+      link: "/products/storage",
       gradient: "from-amber-600 via-amber-500 to-orange-400",
       bgGradient: "from-amber-900/50 via-slate-900/20 to-slate-900/50",
       borderHover: "hover:border-orange-400/50",
