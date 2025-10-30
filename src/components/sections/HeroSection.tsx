@@ -3,6 +3,7 @@ import React from "react";
 interface HeroSectionProps {
   title: string;
   subtitle: string;
+  signature?: string;
   sphere1?: string; // классы tailwind для цвета первой сферы
   sphere2?: string; // второй
   sphere3?: string; // третьей
@@ -16,6 +17,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   sphere2 = "from-purple-500/30 to-pink-500/30",
   sphere3 = "from-emerald-500/30 to-teal-500/30",
   main = false,
+  signature = null
 }) => {
   const backgroundClass = main
     ? "bg-black"
@@ -41,6 +43,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       {/* Content */}
       <div className="container mx-auto relative z-10">
         <div className="max-w-4xl mx-auto animate-fade-in">
+          {signature && (
+            <p className="text-lg md:text-xl text-slate-400 mb-4">
+              {signature}
+            </p>
+          )}
           <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-8xl font-black mb-6 md:mb-8 text-white leading-tight">
             {title}
           </h1>

@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Twitter, Mail, Phone, MapPin, Building2, Github } from "lucide-react";
+import { Facebook, Instagram, Twitter, Mail, Phone, MapPin, Building2, Github, Send  } from "lucide-react";
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Footer() {
@@ -20,13 +20,13 @@ export default function Footer() {
                 <Github size={20} />
                 <span className="sr-only">Github</span>
               </a>
-              <a href="#" className="text-slate-400 hover:text-purple-400 transition-all duration-300 hover:scale-110">
+              <a href="https://www.instagram.com/mpov.t" className="text-slate-400 hover:text-purple-400 transition-all duration-300 hover:scale-110">
                 <Instagram size={20} />
                 <span className="sr-only">Instagram</span>
               </a>
-              <a href="#" className="text-slate-400 hover:text-blue-400 transition-all duration-300 hover:scale-110">
-                <Twitter size={20} />
-                <span className="sr-only">Twitter</span>
+              <a href="https://t.me/HORIZONT_holding" className="text-slate-400 hover:text-cyan-400 transition-all duration-300 hover:scale-110">
+                <Send size={20} />
+                <span className="sr-only">Telegram</span>
               </a>
             </div>
             

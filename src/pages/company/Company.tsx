@@ -4,10 +4,10 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 import { useLanguage } from '@/contexts/LanguageContext';
-import { 
-  Factory, 
-  Users, 
-  TrendingUp, 
+import {
+  Factory,
+  Users,
+  TrendingUp,
   Globe,
   Award,
   Settings,
@@ -24,6 +24,7 @@ import {
   Crown,
   Sparkles
 } from "lucide-react";
+import { HeroSection } from "@/components/sections/HeroSection";
 
 const Company = () => {
   const [activeTimelineIndex, setActiveTimelineIndex] = useState(0);
@@ -161,31 +162,18 @@ const Company = () => {
       bgColor: "bg-pink-500/20"
     }
   ];
-  const statKeys = ['areaLabel','locationLabel','foundedLabel','employeesLabel','certificationsLabel','exportsLabel'];
+  const statKeys = ['areaLabel', 'locationLabel', 'foundedLabel', 'employeesLabel', 'certificationsLabel', 'exportsLabel'];
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="pt-40 md:pt-44 lg:pt-48 pb-12 md:pb-16 lg:pb-20 px-4 text-center relative overflow-hidden bg-black">
-        {/* Animated background matching main page style */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-32 h-32 md:w-64 md:h-64 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 rounded-full blur-3xl animate-pulse moving-sphere-1"></div>
-          <div className="absolute bottom-1/6 right-1/4 w-48 h-48 md:w-96 md:h-96 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-full blur-3xl animate-pulse moving-sphere-2"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-128 md:h-128 bg-gradient-to-r from-emerald-500/30 to-teal-500/30 rounded-full blur-3xl animate-pulse moving-sphere-3"></div>
-          <div className="absolute top-3/4 left-1/3 w-40 h-40 md:w-80 md:h-80 bg-gradient-to-r from-yellow-500/30 to-orange-500/30 rounded-full blur-3xl animate-pulse moving-sphere-4"></div>
-        </div>
-        
-        <div className="container mx-auto relative z-10">
-          <div className="max-w-4xl mx-auto animate-fade-in">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-8xl font-black mb-6 md:mb-8 text-white/95 leading-tight">
-              {t?.company?.main?.pageTitle ?? 'О компании'}
-            </h1>
-            <p className="text-lg md:text-xl xl:text-2xl text-white/70 mb-6 md:mb-8">
-              {t?.company?.main?.pageSubtitle ?? 'Более 65 лет опыта в разработке и производстве электронных компонентов'}
-            </p>
-          </div>
-        </div>
-      </section>
+      <HeroSection
+        title={t?.company?.main?.pageTitle ?? 'О компании'}
+        subtitle={t?.company?.main?.pageSubtitle ?? 'Более 65 лет опыта в разработке и производстве электронных компонентов'}
+        sphere1="from-cyan-500/30 to-blue-500/30"
+        sphere2="from-purple-500/30 to-pink-500/30"
+        sphere3="from-emerald-500/30 to-teal-500/30"
+        main={true}
+      />
 
       {/* About Section */}
       <section className="py-16 md:py-20 bg-gradient-to-b from-black via-slate-900/50 to-black relative overflow-hidden">
@@ -210,7 +198,7 @@ const Company = () => {
                   <p key={i} className="text-sm md:text-base">{p}</p>
                 ))}
               </div>
-              
+
               {/* Quote Section with reduced margin */}
               <div className="mt-2 md:mt-3 p-4 md:p-6 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-xl border border-cyan-500/20">
                 <div className="flex items-start space-x-3">
@@ -230,13 +218,13 @@ const Company = () => {
             <div className="animate-fade-in-right flex flex-col">
               <Card className="p-3 sm:p-4 md:p-6 bg-slate-800/10 backdrop-blur-xl border border-slate-700/20 hover:border-slate-600/40 transition-all duration-500 flex-1 flex flex-col">
                 <div className="flex-1 bg-gradient-to-br from-primary/20 to-orange-400/20 rounded-xl overflow-hidden mb-4">
-                  <img 
-                    src="https://www.mpovt.by/gallery_gen/3ae539902c5dfe25dca944087a3ecda1_fit.jpg?ts=1756203533" 
+                  <img
+                    src="/imgs/building/office.jpg"
                     alt={t?.company?.main?.imageAlt ?? 'Здание МПОВТ'}
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-105 min-h-[200px] md:min-h-[250px]"
                   />
                 </div>
-                
+
                 {/* Company Stats in 3x2 layout */}
                 <div className="grid grid-cols-3 gap-2 md:gap-3">
                   {companyStats.map((stat, index) => {
@@ -248,7 +236,7 @@ const Company = () => {
                         </div>
                         <div className="text-center">
                           <p className="text-xs md:text-sm font-semibold text-white">{stat.value}</p>
-                                <p className="text-xs text-slate-400">{t?.company?.main?.stats?.[statKeys[index]] ?? stat.label}</p>
+                          <p className="text-xs text-slate-400">{t?.company?.main?.stats?.[statKeys[index]] ?? stat.label}</p>
                         </div>
                       </div>
                     );
@@ -273,8 +261,8 @@ const Company = () => {
               {values.map((value, index) => {
                 const Icon = value.icon;
                 return (
-                  <Card 
-                    key={index} 
+                  <Card
+                    key={index}
                     className="p-4 sm:p-6 md:p-8 text-center bg-slate-800/10 backdrop-blur-xl border border-slate-700/20 hover:border-slate-600/40 transition-all duration-500 hover:scale-105 animate-fade-in-up"
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
@@ -314,7 +302,7 @@ const Company = () => {
                     </div>
                   ))}
                 </div>
-                
+
                 {/* Timeline points */}
                 <div className="flex justify-between items-center relative z-10 mb-8">
                   {timelineEvents.map((event, index) => {
@@ -323,28 +311,24 @@ const Company = () => {
                       <button
                         key={index}
                         onClick={() => setActiveTimelineIndex(index)}
-                        className={`relative group transition-all duration-300 ${
-                          activeTimelineIndex === index ? 'scale-110' : 'hover:scale-105'
-                        }`}
+                        className={`relative group transition-all duration-300 ${activeTimelineIndex === index ? 'scale-110' : 'hover:scale-105'
+                          }`}
                       >
-                        <div className={`w-12 h-12 rounded-full transition-all duration-300 flex items-center justify-center ${
-                          activeTimelineIndex === index 
-                            ? `${event.bgColor} shadow-lg` 
+                        <div className={`w-12 h-12 rounded-full transition-all duration-300 flex items-center justify-center ${activeTimelineIndex === index
+                            ? `${event.bgColor} shadow-lg`
                             : `${event.bgColor} hover:${event.bgColor}`
-                        }`}>
-                          <Icon className={`w-5 h-5 transition-all duration-300 ${
-                            activeTimelineIndex === index 
-                              ? 'text-white' 
+                          }`}>
+                          <Icon className={`w-5 h-5 transition-all duration-300 ${activeTimelineIndex === index
+                              ? 'text-white'
                               : 'text-white/80'
-                          }`} />
+                            }`} />
                         </div>
-                        
+
                         {/* Year label */}
-                        <div className={`absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs md:text-sm font-medium whitespace-nowrap transition-all duration-300 ${
-                          activeTimelineIndex === index 
-                            ? `${event.textColor} scale-110` 
+                        <div className={`absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs md:text-sm font-medium whitespace-nowrap transition-all duration-300 ${activeTimelineIndex === index
+                            ? `${event.textColor} scale-110`
                             : 'text-slate-400'
-                        }`}>
+                          }`}>
                           {event.year}
                         </div>
                       </button>
@@ -354,7 +338,7 @@ const Company = () => {
 
                 {/* Active event details */}
                 <div className="mt-12 min-h-[120px] relative overflow-hidden">
-                  <div 
+                  <div
                     key={activeTimelineIndex}
                     className="transition-all duration-400 ease-out animate-fade-in"
                   >
@@ -365,17 +349,16 @@ const Company = () => {
                       {t?.company?.main?.timeline?.[activeTimelineIndex]?.description ?? timelineEvents[activeTimelineIndex].description}
                     </p>
                   </div>
-                  
+
                   {/* Progress indicator with all 6 colors */}
                   <div className="flex items-center mt-6 space-x-2">
                     {timelineEvents.map((event, index) => (
                       <div
                         key={index}
-                        className={`h-1 rounded-full transition-all duration-500 ease-out ${
-                          index === activeTimelineIndex 
-                            ? `${event.bgColor} w-8` 
+                        className={`h-1 rounded-full transition-all duration-500 ease-out ${index === activeTimelineIndex
+                            ? `${event.bgColor} w-8`
                             : `${event.bgColor}/20 w-2`
-                        }`}
+                          }`}
                         style={{
                           transitionDelay: index === activeTimelineIndex ? '0ms' : '100ms'
                         }}
@@ -390,26 +373,24 @@ const Company = () => {
                 {timelineEvents.map((event, index) => {
                   const Icon = event.icon;
                   return (
-                    <div 
-                      key={index} 
+                    <div
+                      key={index}
                       className={`relative ${index % 2 === 0 ? 'ml-0 mr-8' : 'ml-8 mr-0'}`}
                     >
                       {/* Event card and point container */}
-                      <div className={`relative flex items-start ${
-                        index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
-                      }`}>
+                      <div className={`relative flex items-start ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
+                        }`}>
                         {/* Timeline point */}
                         <div className="flex-shrink-0 relative z-10">
                           <div className={`w-12 h-12 rounded-full ${event.bgColor} flex items-center justify-center shadow-lg`}>
                             <Icon className="w-5 h-5 text-white" />
                           </div>
                         </div>
-                        
+
                         {/* Connecting line from point to card */}
-                        <div className={`w-4 h-0.5 bg-slate-600/40 mt-6 ${
-                          index % 2 === 0 ? 'ml-0' : 'mr-0'
-                        }`}></div>
-                        
+                        <div className={`w-4 h-0.5 bg-slate-600/40 mt-6 ${index % 2 === 0 ? 'ml-0' : 'mr-0'
+                          }`}></div>
+
                         {/* Event content */}
                         <div className={`flex-1 ${index % 2 === 0 ? 'ml-0' : 'mr-0'}`}>
                           <div className="bg-white/20 dark:bg-black/20 backdrop-blur-sm rounded-lg p-4 shadow-md">
@@ -441,7 +422,7 @@ const Company = () => {
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
               <Button asChild size="lg" className="text-sm md:text-base bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 transition-all duration-500 shadow-lg">
                 <Link to="/contact">
-                        {t?.company?.main?.ctaButton ?? 'Связаться с нами'}
+                  {t?.company?.main?.ctaButton ?? 'Связаться с нами'}
                   <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                 </Link>
               </Button>

@@ -1,16 +1,14 @@
 import Footer from '@/components/Footer';
-import { PageHero } from '@/components/common/PageHero';
 import { ImageContentSection } from '@/components/sections/ImageContentSection';
-import { VideoSection } from '@/components/sections/VideoSection';
 import { DescriptionSection } from '@/components/sections/DescriptionSection';
 import { SectionHeader } from '@/components/common/SectionHeader';
 import { IconCard } from '@/components/common/IconCard';
 import { FeatureCard } from '@/components/common/FeatureCard';
 import { DownloadsSection } from '@/components/sections/DownloadsSection';
 import { CTASection } from '@/components/sections/CTASection';
-import { OptimizedImage } from '@/components/OptimizedImage';
 import { MEDIA_ASSETS } from '@/lib/media-assets';
 import { Cpu, HardDrive, Wifi, Thermometer, Volume2, Zap } from 'lucide-react';
+import { HeroSection } from '@/components/sections/HeroSection';
 
 const Computers = () => {
   const specifications = [
@@ -119,10 +117,10 @@ const Computers = () => {
 
   return (
     <div className="min-h-screen bg-black">
-      <PageHero
+      <HeroSection
         title="H-Top"
-        subtitle="Мини-ПК максимальной мощности"
-        description="Компактные компьютеры с производительностью полноразмерных систем для современного офиса и дома"
+        signature="Мини-ПК максимальной мощности"
+        subtitle="Компактные компьютеры с производительностью полноразмерных систем для современного офиса и дома"
       />
 
       <ImageContentSection

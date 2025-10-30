@@ -1,7 +1,5 @@
-import React from "react";
 import Footer from "@/components/Footer";
-import { 
-  PageHero, 
+import {
   SectionHeader, 
   IconCard, 
   CTASection, 
@@ -11,8 +9,7 @@ import {
   DescriptionSection,
   ImageContentSection
 } from "@/components/common";
-import { 
-  Download,
+import {
   Monitor,
   Battery,
   Cpu,
@@ -26,6 +23,7 @@ import {
   Zap,
   Globe
 } from "lucide-react";
+import { HeroSection } from "@/components/sections/HeroSection";
 
 const Notebooks = () => {
   // Данные для компонентов
@@ -184,11 +182,10 @@ const Notebooks = () => {
 
   return (
     <div className="min-h-screen bg-black">
-      <PageHero
+      <HeroSection
         title="Ноутбуки H-Book"
-        subtitle="Мобильные решения с производительностью рабочей станции"
-        description="Белорусские ноутбуки с идеальным сочетанием мобильности, производительности и доступной цены для профессиональной работы в любом месте"
-        backgroundVariant="default"
+        signature="Мобильные решения с производительностью рабочей станции"
+        subtitle="Белорусские ноутбуки с идеальным сочетанием мобильности, производительности и доступной цены для профессиональной работы в любом месте"
       />
 
       {/* Секция с обзором продукта */}

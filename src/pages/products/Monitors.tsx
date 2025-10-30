@@ -1,7 +1,5 @@
 import Footer from '@/components/Footer';
-import { PageHero } from '@/components/common/PageHero';
 import { ImageContentSection } from '@/components/sections/ImageContentSection';
-import { VideoSection } from '@/components/sections/VideoSection';
 import { DescriptionSection } from '@/components/sections/DescriptionSection';
 import { SectionHeader } from '@/components/common/SectionHeader';
 import { IconCard } from '@/components/common/IconCard';
@@ -9,6 +7,7 @@ import { FeatureCard } from '@/components/common/FeatureCard';
 import { DownloadsSection } from '@/components/sections/DownloadsSection';
 import { CTASection } from '@/components/sections/CTASection';
 import { Monitor, Zap, Eye, Settings, Shield, Cpu } from 'lucide-react';
+import { HeroSection } from '@/components/sections/HeroSection';
 
 const Monitors = () => {
   const specifications = [
@@ -117,11 +116,10 @@ const Monitors = () => {
 
   return (
     <div className="min-h-screen bg-black">
-      <PageHero
+      <HeroSection
         title="H-Monitor"
-        subtitle="Профессиональные дисплеи нового поколения"
-        description="Мониторы с превосходной цветопередачей, высокой производительностью и эргономичным дизайном для работы и развлечений"
-        backgroundVariant="default"
+        signature="Профессиональные дисплеи нового поколения"
+        subtitle="Мониторы с превосходной цветопередачей, высокой производительностью и эргономичным дизайном для работы и развлечений"
       />
 
       <ImageContentSection

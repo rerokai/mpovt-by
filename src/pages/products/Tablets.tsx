@@ -1,6 +1,4 @@
-import React from 'react';
 import Footer from '@/components/Footer';
-import { PageHero } from '@/components/common/PageHero';
 import { ImageContentSection } from '@/components/sections/ImageContentSection';
 import { DescriptionSection } from '@/components/sections/DescriptionSection';
 import { SectionHeader } from '@/components/common/SectionHeader';
@@ -10,6 +8,7 @@ import { DownloadsSection } from '@/components/sections/DownloadsSection';
 import { CTASection } from '@/components/sections/CTASection';
 import { Tablet, Battery, Camera, Wifi, Usb, Cpu, Shield } from 'lucide-react';
 import { VideoSection } from '@/components/sections/VideoSection';
+import { HeroSection } from '@/components/sections/HeroSection';
 
 const Tablets = () => {
   const specifications = [
@@ -41,10 +40,10 @@ const Tablets = () => {
 
   return (
     <div className="min-h-screen bg-black">
-      <PageHero
+      <HeroSection
         title="H-Tab"
-        subtitle="Планшеты для обучения, работы и творчества"
-        description="Универсальные планшеты с длительным временем работы и поддержкой периферии"
+        signature="Планшеты для обучения, работы и творчества"
+        subtitle="Универсальные планшеты с длительным временем работы и поддержкой периферии"
       />
 
       <ImageContentSection

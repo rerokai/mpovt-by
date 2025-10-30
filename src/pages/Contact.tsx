@@ -1,44 +1,27 @@
 
-import React from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Clock,
-  Send
-} from "lucide-react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock} from "lucide-react";
 import SmallMap from "@/components/common/SmallMap";
+import { HeroSection } from "@/components/sections/HeroSection";
 
 const Contact = () => {
   const { t } = useLanguage();
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="pt-40 md:pt-44 lg:pt-48 pb-12 md:pb-16 lg:pb-20 px-4 text-center relative overflow-hidden bg-black">
-        {/* Animated background matching main page style */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-32 h-32 md:w-64 md:h-64 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 rounded-full blur-3xl animate-pulse moving-sphere-1"></div>
-          <div className="absolute bottom-1/6 right-1/4 w-48 h-48 md:w-96 md:h-96 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-full blur-3xl animate-pulse moving-sphere-2"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-128 md:h-128 bg-gradient-to-r from-emerald-500/30 to-teal-500/30 rounded-full blur-3xl animate-pulse moving-sphere-3"></div>
-          <div className="absolute top-3/4 left-1/3 w-40 h-40 md:w-80 md:h-80 bg-gradient-to-r from-yellow-500/30 to-orange-500/30 rounded-full blur-3xl animate-pulse moving-sphere-4"></div>
-        </div>
-        
-        <div className="container mx-auto relative z-10">
-          <div className="max-w-4xl mx-auto animate-fade-in">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-8xl font-black mb-6 md:mb-8 text-white/95 leading-tight">
-              { t?.contact?.pageTitle ?? 'Контакты' }
-            </h1>
-            <p className="text-lg md:text-xl xl:text-2xl text-white/70 mb-6 md:mb-8">
-              { t?.contact?.pageSubtitle ?? 'Свяжитесь с нами для получения консультации или размещения заказа' }
-            </p>
-          </div>
-        </div>
-      </section>
+      <HeroSection
+        title={t?.contact?.pageTitle ?? 'Контакты'}
+        subtitle={t?.contact?.pageSubtitle ?? 'Свяжитесь с нами для получения консультации или размещения заказа'}
+        sphere1="from-cyan-500/20 to-blue-500/20"
+        sphere2="from-purple-500/20 to-pink-500/20"
+        sphere3="from-orange-500/15 to-yellow-500/15"
+      />
 
       {/* Contact Section */}
       <section className="py-16 md:py-20 bg-gradient-to-b from-black via-slate-900/50 to-black relative overflow-hidden">
@@ -57,12 +40,12 @@ const Contact = () => {
                 <div className="p-2 md:p-3 bg-emerald-500/20 rounded-xl">
                   <Phone className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-emerald-500" />
                 </div>
-                <h3 className="text-base sm:text-lg md:text-2xl font-semibold text-white">{ t?.contact?.info?.phoneHeading ?? 'Телефон' }</h3>
+                <h3 className="text-base sm:text-lg md:text-2xl font-semibold text-white">{t?.contact?.info?.phoneHeading ?? 'Телефон'}</h3>
               </div>
               <div className="space-y-1 md:space-y-2">
                 <p className="text-sm sm:text-base md:text-lg text-slate-300">+375 (17) 298-45-67</p>
                 <p className="text-sm sm:text-base md:text-lg text-slate-300">+375 (17) 298-45-68</p>
-                <p className="text-slate-400 text-xs sm:text-sm md:text-base">{ t?.contact?.info?.phoneDepartment ?? 'Отдел продаж' }</p>
+                <p className="text-slate-400 text-xs sm:text-sm md:text-base">{t?.contact?.info?.phoneDepartment ?? 'Отдел продаж'}</p>
               </div>
             </Card>
 
@@ -71,26 +54,26 @@ const Contact = () => {
                 <div className="p-2 md:p-3 bg-blue-500/20 rounded-xl">
                   <Mail className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-blue-500" />
                 </div>
-                <h3 className="text-base sm:text-lg md:text-2xl font-semibold text-white">{ t?.contact?.info?.emailHeading ?? 'Email' }</h3>
+                <h3 className="text-base sm:text-lg md:text-2xl font-semibold text-white">{t?.contact?.info?.emailHeading ?? 'Email'}</h3>
               </div>
               <div className="space-y-1 md:space-y-2">
                 <p className="text-sm sm:text-base md:text-lg text-slate-300">mpovt@mpovt.by</p>
                 <p className="text-sm sm:text-base md:text-lg text-slate-300">sales@mpovt.by</p>
-                <p className="text-slate-400 text-xs sm:text-sm md:text-base">{ t?.contact?.info?.emailNote ?? 'Основная почта' }</p>
+                <p className="text-slate-400 text-xs sm:text-sm md:text-base">{t?.contact?.info?.emailNote ?? 'Основная почта'}</p>
               </div>
             </Card>
 
-            <Card className="p-4 sm:p-6 md:p-8 bg-slate-800/10 backdrop-blur-xl border border-slate-700/20 hover:border-slate-600/40 transition-all duration-500 animate-fade-in-left" style={{ animationDelay: '200ms' }}>             
+            <Card className="p-4 sm:p-6 md:p-8 bg-slate-800/10 backdrop-blur-xl border border-slate-700/20 hover:border-slate-600/40 transition-all duration-500 animate-fade-in-left" style={{ animationDelay: '200ms' }}>
               <div className="flex items-center space-x-3 md:space-x-4 mb-3 md:mb-4 lg:mb-6">
                 <div className="p-2 md:p-3 bg-purple-500/20 rounded-xl">
                   <MapPin className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-purple-500" />
                 </div>
-                <h3 className="text-base sm:text-lg md:text-2xl font-semibold text-white">{ t?.contact?.info?.addressHeading ?? 'Адрес' }</h3>
+                <h3 className="text-base sm:text-lg md:text-2xl font-semibold text-white">{t?.contact?.info?.addressHeading ?? 'Адрес'}</h3>
               </div>
               <div className="space-y-1 md:space-y-2">
-                <p className="text-sm sm:text-base md:text-lg text-slate-300">{ t?.contact?.info?.addressLines[0] ?? 'Республика Беларусь' }</p>
-                <p className="text-sm sm:text-base md:text-lg text-slate-300">{ t?.contact?.info?.addressLines[1] ?? '220012, г. Минск' }</p>
-                <p className="text-sm sm:text-base md:text-lg text-slate-300">{ t?.contact?.info?.addressLines[2] ?? 'ул. Академика Купревича, 21' }</p>
+                <p className="text-sm sm:text-base md:text-lg text-slate-300">{t?.contact?.info?.addressLines[0] ?? 'Республика Беларусь'}</p>
+                <p className="text-sm sm:text-base md:text-lg text-slate-300">{t?.contact?.info?.addressLines[1] ?? '220012, г. Минск'}</p>
+                <p className="text-sm sm:text-base md:text-lg text-slate-300">{t?.contact?.info?.addressLines[2] ?? 'ул. Академика Купревича, 21'}</p>
               </div>
             </Card>
 
@@ -99,12 +82,12 @@ const Contact = () => {
                 <div className="p-2 md:p-3 bg-orange-500/20 rounded-xl">
                   <Clock className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-orange-500" />
                 </div>
-                <h3 className="text-base sm:text-lg md:text-2xl font-semibold text-white">{ t?.contact?.info?.hoursHeading ?? 'Время работы' }</h3>
+                <h3 className="text-base sm:text-lg md:text-2xl font-semibold text-white">{t?.contact?.info?.hoursHeading ?? 'Время работы'}</h3>
               </div>
               <div className="space-y-1 md:space-y-2">
-                <p className="text-sm sm:text-base md:text-lg text-slate-300">{ t?.contact?.info?.hoursLines[0] ?? 'Пн-Пт: 8:00 - 17:00' }</p>
-                <p className="text-sm sm:text-base md:text-lg text-slate-300">{ t?.contact?.info?.hoursLines[1] ?? 'Сб-Вс: выходной' }</p>
-                <p className="text-slate-400 text-xs sm:text-sm md:text-base">{ t?.contact?.info?.hoursNote ?? 'Время указано по Минску' }</p>
+                <p className="text-sm sm:text-base md:text-lg text-slate-300">{t?.contact?.info?.hoursLines[0] ?? 'Пн-Пт: 8:00 - 17:00'}</p>
+                <p className="text-sm sm:text-base md:text-lg text-slate-300">{t?.contact?.info?.hoursLines[1] ?? 'Сб-Вс: выходной'}</p>
+                <p className="text-slate-400 text-xs sm:text-sm md:text-base">{t?.contact?.info?.hoursNote ?? 'Время указано по Минску'}</p>
               </div>
             </Card>
           </div>

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MapPin, Clock, ExternalLink, Phone, Mail, User, TrendingUp, Users, Award, Briefcase, ChevronDown, ChevronUp } from "lucide-react";
+import { ExternalLink, TrendingUp, Users, Award } from "lucide-react";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/contexts/LanguageContext";
 import InfoCardsSection from "@/components/sections/InfoCardsSection";
 import ContactSection from "@/components/sections/ContactSection";
+import { HeroSection } from "@/components/sections/HeroSection";
 
 const Vacancies = () => {
   const { t } = useLanguage();
@@ -70,45 +70,23 @@ const Vacancies = () => {
     }));
   };
 
-  const hrManager = {
-    name: t?.company?.vacancies?.contactInfo?.name ?? "Кононович Елена Александровна",
-    position: t?.company?.vacancies?.contactInfo?.jobLabel ?? "Руководитель департамента подбора персонала",
-    photo: "/imgs/workers/elena_kononovich.jpg",
-    phones: ["+375 17 3886446"],
-    email: "ekononovich@mpovt.by"
-  };
-
   const contact = {
     name: t?.company?.vacancies?.contactInfo?.name ?? "Кононович Елена Александровна",
     position: t?.company?.vacancies?.contactInfo?.jobLabel ?? "Руководитель департамента подбора персонала",
-    photo: "/imgs/workers/elena_kononovich.jpg",
+    photo: "/imgs/workers/kononovich_elena.jpg",
     phones: ["+375 17 3886446"],
     email: "ekononovich@mpovt.by"
   };
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="pt-40 md:pt-44 lg:pt-48 pb-12 md:pb-16 lg:pb-20 px-4 text-center relative overflow-hidden bg-gradient-to-b from-slate-900 via-slate-800 to-black">
-        {/* Animated background spheres */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-32 h-32 md:w-64 md:h-64 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-full blur-3xl animate-pulse moving-sphere-1"></div>
-          <div className="absolute bottom-1/6 right-1/4 w-48 h-48 md:w-96 md:h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse moving-sphere-2"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-128 md:h-128 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 rounded-full blur-3xl animate-pulse moving-sphere-3"></div>
-          <div className="absolute top-1/3 right-1/3 w-40 h-40 md:w-80 md:h-80 bg-gradient-to-r from-orange-500/15 to-yellow-500/15 rounded-full blur-3xl animate-pulse moving-sphere-4"></div>
-        </div>
-
-        <div className="container mx-auto relative z-10">
-          <div className="max-w-4xl mx-auto animate-fade-in">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-8xl font-black mb-6 md:mb-8 text-white leading-tight">
-              {t?.company?.vacancies?.pageTitle ?? "Вакансии"}
-            </h1>
-            <p className="text-lg md:text-xl xl:text-2xl text-white/70 mb-6 md:mb-8 max-w-3xl mx-auto">
-              {t?.company?.vacancies?.pageSubtitle ?? "Присоединяйтесь к команде профессионалов и развивайте свою карьеру в одной из ведущих компаний Беларуси в области электронных технологий."}
-            </p>
-          </div>
-        </div>
-      </section>
+      <HeroSection
+        title={t?.company?.vacancies?.pageTitle ?? "Вакансии"}
+        subtitle={t?.company?.vacancies?.pageSubtitle ?? "Присоединяйтесь к команде профессионалов и развивайте свою карьеру в одной из ведущих компаний Беларуси в области электронных технологий."}
+        sphere1="from-cyan-500/20 to-blue-500/20"
+        sphere2="from-purple-500/20 to-pink-500/20"
+        sphere3="from-orange-500/15 to-yellow-500/15"
+      />
 
       <div className="bg-gradient-to-b from-black to-black relative overflow-hidden">
         {/* Enhanced animated background spheres */}

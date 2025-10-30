@@ -1,5 +1,4 @@
 import Footer from '@/components/Footer';
-import { PageHero } from '@/components/common/PageHero';
 import { ImageContentSection } from '@/components/sections/ImageContentSection';
 import { DescriptionSection } from '@/components/sections/DescriptionSection';
 import { SectionHeader } from '@/components/common/SectionHeader';
@@ -9,6 +8,7 @@ import { DownloadsSection } from '@/components/sections/DownloadsSection';
 import { CTASection } from '@/components/sections/CTASection';
 import { MEDIA_ASSETS } from '@/lib/media-assets';
 import { HardDrive, Zap, Cpu, Shield, Activity, Download } from 'lucide-react';
+import { HeroSection } from '@/components/sections/HeroSection';
 
 const Storage = () => {
   const specifications = [
@@ -70,10 +70,10 @@ const Storage = () => {
 
   return (
     <div className="min-h-screen bg-black">
-      <PageHero
+      <HeroSection
         title="H-Storage"
-        subtitle="Надёжные и быстрые SSD для бизнеса и частных пользователей"
-        description="Твердотельные накопители высокой производительности: для ноутбуков, рабочих станций и серверов"
+        signature="Надёжные и быстрые SSD для бизнеса и частных пользователей"
+        subtitle="Твердотельные накопители высокой производительности: для ноутбуков, рабочих станций и серверов"
       />
 
       <ImageContentSection
