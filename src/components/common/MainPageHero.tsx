@@ -1,6 +1,5 @@
 import React from 'react';
 import { ChevronDown } from 'lucide-react';
-import { AnimatedBackground } from './AnimatedBackground';
 
 interface MainPageHeroProps {
   logoSrc: string;
@@ -19,8 +18,6 @@ export const MainPageHero: React.FC<MainPageHeroProps> = ({
 }) => {
   return (
     <section className={`pt-40 md:pt-44 lg:pt-48 pb-12 md:pb-16 lg:pb-20 px-4 text-center relative overflow-hidden bg-black ${className}`}>
-      <AnimatedBackground variant="hero" />
-      
       <div className="container mx-auto relative z-10">
         <div className="max-w-4xl mx-auto animate-fade-in">
           <div className="mb-8 md:mb-12 flex justify-center">

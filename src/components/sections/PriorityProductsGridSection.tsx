@@ -3,7 +3,6 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import { AnimatedBackground } from '@/components/common/AnimatedBackground';
 import OptimizedVideoPlayer from '@/components/OptimizedVideoPlayer';
 
 interface PriorityProduct {
@@ -47,8 +46,6 @@ export const PriorityProductsGridSection: React.FC<PriorityProductsGridSectionPr
 
   return (
     <section className={`py-16 md:py-20 relative overflow-hidden shadow-2xl ${className}`}>
-      <AnimatedBackground variant="default"/>
-      
       <div className="container mx-auto px-4 md:px-6 relative z-5">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-4xl md:text-5xl lg:text-4xl font-bold mb-6 animate-fade-in">

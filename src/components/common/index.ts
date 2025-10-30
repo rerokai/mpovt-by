@@ -1,8 +1,6 @@
 // Common components barrel file
-export { AnimatedBackground } from './AnimatedBackground';
 export { IconCard } from './IconCard';
 export { CTASection } from '../sections/CTASection';
-export { PageHero } from './PageHero';
 export { SectionHeader } from './SectionHeader';
 export { ProductCard } from './ProductCard';
 export { ContactCard } from './ContactCard';

@@ -2,7 +2,6 @@ import React from "react";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import {
-  PageHero,
   CTASection,
   PriorityProductsGridSection,
   SecondaryProductsSection,
@@ -25,6 +24,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 import { useLanguage } from '@/contexts/LanguageContext';
+import { HeroSection } from "@/components/sections/HeroSection";
 
 const Products: React.FC = () => {
   const { t } = useLanguage();
@@ -274,13 +274,12 @@ const Products: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-black">
-      <PageHero
+      <HeroSection
         title={t?.products?.main?.pageTitle ?? "Продукция"}
-        description={
+        subtitle={
           t?.products?.main?.pageSubtitle ??
           "Комплексные решения для современных технологических вызовов"
         }
-        backgroundVariant="default"
       />
 
       {/* Priority Products Section */}

@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Twitter, Mail, Phone, MapPin, Building2, Github, Send  } from "lucide-react";
+import { Instagram, Mail, Phone, MapPin, Building2, Github, Send  } from "lucide-react";
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Footer() {
