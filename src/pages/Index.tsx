@@ -6,8 +6,7 @@ import {
   PriorityProductsGridSection,
   InteractiveFeatures,
   SecondaryProductsSection,
-  AchievementsSection,
-  CompanyOverviewSection
+  AchievementsSection
 } from "@/components/common";
 import {
   Factory,
@@ -15,7 +14,7 @@ import {
   Shield,
   Award,
   Car,
-  FileText,
+  FileText
 } from "lucide-react";
 
 const IndexRefactored = () => {
@@ -192,8 +191,6 @@ const IndexRefactored = () => {
         subtitle={t?.home?.welcome?.subtitle ?? 'Ведущий производитель электронных компонентов и автокомпонентов с 1956 года'}
         scrollIndicatorText={t?.home?.welcome?.scrollDown ?? 'Прокрутите вниз'}
       />
-
-      <CompanyOverviewSection />
 
       <PriorityProductsGridSection
         title={t?.products?.main?.priorityTitle ?? "Флагманская продукция"}
